@@ -12,29 +12,9 @@ namespace ReportsOrganizer.UI.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        public ICommand OpenCommand
-        {
-            get
-            {
-                return new RelayCommand(OpenAction, true);
-            }
-        }
-
-        public ICommand WriteReportCommand
-        {
-            get
-            {
-                return new RelayCommand(WriteReportAction, true);
-            }
-        }
-
-        public ICommand ExitCommand
-        {
-            get
-            {
-                return new RelayCommand(ExitAction, true);
-            }
-        }
+        public ICommand TaskbarIconOpenCommand { get; private set; }
+        public ICommand TaskbarIconReportCommand { get; private set; }
+        public ICommand TaskbarIconExitCommand { get; private set; }
 
         private Visibility windowVisibility;
         public Visibility WindowVisibility
@@ -52,25 +32,30 @@ namespace ReportsOrganizer.UI.ViewModel
 
         public MainViewModel()
         {
+            TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
+            TaskbarIconReportCommand = new RelayCommand(TaskbarIconReportAction, true);
+            TaskbarIconExitCommand = new RelayCommand(TaskbarIconExitAction, true);
+
             windowVisibility = Visibility.Visible;
 
-            Application.Current.MainWindow.Closing += new CancelEventHandler((sender, e) => {
+            Application.Current.MainWindow.Closing += new CancelEventHandler((sender, e) =>
+            {
                 WindowVisibility = Visibility.Hidden;
                 e.Cancel = true;
             });
         }
 
-        private void OpenAction(object sender)
+        private void TaskbarIconOpenAction(object sender)
         {
             WindowVisibility = Visibility.Visible;
         }
 
-        private void WriteReportAction(object sender)
+        private void TaskbarIconReportAction(object sender)
         {
 
         }
 
-        private void ExitAction(object sender)
+        private void TaskbarIconExitAction(object sender)
         {
             Application.Current.Shutdown();
         }
