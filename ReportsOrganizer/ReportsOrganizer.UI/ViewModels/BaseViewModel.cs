@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReportsOrganaizer.UI.ViewModel
+namespace ReportsOrganizer.UI.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

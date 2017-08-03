@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ReportsOrganaizer.UI.Command
+namespace ReportsOrganizer.UI.Command
 {
     class RelayCommand : ICommand
     {
