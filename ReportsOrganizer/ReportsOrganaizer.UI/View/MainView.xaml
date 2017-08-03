@@ -7,9 +7,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReportsOrganaizer.UI"
+        xmlns:taskBar="http://www.hardcodet.net/taskbar"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
          TextElement.FontSize="13"
@@ -17,15 +18,16 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"        
-        Title="MainWindow" Height="700" Width="1000"  ResizeMode="CanResizeWithGrip">
+        Title="MainWindow" Height="700" Width="1000" TabIndex="2147483642"
+        DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
+        Visibility="{Binding WindowVisibility}">
 
-    
+
 
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="20*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -35,11 +37,21 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
+        <taskBar:TaskbarIcon ToolTipText="-Program name-">
+            <taskBar:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Open" Command="{Binding Path=OpenCommand}" />
+                    <MenuItem Header="Write Report" Command="{Binding Path=WriteReportCommand}" />
+                    <Separator />
+                    <MenuItem Header="Exit" Command="{Binding Path=ExitCommand}" />
+                </ContextMenu>
+            </taskBar:TaskbarIcon.ContextMenu>
+        </taskBar:TaskbarIcon>
         
         <Button x:Name="SettingsButton" Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Grid.Column="1" Margin="0" Grid.Row="1" Width="{Binding ActualHeight, ElementName=SettingsButton, Mode=OneWay}" Height="Auto" HorizontalAlignment="Left" Padding="0" TabIndex="1">
             <materialDesign:PackIcon x:Name="packIcon" Kind="Settings" Height="Auto" Margin="10" Width="Auto" />
         </Button>
-
+        
         <ComboBox x:Name="yearComboBox" Grid.Column="1" Grid.Row="1" materialDesign:HintAssist.Hint="Search"
                   IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" VerticalAlignment="Center" Width="185" Height="35" Margin="0,0,10,0" TabIndex="3">
             <ComboBoxItem>January</ComboBoxItem>
