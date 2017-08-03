@@ -27,7 +27,7 @@
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="20*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -37,7 +37,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <taskBar:TaskbarIcon ToolTipText="-Program name-">
+        <taskBar:TaskbarIcon ToolTipText="-Program name-" IconSource="../App.ico">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Open" Command="{Binding Path=OpenCommand}" />
@@ -52,9 +52,18 @@
             <materialDesign:PackIcon x:Name="packIcon" Kind="Settings" Height="Auto" Margin="10" Width="Auto" />
         </Button>
         
-        <ComboBox x:Name="yearComboBox" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Width="185" Height="47" Margin="0,0,10,0" TabIndex="3"/>
-        <ComboBox x:Name="monthComboBox" IsEditable="True"  Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Width="185" Height="47" Margin="0,0,230,0" FontSize="18">
-            <ComboBoxItem IsSelected="True">January</ComboBoxItem>
+        <ComboBox x:Name="yearComboBox" Grid.Column="1" Grid.Row="1" materialDesign:HintAssist.Hint="Search"
+                  IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" VerticalAlignment="Center" Width="185" Height="35" Margin="0,0,10,0" TabIndex="3">
+            <ComboBoxItem>January</ComboBoxItem>
+            <ComboBoxItem>February</ComboBoxItem>
+            <ComboBoxItem>March</ComboBoxItem>
+        </ComboBox>
+
+
+
+        <ComboBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Search"
+                  IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" Width="185" Height="35" Margin="0,0,230,0" FontSize="15">
+            <ComboBoxItem>January</ComboBoxItem>
             <ComboBoxItem>February</ComboBoxItem>
             <ComboBoxItem>March</ComboBoxItem>
             <ComboBoxItem>April</ComboBoxItem>
