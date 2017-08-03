@@ -17,14 +17,15 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"        
-        Title="MainWindow" Height="700" Width="1000" TabIndex="2147483642">
+        Title="MainWindow" Height="700" Width="1000"  ResizeMode="CanResizeWithGrip">
 
     
 
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="20*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -33,13 +34,24 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
+        
         <Button x:Name="SettingsButton" Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Grid.Column="1" Margin="0" Grid.Row="1" Width="{Binding ActualHeight, ElementName=SettingsButton, Mode=OneWay}" Height="Auto" HorizontalAlignment="Left" Padding="0" TabIndex="1">
             <materialDesign:PackIcon x:Name="packIcon" Kind="Settings" Height="Auto" Margin="10" Width="Auto" />
         </Button>
-        
-        <ComboBox x:Name="yearComboBox" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Width="185" Height="47" Margin="0,0,10,0" TabIndex="3"/>
-        <ComboBox x:Name="monthComboBox" IsEditable="True"  Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Width="185" Height="47" Margin="0,0,230,0" FontSize="18">
-            <ComboBoxItem IsSelected="True">January</ComboBoxItem>
+
+        <ComboBox x:Name="yearComboBox" Grid.Column="1" Grid.Row="1" materialDesign:HintAssist.Hint="Search"
+                  IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" VerticalAlignment="Center" Width="185" Height="35" Margin="0,0,10,0" TabIndex="3">
+            <ComboBoxItem>January</ComboBoxItem>
+            <ComboBoxItem>February</ComboBoxItem>
+            <ComboBoxItem>March</ComboBoxItem>
+        </ComboBox>
+
+
+
+        <ComboBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Search"
+                  IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" Width="185" Height="35" Margin="0,0,230,0" FontSize="15">
+            <ComboBoxItem>January</ComboBoxItem>
             <ComboBoxItem>February</ComboBoxItem>
             <ComboBoxItem>March</ComboBoxItem>
             <ComboBoxItem>April</ComboBoxItem>
