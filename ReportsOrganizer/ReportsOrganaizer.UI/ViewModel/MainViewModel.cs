@@ -19,6 +19,7 @@ namespace ReportsOrganaizer.UI.ViewModel
                 return new RelayCommand(OpenAction, true);
             }
         }
+
         public ICommand WriteReportCommand
         {
             get
@@ -26,6 +27,7 @@ namespace ReportsOrganaizer.UI.ViewModel
                 return new RelayCommand(WriteReportAction, true);
             }
         }
+
         public ICommand ExitCommand
         {
             get
