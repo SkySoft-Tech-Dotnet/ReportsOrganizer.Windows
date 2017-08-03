@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReportsOrganaizer.UI.ViewModel
 {
-    public class BaseViewModel
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
