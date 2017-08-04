@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ReportsOrganizer.UI.Command;
+using ReportsOrganizer.Core.Services;
 
 namespace ReportsOrganizer.UI.ViewModel
 {
@@ -31,7 +32,7 @@ namespace ReportsOrganizer.UI.ViewModel
             }
         }
 
-        public MainViewModel()
+        public MainViewModel(IReportsService reportsService)
         {
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconReportCommand = new RelayCommand(TaskbarIconReportAction, true);

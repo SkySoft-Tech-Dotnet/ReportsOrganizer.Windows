@@ -139,7 +139,7 @@
     <Compile Include="Repositories\IEntity.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ReportDTO.cs" />
-    <Compile Include="Repositories\ReportRepository.cs" />
+    <Compile Include="Repositories\ReportsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataBase\ReportsDataBase.db">

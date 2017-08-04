@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace ReportsOrganizer.DAL
 {
+    public interface IReportsRepository : IRepository<ReportDTO>
+    {
 
-    public class ReportRepository : IRepository<ReportDTO>
+    }
+
+    public class ReportsRepository : IReportsRepository
     {
         ReportDBContext _reportContext;
 
-        public ReportRepository()
+        public ReportsRepository()
         {
             _reportContext = new ReportDBContext();
 

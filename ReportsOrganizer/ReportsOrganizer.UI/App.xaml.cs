@@ -12,5 +12,6 @@ namespace ReportsOrganizer.UI
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

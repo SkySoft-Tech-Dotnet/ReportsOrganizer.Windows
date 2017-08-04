@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReportsOrganizer.Core.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,12 @@ namespace ReportsOrganizer.UI.ViewModel
     {
         public MainViewModel Main
         {
-            get { return new MainViewModel(); }
+            get { return IoC.Container.GetInstance<MainViewModel>(); }
         }
 
         public NotificationViewModel Notification
         {
-            get { return new NotificationViewModel(); }
+            get { return IoC.Container.GetInstance<NotificationViewModel>(); }
         }
     }
 }
