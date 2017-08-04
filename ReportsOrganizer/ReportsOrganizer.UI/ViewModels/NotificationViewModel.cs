@@ -8,5 +8,6 @@ namespace ReportsOrganizer.UI.ViewModel
 {
     public class NotificationViewModel : BaseViewModel
     {
+
     }
 }
