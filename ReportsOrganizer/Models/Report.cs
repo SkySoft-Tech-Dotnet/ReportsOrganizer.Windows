@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReportsOrganizer.DAL
+namespace ReportsOrganizer.Models
 {
-    public partial class Report : IEntity
+    public partial class Report
     {
         public int Id { get; set; }
         

@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 namespace ReportsOrganizer.DAL
 {
 
-    public class ReportRepository : IRepository<Report>
+    public class ReportRepository : IRepository<ReportDTO>
     {
         ReportDBContext _reportContext;
 
         public ReportRepository()
         {
-            _reportContext = ReportDBContext.Instance;
+            _reportContext = new ReportDBContext();
 
         }
-        public IEnumerable<Report> List
+        public IEnumerable<ReportDTO> List
         {
             get
             {
@@ -26,26 +26,26 @@ namespace ReportsOrganizer.DAL
 
         }
 
-        public void Add(Report entity)
+        public void Add(ReportDTO entity)
         {
             _reportContext.Reports.Add(entity);
             _reportContext.SaveChanges();
         }
 
-        public void Delete(Report entity)
+        public void Delete(ReportDTO entity)
         {
             _reportContext.Reports.Remove(entity);
             _reportContext.SaveChanges();
         }
 
-        public void Update(Report entity)
+        public void Update(ReportDTO entity)
         {
             _reportContext.Entry(entity).State = EntityState.Modified;
             _reportContext.SaveChanges();
 
         }
 
-        public Report FindById(int Id)
+        public ReportDTO FindById(int Id)
         {
             var result = (from r in _reportContext.Reports where r.Id == Id select r).FirstOrDefault();
             return result;

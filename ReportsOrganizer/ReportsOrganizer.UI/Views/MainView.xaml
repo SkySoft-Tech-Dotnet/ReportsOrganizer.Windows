@@ -13,7 +13,7 @@
                    Visibility="{Binding WindowVisibility}"
                    prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
                    WindowStartupLocation="CenterScreen"
-                   Title="MainWindow">
+                   Title="MainWindow" ResizeMode="CanResizeWithGrip">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
