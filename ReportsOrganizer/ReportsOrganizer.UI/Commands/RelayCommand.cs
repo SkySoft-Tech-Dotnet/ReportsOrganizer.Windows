@@ -11,7 +11,6 @@ namespace ReportsOrganizer.UI.Command
     {
         private Action<object> action;
         private bool canExecute;
-        private Action exitAction;
 
         public RelayCommand(Action<object> action, bool canExecute)
         {

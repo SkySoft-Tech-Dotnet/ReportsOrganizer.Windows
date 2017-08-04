@@ -5,11 +5,14 @@
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    mc:Ignorable="d"
                    Style="{StaticResource MainWindow}"
                    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
                    Visibility="{Binding WindowVisibility}"
+                   prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
+                   prop:WindowProperties.BindClosing="True"
                    WindowStartupLocation="CenterScreen"
                    Title="MainWindow">
     <Grid>
@@ -25,7 +28,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <taskBar:TaskbarIcon ToolTipText="Reports Organizer">
+        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Open" Command="{Binding Path=TaskbarIconOpenCommand}" />

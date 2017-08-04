@@ -15,7 +15,8 @@ namespace ReportsOrganizer.UI.ViewModel
         public ICommand TaskbarIconOpenCommand { get; private set; }
         public ICommand TaskbarIconReportCommand { get; private set; }
         public ICommand TaskbarIconExitCommand { get; private set; }
-
+        public ICommand WindowClosingCommand { get; private set; }
+        
         private Visibility windowVisibility;
         public Visibility WindowVisibility
         {
@@ -35,14 +36,9 @@ namespace ReportsOrganizer.UI.ViewModel
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconReportCommand = new RelayCommand(TaskbarIconReportAction, true);
             TaskbarIconExitCommand = new RelayCommand(TaskbarIconExitAction, true);
+            WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
 
             windowVisibility = Visibility.Visible;
-
-            Application.Current.MainWindow.Closing += new CancelEventHandler((sender, e) =>
-            {
-                WindowVisibility = Visibility.Hidden;
-                e.Cancel = true;
-            });
         }
 
         private void TaskbarIconOpenAction(object sender)
@@ -58,6 +54,11 @@ namespace ReportsOrganizer.UI.ViewModel
         private void TaskbarIconExitAction(object sender)
         {
             Application.Current.Shutdown();
+        }
+
+        private void WindowClosingAction(object sender)
+        {
+            WindowVisibility = Visibility.Hidden;
         }
     }
 }
