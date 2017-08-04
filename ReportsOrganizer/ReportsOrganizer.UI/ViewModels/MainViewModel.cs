@@ -58,6 +58,7 @@ namespace ReportsOrganizer.UI.ViewModel
 
         private void WindowClosingAction(object sender)
         {
+            ((CancelEventArgs)sender).Cancel = true;
             WindowVisibility = Visibility.Hidden;
         }
     }

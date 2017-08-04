@@ -1,8 +1,8 @@
-﻿<metro:MetroWindow x:Class="ReportsOrganizer.UI.MainWindow"
+﻿<metro:MetroWindow x:Class="ReportsOrganizer.UI.MainView"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                   xmlns:taskBar="http://www.hardcodet.net/taskbar"
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:taskBar="http://www.hardcodet.net/taskbar"
                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
@@ -12,7 +12,6 @@
                    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
                    Visibility="{Binding WindowVisibility}"
                    prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
-                   prop:WindowProperties.BindClosing="True"
                    WindowStartupLocation="CenterScreen"
                    Title="MainWindow">
     <Grid>
@@ -38,6 +37,8 @@
                 </ContextMenu>
             </taskBar:TaskbarIcon.ContextMenu>
         </taskBar:TaskbarIcon>
+        
+        
         
         
         
