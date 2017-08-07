@@ -59,5 +59,41 @@ namespace ReportsOrganizer.UI.Localization.General {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add notes.
+        /// </summary>
+        public static string AddNotesLbl {
+            get {
+                return ResourceManager.GetString("AddNotesLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write your report here.
+        /// </summary>
+        public static string MultiLineHint {
+            get {
+                return ResourceManager.GetString("MultiLineHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postpone.
+        /// </summary>
+        public static string Postpone_Btn {
+            get {
+                return ResourceManager.GetString("Postpone_Btn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Previous.
+        /// </summary>
+        public static string Use_Previous_Btn {
+            get {
+                return ResourceManager.GetString("Use_Previous_Btn", resourceCulture);
+            }
+        }
     }
 }

@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddNotesLbl" xml:space="preserve">
+    <value>Add notes</value>
+  </data>
+  <data name="MultiLineHint" xml:space="preserve">
+    <value>Write your report here</value>
+  </data>
+  <data name="Postpone_Btn" xml:space="preserve">
+    <value>Postpone</value>
+  </data>
+  <data name="Use_Previous_Btn" xml:space="preserve">
+    <value>Use Previous</value>
+  </data>
 </root>
