@@ -73,6 +73,8 @@ namespace ReportsOrganizer.UI.ViewModel
                 CurrentWindowState = prevWindowState;
             }
             WindowVisibility = Visibility.Visible;
+
+            Application.Current.MainWindow.Focus();
         }
 
         private void TaskbarIconWriteReportAction(object sender)
