@@ -13,6 +13,7 @@ namespace ReportsOrganizer.UI.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        public ICommand TaskbarIconDoubleClickCommand { get; private set; }
         public ICommand TaskbarIconOpenCommand { get; private set; }
         public ICommand TaskbarIconReportCommand { get; private set; }
         public ICommand TaskbarIconExitCommand { get; private set; }
@@ -50,6 +51,7 @@ namespace ReportsOrganizer.UI.ViewModel
 
         public MainViewModel(IReportsService reportsService)
         {
+            TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconReportCommand = new RelayCommand(TaskbarIconReportAction, true);
             TaskbarIconExitCommand = new RelayCommand(TaskbarIconExitAction, true);

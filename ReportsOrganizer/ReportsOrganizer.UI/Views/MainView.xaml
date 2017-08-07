@@ -27,8 +27,8 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
-        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico">
+
+        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico" DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Open" Command="{Binding Path=TaskbarIconOpenCommand}" />
