@@ -23,25 +23,17 @@ namespace ReportsOrganizer.UI.Services
     }
     public class NotificationService : INotificationService
     {
-        private NotificationView _notificationView;
+        INavigationService _navigationService;
 
-        public NotificationService()
+        public NotificationService(INavigationService navigationService)
         {
-            _notificationView = new NotificationView();
+            _navigationService = navigationService;
         }
 
         public void ShowNotificationWindow()
         {
-            var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
-            _notificationView.Left = desktopWorkingArea.Right - _notificationView.Width - 10;
-            _notificationView.Top = desktopWorkingArea.Bottom - _notificationView.Height - 10;
-            
-            _notificationView.Show();
-
-
-            //var host = new Window();
-            //host.Content = _notificationView;
-            //host.Show();
+            _navigationService.ShowNotificationWindow();
         }
+        
     }
 }

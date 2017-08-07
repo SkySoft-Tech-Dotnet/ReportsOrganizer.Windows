@@ -32,6 +32,7 @@ namespace ReportsOrganizer.UI
         public void IoCConfiguration()
         {
             IoC.Container.Register<INotificationService, NotificationService>();
+            IoC.Container.Register<INavigationService, NavigationService>();
         }
     }
 }
