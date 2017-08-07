@@ -32,6 +32,22 @@ namespace ReportsOrganizer.UI.ViewModel
             }
         }
 
+        private WindowState prevWindowState;
+        private WindowState currentWindowState;
+        public WindowState CurrentWindowState
+        {
+            get
+            {
+                return currentWindowState;
+            }
+            set
+            {
+                prevWindowState = currentWindowState;
+                currentWindowState = value;
+                NotifyPropertyChanged(nameof(CurrentWindowState));
+            }
+        }
+
         public MainViewModel(IReportsService reportsService)
         {
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
@@ -44,6 +60,10 @@ namespace ReportsOrganizer.UI.ViewModel
 
         private void TaskbarIconOpenAction(object sender)
         {
+            if(WindowState.Minimized == CurrentWindowState)
+            {
+                CurrentWindowState = prevWindowState;
+            }
             WindowVisibility = Visibility.Visible;
         }
 

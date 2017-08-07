@@ -11,6 +11,7 @@
                    Style="{StaticResource MainWindow}"
                    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
                    Visibility="{Binding WindowVisibility}"
+                   WindowState="{Binding Path=CurrentWindowState}"
                    prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
                    WindowStartupLocation="CenterScreen"
                    Title="MainWindow" ResizeMode="CanResizeWithGrip">
