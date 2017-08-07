@@ -14,7 +14,8 @@
                    WindowState="{Binding Path=CurrentWindowState}"
                    prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
                    WindowStartupLocation="CenterScreen"
-                   Title="MainWindow" ResizeMode="CanResizeWithGrip">
+                   ResizeMode="CanResizeWithGrip"
+                   Title="MainWindow">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -27,8 +28,8 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico" DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
+        
+        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico" DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}" x:Name="NotifyIcon">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Open" Command="{Binding Path=TaskbarIconOpenCommand}" />

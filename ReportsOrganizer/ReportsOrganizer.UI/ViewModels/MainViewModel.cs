@@ -56,8 +56,6 @@ namespace ReportsOrganizer.UI.ViewModel
             TaskbarIconReportCommand = new RelayCommand(TaskbarIconReportAction, true);
             TaskbarIconExitCommand = new RelayCommand(TaskbarIconExitAction, true);
             WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
-
-            windowVisibility = Visibility.Visible;
         }
 
         private void TaskbarIconOpenAction(object sender)

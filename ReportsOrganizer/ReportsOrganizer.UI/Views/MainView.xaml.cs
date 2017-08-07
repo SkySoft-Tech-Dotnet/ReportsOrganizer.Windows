@@ -18,11 +18,16 @@ namespace ReportsOrganizer.UI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainView : MetroWindow
+    public partial class MainView : MetroWindow, IDisposable
     {
         public MainView()
         {
             InitializeComponent();
+        }
+
+        public void Dispose()
+        {
+            NotifyIcon.Dispose();
         }
     }
 }
