@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReportsOrganizer.Core.Infrastructure;
+using ReportsOrganizer.UI.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -21,6 +23,12 @@ namespace ReportsOrganizer.UI
             {
                 Current.Shutdown();
             }
+            IoCConfiguration();
+        }
+
+        public void IoCConfiguration()
+        {
+            IoC.Container.Register<INotificationService, NotificationService>();
         }
     }
 }

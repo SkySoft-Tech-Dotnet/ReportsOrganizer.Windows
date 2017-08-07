@@ -27,11 +27,6 @@ namespace ReportsOrganizer.Core.Infrastructure
                 }
                 return _container;
             }
-        }
-
-        private static void Configurate(Container container)
-        {
-
-        }
+        }        
     }
 }

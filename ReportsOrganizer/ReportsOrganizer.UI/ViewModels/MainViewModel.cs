@@ -8,13 +8,16 @@ using System.Windows;
 using System.Windows.Input;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.Core.Services;
+using ReportsOrganizer.UI.Services;
 
 namespace ReportsOrganizer.UI.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        INotificationService _notificationService;
+        IReportsService _reportsService;
         public ICommand TaskbarIconOpenCommand { get; private set; }
-        public ICommand TaskbarIconReportCommand { get; private set; }
+        public ICommand TaskbarIconWriteReportCommand { get; private set; }
         public ICommand TaskbarIconExitCommand { get; private set; }
         public ICommand WindowClosingCommand { get; private set; }
         
@@ -32,14 +35,19 @@ namespace ReportsOrganizer.UI.ViewModel
             }
         }
 
-        public MainViewModel(IReportsService reportsService)
+        
+
+        public MainViewModel(IReportsService reportsService, INotificationService notificationService)
         {
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
-            TaskbarIconReportCommand = new RelayCommand(TaskbarIconReportAction, true);
+            TaskbarIconWriteReportCommand = new RelayCommand(TaskbarIconWriteReportAction, true);
             TaskbarIconExitCommand = new RelayCommand(TaskbarIconExitAction, true);
             WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
 
             windowVisibility = Visibility.Visible;
+
+            _reportsService = reportsService;
+            _notificationService = notificationService;
         }
 
         private void TaskbarIconOpenAction(object sender)
@@ -47,9 +55,9 @@ namespace ReportsOrganizer.UI.ViewModel
             WindowVisibility = Visibility.Visible;
         }
 
-        private void TaskbarIconReportAction(object sender)
+        private void TaskbarIconWriteReportAction(object sender)
         {
-
+            _notificationService.ShowNotificationWindow();
         }
 
         private void TaskbarIconExitAction(object sender)

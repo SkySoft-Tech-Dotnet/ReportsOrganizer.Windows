@@ -31,7 +31,7 @@
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Open" Command="{Binding Path=TaskbarIconOpenCommand}" />
-                    <MenuItem Header="Write Report" Command="{Binding Path=TaskbarIconReportCommand}" />
+                    <MenuItem Header="Write Report" Command="{Binding Path=TaskbarIconWriteReportCommand}" />
                     <Separator />
                     <MenuItem Header="Exit" Command="{Binding Path=TaskbarIconExitCommand}" />
                 </ContextMenu>

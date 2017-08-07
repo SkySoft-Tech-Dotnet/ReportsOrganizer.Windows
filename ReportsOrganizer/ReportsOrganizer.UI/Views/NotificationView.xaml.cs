@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,11 @@ namespace ReportsOrganizer.UI.Views
     /// <summary>
     /// Interaction logic for NotificationView.xaml
     /// </summary>
-    public partial class NotificationView : Window
+    public partial class NotificationView : MetroWindow
     {
         public NotificationView()
         {
             InitializeComponent();
-        }
+        }        
     }
 }

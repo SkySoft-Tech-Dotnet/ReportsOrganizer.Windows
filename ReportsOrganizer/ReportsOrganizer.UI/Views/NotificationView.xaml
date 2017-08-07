@@ -1,4 +1,6 @@
-﻿<Window x:Class="ReportsOrganizer.UI.Views.NotificationView"
+﻿<metro:MetroWindow
+        x:Class="ReportsOrganizer.UI.Views.NotificationView"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,8 +8,14 @@
         xmlns:local="clr-namespace:ReportsOrganizer.UI.Views"
         mc:Ignorable="d"
         Style="{StaticResource NotificationWindow}"
-        DataContext="{Binding Path=Notification, Source={StaticResource ViewModelLocator}}">
+        DataContext="{Binding Path=Notification, Source={StaticResource ViewModelLocator}}" 
+          >
     <Grid>
-        
+        <Label Content="Add notes" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="10,10,0,0"/>
+        <Button x:Name="Use_Previous_Btn" Content="Use Previous" HorizontalAlignment="Right" Margin="0,7,120,0" VerticalAlignment="Top" Width="106" Padding="5,4"/>
+        <Button x:Name="Postpone_Btn" Content="Postpone" HorizontalAlignment="Right" Margin="0,7,20,0" VerticalAlignment="Top" Width="80" Padding="5,4"/>
+        <TextBox HorizontalAlignment="Left" Height="67" Margin="10,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="374" AutomationProperties.HelpText="Write your report here"/>
+        <Button x:Name="OK_Btn" Content="OK" HorizontalAlignment="Right" Margin="0,0,25,4" VerticalAlignment="Bottom" Width="31" Height="28" Padding="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label x:Name="SymbolsCounter_Lbl" Content="125/125" HorizontalAlignment="Left" Margin="30,0,0,5" VerticalAlignment="Bottom"/>
     </Grid>
-</Window>
+</metro:MetroWindow>
