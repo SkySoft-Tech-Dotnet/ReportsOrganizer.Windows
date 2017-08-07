@@ -7,6 +7,8 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Globalization;
+using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI
 {
@@ -24,6 +26,7 @@ namespace ReportsOrganizer.UI
                 Current.Shutdown();
             }
             IoCConfiguration();
+            LocalizeDictionary.Instance.Culture = new CultureInfo("en");
         }
 
         public void IoCConfiguration()

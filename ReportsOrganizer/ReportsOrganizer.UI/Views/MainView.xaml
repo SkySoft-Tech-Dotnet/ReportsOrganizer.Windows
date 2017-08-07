@@ -6,14 +6,18 @@
                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
+                   xmlns:lex="http://wpflocalizeextension.codeplex.com"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    mc:Ignorable="d"
                    Style="{StaticResource MainWindow}"
                    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
                    Visibility="{Binding WindowVisibility}"
+                   WindowState="{Binding Path=CurrentWindowState}"
                    prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
+                   lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.UI"
+                   lex:ResxLocalizationProvider.DefaultDictionary="Strings"
                    WindowStartupLocation="CenterScreen"
-                   Title="MainWindow" ResizeMode="CanResizeWithGrip">
+                   Title="Reports Organizer">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -27,16 +31,18 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico">
+        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico" DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Open" Command="{Binding Path=TaskbarIconOpenCommand}" />
-                    <MenuItem Header="Write Report" Command="{Binding Path=TaskbarIconWriteReportCommand}" />
+                    <MenuItem Header="{lex:Loc TaskbarIcon:Open}" Command="{Binding Path=TaskbarIconOpenCommand}" />
+                    <MenuItem Header="{lex:Loc TaskbarIcon:WriteReport}" Command="{Binding Path=TaskbarIconWriteReportCommand}" />
                     <Separator />
-                    <MenuItem Header="Exit" Command="{Binding Path=TaskbarIconExitCommand}" />
+                    <MenuItem Header="{lex:Loc TaskbarIcon:Exit}" Command="{Binding Path=TaskbarIconExitCommand}" />
                 </ContextMenu>
             </taskBar:TaskbarIcon.ContextMenu>
         </taskBar:TaskbarIcon>
+        
+        
         
         
         

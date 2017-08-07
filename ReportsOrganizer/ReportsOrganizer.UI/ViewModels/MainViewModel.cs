@@ -16,6 +16,7 @@ namespace ReportsOrganizer.UI.ViewModel
     {
         INotificationService _notificationService;
         IReportsService _reportsService;
+        public ICommand TaskbarIconDoubleClickCommand { get; private set; }
         public ICommand TaskbarIconOpenCommand { get; private set; }
         public ICommand TaskbarIconWriteReportCommand { get; private set; }
         public ICommand TaskbarIconExitCommand { get; private set; }
@@ -35,16 +36,31 @@ namespace ReportsOrganizer.UI.ViewModel
             }
         }
 
-        
+        private WindowState prevWindowState;
+        private WindowState currentWindowState;
+        public WindowState CurrentWindowState
+        {
+            get
+            {
+                return currentWindowState;
+            }
+            set
+            {
+                prevWindowState = currentWindowState;
+                currentWindowState = value;
+                NotifyPropertyChanged(nameof(CurrentWindowState));
+            }
+        }
 
         public MainViewModel(IReportsService reportsService, INotificationService notificationService)
         {
+            TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconWriteReportCommand = new RelayCommand(TaskbarIconWriteReportAction, true);
             TaskbarIconExitCommand = new RelayCommand(TaskbarIconExitAction, true);
             WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
 
-            windowVisibility = Visibility.Visible;
+            
 
             _reportsService = reportsService;
             _notificationService = notificationService;
@@ -52,6 +68,10 @@ namespace ReportsOrganizer.UI.ViewModel
 
         private void TaskbarIconOpenAction(object sender)
         {
+            if(WindowState.Minimized == CurrentWindowState)
+            {
+                CurrentWindowState = prevWindowState;
+            }
             WindowVisibility = Visibility.Visible;
         }
 
