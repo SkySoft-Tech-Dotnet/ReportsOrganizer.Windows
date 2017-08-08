@@ -8,7 +8,12 @@
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
              DataContext="{Binding HomePage, Source={StaticResource ViewModelLocator}}">
-    <Grid>
+
+
+    <Grid Style="{StaticResource PageView}">
+        
+        
+        
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="2*" />

@@ -6,6 +6,32 @@
         <Setter Property="Margin" Value="0 8 0 8" />
     </Style>
 
+    <Style TargetType="Grid" x:Key="PageView">
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="0.95" ScaleY="0.95" />
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                            To="1.0" Duration="0:0:0.15" />
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                            To="1.0" Duration="0:0:0.15" />
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="(Grid.Opacity)"
+                            From="0.0" To="1.0" Duration="0:0:0.15" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
     <!-- primary -->
     <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#744CE0"/>
     <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="Red"/>
