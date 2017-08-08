@@ -63,36 +63,153 @@ namespace ReportsOrganizer.UI.Localization.General {
         /// <summary>
         ///   Looks up a localized string similar to Add notes.
         /// </summary>
-        public static string AddNotesLbl {
+        public static string AddNotes {
             get {
-                return ResourceManager.GetString("AddNotesLbl", resourceCulture);
+                return ResourceManager.GetString("AddNotes", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Write your report here.
+        ///   Looks up a localized string similar to April.
         /// </summary>
-        public static string MultiLineHint {
+        public static string MonthApr {
             get {
-                return ResourceManager.GetString("MultiLineHint", resourceCulture);
+                return ResourceManager.GetString("MonthApr", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postpone.
+        ///   Looks up a localized string similar to August.
         /// </summary>
-        public static string Postpone_Btn {
+        public static string MonthAug {
             get {
-                return ResourceManager.GetString("Postpone_Btn", resourceCulture);
+                return ResourceManager.GetString("MonthAug", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Previous.
+        ///   Looks up a localized string similar to December.
         /// </summary>
-        public static string Use_Previous_Btn {
+        public static string MonthDec {
             get {
-                return ResourceManager.GetString("Use_Previous_Btn", resourceCulture);
+                return ResourceManager.GetString("MonthDec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to February.
+        /// </summary>
+        public static string MonthFeb {
+            get {
+                return ResourceManager.GetString("MonthFeb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to January.
+        /// </summary>
+        public static string MonthJan {
+            get {
+                return ResourceManager.GetString("MonthJan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to July.
+        /// </summary>
+        public static string MonthJuly {
+            get {
+                return ResourceManager.GetString("MonthJuly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to June.
+        /// </summary>
+        public static string MonthJune {
+            get {
+                return ResourceManager.GetString("MonthJune", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to March.
+        /// </summary>
+        public static string MonthMar {
+            get {
+                return ResourceManager.GetString("MonthMar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to May.
+        /// </summary>
+        public static string MonthMay {
+            get {
+                return ResourceManager.GetString("MonthMay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to November.
+        /// </summary>
+        public static string MonthNov {
+            get {
+                return ResourceManager.GetString("MonthNov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to October.
+        /// </summary>
+        public static string MonthOct {
+            get {
+                return ResourceManager.GetString("MonthOct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to September.
+        /// </summary>
+        public static string MonthSept {
+            get {
+                return ResourceManager.GetString("MonthSept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postone.
+        /// </summary>
+        public static string Postpone {
+            get {
+                return ResourceManager.GetString("Postpone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User previous.
+        /// </summary>
+        public static string UsePrevious {
+            get {
+                return ResourceManager.GetString("UsePrevious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your report here.
+        /// </summary>
+        public static string WriteReport {
+            get {
+                return ResourceManager.GetString("WriteReport", resourceCulture);
             }
         }
     }

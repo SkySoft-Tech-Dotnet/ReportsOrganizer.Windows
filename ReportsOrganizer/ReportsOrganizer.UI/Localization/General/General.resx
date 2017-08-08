@@ -117,16 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddNotesLbl" xml:space="preserve">
+  <data name="AddNotes" xml:space="preserve">
     <value>Add notes</value>
   </data>
-  <data name="MultiLineHint" xml:space="preserve">
-    <value>Write your report here</value>
+  <data name="MonthApr" xml:space="preserve">
+    <value>April</value>
   </data>
-  <data name="Postpone_Btn" xml:space="preserve">
-    <value>Postpone</value>
+  <data name="MonthAug" xml:space="preserve">
+    <value>August</value>
   </data>
-  <data name="Use_Previous_Btn" xml:space="preserve">
-    <value>Use Previous</value>
+  <data name="MonthDec" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="MonthFeb" xml:space="preserve">
+    <value>February</value>
+  </data>
+  <data name="MonthJan" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="MonthJuly" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="MonthJune" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="MonthMar" xml:space="preserve">
+    <value>March</value>
+  </data>
+  <data name="MonthMay" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="MonthNov" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="MonthOct" xml:space="preserve">
+    <value>October</value>
+  </data>
+  <data name="MonthSept" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Postpone" xml:space="preserve">
+    <value>Postone</value>
+  </data>
+  <data name="UsePrevious" xml:space="preserve">
+    <value>User previous</value>
+  </data>
+  <data name="WriteReport" xml:space="preserve">
+    <value>Enter your report here</value>
   </data>
 </root>
