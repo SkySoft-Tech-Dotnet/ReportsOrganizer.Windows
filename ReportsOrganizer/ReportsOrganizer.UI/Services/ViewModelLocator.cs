@@ -1,4 +1,5 @@
 ﻿using ReportsOrganizer.Core.Infrastructure;
+using ReportsOrganizer.UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,16 @@ namespace ReportsOrganizer.UI.ViewModel
         public NotificationViewModel Notification
         {
             get { return IoC.Container.GetInstance<NotificationViewModel>(); }
+        }
+
+        public HomeViewModel HomePage
+        {
+            get { return IoC.Container.GetInstance<HomeViewModel>(); }
+        }
+
+        public SettingsViewModel SettingsPage
+        {
+            get { return IoC.Container.GetInstance<SettingsViewModel>(); }
         }
     }
 }

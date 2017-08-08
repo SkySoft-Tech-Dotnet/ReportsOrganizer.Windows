@@ -9,6 +9,8 @@ using System.Threading;
 using System.Windows;
 using System.Globalization;
 using WPFLocalizeExtension.Engine;
+using ReportsOrganizer.UI.ViewModels;
+using SimpleInjector;
 
 namespace ReportsOrganizer.UI
 {
@@ -25,14 +27,18 @@ namespace ReportsOrganizer.UI
             {
                 Current.Shutdown();
             }
-            IoCConfiguration();
+
             LocalizeDictionary.Instance.Culture = new CultureInfo("en");
+            IoCConfiguration();
         }
 
         public void IoCConfiguration()
         {
             IoC.Container.Register<INotificationService, NotificationService>();
-            IoC.Container.Register<INavigationService, NavigationService>();
+            IoC.Container.Register<INavigationService, NavigationService>(Lifestyle.Singleton);
+
+            IoC.Container.Register<IHomeViewModel, HomeViewModel>();
+            IoC.Container.Register<ISettingsViewModel, SettingsViewModel>();
         }
     }
 }
