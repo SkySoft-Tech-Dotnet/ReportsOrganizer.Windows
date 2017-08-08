@@ -9,9 +9,8 @@ using System.Windows.Input;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Services;
-using ReportsOrganizer.UI.ViewModels;
 
-namespace ReportsOrganizer.UI.ViewModel
+namespace ReportsOrganizer.UI.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {

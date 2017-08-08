@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using ReportsOrganizer.UI.ViewModel;
+using System.ComponentModel;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Services;
-using System.ComponentModel;
 
 namespace ReportsOrganizer.UI.ViewModels
 {

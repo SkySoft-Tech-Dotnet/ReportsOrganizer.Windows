@@ -1,13 +1,12 @@
-﻿using ReportsOrganizer.UI.ViewModel;
-using ReportsOrganizer.UI.ViewModels;
-using ReportsOrganizer.UI.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using ReportsOrganizer.UI.ViewModels;
+using ReportsOrganizer.UI.Views;
 
 namespace ReportsOrganizer.UI.Services
 {

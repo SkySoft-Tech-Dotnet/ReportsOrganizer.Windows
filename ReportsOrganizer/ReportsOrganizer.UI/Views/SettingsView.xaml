@@ -7,17 +7,18 @@
              xmlns:view="clr-namespace:ReportsOrganizer.UI.Views"
              mc:Ignorable="d"
              DataContext="{Binding SettingsPage, Source={StaticResource ViewModelLocator}}">
-    <Grid Height="151" Width="436">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="67*"/>
-        </Grid.ColumnDefinitions>
-        <Button Command="{Binding BackCommand}" Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Width="50" Height="50" Grid.Column="1" Margin="20,10,360,91">
-            <materialDesign:PackIcon x:Name="packIcon" Kind="Backspace" Height="Auto" Margin="10" Width="Auto" />
-        </Button>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="164,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Timer" Grid.Column="1" HorizontalAlignment="Left" Margin="106,29,0,0" VerticalAlignment="Top"/>
-
-
+    <Grid Height="602" Width="744">
+        <TabControl Grid.Column="1" Grid.Row="1" TabStripPlacement="Left">
+            <TabItem Header="Notification">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <RadioButton Grid.Row="0" GroupName="Interval" Content="At intervals"  />
+                    <RadioButton Grid.Row="1" GroupName="Interval" Content="At specific time"  />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

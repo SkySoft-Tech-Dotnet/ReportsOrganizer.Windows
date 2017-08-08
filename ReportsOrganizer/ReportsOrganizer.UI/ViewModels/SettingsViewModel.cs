@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ReportsOrganizer.UI.ViewModel;
 using System.Windows.Input;
 using ReportsOrganizer.UI.Command;
-using System.ComponentModel;
 using ReportsOrganizer.UI.Services;
 
 namespace ReportsOrganizer.UI.ViewModels
