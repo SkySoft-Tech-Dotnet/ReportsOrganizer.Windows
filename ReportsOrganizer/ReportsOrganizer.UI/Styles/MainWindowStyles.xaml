@@ -17,5 +17,6 @@
         <Setter Property="Height" Value="500" />
         <Setter Property="MinWidth" Value="600" />
         <Setter Property="MinHeight" Value="400" />
+        <Setter Property="WindowTitleBrush" Value="#077568" />
     </Style>
 </ResourceDictionary>

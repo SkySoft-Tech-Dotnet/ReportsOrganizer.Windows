@@ -120,6 +120,9 @@
   <data name="AddNotes" xml:space="preserve">
     <value>Add notes</value>
   </data>
+  <data name="ComeBack" xml:space="preserve">
+    <value>Come back</value>
+  </data>
   <data name="MonthApr" xml:space="preserve">
     <value>April</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Postpone" xml:space="preserve">
     <value>Postone</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="UsePrevious" xml:space="preserve">
     <value>User previous</value>
