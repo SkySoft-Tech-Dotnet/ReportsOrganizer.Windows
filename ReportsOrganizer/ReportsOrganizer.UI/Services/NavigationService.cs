@@ -23,7 +23,11 @@ namespace ReportsOrganizer.UI.Services
 
     class NavigationService : INavigationService
     {
-        private NotificationView notificationView;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private Lazy<NotificationView> _notificationView = new Lazy<NotificationView>(() => new NotificationView());
+        private NotificationView NotificationViewInstance => _notificationView.Value;
 
         private BaseViewModel currentPage;
         public BaseViewModel CurrentPage
@@ -39,10 +43,6 @@ namespace ReportsOrganizer.UI.Services
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private Lazy<NotificationView> _notificationView = new Lazy<NotificationView>(() => new NotificationView());
-        private NotificationView NotificationViewInstance => _notificationView.Value;
-
         public NavigationService()
         {
 
@@ -51,10 +51,10 @@ namespace ReportsOrganizer.UI.Services
         public void ShowNotificationWindow()
         {
             var desktopWorkingArea = SystemParameters.WorkArea;
-            notificationView.Left = desktopWorkingArea.Right - notificationView.Width - 10;
-            notificationView.Top = desktopWorkingArea.Bottom - notificationView.Height - 10;
+            NotificationViewInstance.Left = desktopWorkingArea.Right - NotificationViewInstance.Width - 10;
+            NotificationViewInstance.Top = desktopWorkingArea.Bottom - NotificationViewInstance.Height - 10;
 
-            notificationView.Show();
+            NotificationViewInstance.Show();
         }
 
         public void NavigateToHome()
