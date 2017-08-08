@@ -163,13 +163,13 @@
     <value>OK</value>
   </data>
   <data name="Postpone" xml:space="preserve">
-    <value>Postone</value>
+    <value>Postpone</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="UsePrevious" xml:space="preserve">
-    <value>User previous</value>
+    <value>Use previous</value>
   </data>
   <data name="WriteReport" xml:space="preserve">
     <value>Enter your report here</value>

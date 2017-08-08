@@ -196,7 +196,7 @@ namespace ReportsOrganizer.UI.Localization.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postone.
+        ///   Looks up a localized string similar to Postpone.
         /// </summary>
         public static string Postpone {
             get {
@@ -214,7 +214,7 @@ namespace ReportsOrganizer.UI.Localization.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User previous.
+        ///   Looks up a localized string similar to Use previous.
         /// </summary>
         public static string UsePrevious {
             get {

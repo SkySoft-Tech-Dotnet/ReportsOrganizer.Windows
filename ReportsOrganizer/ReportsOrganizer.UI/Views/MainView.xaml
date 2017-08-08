@@ -2,7 +2,6 @@
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:metroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                    xmlns:taskBar="http://www.hardcodet.net/taskbar"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -30,11 +29,8 @@
             <local:SettingsView />
         </DataTemplate>
     </Window.Resources>
-
-
-
-    <metroControls:MetroWindow.LeftWindowCommands>
-        <metroControls:WindowCommands ShowSeparators="False">
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands ShowSeparators="False">
             <Button ToolTip="{lex:Loc General:Settings}"
                     Command="{Binding Path=WindowOpenSettingsCommand}"
                     metro:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconOpenSetting}">
@@ -45,11 +41,8 @@
                     metro:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconPrev}">
                 <materialDesign:PackIcon Kind="ArrowLeft" />
             </Button>
-        </metroControls:WindowCommands>
-    </metroControls:MetroWindow.LeftWindowCommands>
-    
-    
-    
+        </metro:WindowCommands>
+    </metro:MetroWindow.LeftWindowCommands>
     <Grid>
         <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico" DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
