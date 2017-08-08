@@ -13,7 +13,7 @@ namespace ReportsOrganizer.UI.ViewModel
     {
         INotificationService _notificationService;
 
-        public ICommand NotificationWindowUsePreviousCommand { get; private set; }
+        public ICommand NotificationWindowGetPreviousCommand { get; private set; }
         public ICommand NotificationWindowPostponeCommand { get; private set; }
         public ICommand NotificationWindowOKCommand { get; private set; }
 
@@ -22,14 +22,14 @@ namespace ReportsOrganizer.UI.ViewModel
 
         public NotificationViewModel(INotificationService notificationService)
         {
-            NotificationWindowUsePreviousCommand = new RelayCommand(NotificationWindowUsePreviousAction, true);
+            NotificationWindowGetPreviousCommand = new RelayCommand(NotificationWindowGetPreviousAction, true);
             NotificationWindowPostponeCommand = new RelayCommand(NotificationWindowPostponeAction, true);
             NotificationWindowOKCommand = new RelayCommand(NotificationWindowOKAction, true);
 
             _notificationService = notificationService;
         }
 
-        private void NotificationWindowUsePreviousAction(object sender)
+        private void NotificationWindowGetPreviousAction(object sender)
         {
 
         }

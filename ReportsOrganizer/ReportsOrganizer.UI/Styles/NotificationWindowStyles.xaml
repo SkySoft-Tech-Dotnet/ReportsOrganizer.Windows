@@ -17,47 +17,41 @@
     <Style TargetType="Label" x:Key="NotificationWindowHeader">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="Margin" Value="10,10,0,0" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="FontSize" Value="16" />
     </Style>
     <Style TargetType="Label" x:Key="NotificationWindowReportLength">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
-        <Setter Property="Margin" Value="30,0,0,5" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="ContentStringFormat" Value=" {0}\125 " />
     </Style>
     <Style TargetType="Button" x:Key="NotificationWindowButtonPrev" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="Margin" Value="0,7,120,0" />
-        <Setter Property="Padding" Value="5,4" />
-        <Setter Property="Width" Value="106" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="5,2" />
     </Style>
     <Style TargetType="Button" x:Key="NotificationWindowButtonPostpone" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="Margin" Value="0,7,20,0" />
-        <Setter Property="Padding" Value="5,4" />
-        <Setter Property="Width" Value="80" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="5,2" />
     </Style>
     <Style TargetType="Button" x:Key="NotificationWindowButtonOK" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0,0,25,4" />
-        <Setter Property="Padding" Value="2" />
-        <Setter Property="Width" Value="31" />
-        <Setter Property="Height" Value="28" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="10,2" />
+        <Setter Property="FontSize" Value="12" />
     </Style>
-    <Style TargetType="TextBox" x:Key="NotificationWindowReport" BasedOn="{StaticResource MaterialDesignTextBox}">
+    <Style TargetType="TextBox" x:Key="NotificationWindowReport" BasedOn="{StaticResource  MaterialDesignTextBox}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="TextWrapping" Value="Wrap" />
-        <Setter Property="Margin" Value="10,47,0,0" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="MaxLength" Value="125" />
-        <Setter Property="Width" Value="374" />
-        <Setter Property="Height" Value="67" />
     </Style>
 </ResourceDictionary>

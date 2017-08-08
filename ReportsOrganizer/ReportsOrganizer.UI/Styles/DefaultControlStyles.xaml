@@ -5,4 +5,15 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="0 8 0 8" />
     </Style>
+
+    <!-- primary -->
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#744CE0"/>
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="Red"/>
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#077568"/>
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Red"/>
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="Red"/>
+    <!-- accent -->
+    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="Red"/>
+    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF"/>
 </ResourceDictionary>

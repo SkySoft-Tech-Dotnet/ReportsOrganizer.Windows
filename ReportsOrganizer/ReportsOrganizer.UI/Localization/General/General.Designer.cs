@@ -70,6 +70,15 @@ namespace ReportsOrganizer.UI.Localization.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get previous.
+        /// </summary>
+        public static string GetPrevious {
+            get {
+                return ResourceManager.GetString("GetPrevious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to April.
         /// </summary>
         public static string MonthApr {
@@ -187,20 +196,11 @@ namespace ReportsOrganizer.UI.Localization.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postone.
+        ///   Looks up a localized string similar to Postpone.
         /// </summary>
         public static string Postpone {
             get {
                 return ResourceManager.GetString("Postpone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User previous.
-        /// </summary>
-        public static string UsePrevious {
-            get {
-                return ResourceManager.GetString("UsePrevious", resourceCulture);
             }
         }
         

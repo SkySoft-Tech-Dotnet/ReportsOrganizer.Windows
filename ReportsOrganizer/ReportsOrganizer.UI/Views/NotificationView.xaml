@@ -13,23 +13,44 @@
         lex:ResxLocalizationProvider.DefaultDictionary="Strings"
         Style="{StaticResource NotificationWindow}"
         DataContext="{Binding Path=Notification, Source={StaticResource ViewModelLocator}}">
-    <Grid>
-        <Label Content="{lex:Loc General:AddNotes}"
-               Style="{StaticResource NotificationWindowHeader}" />
-        <Button Content="{lex:Loc General:UsePrevious}"
-                Command="{Binding Path=NotificationWindowUsePreviousCommand}"
-                Style="{StaticResource NotificationWindowButtonPrev}" />
-        <Button Content="{lex:Loc General:Postpone}"
-                Command="{Binding Path=NotificationWindowPostponeCommand}"
-                Style="{StaticResource NotificationWindowButtonPostpone}" />
-        <TextBox x:Name="Report"
+    
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+            <Label Content="{lex:Loc General:AddNotes}"
+                   Style="{StaticResource NotificationWindowHeader}" />
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <Button Content="{lex:Loc General:GetPrevious}"
+                   Command="{Binding Path=NotificationWindowGetPreviousCommand}"
+                   Style="{StaticResource NotificationWindowButtonPrev}" Width="90" Height="28" />
+            <Button Content="{lex:Loc General:Postpone}"
+                    Command="{Binding Path=NotificationWindowPostponeCommand}"
+                    Style="{StaticResource NotificationWindowButtonPostpone}" Height="28" Width="70" />
+
+        </StackPanel>
+        <TextBox x:Name="Report" 
+                 Grid.Row="1" 
                  materialDesign:HintAssist.Hint="{lex:Loc General:WriteReport}"
                  Style="{StaticResource NotificationWindowReport}" 
-                 Text="{Binding Path=MultilineReportText}"/>
-        <Button Content="{lex:Loc General:OK}"
+                 Text="{Binding Path=MultilineReportText}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch"/>
+        <Button Content="{lex:Loc General:OK}" 
+                Grid.Row="2"
                 Command="{Binding Path=NotificationWindowOKCommand}"
-                Style="{StaticResource NotificationWindowButtonOK}" />
-        <Label Content="{Binding Text.Length, ElementName=Report}"
-               Style="{StaticResource NotificationWindowReportLength}" />
+                Style="{StaticResource NotificationWindowButtonOK}"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Label x:Name="CharCounterLbl" 
+                   Content="{Binding Text.Length, ElementName=Report}"
+                   Style="{StaticResource NotificationWindowReportLength}" />
+            <Label x:Name="CharSplitterLbl" 
+                   Content="/"
+                   Style="{StaticResource NotificationWindowReportLength}" />
+            <Label x:Name="MaxCharLbl" 
+                   Content="125"
+                   Style="{StaticResource NotificationWindowReportLength}" />
+            
+        </StackPanel>
     </Grid>
 </metro:MetroWindow>
