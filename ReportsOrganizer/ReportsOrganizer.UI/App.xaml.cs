@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows;
 using System.Globalization;
 using WPFLocalizeExtension.Engine;
+using SimpleInjector;
 
 namespace ReportsOrganizer.UI
 {
@@ -31,8 +32,8 @@ namespace ReportsOrganizer.UI
 
         public void IoCConfiguration()
         {
-            IoC.Container.Register<INotificationService, NotificationService>();
-            IoC.Container.Register<INavigationService, NavigationService>();
+            IoC.Container.Register<INotificationService, NotificationService>(Lifestyle.Singleton);
+            IoC.Container.Register<INavigationService, NavigationService>(Lifestyle.Singleton);
         }
     }
 }

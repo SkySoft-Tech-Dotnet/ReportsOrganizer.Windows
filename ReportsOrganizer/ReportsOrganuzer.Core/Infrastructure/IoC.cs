@@ -22,8 +22,8 @@ namespace ReportsOrganizer.Core.Infrastructure
                 if (_container == null)
                 {
                     _container = new Container();
-                    _container.Register<IReportsRepository, ReportsRepository>();
-                    _container.Register<IReportsService, ReportsService>();
+                    _container.Register<IReportsRepository, ReportsRepository>(Lifestyle.Singleton);
+                    _container.Register<IReportsService, ReportsService>(Lifestyle.Singleton);
                 }
                 return _container;
             }

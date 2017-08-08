@@ -14,20 +14,21 @@ namespace ReportsOrganizer.UI.Services
     }
     class NavigationService : INavigationService
     {
-        private NotificationView _notificationView;
+        private Lazy<NotificationView> _notificationView = new Lazy<NotificationView>(() => new NotificationView());
+        private NotificationView NotificationViewInstance => _notificationView.Value;
 
         public NavigationService()
         {
-            _notificationView = new NotificationView();
+
         }
 
         public void ShowNotificationWindow()
         {
             var desktopWorkingArea = SystemParameters.WorkArea;
-            _notificationView.Left = desktopWorkingArea.Right - _notificationView.Width - 10;
-            _notificationView.Top = desktopWorkingArea.Bottom - _notificationView.Height - 10;
+            NotificationViewInstance.Left = desktopWorkingArea.Right - NotificationViewInstance.Width - 10;
+            NotificationViewInstance.Top = desktopWorkingArea.Bottom - NotificationViewInstance.Height - 10;
 
-            _notificationView.Show();
+            NotificationViewInstance.Show();
         }
     }
 }

@@ -20,13 +20,14 @@
                 Command="{Binding Path=NotificationWindowUsePreviousCommand}"
                 Style="{StaticResource NotificationWindowButtonPrev}" />
         <Button Content="{lex:Loc General:Postpone}"
-                Command="{Binding Path=NotificationWindowPostponrAction}"
+                Command="{Binding Path=NotificationWindowPostponeCommand}"
                 Style="{StaticResource NotificationWindowButtonPostpone}" />
         <TextBox x:Name="Report"
                  materialDesign:HintAssist.Hint="{lex:Loc General:WriteReport}"
-                 Style="{StaticResource NotificationWindowReport}" />
+                 Style="{StaticResource NotificationWindowReport}" 
+                 Text="{Binding Path=MultilineReportText}"/>
         <Button Content="{lex:Loc General:OK}"
-                Command="{Binding Path=NotificationWindowOKAction}"
+                Command="{Binding Path=NotificationWindowOKCommand}"
                 Style="{StaticResource NotificationWindowButtonOK}" />
         <Label Content="{Binding Text.Length, ElementName=Report}"
                Style="{StaticResource NotificationWindowReportLength}" />

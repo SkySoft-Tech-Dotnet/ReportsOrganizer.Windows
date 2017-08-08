@@ -30,8 +30,10 @@ namespace ReportsOrganizer.DAL
 
         }
 
-        public void Add(ReportDTO entity)
+        public void Add(string report)
         {
+            ReportDTO entity = new ReportDTO(_reportContext.Reports.Count() + 1, DateTime.Now, report);
+
             _reportContext.Reports.Add(entity);
             _reportContext.SaveChanges();
         }

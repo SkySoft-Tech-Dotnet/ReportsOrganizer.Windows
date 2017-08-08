@@ -1,4 +1,5 @@
 ﻿using ReportsOrganizer.UI.Command;
+using ReportsOrganizer.UI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +11,22 @@ namespace ReportsOrganizer.UI.ViewModel
 {
     public class NotificationViewModel : BaseViewModel
     {
+        INotificationService _notificationService;
+
         public ICommand NotificationWindowUsePreviousCommand { get; private set; }
-        public ICommand NotificationWindowPostponrCommand { get; private set; }
+        public ICommand NotificationWindowPostponeCommand { get; private set; }
         public ICommand NotificationWindowOKCommand { get; private set; }
 
+        public string MultilineReportText { get; set; }
 
-        public NotificationViewModel()
+
+        public NotificationViewModel(INotificationService notificationService)
         {
             NotificationWindowUsePreviousCommand = new RelayCommand(NotificationWindowUsePreviousAction, true);
-            NotificationWindowPostponrCommand = new RelayCommand(NotificationWindowPostponrAction, true);
+            NotificationWindowPostponeCommand = new RelayCommand(NotificationWindowPostponeAction, true);
             NotificationWindowOKCommand = new RelayCommand(NotificationWindowOKAction, true);
-                                    
+
+            _notificationService = notificationService;
         }
 
         private void NotificationWindowUsePreviousAction(object sender)
@@ -28,14 +34,14 @@ namespace ReportsOrganizer.UI.ViewModel
 
         }
 
-        private void NotificationWindowPostponrAction(object sender)
+        private void NotificationWindowPostponeAction(object sender)
         {
 
         }
 
         private void NotificationWindowOKAction(object sender)
         {
-
+            _notificationService.AddReport(MultilineReportText);
         }
     }
 }
