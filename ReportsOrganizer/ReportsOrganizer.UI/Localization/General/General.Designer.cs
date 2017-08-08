@@ -223,15 +223,6 @@ namespace ReportsOrganizer.UI.Localization.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use previous.
-        /// </summary>
-        public static string UsePrevious {
-            get {
-                return ResourceManager.GetString("UsePrevious", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter your report here.
         /// </summary>
         public static string WriteReport {

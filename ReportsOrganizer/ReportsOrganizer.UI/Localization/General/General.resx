@@ -171,9 +171,6 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="UsePrevious" xml:space="preserve">
-    <value>Use previous</value>
-  </data>
   <data name="WriteReport" xml:space="preserve">
     <value>Enter your report here</value>
   </data>
