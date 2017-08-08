@@ -70,6 +70,15 @@ namespace ReportsOrganizer.UI.Localization.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Come back.
+        /// </summary>
+        public static string ComeBack {
+            get {
+                return ResourceManager.GetString("ComeBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get previous.
         /// </summary>
         public static string GetPrevious {
@@ -201,6 +210,24 @@ namespace ReportsOrganizer.UI.Localization.General {
         public static string Postpone {
             get {
                 return ResourceManager.GetString("Postpone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use previous.
+        /// </summary>
+        public static string UsePrevious {
+            get {
+                return ResourceManager.GetString("UsePrevious", resourceCulture);
             }
         }
         

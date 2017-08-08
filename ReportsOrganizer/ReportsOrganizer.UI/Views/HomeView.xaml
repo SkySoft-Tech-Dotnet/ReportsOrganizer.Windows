@@ -19,10 +19,7 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <Button Command="{Binding SettingsCommand}"  Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Grid.Column="1" Margin="0" Grid.Row="1" Width="{Binding ActualHeight, ElementName=SettingsButton, Mode=OneWay}" Height="Auto" HorizontalAlignment="Left" Padding="0" TabIndex="1">
-            <materialDesign:PackIcon x:Name="packIcon" Kind="Settings" Height="Auto" Margin="10" Width="Auto" />
-        </Button>
+        
         <ComboBox x:Name="yearComboBox" Grid.Column="1" Grid.Row="1" materialDesign:HintAssist.Hint="Search"
                 IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" VerticalAlignment="Center" Width="185" Height="35" Margin="0,0,10,0" TabIndex="3">
             <ComboBoxItem>January</ComboBoxItem>

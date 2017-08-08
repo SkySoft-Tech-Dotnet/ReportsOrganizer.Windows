@@ -12,9 +12,11 @@
         <Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="Width" Value="800" />
         <Setter Property="Height" Value="500" />
         <Setter Property="MinWidth" Value="600" />
         <Setter Property="MinHeight" Value="400" />
+        <Setter Property="WindowTitleBrush" Value="#077568" />
     </Style>
 </ResourceDictionary>

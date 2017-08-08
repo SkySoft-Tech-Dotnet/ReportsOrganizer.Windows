@@ -120,6 +120,9 @@
   <data name="AddNotes" xml:space="preserve">
     <value>Добавить заметку</value>
   </data>
+  <data name="ComeBack" xml:space="preserve">
+    <value>Вернуться назад</value>
+  </data>
   <data name="MonthApr" xml:space="preserve">
     <value>Апрель</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Postpone" xml:space="preserve">
     <value>Отложить</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
   </data>
   <data name="UsePrevious" xml:space="preserve">
     <value>Использовать предыдущую</value>

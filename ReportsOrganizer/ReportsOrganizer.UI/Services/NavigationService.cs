@@ -14,19 +14,19 @@ namespace ReportsOrganizer.UI.Services
     public interface INavigationService : INotifyPropertyChanged
     {
         BaseViewModel CurrentPage { get; }
+        BaseViewModel PreviousPage { get; }
 
         void ShowNotificationWindow();
 
         void NavigateToHome();
         void NavigateToSettings();
+        void NavigateToPrevious();
     }
 
     class NavigationService : INavigationService
     {
+        private Lazy<NotificationView> _notificationView;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private Lazy<NotificationView> _notificationView = new Lazy<NotificationView>(() => new NotificationView());
         private NotificationView NotificationViewInstance => _notificationView.Value;
 
         private BaseViewModel currentPage;
@@ -43,9 +43,25 @@ namespace ReportsOrganizer.UI.Services
             }
         }
 
+        private BaseViewModel _previousPage;
+        public BaseViewModel PreviousPage
+        {
+            get
+            {
+                return _previousPage;
+            }
+            private set
+            {
+                _previousPage = value;
+                NotifyPropertyChanged(nameof(PreviousPage));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public NavigationService()
         {
-
+            _notificationView = new Lazy<NotificationView>(() => new NotificationView());
         }
 
         public void ShowNotificationWindow()
@@ -59,12 +75,20 @@ namespace ReportsOrganizer.UI.Services
 
         public void NavigateToHome()
         {
+            PreviousPage = CurrentPage;
             CurrentPage = Core.Infrastructure.IoC.Container.GetInstance<HomeViewModel>();
         }
 
         public void NavigateToSettings()
         {
+            PreviousPage = CurrentPage;
             CurrentPage = Core.Infrastructure.IoC.Container.GetInstance<SettingsViewModel>();
+        }
+
+        public void NavigateToPrevious()
+        {
+            CurrentPage = PreviousPage;
+            PreviousPage = null;
         }
 
         protected void NotifyPropertyChanged(string propertyName)
