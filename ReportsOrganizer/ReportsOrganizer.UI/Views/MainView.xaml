@@ -3,11 +3,12 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:taskBar="http://www.hardcodet.net/taskbar"
-                   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                    xmlns:lex="http://wpflocalizeextension.codeplex.com"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:local="clr-namespace:ReportsOrganizer.UI.Views"
+                   xmlns:vm="clr-namespace:ReportsOrganizer.UI.ViewModels"
                    mc:Ignorable="d"
                    Style="{StaticResource MainWindow}"
                    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
@@ -18,19 +19,15 @@
                    lex:ResxLocalizationProvider.DefaultDictionary="Strings"
                    WindowStartupLocation="CenterScreen"
                    Title="Reports Organizer">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+            <local:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <local:SettingsView />
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        
         <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico" DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
@@ -42,38 +39,6 @@
             </taskBar:TaskbarIcon.ContextMenu>
         </taskBar:TaskbarIcon>
         
-        
-        
-        
-        
-        
-        
-        <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Grid.Column="1" Margin="0" Grid.Row="1" Width="{Binding ActualHeight, ElementName=SettingsButton, Mode=OneWay}" Height="Auto" HorizontalAlignment="Left" Padding="0" TabIndex="1">
-            <materialDesign:PackIcon x:Name="packIcon" Kind="Settings" Height="Auto" Margin="10" Width="Auto" />
-        </Button>
-        <ComboBox x:Name="yearComboBox" Grid.Column="1" Grid.Row="1" materialDesign:HintAssist.Hint="Search"
-                  IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" VerticalAlignment="Center" Width="185" Height="35" Margin="0,0,10,0" TabIndex="3">
-            <ComboBoxItem>January</ComboBoxItem>
-            <ComboBoxItem>February</ComboBoxItem>
-            <ComboBoxItem>March</ComboBoxItem>
-        </ComboBox>
-        <ComboBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Search"
-                  IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" HorizontalAlignment="Right" Width="185" Height="35" Margin="0,0,230,0" FontSize="15">
-            <ComboBoxItem>January</ComboBoxItem>
-            <ComboBoxItem>February</ComboBoxItem>
-            <ComboBoxItem>March</ComboBoxItem>
-            <ComboBoxItem>April</ComboBoxItem>
-            <ComboBoxItem>May</ComboBoxItem>
-            <ComboBoxItem>June</ComboBoxItem>
-            <ComboBoxItem>July</ComboBoxItem>
-            <ComboBoxItem>August</ComboBoxItem>
-            <ComboBoxItem>September</ComboBoxItem>
-            <ComboBoxItem>October</ComboBoxItem>
-            <ComboBoxItem>November</ComboBoxItem>
-            <ComboBoxItem>December</ComboBoxItem>
-        </ComboBox>
-        
-        
-        
+        <ContentControl Content="{Binding Navigation.CurrentPage}" />
     </Grid>
 </metro:MetroWindow>

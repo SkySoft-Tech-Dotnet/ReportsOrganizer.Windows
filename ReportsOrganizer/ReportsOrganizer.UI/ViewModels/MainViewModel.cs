@@ -16,12 +16,13 @@ namespace ReportsOrganizer.UI.ViewModel
     {
         INotificationService _notificationService;
         IReportsService _reportsService;
+
         public ICommand TaskbarIconDoubleClickCommand { get; private set; }
         public ICommand TaskbarIconOpenCommand { get; private set; }
         public ICommand TaskbarIconWriteReportCommand { get; private set; }
         public ICommand TaskbarIconExitCommand { get; private set; }
         public ICommand WindowClosingCommand { get; private set; }
-        
+
         private Visibility windowVisibility;
         public Visibility WindowVisibility
         {
@@ -52,7 +53,9 @@ namespace ReportsOrganizer.UI.ViewModel
             }
         }
 
-        public MainViewModel(IReportsService reportsService, INotificationService notificationService)
+        public INavigationService Navigation { get; private set; }
+
+        public MainViewModel(IReportsService reportsService, INotificationService notificationService, INavigationService navigationService)
         {
             TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
@@ -60,20 +63,20 @@ namespace ReportsOrganizer.UI.ViewModel
             TaskbarIconExitCommand = new RelayCommand(TaskbarIconExitAction, true);
             WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
 
+            Navigation = navigationService;
+            Navigation.NavigateToHome();
             
-
             _reportsService = reportsService;
             _notificationService = notificationService;
         }
 
         private void TaskbarIconOpenAction(object sender)
         {
-            if(WindowState.Minimized == CurrentWindowState)
+            if (WindowState.Minimized == CurrentWindowState)
             {
                 CurrentWindowState = prevWindowState;
             }
             WindowVisibility = Visibility.Visible;
-
             Application.Current.MainWindow.Focus();
         }
 
