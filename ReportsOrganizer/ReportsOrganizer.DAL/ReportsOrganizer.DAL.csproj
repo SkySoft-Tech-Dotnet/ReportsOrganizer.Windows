@@ -148,7 +148,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Models\ReportsOrganizer.Models.csproj">
+    <ProjectReference Include="..\ReportsOrganizer.Models\ReportsOrganizer.Models.csproj">
       <Project>{e1768370-c9ec-4c3f-b6c2-0f1d1c6bc695}</Project>
       <Name>ReportsOrganizer.Models</Name>
     </ProjectReference>

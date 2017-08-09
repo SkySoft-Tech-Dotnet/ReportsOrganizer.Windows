@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.Core", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.DAL", "ReportsOrganizer.DAL\ReportsOrganizer.DAL.csproj", "{E55E1F94-6317-4FD8-BD2F-DBC7C8C1574C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.Models", "Models\ReportsOrganizer.Models.csproj", "{E1768370-C9EC-4C3F-B6C2-0F1D1C6BC695}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.Models", "ReportsOrganizer.Models\ReportsOrganizer.Models.csproj", "{E1768370-C9EC-4C3F-B6C2-0F1D1C6BC695}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
