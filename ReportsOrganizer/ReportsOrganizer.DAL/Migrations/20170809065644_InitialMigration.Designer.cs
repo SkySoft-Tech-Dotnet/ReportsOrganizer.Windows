@@ -8,7 +8,7 @@ using ReportsOrganizer.DAL;
 namespace ReportsOrganizer.DAL.Migrations
 {
     [DbContext(typeof(ReportDBContext))]
-    [Migration("20170804115247_InitialMigration")]
+    [Migration("20170809065644_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,14 +16,16 @@ namespace ReportsOrganizer.DAL.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
 
-            modelBuilder.Entity("ReportsOrganizer.DAL.Report", b =>
+            modelBuilder.Entity("ReportsOrganizer.DAL.ReportDTO", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Date");
-
                     b.Property<string>("Description");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<DateTime>("StartDate");
 
                     b.HasKey("Id");
 

@@ -115,6 +115,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\WeakEventHandlerManager.cs" />
     <Compile Include="Localization\General\General.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -252,6 +253,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReportsOrganizer.Models\ReportsOrganizer.Models.csproj">
+      <Project>{E1768370-C9EC-4C3F-B6C2-0F1D1C6BC695}</Project>
+      <Name>ReportsOrganizer.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportsOrganuzer.Core\ReportsOrganizer.Core.csproj">
       <Project>{416dd915-aa95-49e4-bc32-ae29c9599bd5}</Project>
       <Name>ReportsOrganizer.Core</Name>

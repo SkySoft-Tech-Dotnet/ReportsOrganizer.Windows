@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReportsOrganizer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +9,26 @@ namespace ReportsOrganizer.DAL
 {
     public partial class ReportDTO : IEntity
     {
-        public int Id { get; private set; }
-        
-        public DateTime Date { get; private set; }
+        public int Id { get; set; }
 
-        public string Description { get; private set; } 
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
-        public ReportDTO(int id, DateTime date, string description)
+        public string Description { get; set; }
+
+        public ReportDTO(int id, DateTime startDate, DateTime endDate, string description)
         {
             Id = id;
-            Date = date;
+            StartDate = startDate;
+            EndDate = endDate;
             Description = description;
         }
 
-        public ReportDTO()
+        private ReportDTO()
         {
 
         }
+        
 
     }
 }

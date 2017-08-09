@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using ReportsOrganizer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ReportsOrganizer.DAL
 {
@@ -30,26 +34,40 @@ namespace ReportsOrganizer.DAL
 
         }
 
-        public void Add(string report)
+        public async Task Add(string report)
         {
-            ReportDTO entity = new ReportDTO(_reportContext.Reports.Count() + 1, DateTime.Now, report);
+            var reportEentity = new ReportDTO(_reportContext.Reports.Count() + 1,
+                DateTime.Now, DateTime.Now, report);
 
-            _reportContext.Reports.Add(entity);
-            _reportContext.SaveChanges();
+            _reportContext.Reports.Add(reportEentity);
+            await _reportContext.SaveChangesAsync();                        
         }
 
-        public void Delete(ReportDTO entity)
+        public async Task<Report> GetLastReport()
         {
-            _reportContext.Reports.Remove(entity);
-            _reportContext.SaveChanges();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ReportDTO, Report>();
+                //cfg.CreateMap()...
+                //cfg.AddProfile()... etc...
+            });
+            var mapper = config.CreateMapper();
+            var lastReport = await _reportContext.Reports.LastOrDefaultAsync();
+            return mapper.Map<ReportDTO,Report>(lastReport);            
         }
 
-        public void Update(ReportDTO entity)
-        {
-            _reportContext.Entry(entity).State = EntityState.Modified;
-            _reportContext.SaveChanges();
+        //public void Delete(Report entity)
+        //{
+        //    _reportContext.Reports.Remove(entity);
+        //    _reportContext.SaveChanges();
+        //}
 
-        }
+        //public void Update(Report entity)
+        //{
+        //    _reportContext.Entry(entity).State = EntityState.Modified;
+        //    _reportContext.SaveChanges();
+
+        //}
 
         public ReportDTO FindById(int Id)
         {

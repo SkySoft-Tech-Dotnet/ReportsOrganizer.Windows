@@ -16,22 +16,35 @@ namespace ReportsOrganizer.UI.ViewModels
         public ICommand NotificationWindowGetPreviousCommand { get; private set; }
         public ICommand NotificationWindowPostponeCommand { get; private set; }
         public ICommand NotificationWindowOKCommand { get; private set; }
+        
 
-        public string MultilineReportText { get; set; }
-
+        private string _multilineReportText;
+        public string MultilineReportText
+        {
+            get
+            {
+                return _multilineReportText;
+            }
+            set
+            {
+                _multilineReportText = value;
+                NotifyPropertyChanged(nameof(MultilineReportText));
+            }
+        }
 
         public NotificationViewModel(INotificationService notificationService)
         {
-            NotificationWindowGetPreviousCommand = new RelayCommand(NotificationWindowGetPreviousAction, true);
+            NotificationWindowGetPreviousCommand = new AsyncCommand(NotificationWindowGetPreviousAction, (e) => { return true; });
             NotificationWindowPostponeCommand = new RelayCommand(NotificationWindowPostponeAction, true);
             NotificationWindowOKCommand = new RelayCommand(NotificationWindowOKAction, true);
 
             _notificationService = notificationService;
         }
 
-        private void NotificationWindowGetPreviousAction(object sender)
+        private async Task NotificationWindowGetPreviousAction(object sender)
         {
-
+            var r  = await _notificationService.GetLastReport();
+            MultilineReportText = r.Description;
         }
 
         private void NotificationWindowPostponeAction(object sender)
@@ -41,6 +54,7 @@ namespace ReportsOrganizer.UI.ViewModels
 
         private void NotificationWindowOKAction(object sender)
         {
+            _notificationService.HideNotificationWindow();
             _notificationService.AddReport(MultilineReportText);
         }
     }

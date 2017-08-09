@@ -16,6 +16,7 @@ namespace ReportsOrganizer.UI.Services
         BaseViewModel PreviousPage { get; }
 
         void ShowNotificationWindow();
+        void HideNotificationWindow();
 
         void NavigateToHome();
         void NavigateToSettings();
@@ -69,7 +70,13 @@ namespace ReportsOrganizer.UI.Services
             NotificationViewInstance.Left = desktopWorkingArea.Right - NotificationViewInstance.Width - 10;
             NotificationViewInstance.Top = desktopWorkingArea.Bottom - NotificationViewInstance.Height - 10;
 
+            NotificationViewInstance.Report.Text = null;
             NotificationViewInstance.Show();
+        }
+
+        public void HideNotificationWindow()
+        {
+            NotificationViewInstance.Hide();
         }
 
         public void NavigateToHome()

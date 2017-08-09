@@ -14,7 +14,8 @@ namespace ReportsOrganizer.DAL.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<DateTime>(nullable: false),
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

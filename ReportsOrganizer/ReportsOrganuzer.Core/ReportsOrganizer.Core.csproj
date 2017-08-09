@@ -52,6 +52,10 @@
       <Project>{e55e1f94-6317-4fd8-bd2f-dbc7c8c1574c}</Project>
       <Name>ReportsOrganizer.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReportsOrganizer.Models\ReportsOrganizer.Models.csproj">
+      <Project>{E1768370-C9EC-4C3F-B6C2-0F1D1C6BC695}</Project>
+      <Name>ReportsOrganizer.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
