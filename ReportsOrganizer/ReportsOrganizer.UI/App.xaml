@@ -23,6 +23,7 @@
                 <ResourceDictionary Source="Styles/DefaultControlStyles.xaml" />
                 <ResourceDictionary Source="Styles/MainWindowStyles.xaml" />
                 <ResourceDictionary Source="Styles/NotificationWindowStyles.xaml" />
+                <ResourceDictionary Source="Styles/SettingsWindowStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

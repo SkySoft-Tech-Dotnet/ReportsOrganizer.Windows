@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ReportsOrganizer.UI.Styles">
+    <Style TargetType="Grid" x:Key="SettingsView" BasedOn="{StaticResource PageView}">
+        <Setter Property="Margin" Value="0,10,0,0" />
+    </Style>
+</ResourceDictionary>
