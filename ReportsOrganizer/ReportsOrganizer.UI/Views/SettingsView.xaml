@@ -7,22 +7,99 @@
              xmlns:view="clr-namespace:ReportsOrganizer.UI.Views"
              mc:Ignorable="d"
              DataContext="{Binding SettingsPage, Source={StaticResource ViewModelLocator}}">
-    <Grid Style="{StaticResource PageView}">
+    <Grid Style="{StaticResource SettingsView}">
         <TabControl Grid.Column="1" Grid.Row="1" TabStripPlacement="Left">
-            <TabItem Header="Notification">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <RadioButton Grid.Row="0" GroupName="Interval" Content="At intervals"  />
-                    <RadioButton Grid.Row="1" GroupName="Interval" Content="At specific time"  />
-                </Grid>
+            <TabItem>
+                <TabItem.Header>
+                    <Label Content="General" Style="{StaticResource MaterialDesignLabelStyle}" />
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <ToggleButton x:Name="test" Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                          ToolTip="Default ToggleButton Style"/>
+                            <Label Content="Start ReportsOrganizer when Windows Starts" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsEnabled="{Binding Path=IsChecked, ElementName=test}" />
+                            <Label Content="Start minimized" />
+                        </StackPanel>
+                        <ComboBox Grid.Row="2" materialDesign:HintAssist.Hint="Language" 
+                          Width="100"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                            <ComboBoxItem Name="englist">English</ComboBoxItem>
+                            <ComboBoxItem Name="russian">Rusian</ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <Label Content="Notification" Style="{StaticResource MaterialDesignLabelStyle}" />
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid Margin="10,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <RadioButton Grid.Row="0"
+                                     Content="At intervals"
+                                     GroupName="Interval"
+                                     Style="{StaticResource MaterialDesignRadioButton}" />
+                        <StackPanel Grid.Row="1"
+                                    Orientation="Horizontal">
+                            <ComboBox materialDesign:HintAssist.Hint="(Hour)"
+                                      MinWidth="50"
+                                      ItemsSource="{Binding ListHours}"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                            <Label VerticalAlignment="Center" Content=":" />
+                            <ComboBox materialDesign:HintAssist.Hint="(Minute)"
+                                  MinWidth="50"
+                                  ItemsSource="{Binding ListMinutes}"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                        </StackPanel>
+                        <RadioButton Grid.Row="2"
+                                     Content="At specific time"
+                                     GroupName="Interval"
+                                     Style="{StaticResource MaterialDesignRadioButton}" />
+                        <materialDesign:TimePicker Grid.Row="3"
+                                   materialDesign:HintAssist.Hint="Time"
+                                   IsInvalidTextAllowed="True"
+                                   Is24Hours="True" VerticalAlignment="Top" Width="100" HorizontalAlignment="Left">
+                            <materialDesign:TimePicker.Text>
+                                <Binding Path="ValidatingTime" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </materialDesign:TimePicker.Text>
+                        </materialDesign:TimePicker>
+                    </Grid>
+                </TabItem.Content>
             </TabItem>
         </TabControl>
     </Grid>
