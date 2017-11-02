@@ -18,19 +18,22 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0" Orientation="Horizontal">
-                            <ToggleButton x:Name="test" Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                            <ToggleButton x:Name="startupSwitcher" Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                          IsChecked="{Binding Path=StartupWithWindows}"
                                           ToolTip="Default ToggleButton Style"/>
                             <Label Content="Start ReportsOrganizer when Windows Starts" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsEnabled="{Binding Path=IsChecked, ElementName=test}" />
+                            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" 
+                                          IsEnabled="{Binding Path=IsChecked, ElementName=startupSwitcher}"
+                                          IsChecked="{Binding Path=StartMinimized}"/>
                             <Label Content="Start minimized" />
                         </StackPanel>
                         <ComboBox Grid.Row="2" materialDesign:HintAssist.Hint="Language" 
-                          Width="100"
+                          Width="100" HorizontalAlignment="Left" Margin="0,10"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -38,7 +41,7 @@
                                 </ItemsPanelTemplate>
                             </ComboBox.ItemsPanel>
                             <ComboBoxItem Name="englist">English</ComboBoxItem>
-                            <ComboBoxItem Name="russian">Rusian</ComboBoxItem>
+                            <ComboBoxItem Name="russian">Russian</ComboBoxItem>
                         </ComboBox>
                     </Grid>
                 </TabItem.Content>
@@ -81,6 +84,7 @@
                                         <VirtualizingStackPanel />
                                     </ItemsPanelTemplate>
                                 </ComboBox.ItemsPanel>
+                                
                             </ComboBox>
                         </StackPanel>
                         <RadioButton Grid.Row="2"

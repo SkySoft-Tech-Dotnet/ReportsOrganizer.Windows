@@ -1,0 +1,12 @@
+﻿{
+  "General": {
+    "StartupWithWindows": false,
+    "StartMinimized": false,
+    "Language": "en"
+  },
+  "Notification": {
+    "Type": 0,
+    "Interval": 60,
+    "Time": [ 720, 1080 ]
+  }
+}

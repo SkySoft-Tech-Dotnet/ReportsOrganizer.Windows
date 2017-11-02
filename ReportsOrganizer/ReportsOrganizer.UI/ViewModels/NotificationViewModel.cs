@@ -43,8 +43,8 @@ namespace ReportsOrganizer.UI.ViewModels
 
         private async Task NotificationWindowGetPreviousAction(object sender)
         {
-            var r  = await _notificationService.GetLastReport();
-            MultilineReportText = r.Description;
+            var report  = await _notificationService.GetLastReport();
+            MultilineReportText = report.Description;
         }
 
         private void NotificationWindowPostponeAction(object sender)
