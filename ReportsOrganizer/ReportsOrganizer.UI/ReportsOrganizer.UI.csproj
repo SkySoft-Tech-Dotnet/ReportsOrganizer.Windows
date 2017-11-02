@@ -116,22 +116,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
-    <Compile Include="Localization\General\General.Designer.cs">
+    <Compile Include="Localizations\General\General.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>General.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\General\General.ru.Designer.cs">
+    <Compile Include="Localizations\General\General.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>General.ru.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\TaskbarIcon\TaskbarIcon.Designer.cs">
+    <Compile Include="Localizations\TaskbarIcon\TaskbarIcon.Designer.cs">
       <DependentUpon>TaskbarIcon.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Localization\TaskbarIcon\TaskbarIcon.ru.Designer.cs">
+    <Compile Include="Localizations\TaskbarIcon\TaskbarIcon.ru.Designer.cs">
       <DependentUpon>TaskbarIcon.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,6 +152,10 @@
     <Page Include="Styles\DefaultControlStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\HomePageStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\MainWindowStyles.xaml">
       <SubType>Designer</SubType>
@@ -210,15 +214,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Localization\General\General.resx">
+    <EmbeddedResource Include="Localizations\General\General.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>General.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\TaskbarIcon\TaskbarIcon.resx">
+    <EmbeddedResource Include="Localizations\TaskbarIcon\TaskbarIcon.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskbarIcon.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\TaskbarIcon\TaskbarIcon.ru.resx">
+    <EmbeddedResource Include="Localizations\TaskbarIcon\TaskbarIcon.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskbarIcon.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -227,7 +231,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <EmbeddedResource Include="Localization\General\General.ru.resx">
+    <EmbeddedResource Include="Localizations\General\General.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>General.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>

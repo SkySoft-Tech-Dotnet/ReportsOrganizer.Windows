@@ -24,6 +24,7 @@
                 <ResourceDictionary Source="Styles/MainWindowStyles.xaml" />
                 <ResourceDictionary Source="Styles/NotificationWindowStyles.xaml" />
                 <ResourceDictionary Source="Styles/SettingsWindowStyles.xaml" />
+                <ResourceDictionary Source="Styles/HomePageStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
