@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ReportsOrganizer.Core.Services
@@ -16,23 +18,36 @@ namespace ReportsOrganizer.Core.Services
     internal class ConfigurationService<T> : IConfigurationService<T>
         where T : class
     {
+        private string _fileName;
+
         public T Value { get; set; }
 
         public ConfigurationService(string fileName)
         {
-            Value = File.Exists(fileName)
-                ? LoadAsync(fileName).Result
+            _fileName = fileName;
+            Value = File.Exists(_fileName)
+                ? LoadAsync().Result
                 : Activator.CreateInstance(typeof(T)) as T;
         }
 
-        public Task UpdateAsync()
+        public async Task UpdateAsync()
         {
-            throw new NotImplementedException();
+            if (Value == null)
+                return;
+
+            var json = JsonConvert.SerializeObject(Value);
+
+            using (FileStream fileStream = new FileStream(_fileName,
+                FileMode.Create, FileAccess.Write, FileShare.None,
+                bufferSize: json.Length, useAsync: true))
+            {
+                await fileStream.WriteAsync(Encoding.ASCII.GetBytes(json), 0, json.Length);
+            }
         }
 
-        private Task<T> LoadAsync(string fileName)
+        private Task<T> LoadAsync()
         {
-            using (StreamReader r = new StreamReader(fileName))
+            using (StreamReader r = new StreamReader(_fileName))
             {
                 string json = r.ReadToEnd();
                 T item = JsonConvert.DeserializeObject<T>(json);

@@ -20,9 +20,11 @@ namespace ReportsOrganizer.UI.ViewModels
         IList<int> ListMinutes { get; }
     }
 
+
     public class SettingsViewModel : BaseViewModel, ISettingsViewModel
     {
-        private INavigationService navigation;
+        private INavigationService _navigationService;
+        private IConfigurationService<ApplicationSettings> _configurationService;
 
         public ICommand BackCommand { get; private set; }
         public IList<int> ListHours { get; }
@@ -31,13 +33,12 @@ namespace ReportsOrganizer.UI.ViewModels
         private bool _startMinimized;
         public bool StartMinimized
         {
-            get
-            {
-                return _startMinimized;
-            }
+            get => _startMinimized;
             set
             {
                 _startMinimized = value;
+                _configurationService.Value.General.StartMinimized = _startMinimized;
+                Task.Run(async () => await _configurationService.UpdateAsync());
                 NotifyPropertyChanged(nameof(StartMinimized));
             }
         }
@@ -54,13 +55,17 @@ namespace ReportsOrganizer.UI.ViewModels
                 _startupWithWindows = value;
                 if (!_startupWithWindows)
                     StartMinimized = _startupWithWindows;
+                _configurationService.Value.General.StartupWithWindows = _startupWithWindows;
+                Task.Run(async () => await _configurationService.UpdateAsync());
                 NotifyPropertyChanged(nameof(StartupWithWindows));
             }
         }
 
         public SettingsViewModel(INavigationService navigationService, IConfigurationService<ApplicationSettings> configurationSettings)
         {
-            navigation = navigationService;
+            _navigationService = navigationService;
+            _configurationService = configurationSettings;
+
             BackCommand = new RelayCommand(BackAction, true);
 
             ListHours = new List<int>(Enumerable.Range(0, 24));
@@ -69,7 +74,7 @@ namespace ReportsOrganizer.UI.ViewModels
 
         private void BackAction(object sender)
         {
-            navigation.NavigateToHome();
+            _navigationService.NavigateToHome();
         }
     }
 }
