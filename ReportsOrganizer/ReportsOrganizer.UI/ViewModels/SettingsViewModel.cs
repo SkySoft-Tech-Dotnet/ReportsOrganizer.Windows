@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Services;
+using ReportsOrganizer.UI.Models;
+using ReportsOrganizer.Core.Services;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
@@ -56,7 +58,7 @@ namespace ReportsOrganizer.UI.ViewModels
             }
         }
 
-        public SettingsViewModel(INavigationService navigationService)
+        public SettingsViewModel(INavigationService navigationService, IConfigurationService<ApplicationSettings> configurationSettings)
         {
             navigation = navigationService;
             BackCommand = new RelayCommand(BackAction, true);

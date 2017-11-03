@@ -12,6 +12,9 @@ using WPFLocalizeExtension.Engine;
 using ReportsOrganizer.UI.ViewModels;
 using SimpleInjector;
 using System.ComponentModel;
+using ReportsOrganizer.UI.Models;
+using ReportsOrganizer.Core.Services;
+using ReportsOrganizer.Core.Extensions;
 
 namespace ReportsOrganizer.UI
 {
@@ -39,6 +42,8 @@ namespace ReportsOrganizer.UI
 
         public void IoCConfiguration()
         {
+            IoC.Container.AddConfiguration<ApplicationSettings>("appsettings.json");
+
             IoC.Container.Register<INotificationService, NotificationService>(Lifestyle.Singleton);
             IoC.Container.Register<INavigationService, NavigationService>(Lifestyle.Singleton);
 
