@@ -4,11 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
              xmlns:view="clr-namespace:ReportsOrganizer.UI.Views"
              mc:Ignorable="d"
              DataContext="{Binding SettingsPage, Source={StaticResource ViewModelLocator}}">
     <Grid Style="{StaticResource SettingsView}">
-        <TabControl Grid.Column="1" Grid.Row="1" TabStripPlacement="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Column="1" TabStripPlacement="Left">
             <TabItem>
                 <TabItem.Header>
                     <Label Content="General" Style="{StaticResource MaterialDesignLabelStyle}" />
@@ -106,5 +111,8 @@
                 </TabItem.Content>
             </TabItem>
         </TabControl>
+        <Button Content="{lex:Loc General:Save}"
+                   Command="{Binding Path=SaveCommand}"
+                   Style="{StaticResource SettingsButtonSave}" Width="90" Height="28" Grid.Row="1" />
     </Grid>
 </UserControl>

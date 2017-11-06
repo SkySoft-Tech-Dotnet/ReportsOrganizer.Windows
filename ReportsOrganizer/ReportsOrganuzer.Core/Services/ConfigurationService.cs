@@ -28,7 +28,8 @@ namespace ReportsOrganizer.Core.Services
             _fileName = fileName;
             Value = File.Exists(_fileName)
                 ? LoadAsync().Result
-                : Activator.CreateInstance(typeof(T)) as T;
+                : throw new FileNotFoundException("File does not exist.", _fileName);
+                //: Activator.CreateInstance(typeof(T)) as T;
         }
 
         public async Task UpdateAsync()

@@ -4,4 +4,10 @@
     <Style TargetType="Grid" x:Key="SettingsView" BasedOn="{StaticResource PageView}">
         <Setter Property="Margin" Value="0,10,0,0" />
     </Style>
+    <Style TargetType="Button" x:Key="SettingsButtonSave" BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Padding" Value="5,2" />
+    </Style>
 </ResourceDictionary>

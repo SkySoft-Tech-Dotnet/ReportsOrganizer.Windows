@@ -165,6 +165,9 @@
   <data name="Postpone" xml:space="preserve">
     <value>Отложить</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Настройки</value>
   </data>

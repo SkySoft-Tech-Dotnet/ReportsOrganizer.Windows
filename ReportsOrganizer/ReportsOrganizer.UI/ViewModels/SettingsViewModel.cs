@@ -14,7 +14,7 @@ namespace ReportsOrganizer.UI.ViewModels
 {
     public interface ISettingsViewModel
     {
-        ICommand BackCommand { get; }
+        ICommand SaveCommand { get; }
         bool StartupWithWindows { get; set; }
 
         IList<int> ListHours { get; }
@@ -27,7 +27,7 @@ namespace ReportsOrganizer.UI.ViewModels
         private INavigationService _navigationService;
         private IConfigurationService<ApplicationSettings> _configurationService;
 
-        public ICommand BackCommand { get; private set; }
+        public ICommand SaveCommand { get; private set; }
         public IList<int> ListHours { get; }
         public IList<int> ListMinutes { get; }
         
@@ -61,23 +61,17 @@ namespace ReportsOrganizer.UI.ViewModels
             _navigationService = navigationService;
             _configurationService = configurationSettings;
 
-            BackCommand = new RelayCommand(BackAction, true);
+            SaveCommand = new RelayCommand(SaveAction, true);
 
             ListHours = new List<int>(Enumerable.Range(0, 24));
             ListMinutes = new List<int>(Enumerable.Range(0, 59));
-
-            PropertyChanged += UpdateSettings;
+            
         }
 
-        private void BackAction(object sender)
+        private void SaveAction(object sender)
         {
-            _navigationService.NavigateToHome();
-        }
-
-        private void UpdateSettings(object sender, PropertyChangedEventArgs e)
-        {
+            //_navigationService.NavigateToHome();
             Task.Run(async () => await _configurationService.UpdateAsync());
-            //await _configurationService.UpdateAsync();
         }
     }
 }
