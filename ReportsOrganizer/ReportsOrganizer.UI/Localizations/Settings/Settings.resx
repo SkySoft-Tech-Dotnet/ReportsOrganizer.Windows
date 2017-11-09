@@ -117,79 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddNotes" xml:space="preserve">
-    <value>Добавить заметку</value>
+  <data name="AddAnotherOne" xml:space="preserve">
+    <value>Add another one</value>
   </data>
-  <data name="ComeBack" xml:space="preserve">
-    <value>Вернуться назад</value>
+  <data name="AtIntervals" xml:space="preserve">
+    <value>At intervals</value>
   </data>
-  <data name="GetPrevious" xml:space="preserve">
-    <value>Взять предыдущий</value>
+  <data name="AtSpecificTime" xml:space="preserve">
+    <value>At specific time</value>
   </data>
-  <data name="Hours" xml:space="preserve">
-    <value>Часы</value>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
   </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>Минуты</value>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
   </data>
-  <data name="Month" xml:space="preserve">
-    <value>Месяц</value>
+  <data name="Notification" xml:space="preserve">
+    <value>Notification</value>
   </data>
-  <data name="MonthApr" xml:space="preserve">
-    <value>Апрель</value>
+  <data name="ReportsOrganizerStart" xml:space="preserve">
+    <value>Start ReportsOrganizer when Windows Starts</value>
   </data>
-  <data name="MonthAug" xml:space="preserve">
-    <value>Август</value>
-  </data>
-  <data name="MonthDec" xml:space="preserve">
-    <value>Декабрь</value>
-  </data>
-  <data name="MonthFeb" xml:space="preserve">
-    <value>Февраль</value>
-  </data>
-  <data name="MonthJan" xml:space="preserve">
-    <value>Январь</value>
-  </data>
-  <data name="MonthJuly" xml:space="preserve">
-    <value>Июль</value>
-  </data>
-  <data name="MonthJune" xml:space="preserve">
-    <value>Июнь</value>
-  </data>
-  <data name="MonthMar" xml:space="preserve">
-    <value>Март</value>
-  </data>
-  <data name="MonthMay" xml:space="preserve">
-    <value>Май</value>
-  </data>
-  <data name="MonthNov" xml:space="preserve">
-    <value>Ноябрь</value>
-  </data>
-  <data name="MonthOct" xml:space="preserve">
-    <value>Октябрь</value>
-  </data>
-  <data name="MonthSept" xml:space="preserve">
-    <value>Сентябрь</value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="Postpone" xml:space="preserve">
-    <value>Отложить</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="Time" xml:space="preserve">
-    <value>Время</value>
-  </data>
-  <data name="WriteReport" xml:space="preserve">
-    <value>Введите ваш отчет здесь</value>
-  </data>
-  <data name="Year" xml:space="preserve">
-    <value>Год</value>
+  <data name="StartMinimized" xml:space="preserve">
+    <value>Start minimized</value>
   </data>
 </root>

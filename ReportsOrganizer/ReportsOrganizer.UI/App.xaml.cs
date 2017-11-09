@@ -12,9 +12,9 @@ using WPFLocalizeExtension.Engine;
 using ReportsOrganizer.UI.ViewModels;
 using SimpleInjector;
 using System.ComponentModel;
-using ReportsOrganizer.UI.Models;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.Core.Extensions;
+using ReportsOrganizer.Models;
 
 namespace ReportsOrganizer.UI
 {
@@ -49,6 +49,7 @@ namespace ReportsOrganizer.UI
 
             IoC.Container.Register<IHomeViewModel, HomeViewModel>();
             IoC.Container.Register<ISettingsViewModel, SettingsViewModel>();
+            IoC.Container.Register<IScheduleService, ScheduleService>();
         }
     }
 }

@@ -116,6 +116,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
+    <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Localizations\General\General.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +126,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>General.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localizations\Settings\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Settings.resx</DependentUpon>
     </Compile>
     <Compile Include="Localizations\TaskbarIcon\TaskbarIcon.Designer.cs">
       <DependentUpon>TaskbarIcon.resx</DependentUpon>
@@ -136,7 +142,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\ApplicationSettings.cs" />
+    <Compile Include="Models\IntItem.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -219,6 +226,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>General.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Localizations\Settings\Settings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localizations\Settings\Settings.ru.resx" />
     <EmbeddedResource Include="Localizations\TaskbarIcon\TaskbarIcon.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskbarIcon.Designer.cs</LastGenOutput>
