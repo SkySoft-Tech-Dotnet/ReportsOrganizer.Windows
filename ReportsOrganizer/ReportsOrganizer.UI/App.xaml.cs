@@ -38,6 +38,7 @@ namespace ReportsOrganizer.UI
 
             LocalizeDictionary.Instance.Culture = new CultureInfo("en");
             IoCConfiguration();
+            IoC.Container.GetInstance<ISettingsViewModel>();
         }
 
         public void IoCConfiguration()
@@ -49,7 +50,9 @@ namespace ReportsOrganizer.UI
 
             IoC.Container.Register<IHomeViewModel, HomeViewModel>();
             IoC.Container.Register<ISettingsViewModel, SettingsViewModel>();
-            IoC.Container.Register<IScheduleService, ScheduleService>();
+            //IoC.Container.RegisterInitializer<IScheduleService>(data => data.Action =
+            //    IoC.Container.GetInstance<INotificationService>().ShowNotificationWindow
+            //);
         }
     }
 }

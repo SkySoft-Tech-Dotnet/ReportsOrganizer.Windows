@@ -22,8 +22,11 @@ namespace ReportsOrganizer.Core.Infrastructure
                 if (_container == null)
                 {
                     _container = new Container();
-                    _container.Register<IReportsRepository, ReportsRepository>(Lifestyle.Singleton);
-                    _container.Register<IReportsService, ReportsService>(Lifestyle.Singleton);
+                    _container.RegisterSingleton<IReportsRepository, ReportsRepository>();
+                    _container.RegisterSingleton<IReportsService, ReportsService>();
+                    _container.RegisterSingleton<IDailyTimersService, DailyTimersesService>();
+                    _container.RegisterSingleton<IFixedTimerService, FixedTimerService>();
+                    _container.RegisterSingleton<IScheduleService, ScheduleService>();
                 }
                 return _container;
             }

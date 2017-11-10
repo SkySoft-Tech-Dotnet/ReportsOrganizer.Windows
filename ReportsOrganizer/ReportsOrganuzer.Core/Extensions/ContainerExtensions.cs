@@ -1,4 +1,5 @@
-﻿using ReportsOrganizer.Core.Services;
+﻿using System;
+using ReportsOrganizer.Core.Services;
 using SimpleInjector;
 
 namespace ReportsOrganizer.Core.Extensions
