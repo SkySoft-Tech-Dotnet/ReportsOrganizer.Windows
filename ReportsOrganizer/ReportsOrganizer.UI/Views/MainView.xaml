@@ -1,59 +1,121 @@
-﻿<metro:MetroWindow x:Class="ReportsOrganizer.UI.MainView"
-                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-                   xmlns:taskBar="http://www.hardcodet.net/taskbar"
-                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                   xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
-                   xmlns:lex="http://wpflocalizeextension.codeplex.com"
-                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                   xmlns:local="clr-namespace:ReportsOrganizer.UI.Views"
-                   xmlns:vm="clr-namespace:ReportsOrganizer.UI.ViewModels"
-                   mc:Ignorable="d"
-                   Style="{StaticResource MainWindow}"
-                   DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
-                   Visibility="{Binding WindowVisibility}"
-                   WindowState="{Binding Path=CurrentWindowState}"
-                   prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
-                   lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.UI"
-                   lex:ResxLocalizationProvider.DefaultDictionary="Strings"
-                   WindowStartupLocation="CenterScreen"
-                   Icon="../App.ico"
-                   Title="Reports Organizer">
-    <Window.Resources>
+﻿<controls:MetroWindow x:Class="ReportsOrganizer.UI.MainView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                      xmlns:taskBar="http://www.hardcodet.net/taskbar"
+                      xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
+                      mc:Ignorable="d"
+                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
+                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.UI"
+                      lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+                      d:DesignWidth="{StaticResource NormalWindowWidth}"
+                      d:DesignHeight="{StaticResource MinWindowHeight}"
+                      WindowState="{Binding Path=CurrentWindowState}"
+                      Visibility="{Binding WindowVisibility}"
+                      WindowStartupLocation="CenterScreen"
+                      Style="{StaticResource MetroWindow}"
+                      Title="Reports organizer"
+                      Icon="../App.ico">
+
+    <controls:MetroWindow.LeftWindowCommands>
+        <controls:WindowCommands ShowSeparators="False">
+            <Button Command="{Binding Path=WindowOpenSettingsCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                    ToolTip="{lex:Loc General:Settings}"
+                    controls:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconOpenSetting}">
+                <iconPacks:PackIconMaterial Kind="Settings"
+                                            Style="{StaticResource LeftCommands}" />
+            </Button>
+            <Button Command="{Binding Path=WindowComeBackCommand}"
+                    ToolTip="{lex:Loc General:ComeBack}"
+                    controls:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconPrev}">
+                <iconPacks:PackIconMaterial Kind="KeyboardBackspace"
+                                            Style="{StaticResource LeftCommands}" />
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.LeftWindowCommands>
+
+    <controls:MetroWindow.WindowButtonCommands>
+        <controls:WindowButtonCommands Template="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}" />
+    </controls:MetroWindow.WindowButtonCommands>
+    
+    
+    
+    
+    
+    <!--<controls:MetroWindow.Resources>
         <DataTemplate DataType="{x:Type vm:HomeViewModel}">
             <local:HomeView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
             <local:SettingsView />
         </DataTemplate>
-    </Window.Resources>
-    <metro:MetroWindow.LeftWindowCommands>
-        <metro:WindowCommands ShowSeparators="False">
-            <Button ToolTip="{lex:Loc General:Settings}"
-                    Command="{Binding Path=WindowOpenSettingsCommand}"
-                    metro:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconOpenSetting}">
-                <materialDesign:PackIcon Kind="Settings" />
-            </Button>
-            <Button ToolTip="{lex:Loc General:ComeBack}"
-                    Command="{Binding Path=WindowComeBackCommand}"
-                    metro:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconPrev}">
-                <materialDesign:PackIcon Kind="ArrowLeft" />
-            </Button>
-        </metro:WindowCommands>
-    </metro:MetroWindow.LeftWindowCommands>
+    </controls:MetroWindow.Resources>
+    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"-->
+    
+    
+    
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout Header="Settings"
+                             Style="{StaticResource MetroFlyout}"
+                             IsOpen="True"
+                             IsPinned="False">
+                <ContentControl Grid.Row="0"
+                        Content="{Binding Navigation.CurrentPage}" />
+                <!--<StackPanel VerticalAlignment="Top">
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="Notification" />
+                    </Button>
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="Generic" />
+                    </Button>
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="Customization" />
+                    </Button>
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="Project manager" />
+                    </Button>
+                </StackPanel>-->
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+    
+    
+    
     <Grid>
-        <taskBar:TaskbarIcon ToolTipText="Reports Organizer" IconSource="../App.ico" DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <taskBar:TaskbarIcon IconSource="../App.ico"
+                             ToolTipText="{StaticResource DefaultName}"
+                             DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="{lex:Loc TaskbarIcon:Open}" Command="{Binding Path=TaskbarIconOpenCommand}" />
-                    <MenuItem Header="{lex:Loc TaskbarIcon:WriteReport}" Command="{Binding Path=TaskbarIconWriteReportCommand}" />
+                    <MenuItem Header="{lex:Loc TaskbarIcon:Open}"
+                              Command="{Binding Path=TaskbarIconOpenCommand}" />
+                    <MenuItem Header="{lex:Loc TaskbarIcon:WriteReport}"
+                              Command="{Binding Path=TaskbarIconWriteReportCommand}" />
                     <Separator />
-                    <MenuItem Header="{lex:Loc TaskbarIcon:Exit}" Command="{Binding Path=TaskbarIconExitCommand}" />
+                    <MenuItem Header="{lex:Loc TaskbarIcon:Exit}"
+                              Command="{Binding Path=TaskbarIconExitCommand}" />
                 </ContextMenu>
             </taskBar:TaskbarIcon.ContextMenu>
         </taskBar:TaskbarIcon>
-        <ContentControl Content="{Binding Navigation.CurrentPage}" />
+        <!--<ContentControl Grid.Row="0"
+                        Content="{Binding Navigation.CurrentPage}" />-->
+        <StatusBar Grid.Row="1">
+            <StatusBarItem Content="{StaticResource DefaultName}" />
+            <Separator Style="{DynamicResource MetroStatusBarSeparator}" />
+            <StatusBarItem Content="Version 1.0.0.0" />
+        </StatusBar>
     </Grid>
-</metro:MetroWindow>
+
+
+
+</controls:MetroWindow>

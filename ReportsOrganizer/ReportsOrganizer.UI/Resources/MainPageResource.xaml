@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="DefaultName">Reports orginizer</sys:String>
+
+    <sys:Double x:Key="NormalWindowWidth">800</sys:Double>
+    <sys:Double x:Key="NormalWindowHeight">500</sys:Double>
+    <sys:Double x:Key="MinWindowWidth">600</sys:Double>
+    <sys:Double x:Key="MinWindowHeight">400</sys:Double>
+
+    <sys:Double x:Key="LeftCommandWidth" x:Shared="False">16</sys:Double>
+    <sys:Double x:Key="LeftCommandHeight" x:Shared="False">16</sys:Double>
+
+    <DataTemplate x:Key="IconTemplate" x:Shared="False">
+        <iconPacks:PackIconMaterial Kind="FileDocument"
+                                    Foreground="{DynamicResource IdealForegroundColorBrush}"
+                                    Margin="5,2,0,2"
+                                    Padding="4"
+                                    Width="{TemplateBinding Width}"
+                                    Height="{TemplateBinding Height}" />
+    </DataTemplate>
+
+    <Style TargetType="iconPacks:PackIconMaterial" x:Key="LeftCommands">
+        <Setter Property="Width" Value="{StaticResource LeftCommandWidth}" />
+        <Setter Property="Height" Value="{StaticResource LeftCommandHeight}" />
+    </Style>
+
+    <Style TargetType="controls:MetroWindow" x:Key="MetroWindow">
+        <Setter Property="Width" Value="{StaticResource NormalWindowWidth}" />
+        <Setter Property="Height" Value="{StaticResource NormalWindowHeight}" />
+        <Setter Property="MinWidth" Value="{StaticResource MinWindowWidth}" />
+        <Setter Property="MinHeight" Value="{StaticResource MinWindowHeight}" />
+        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="WindowTransitionsEnabled" Value="False" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
+
+        <Setter Property="TextElement.FontWeight" Value="Regular" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+
+        <Setter Property="IconTemplate" Value="{StaticResource IconTemplate}" />
+
+        <!--<Setter Property="TextElement.Foreground" Value="{DynamicResource MaterialDesignBody}" />
+        <Setter Property="TextElement.FontSize" Value="13" />
+        <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
+        <Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}" />
+        <Setter Property="WindowTitleBrush" Value="#077568" />-->
+    </Style>
+</ResourceDictionary>
