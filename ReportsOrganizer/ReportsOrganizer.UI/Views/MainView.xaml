@@ -8,6 +8,7 @@
                       xmlns:lex="http://wpflocalizeextension.codeplex.com"
                       xmlns:taskBar="http://www.hardcodet.net/taskbar"
                       xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
+                      xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
                       mc:Ignorable="d"
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
                       lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.UI"
@@ -63,24 +64,12 @@
         <controls:FlyoutsControl>
             <controls:Flyout Header="Settings"
                              Style="{StaticResource MetroFlyout}"
-                             IsOpen="True"
-                             IsPinned="False">
-                <ContentControl Grid.Row="0"
-                        Content="{Binding Navigation.CurrentPage}" />
-                <!--<StackPanel VerticalAlignment="Top">
+                             helper:FlyoutHelper.BackButtonVisibility="Visible">
+                <StackPanel VerticalAlignment="Top">
                     <Button Style="{StaticResource FlyoutButton}">
                         <TextBlock Text="Notification" />
                     </Button>
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="Generic" />
-                    </Button>
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="Customization" />
-                    </Button>
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="Project manager" />
-                    </Button>
-                </StackPanel>-->
+                </StackPanel>
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
@@ -93,7 +82,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <taskBar:TaskbarIcon IconSource="../App.ico"
-                             ToolTipText="{StaticResource DefaultName}"
+                             ToolTipText="{StaticResource ProgramName}"
                              DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
@@ -110,7 +99,7 @@
         <!--<ContentControl Grid.Row="0"
                         Content="{Binding Navigation.CurrentPage}" />-->
         <StatusBar Grid.Row="1">
-            <StatusBarItem Content="{StaticResource DefaultName}" />
+            <StatusBarItem Content="{StaticResource ProgramName}" />
             <Separator Style="{DynamicResource MetroStatusBarSeparator}" />
             <StatusBarItem Content="Version 1.0.0.0" />
         </StatusBar>

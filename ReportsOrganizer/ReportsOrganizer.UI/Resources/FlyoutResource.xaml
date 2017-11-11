@@ -1,24 +1,69 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
     <DataTemplate x:Key="MetroFlyoutHeaderTemplate" x:Shared="False">
-        <DockPanel>
-            <TextBlock Margin="15,0,0,0"
+        <DataTemplate.Triggers>
+            <Trigger Property="helper:FlyoutHelper.BackButtonVisibility" Value="Visible">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <!--<ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="MetroFlyoutHeader"
+                                                FillBehavior="HoldEnd"
+                                                Duration="0:0:5"
+                                                To="35,0,0,0" />-->
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="helper:FlyoutHelper.BackButtonVisibility" Value="Hidden">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="MetroFlyoutHeader"
+                                                FillBehavior="HoldEnd"
+                                                Duration="0:0:5"
+                                                To="15,0,0,0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+        </DataTemplate.Triggers>
+        <Grid>
+            <Button
+                BorderThickness="0"
+                FontSize="10"
+                Width="50"
+                Height="50">
+                <iconPacks:PackIconMaterial Kind="KeyboardBackspace" />
+            </Button>
+            <TextBlock x:Name="MetroFlyoutHeader"
                        VerticalAlignment="Center"
+                       Margin="0,0,0,0"
                        Text="{Binding}" />
-            </DockPanel>
+        </Grid>
     </DataTemplate>
-    
+
     <Style TargetType="controls:Flyout" x:Key="MetroFlyout">
         <Setter Property="FontSize" Value="15" />
         <Setter Property="MinWidth" Value="250" />
-        <Setter Property="Background" Value="#FDFDFD" />
+        <Setter Property="Background" Value="{StaticResource FlyoutBackground}" />
         <Setter Property="Position" Value="Right" />
         <Setter Property="Theme" Value="Light" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CloseButtonVisibility" Value="Hidden" />
         <Setter Property="HeaderTemplate" Value="{StaticResource MetroFlyoutHeaderTemplate}" />
+        <Setter Property="IsOpen" Value="True" />
+        <Setter Property="IsPinned" Value="False" />
+        <Style.Triggers>
+            <Trigger Property="Position" Value="Right">
+                <Setter Property="controls:ControlsHelper.HeaderMargin" Value="0 25 10 10" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

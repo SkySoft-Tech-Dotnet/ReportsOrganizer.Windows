@@ -119,6 +119,8 @@
     </ApplicationDefinition>
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
     <Compile Include="Converters\DateConverter.cs" />
+    <Compile Include="Extensions\DependencyObjectExtensions.cs" />
+    <Compile Include="Helpers\FlyoutHelper.cs" />
     <Compile Include="Localizations\General\General.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,7 +169,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\MainPageResource.xaml">
+    <Page Include="Resources\GenericResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\WindowResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
