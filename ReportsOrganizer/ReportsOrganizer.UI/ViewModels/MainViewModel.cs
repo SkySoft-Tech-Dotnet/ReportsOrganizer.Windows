@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel2
     {
         public ICommand OpenSettingsCommand { get; private set; }
 

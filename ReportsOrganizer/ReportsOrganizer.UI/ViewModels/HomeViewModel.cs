@@ -9,7 +9,7 @@ namespace ReportsOrganizer.UI.ViewModels
     {
     }
 
-    public class HomeViewModel : BaseViewModel, IHomeViewModel
+    public class HomeViewModel : BaseViewModel2, IHomeViewModel
     {
         private INavigationService navigation;
 

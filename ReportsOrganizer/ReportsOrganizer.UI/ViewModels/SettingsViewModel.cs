@@ -26,10 +26,10 @@ namespace ReportsOrganizer.UI.ViewModels
     }
 
 
-    public class SettingsViewModel : BaseViewModel, ISettingsViewModel
+    public class SettingsViewModel : BaseViewModel2, ISettingsViewModel
     {
         private INavigationService _navigationService;
-        private IConfigurationService<ApplicationSettings> _configurationService;
+        private IConfigurationService<ReportsOrganizer.Models.ApplicationSettings> _configurationService;
         private IScheduleService _scheduleService;
         private BindingList<IntItem> _specificTimes;
 
@@ -86,7 +86,7 @@ namespace ReportsOrganizer.UI.ViewModels
 
         public SettingsViewModel(
             INavigationService navigationService,
-            IConfigurationService<ApplicationSettings> configurationSettings,
+            IConfigurationService<ReportsOrganizer.Models.ApplicationSettings> configurationSettings,
             IScheduleService scheduleService)
         {
             _navigationService = navigationService;

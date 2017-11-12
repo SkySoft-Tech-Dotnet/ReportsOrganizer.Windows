@@ -12,8 +12,8 @@ namespace ReportsOrganizer.UI.Services
 {
     public interface INavigationService : INotifyPropertyChanged
     {
-        BaseViewModel CurrentPage { get; }
-        BaseViewModel PreviousPage { get; }
+        BaseViewModel2 CurrentPage { get; }
+        BaseViewModel2 PreviousPage { get; }
 
         void ShowNotificationWindow();
         void HideNotificationWindow();
@@ -29,8 +29,8 @@ namespace ReportsOrganizer.UI.Services
 
         private NotificationView NotificationViewInstance => _notificationView.Value;
 
-        private BaseViewModel currentPage;
-        public BaseViewModel CurrentPage
+        private BaseViewModel2 currentPage;
+        public BaseViewModel2 CurrentPage
         {
             get
             {
@@ -43,8 +43,8 @@ namespace ReportsOrganizer.UI.Services
             }
         }
 
-        private BaseViewModel _previousPage;
-        public BaseViewModel PreviousPage
+        private BaseViewModel2 _previousPage;
+        public BaseViewModel2 PreviousPage
         {
             get
             {

@@ -5,7 +5,6 @@ using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +14,7 @@ namespace ReportsOrganizer.Core.Test.Services
     [TestClass]
     public class ApplicationOptions
     {
-        [DataTestMethod, DisplayName("ApplicationOptions:UpdateAsync")]
+        [DataTestMethod]
         [DataRow("ru"), DataRow("ua"), DataRow("en")]
         public async Task UpdateAsync(string language)
         {

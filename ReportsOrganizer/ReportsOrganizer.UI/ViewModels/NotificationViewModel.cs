@@ -9,7 +9,7 @@ using ReportsOrganizer.UI.Services;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
-    public class NotificationViewModel : BaseViewModel
+    public class NotificationViewModel : BaseViewModel2
     {
         INotificationService _notificationService;
 

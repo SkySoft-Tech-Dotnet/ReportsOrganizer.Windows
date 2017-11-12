@@ -45,6 +45,9 @@
                              helper:FlyoutHelper.BackButtonVisibility="Visible">
                 <StackPanel VerticalAlignment="Top">
                     <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="General" />
+                    </Button>
+                    <Button Style="{StaticResource FlyoutButton}">
                         <TextBlock Text="Notification" />
                     </Button>
                 </StackPanel>

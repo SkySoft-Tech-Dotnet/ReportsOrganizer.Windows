@@ -47,11 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ContainerExtensions.cs" />
-    <Compile Include="Infrastructure\IoC.cs" />
+    <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ServiceCollectionProvider.cs" />
     <Compile Include="Services\ApplicationOptions.cs" />
-    <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ReportsService.cs" />
     <Compile Include="Services\ScheduleService.cs" />
   </ItemGroup>
