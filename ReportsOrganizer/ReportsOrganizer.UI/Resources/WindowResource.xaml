@@ -10,8 +10,6 @@
     <Thickness x:Key="IconTemplatePadding" x:Shared="False">4</Thickness>
     <Thickness x:Key="IconTemplateMargin" x:Shared="False" Left="5" Top="2" Right="0" Bottom="2" />
 
-    <iconPacks:PackIconMaterial x:Key="ewfw" x:Shared="False" Kind="FileDocument"></iconPacks:PackIconMaterial>
-
     <DataTemplate x:Key="IconTemplate" x:Shared="False">
         <iconPacks:PackIconMaterial Kind="FileDocument"
                                     Foreground="{StaticResource IdealForegroundColorBrush}"
@@ -21,16 +19,16 @@
                                     Padding="{StaticResource IconTemplatePadding}" />
     </DataTemplate>
 
-    <Style TargetType="iconPacks:PackIconMaterial" x:Key="LeftCommands">
+    <Style TargetType="iconPacks:PackIconMaterial" x:Key="WindowCommand">
         <Setter Property="Width" Value="{StaticResource IconWidth}" />
         <Setter Property="Height" Value="{StaticResource IconHeight}" />
     </Style>
 
     <Style TargetType="controls:MetroWindow" x:Key="MetroWindow">
-        <Setter Property="Width" Value="{StaticResource NormalWindowWidth}" />
-        <Setter Property="Height" Value="{StaticResource NormalWindowHeight}" />
-        <Setter Property="MinWidth" Value="{StaticResource MinWindowWidth}" />
-        <Setter Property="MinHeight" Value="{StaticResource MinWindowHeight}" />
+        <Setter Property="Width" Value="{StaticResource WindowWidth}" />
+        <Setter Property="MinWidth" Value="{StaticResource WindowMinWidth}" />
+        <Setter Property="Height" Value="{StaticResource WindowHeight}" />
+        <Setter Property="MinHeight" Value="{StaticResource WindowMinHeight}" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <!-- Border styles -->

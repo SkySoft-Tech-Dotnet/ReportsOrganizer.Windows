@@ -2,68 +2,39 @@
                     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
-                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <DataTemplate x:Key="MetroFlyoutHeaderTemplate" x:Shared="False">
-        <DataTemplate.Triggers>
-            <Trigger Property="helper:FlyoutHelper.BackButtonVisibility" Value="Visible">
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <!--<ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                Storyboard.TargetName="MetroFlyoutHeader"
-                                                FillBehavior="HoldEnd"
-                                                Duration="0:0:5"
-                                                To="35,0,0,0" />-->
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-            </Trigger>
-            <Trigger Property="helper:FlyoutHelper.BackButtonVisibility" Value="Hidden">
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                Storyboard.TargetName="MetroFlyoutHeader"
-                                                FillBehavior="HoldEnd"
-                                                Duration="0:0:5"
-                                                To="15,0,0,0" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-            </Trigger>
-        </DataTemplate.Triggers>
-        <Grid>
-            <Button
-                BorderThickness="0"
-                FontSize="10"
-                Width="50"
-                Height="50">
-                <iconPacks:PackIconMaterial Kind="KeyboardBackspace" />
-            </Button>
+    <Thickness x:Key="FlyoutHeaderTemplateMargin" x:Shared="False" Left="0" Top="25" Right="10" Bottom="10" />
+    <Thickness x:Key="FlyoutTextHeaderTemplateMargin" x:Shared="False" Left="35" Top="0" Right="0" Bottom="0" />
+
+    <DataTemplate DataType="{x:Type controls:Flyout}" x:Key="FlyoutHeaderTemplate" x:Shared="False">
+        <Grid VerticalAlignment="Center">
+            <Button x:Name="FlyoutBackButton"
+                    Style="{StaticResource FlyoutBackButton}" />
             <TextBlock x:Name="MetroFlyoutHeader"
                        VerticalAlignment="Center"
-                       Margin="0,0,0,0"
+                       Margin="{StaticResource FlyoutTextHeaderTemplateMargin}"
                        Text="{Binding}" />
         </Grid>
     </DataTemplate>
 
     <Style TargetType="controls:Flyout" x:Key="MetroFlyout">
-        <Setter Property="FontSize" Value="15" />
-        <Setter Property="MinWidth" Value="250" />
-        <Setter Property="Background" Value="{StaticResource FlyoutBackground}" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Width" Value="{StaticResource FlyoutMinWidth}" />
+        <Setter Property="MinWidth" Value="{StaticResource FlyoutMinWidth}" />
         <Setter Property="Position" Value="Right" />
-        <Setter Property="Theme" Value="Light" />
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CloseButtonVisibility" Value="Hidden" />
-        <Setter Property="HeaderTemplate" Value="{StaticResource MetroFlyoutHeaderTemplate}" />
-        <Setter Property="IsOpen" Value="True" />
         <Setter Property="IsPinned" Value="False" />
-        <Style.Triggers>
-            <Trigger Property="Position" Value="Right">
-                <Setter Property="controls:ControlsHelper.HeaderMargin" Value="0 25 10 10" />
-            </Trigger>
-        </Style.Triggers>
+        <!-- Font styles -->
+        <Setter Property="FontSize" Value="{StaticResource FlyoutHeaderFontSize}" />
+        <!-- Border styles -->
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        <!-- Colors -->
+        <Setter Property="Theme" Value="Light" />
+        <Setter Property="Background" Value="{StaticResource FlyoutBackgroundBrush}" />
+        <!-- Header template -->
+        <Setter Property="HeaderTemplate" Value="{StaticResource FlyoutHeaderTemplate}" />
+        <Setter Property="controls:ControlsHelper.HeaderMargin" Value="{StaticResource FlyoutHeaderTemplateMargin}" />
     </Style>
 </ResourceDictionary>

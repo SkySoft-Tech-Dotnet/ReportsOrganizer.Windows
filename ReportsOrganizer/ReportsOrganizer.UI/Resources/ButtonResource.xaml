@@ -1,9 +1,27 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <sys:Double x:Key="FlyoutButtonHeight" x:Shared="False">40</sys:Double>
     <sys:Double x:Key="FlyoutButtonFontSize" x:Shared="False">14</sys:Double>
+    <sys:Double x:Key="FlyoutBackButtonWidth" x:Shared="False">40</sys:Double>
+    <sys:Double x:Key="FlyoutBackButtonHeight" x:Shared="False">40</sys:Double>
+
+    <Thickness x:Key="FlyoutMenuButtonPadding" x:Shared="False">15,0</Thickness>
+
+    <Storyboard x:Key="FlyoutButtonMouseEnter" x:Shared="False">
+        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                        To="{StaticResource FlyoutButtonBackgroundMouseEnter}"
+                        FillBehavior="HoldEnd"
+                        Duration="0:0:.15" />
+    </Storyboard>
+    <Storyboard x:Key="FlyoutButtonMouseLeave" x:Shared="False">
+        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                        To="{StaticResource FlyoutButtonBackground}"
+                        FillBehavior="HoldEnd"
+                        Duration="0:0:.15" />
+    </Storyboard>
 
     <ControlTemplate TargetType="{x:Type Button}" x:Key="FlyoutButtonTemplate" x:Shared="False">
         <Grid Background="{TemplateBinding Background}">
@@ -17,59 +35,86 @@
         </Grid>
         <ControlTemplate.Triggers>
             <EventTrigger RoutedEvent="Button.MouseEnter">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#E6E6E6"
-                                        FillBehavior="HoldEnd"
-                                        Duration="0:0:0.15"/>
-                    </Storyboard>
-                </BeginStoryboard>
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseEnter}" />
             </EventTrigger>
             <EventTrigger RoutedEvent="Button.MouseLeave">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FDFDFD"
-                                        FillBehavior="HoldEnd"
-                                        Duration="0:0:0.25"/>
-                    </Storyboard>
-                </BeginStoryboard>
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseLeave}" />
             </EventTrigger>
-
-            <!--<Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#E6E6E6"/>
-            </Trigger>-->
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="#E6E6E6" />
-                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            </Trigger>
+            <EventTrigger RoutedEvent="Button.GotFocus">
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.LostFocus">
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseLeave}" />
+            </EventTrigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="#969696"/>
-                <Setter Property="Foreground" Value="#FFFFFF"/>
+                <Setter Property="Background" Value="{StaticResource FlyoutButtonBackgroundMouseClickBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource FlyoutButtonForegroundMouseClickBrush}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
-    
-    
-    
-    
+
+    <ControlTemplate TargetType="{x:Type Button}" x:Key="FlyoutBackButtonTemplate" x:Shared="False">
+        <Grid Background="{TemplateBinding Background}"
+              Width="{TemplateBinding Width}"
+              Height="{TemplateBinding Height}"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <iconPacks:PackIconMaterial Kind="KeyboardBackspace"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Panel.ZIndex="1000" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseLeave}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.GotFocus">
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.LostFocus">
+                <BeginStoryboard Storyboard="{StaticResource FlyoutButtonMouseLeave}" />
+            </EventTrigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource FlyoutButtonBackgroundMouseClickBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource FlyoutButtonForegroundMouseClickBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
     <Style TargetType="Button" x:Key="FlyoutButton">
-        <Setter Property="Background" Value="#FDFDFD" />
-        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Width" Value="{StaticResource FlyoutMinWidth}" />
         <Setter Property="Height" Value="{StaticResource FlyoutButtonHeight}" />
-        <Setter Property="Foreground" Value="#616161" />
+        <Setter Property="Background" Value="{StaticResource FlyoutBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource FontForegroundBrush}" />
+        <Setter Property="Padding" Value="{StaticResource FlyoutMenuButtonPadding}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <!-- Alignments -->
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <!-- Font styles -->
         <Setter Property="FontSize" Value="{StaticResource FlyoutButtonFontSize}" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="Padding" Value="15,0" />
-        <Setter Property="BorderThickness" Value="0" />
+        <!--Button template-->
         <Setter Property="Template" Value="{StaticResource FlyoutButtonTemplate}" />
     </Style>
 
     <Style TargetType="Button" x:Key="FlyoutBackButton">
-        <Setter Property="Background" Value="#FDFDFD" />
+        <Setter Property="Width" Value="{StaticResource FlyoutBackButtonWidth}" />
+        <Setter Property="Height" Value="{StaticResource FlyoutBackButtonHeight}" />
+        <Setter Property="Background" Value="{StaticResource FlyoutButtonBackgroundBrush}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <!-- Alignments -->
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <!-- Button template -->
+        <Setter Property="Template" Value="{StaticResource FlyoutBackButtonTemplate}" />
     </Style>
 </ResourceDictionary>

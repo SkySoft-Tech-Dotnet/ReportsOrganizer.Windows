@@ -10,32 +10,25 @@
                       xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                       xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
                       mc:Ignorable="d"
-                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
-                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.UI"
-                      lex:ResxLocalizationProvider.DefaultDictionary="Strings"
-                      d:DesignWidth="{StaticResource NormalWindowWidth}"
-                      d:DesignHeight="{StaticResource MinWindowHeight}"
-                      WindowState="{Binding Path=CurrentWindowState}"
+                      DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
+                      Icon="../App.ico"
+                      Style="{StaticResource MetroWindow}"
+                      Title="{StaticResource ProgramName}"
                       Visibility="{Binding WindowVisibility}"
                       WindowStartupLocation="CenterScreen"
-                      Style="{StaticResource MetroWindow}"
-                      Title="Reports organizer"
-                      Icon="../App.ico">
+                      WindowState="{Binding Path=CurrentWindowState}"
+                      d:DesignHeight="{StaticResource WindowMinHeight}"
+                      d:DesignWidth="{StaticResource WindowWidth}"
+                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.UI"
+                      lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
 
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands ShowSeparators="False">
-            <Button Command="{Binding Path=WindowOpenSettingsCommand}"
-                    CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                    ToolTip="{lex:Loc General:Settings}"
-                    controls:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconOpenSetting}">
+            <Button Command="{Binding Path=OpenSettingsCommand}"
+                    ToolTip="{lex:Loc General:Settings}">
                 <iconPacks:PackIconMaterial Kind="Settings"
-                                            Style="{StaticResource LeftCommands}" />
-            </Button>
-            <Button Command="{Binding Path=WindowComeBackCommand}"
-                    ToolTip="{lex:Loc General:ComeBack}"
-                    controls:VisibilityHelper.IsVisible="{Binding Path=IsVisibleIconPrev}">
-                <iconPacks:PackIconMaterial Kind="KeyboardBackspace"
-                                            Style="{StaticResource LeftCommands}" />
+                                            Style="{StaticResource WindowCommand}" />
             </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
@@ -43,26 +36,11 @@
     <controls:MetroWindow.WindowButtonCommands>
         <controls:WindowButtonCommands Template="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}" />
     </controls:MetroWindow.WindowButtonCommands>
-    
-    
-    
-    
-    
-    <!--<controls:MetroWindow.Resources>
-        <DataTemplate DataType="{x:Type vm:HomeViewModel}">
-            <local:HomeView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
-            <local:SettingsView />
-        </DataTemplate>
-    </controls:MetroWindow.Resources>
-    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"-->
-    
-    
-    
+
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
-            <controls:Flyout Header="Settings"
+            <controls:Flyout Header="{lex:Loc General:Settings}"
+                             IsOpen="{Binding Path=SettingsIsOpen}"
                              Style="{StaticResource MetroFlyout}"
                              helper:FlyoutHelper.BackButtonVisibility="Visible">
                 <StackPanel VerticalAlignment="Top">
@@ -73,9 +51,25 @@
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
-    
-    
-    
+
+
+
+
+    <!--<controls:MetroWindow.Resources>
+        <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+            <local:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <local:SettingsView />
+        </DataTemplate>
+    </controls:MetroWindow.Resources>
+    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"-->
+
+
+
+
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

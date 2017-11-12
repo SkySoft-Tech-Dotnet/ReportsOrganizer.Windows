@@ -1,19 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ReportsOrganizer.Core.Services;
+using ReportsOrganizer.UI.Command;
+using ReportsOrganizer.UI.Services;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using ReportsOrganizer.UI.Command;
-using ReportsOrganizer.Core.Services;
-using ReportsOrganizer.UI.Services;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        public ICommand OpenSettingsCommand { get; private set; }
+
+        private bool _settingsIsOpen;
+        public bool SettingsIsOpen
+        {
+            get
+            {
+                return _settingsIsOpen;
+            }
+            set
+            {
+                _settingsIsOpen = value;
+                NotifyPropertyChanged(nameof(SettingsIsOpen));
+            }
+        }
+
+        private void OpenSettingsAction(object sender)
+        {
+            SettingsIsOpen = !_settingsIsOpen;
+        }
+
+
+
+
+
+
+
         INotificationService _notificationService;
         IReportsService _reportsService;
 
@@ -88,6 +110,9 @@ namespace ReportsOrganizer.UI.ViewModels
 
         public MainViewModel(IReportsService reportsService, INotificationService notificationService, INavigationService navigationService)
         {
+            OpenSettingsCommand = new RelayCommand(OpenSettingsAction, true);
+
+
             TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconWriteReportCommand = new RelayCommand(TaskbarIconWriteReportAction, true);

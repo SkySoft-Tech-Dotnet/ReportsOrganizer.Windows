@@ -4,10 +4,28 @@
 
     <sys:String x:Key="ProgramName">Reports orginizer</sys:String>
 
-    <sys:Double x:Key="NormalWindowWidth">800</sys:Double>
-    <sys:Double x:Key="NormalWindowHeight">500</sys:Double>
-    <sys:Double x:Key="MinWindowWidth">600</sys:Double>
-    <sys:Double x:Key="MinWindowHeight">400</sys:Double>
+    <!-- Window -->
+    <sys:Double x:Key="WindowWidth">900</sys:Double>
+    <sys:Double x:Key="WindowMinWidth">700</sys:Double>
+    <sys:Double x:Key="WindowHeight">600</sys:Double>
+    <sys:Double x:Key="WindowMinHeight">500</sys:Double>
+    <!-- Flyout -->
+    <sys:Double x:Key="FlyoutMinWidth">300</sys:Double>
+    <sys:Double x:Key="FlyoutHeaderFontSize">18</sys:Double>
+    
+    <sys:Double x:Key="FontSize">11</sys:Double>
 
-    <SolidColorBrush x:Key="FlyoutBackground" Color="#FDFDFD" />
+    <Color x:Key="FlyoutBackground" A="255" R="253" G="253" B="253" />
+    <Color x:Key="FlyoutButtonBackground" A="255" R="253" G="253" B="253" />
+    <Color x:Key="FlyoutButtonBackgroundMouseEnter" A="255" R="230" G="230" B="230" />
+    <Color x:Key="FlyoutButtonBackgroundMouseClick" A="255" R="150" G="150" B="150" />
+    <Color x:Key="FlyoutButtonForegroundMouseClick" A="255" R="255" G="255" B="255" />
+    <Color x:Key="FontForeground" A="255" R="97" G="97" B="97" />
+
+    <SolidColorBrush x:Key="FlyoutBackgroundBrush" Color="{StaticResource FlyoutBackground}" />
+    <SolidColorBrush x:Key="FlyoutButtonBackgroundBrush" Color="{StaticResource FlyoutButtonBackground}" />
+    <SolidColorBrush x:Key="FlyoutButtonBackgroundMouseEnterBrush" Color="{StaticResource FlyoutButtonBackgroundMouseEnter}" />
+    <SolidColorBrush x:Key="FlyoutButtonBackgroundMouseClickBrush" Color="{StaticResource FlyoutButtonBackgroundMouseClick}" />
+    <SolidColorBrush x:Key="FlyoutButtonForegroundMouseClickBrush" Color="{StaticResource FlyoutButtonForegroundMouseClick}" />
+    <SolidColorBrush x:Key="FontForegroundBrush" Color="{StaticResource FontForeground}" />
 </ResourceDictionary>
