@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReportsOrganizer.Core</RootNamespace>
     <AssemblyName>ReportsOrganizer.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,7 @@
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Infrastructure\IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApplicationOptions.cs" />
     <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ReportsService.cs" />
     <Compile Include="Services\ScheduleService.cs" />
