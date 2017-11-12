@@ -21,7 +21,8 @@ namespace ReportsOrganizer.Models
 
     public class NotificationSettings
     {
-        public int Type { get; set; }
+        public bool IntervalEnabled { get; set; }
+        public bool TimesEnabled { get; set; }
         public int Interval { get; set; }
         public IEnumerable<int> Times { get; set; }
     }

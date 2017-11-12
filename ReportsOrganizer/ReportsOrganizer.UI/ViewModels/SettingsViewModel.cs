@@ -14,6 +14,7 @@ using ReportsOrganizer.Models;
 using System.Windows.Data;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Timers;
 using ReportsOrganizer.UI.Annotations;
 using ReportsOrganizer.UI.Models;
 
@@ -31,7 +32,6 @@ namespace ReportsOrganizer.UI.ViewModels
         private INavigationService _navigationService;
         private IConfigurationService<ReportsOrganizer.Models.ApplicationSettings> _configurationService;
         private IScheduleService _scheduleService;
-        private BindingList<IntItem> _specificTimes;
 
         public ICommand AddAnotherTimeCommand { get; private set; }
         public ICommand RemoveTimeCommand { get; private set; }
@@ -61,28 +61,46 @@ namespace ReportsOrganizer.UI.ViewModels
             }
         }
 
-
+        public bool IntervalEnabled
+        {
+            get => _configurationService.Value.Notification.IntervalEnabled;
+            set
+            {
+                _scheduleService.IsIntervalEnabled = value;
+                _configurationService.Value.Notification.IntervalEnabled = value;
+                NotifyPropertyChanged(nameof(IntervalEnabled));
+            }
+        }
+        public bool TimesEnabled
+        {
+            get => _configurationService.Value.Notification.TimesEnabled;
+            set
+            {
+                _configurationService.Value.Notification.TimesEnabled = value;
+                NotifyPropertyChanged(nameof(TimesEnabled));
+            }
+        }
         public int IntervalHours
         {
-            get => _configurationService.Value.Notification.Interval / 3600;
+            get => _configurationService.Value.Notification.Interval / 60;
             set
             {
                 _configurationService.Value.Notification.Interval =
-                    _configurationService.Value.Notification.Interval + (value - IntervalHours) * 3600;
+                    _configurationService.Value.Notification.Interval + (value - IntervalHours) * 60;
                 NotifyPropertyChanged(nameof(IntervalHours));
             }
         }
         public int IntervalMinutes
         {
-            get => _configurationService.Value.Notification.Interval % 3600 / 60;
+            get => _configurationService.Value.Notification.Interval % 60;
             set
             {
                 _configurationService.Value.Notification.Interval =
-                    _configurationService.Value.Notification.Interval + (value - IntervalMinutes) * 60;
+                    _configurationService.Value.Notification.Interval + (value - IntervalMinutes);
                 NotifyPropertyChanged(nameof(IntervalMinutes));
             }
         }
-        public BindingList<IntItem> SpecificTimes => _specificTimes;
+        public BindingList<IntItem> SpecificTimes { get; }
 
         public SettingsViewModel(
             INavigationService navigationService,
@@ -92,7 +110,8 @@ namespace ReportsOrganizer.UI.ViewModels
             _navigationService = navigationService;
             _configurationService = configurationSettings;
             _scheduleService = scheduleService;
-            _specificTimes = _configurationService.Value.Notification.Times.ToBindingList();
+
+            _scheduleService.Action = _navigationService.ShowNotificationWindow;
 
             AddAnotherTimeCommand = new RelayCommand(AddAnotherTimeAction, true);
             RemoveTimeCommand = new RelayCommand(RemoveTimeAction, true);
@@ -100,29 +119,32 @@ namespace ReportsOrganizer.UI.ViewModels
             ListHours = new List<int>(Enumerable.Range(0, 24));
             ListMinutes = new List<int>(Enumerable.Range(0, 60));
 
+            SpecificTimes = _configurationService.Value.Notification.Times.ToBindingList();
+
             PropertyChanged += UpdateSettings;
-
-
-            _specificTimes.ListChanged += BindingListChanged;
+            SpecificTimes.ListChanged += BindingListChanged;
         }
 
         public void AddAnotherTimeAction(object sender)
         {
-            _specificTimes.Add(new IntItem(0));
+            SpecificTimes.Add(new IntItem(0));
         }
         public void RemoveTimeAction(object sender)
         {
-            _specificTimes.Remove(sender as IntItem);
+            SpecificTimes.Remove(sender as IntItem);
         }
 
         private void BindingListChanged(object sender, ListChangedEventArgs e)
         {
             _configurationService.Value.Notification.Times = (sender as BindingList<IntItem>)?.Select(x => x.Number);
+            _scheduleService.RefreshDailyTimers();
             Task.Run(async () => await _configurationService.UpdateAsync());
         }
 
         private void UpdateSettings(object sender, PropertyChangedEventArgs e)
         {
+            _scheduleService.RefreshFixedTimer();
+            _scheduleService.RefreshDailyTimers();
             Task.Run(async () => await _configurationService.UpdateAsync());
         }
     }
