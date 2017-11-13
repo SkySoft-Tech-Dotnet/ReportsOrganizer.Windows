@@ -1,8 +1,8 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ReportsOrganizer.UI
+namespace ReportsOrganizer.UI.Views.Settings
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class MainView : MetroWindow
+    public partial class SettingsView : UserControl
     {
-        public MainView()
+        public SettingsView()
         {
             InitializeComponent();
         }

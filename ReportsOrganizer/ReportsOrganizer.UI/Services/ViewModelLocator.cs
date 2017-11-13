@@ -1,32 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ReportsOrganizer.Core.Infrastructure;
+﻿using ReportsOrganizer.Core.Providers;
+using ReportsOrganizer.UI.ViewModels.Windows;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
     public class ViewModelLocator
     {
+        public MainWindowViewModel MainWindow =>
+            ServiceCollectionProvider.Container.GetInstance<MainWindowViewModel>();
+
+
+
         public MainViewModel Main
         {
-            get { return IoC.Container.GetInstance<MainViewModel>(); }
+            get { return null; }
+            //get { return IoC.Container.GetInstance<MainViewModel>(); }
         }
 
         public NotificationViewModel Notification
         {
-            get { return IoC.Container.GetInstance<NotificationViewModel>(); }
+            get { return null; }
+            //get { return IoC.Container.GetInstance<NotificationViewModel>(); }
         }
 
         public HomeViewModel HomePage
         {
-            get { return IoC.Container.GetInstance<HomeViewModel>(); }
+            get { return null; }
+            //get { return IoC.Container.GetInstance<HomeViewModel>(); }
         }
 
-        public SettingsViewModel SettingsPage
-        {
-            get { return IoC.Container.GetInstance<SettingsViewModel>(); }
-        }
+        //public SettingsViewModel SettingsPage
+        //{
+        //    get { return IoC.Container.GetInstance<SettingsViewModel>(); }
+        //}
     }
 }

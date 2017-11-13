@@ -18,7 +18,6 @@ namespace ReportsOrganizer.UI
             container.AddSingleton<INavigationService, NavigationService>();
 
             container.AddTransient<IHomeViewModel, HomeViewModel>();
-            container.AddTransient<ISettingsViewModel, SettingsViewModel>();
 
             container.AddCore();
 

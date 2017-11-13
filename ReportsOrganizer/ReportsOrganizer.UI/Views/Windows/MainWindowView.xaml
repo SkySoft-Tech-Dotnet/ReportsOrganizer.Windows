@@ -1,4 +1,4 @@
-﻿<controls:MetroWindow x:Class="ReportsOrganizer.UI.MainView"
+﻿<controls:MetroWindow x:Class="ReportsOrganizer.UI.Views.Windows.MainWindowView"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -9,9 +9,11 @@
                       xmlns:taskBar="http://www.hardcodet.net/taskbar"
                       xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                       xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
+                      xmlns:settingsViewModel="clr-namespace:ReportsOrganizer.UI.ViewModels.Settings"
+                      xmlns:settingsView="clr-namespace:ReportsOrganizer.UI.Views.Settings"
                       mc:Ignorable="d"
-                      DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"
-                      Icon="../App.ico"
+                      DataContext="{Binding Path=MainWindow, Source={StaticResource ViewModelLocator}}"
+                      Icon="../../App.ico"
                       Style="{StaticResource MetroWindow}"
                       Title="{StaticResource ProgramName}"
                       Visibility="{Binding WindowVisibility}"
@@ -23,9 +25,15 @@
                       lex:ResxLocalizationProvider.DefaultDictionary="Strings"
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
 
+    <controls:MetroWindow.Resources>
+        <DataTemplate DataType="{x:Type settingsViewModel:SettingsViewModel}">
+            <settingsView:SettingsView />
+        </DataTemplate>
+    </controls:MetroWindow.Resources>
+
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands ShowSeparators="False">
-            <Button Command="{Binding Path=OpenSettingsCommand}"
+            <Button Command="{Binding Path=WindowOpenSettingsCommand}"
                     ToolTip="{lex:Loc General:Settings}">
                 <iconPacks:PackIconMaterial Kind="Settings"
                                             Style="{StaticResource WindowCommand}" />
@@ -42,19 +50,11 @@
             <controls:Flyout Header="{lex:Loc General:Settings}"
                              IsOpen="{Binding Path=SettingsIsOpen}"
                              Style="{StaticResource MetroFlyout}"
-                             helper:FlyoutHelper.BackButtonVisibility="Visible">
-                <StackPanel VerticalAlignment="Top">
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="General" />
-                    </Button>
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="Notification" />
-                    </Button>
-                </StackPanel>
+                             helper:FlyoutHelper.BackButtonVisibility="Visible"
+                             Content="{Binding SettingsViewModel}">
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
-
 
 
 
@@ -78,7 +78,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <taskBar:TaskbarIcon IconSource="../App.ico"
+        <taskBar:TaskbarIcon IconSource="../../App.ico"
                              ToolTipText="{StaticResource ProgramName}"
                              DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
@@ -101,7 +101,5 @@
             <StatusBarItem Content="Version 1.0.0.0" />
         </StatusBar>
     </Grid>
-
-
 
 </controls:MetroWindow>

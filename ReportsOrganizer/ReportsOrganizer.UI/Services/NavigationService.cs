@@ -82,13 +82,13 @@ namespace ReportsOrganizer.UI.Services
         public void NavigateToHome()
         {
             PreviousPage = CurrentPage;
-            CurrentPage = Core.Infrastructure.IoC.Container.GetInstance<HomeViewModel>();
+            //CurrentPage = Core.Infrastructure.IoC.Container.GetInstance<HomeViewModel>();
         }
 
         public void NavigateToSettings()
         {
             PreviousPage = CurrentPage;
-            CurrentPage = Core.Infrastructure.IoC.Container.GetInstance<SettingsViewModel>();
+            //CurrentPage = Core.Infrastructure.IoC.Container.GetInstance<SettingsViewModel>();
         }
 
         public void NavigateToPrevious()
