@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
@@ -49,12 +50,12 @@ namespace ReportsOrganizer.UI.Services
 
         public void AddReport(string report)
         {
-            _reportService.Add(report);
+            _reportService.Add(report, CancellationToken.None);
         }
 
         public Task<Report> GetLastReport()
         {
-            return _reportService.GetLastReport();
+            return _reportService.GetLastReport(CancellationToken.None);
         }
         
     }
