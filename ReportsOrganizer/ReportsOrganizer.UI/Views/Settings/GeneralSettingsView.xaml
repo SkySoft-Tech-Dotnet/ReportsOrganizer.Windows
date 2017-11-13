@@ -22,5 +22,9 @@
                                Header="Run minimized"
                                IsEnabled="{Binding EnabledAutorun}"
                                IsChecked="{Binding EnabledRunMinimized}" />
+        <ComboBox Grid.Row="2">
+            <ComboBoxItem Content="Russian" />
+            <ComboBoxItem Content="English" />
+        </ComboBox>
     </Grid>
 </UserControl>

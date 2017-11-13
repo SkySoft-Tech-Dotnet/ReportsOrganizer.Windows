@@ -121,6 +121,7 @@
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
+    <Compile Include="Extensions\ThemeServiceCollectionExtensions.cs" />
     <Compile Include="Helpers\FlyoutHelper.cs" />
     <Compile Include="Localizations\General\General.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -151,6 +152,7 @@
     <Compile Include="Models\ApplicationSettings.cs" />
     <Compile Include="Models\IntItem.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Models\ApplicationTheme.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Startup.cs" />
@@ -210,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\SettingsWindowStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Crimson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -298,9 +304,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Themes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="App.ico" />
   </ItemGroup>
