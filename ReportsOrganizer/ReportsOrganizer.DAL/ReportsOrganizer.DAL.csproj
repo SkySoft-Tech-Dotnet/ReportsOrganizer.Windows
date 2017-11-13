@@ -140,9 +140,9 @@
     <Compile Include="Migrations\ReportDBContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportDBContext.cs" />
-    <Compile Include="Repositories\IEntity.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\ReportDTO.cs" />
+    <Compile Include="Base\IEntity.cs" />
+    <Compile Include="Base\IRepository.cs" />
+    <Compile Include="DTOs\ReportDTO.cs" />
     <Compile Include="Repositories\ReportsRepository.cs" />
   </ItemGroup>
   <ItemGroup>

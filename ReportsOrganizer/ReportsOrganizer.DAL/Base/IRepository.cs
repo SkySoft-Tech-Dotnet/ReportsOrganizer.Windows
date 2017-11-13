@@ -1,11 +1,8 @@
-﻿using ReportsOrganizer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ReportsOrganizer.Models;
 
-namespace ReportsOrganizer.DAL
+namespace ReportsOrganizer.DAL.Base
 {    
 
 public interface IRepository<T> where T : IEntity
@@ -17,6 +14,5 @@ public interface IRepository<T> where T : IEntity
         //void Delete(T entity);
         //void Update(T entity);
         //T FindById(int Id);
-
     }
 }
