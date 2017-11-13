@@ -2,7 +2,7 @@
 
 namespace ReportsOrganizer.UI.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel2 : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
