@@ -26,9 +26,6 @@
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
 
     <controls:MetroWindow.Resources>
-        <DataTemplate DataType="{x:Type settingsViewModel:SettingsViewModel}">
-            <settingsView:SettingsView />
-        </DataTemplate>
     </controls:MetroWindow.Resources>
 
     <controls:MetroWindow.LeftWindowCommands>
@@ -50,8 +47,21 @@
             <controls:Flyout Header="{lex:Loc General:Settings}"
                              IsOpen="{Binding Path=SettingsIsOpen}"
                              Style="{StaticResource MetroFlyout}"
-                             helper:FlyoutHelper.BackButtonVisibility="Visible"
-                             Content="{Binding SettingsViewModel}">
+                             helper:FlyoutHelper.BackButtonVisibility="Visible">
+                <StackPanel VerticalAlignment="Top">
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="General" />
+                    </Button>
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="Manage Projects" />
+                    </Button>
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="Notification" />
+                    </Button>
+                    <Button Style="{StaticResource FlyoutButton}">
+                        <TextBlock Text="Personalization" />
+                    </Button>
+                </StackPanel>
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>

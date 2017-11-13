@@ -13,7 +13,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private WindowState _prevWindowState;
         private WindowState _currentWindowState;
         private bool _settingsIsOpen;
-        
+
         public Visibility WindowVisibility
         {
             get => _windowVisibility;
@@ -35,8 +35,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             get => _settingsIsOpen;
             set => SetValue(ref _settingsIsOpen, value, nameof(SettingsIsOpen));
         }
-
-        public BaseViewModel SettingsViewModel { get; }
         
         public ICommand TaskbarIconDoubleClickCommand { get; }
         public ICommand TaskbarIconOpenCommand { get; }
@@ -48,8 +46,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         public MainWindowViewModel()
         {
-            SettingsViewModel = new SettingsViewModel();
-
             TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconWriteReportCommand = new RelayCommand(TaskbarIconWriteReportAction, true);
@@ -87,7 +83,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void WindowOpenSettingsAction(object obj)
         {
-            SettingsIsOpen = !_settingsIsOpen;
+            SettingsIsOpen = !SettingsIsOpen;
         }
     }
 }
