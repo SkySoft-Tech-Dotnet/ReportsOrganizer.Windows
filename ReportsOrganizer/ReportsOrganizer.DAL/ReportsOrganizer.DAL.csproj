@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReportsOrganizer.DAL</RootNamespace>
     <AssemblyName>ReportsOrganizer.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -152,6 +153,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReportsOrganizer.DI\ReportsOrganizer.DI.csproj">
+      <Project>{32ec9bf8-1a4b-44fd-ba0e-a4d929c90b11}</Project>
+      <Name>ReportsOrganizer.DI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportsOrganizer.Models\ReportsOrganizer.Models.csproj">
       <Project>{e1768370-c9ec-4c3f-b6c2-0f1d1c6bc695}</Project>
       <Name>ReportsOrganizer.Models</Name>

@@ -1,5 +1,6 @@
 ﻿using ReportsOrganizer.Core.Extensions;
 using ReportsOrganizer.Core.Services;
+using ReportsOrganizer.DI.Extensions;
 using ReportsOrganizer.UI.Models;
 using ReportsOrganizer.UI.Services;
 using ReportsOrganizer.UI.ViewModels.Settings;

@@ -1,4 +1,4 @@
-﻿using ReportsOrganizer.Core.Providers;
+﻿using ReportsOrganizer.DI.Providers;
 using ReportsOrganizer.UI.ViewModels.Settings;
 using ReportsOrganizer.UI.ViewModels.Windows;
 

@@ -19,11 +19,12 @@ namespace ReportsOrganizer.Core.Services
     internal class ApplicationOptions<T> : IApplicationOptions<T>
         where T : class
     {
-        private string _path;
-        private Stack<CancellationTokenSource> _cancellationTokensSource;
+        private readonly string _path;
+        private readonly Stack<CancellationTokenSource> _cancellationTokensSource;
 
-        private object _synchronizing;
-        private object _stackSynchronizing;
+        private readonly object _synchronizing;
+        private readonly object _loadSynchronizing;
+        private readonly object _stackSynchronizing;
 
         public T Value { get; set; }
 
@@ -33,18 +34,24 @@ namespace ReportsOrganizer.Core.Services
             _cancellationTokensSource = new Stack<CancellationTokenSource>();
 
             _synchronizing = new object();
+            _loadSynchronizing = new object();
             _stackSynchronizing = new object();
         }
 
-        public async Task LoadAsync(CancellationToken cancellationToken)
+        public Task LoadAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            using (StreamReader reader = File.OpenText(_path))
+            lock (_loadSynchronizing)
             {
-                var content = await reader.ReadToEndAsync();
-                Value = JsonConvert.DeserializeObject<T>(content);
+                using (var reader = File.OpenText(_path))
+                {
+                    var content = reader.ReadToEndAsync().Result;
+                    Value = JsonConvert.DeserializeObject<T>(content);
+                }
             }
+
+            return Task.CompletedTask;
         }
 
         public Task UpdateAsync(CancellationToken cancellationToken)
@@ -68,13 +75,14 @@ namespace ReportsOrganizer.Core.Services
 
             lock (_synchronizing)
             {
-                using (FileStream stream = File.Open(_path, FileMode.Create))
+                using (var stream = File.Open(_path, FileMode.Create))
                 {
                     stream.Seek(0, SeekOrigin.End);
                     try
                     {
                         stream.WriteAsync(
-                            contentEncode, 0, contentEncode.Length, cancellationTokenSource.Token).Wait();
+                            contentEncode, 0, contentEncode.Length, cancellationTokenSource.Token)
+                            .Wait(cancellationTokenSource.Token);
                     }
                     catch (AggregateException) { }
                 }

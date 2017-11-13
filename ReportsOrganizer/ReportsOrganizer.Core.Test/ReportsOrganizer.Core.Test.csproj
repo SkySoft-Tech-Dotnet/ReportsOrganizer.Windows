@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReportsOrganizer.DI\ReportsOrganizer.DI.csproj">
+      <Project>{32ec9bf8-1a4b-44fd-ba0e-a4d929c90b11}</Project>
+      <Name>ReportsOrganizer.DI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportsOrganizer.UI\ReportsOrganizer.UI.csproj">
       <Project>{0e2dce3d-3785-4817-bf73-80b9a5bfe807}</Project>
       <Name>ReportsOrganizer.UI</Name>

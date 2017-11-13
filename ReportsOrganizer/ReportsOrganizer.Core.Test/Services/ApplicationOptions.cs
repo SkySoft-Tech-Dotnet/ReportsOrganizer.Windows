@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
-using ReportsOrganizer.Core.Infrastructure;
 using ReportsOrganizer.Core.Services;
+using ReportsOrganizer.DI.Providers;
 using ReportsOrganizer.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,8 @@ namespace ReportsOrganizer.Core.Test.Services
         [DataRow("ru"), DataRow("ua"), DataRow("en")]
         public async Task UpdateAsync(string language)
         {
-            var service = IoC.Container.GetInstance<IApplicationOptions<ApplicationSettings>>();
+            var service = ServiceCollectionProvider.Container
+                .GetInstance<IApplicationOptions<ApplicationSettings>>();
 
             service.Value.General.Language = language;
             await service.UpdateAsync(default(CancellationToken));
@@ -31,7 +32,8 @@ namespace ReportsOrganizer.Core.Test.Services
         [DataRow("ru", 5), DataRow("ua", 10), DataRow("en", 50)]
         public async Task UpdateAsyncThreads(string language, int taskCount)
         {
-            var service = IoC.Container.GetInstance<IApplicationOptions<ApplicationSettings>>();
+            var service = ServiceCollectionProvider.Container
+                .GetInstance<IApplicationOptions<ApplicationSettings>>();
             service.Value.General.Language = language;
 
             var tasks = new List<Task>();
@@ -49,7 +51,8 @@ namespace ReportsOrganizer.Core.Test.Services
         [DataRow("ru", 5), DataRow("ua", 10), DataRow("en", 50)]
         public async Task UpdateAsyncThreadsDelay(string language, int taskCount)
         {
-            var service = IoC.Container.GetInstance<IApplicationOptions<ApplicationSettings>>();
+            var service = ServiceCollectionProvider.Container
+                .GetInstance<IApplicationOptions<ApplicationSettings>>();
             service.Value.General.Language = language;
 
             var tasks = new List<Task>();

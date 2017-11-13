@@ -317,6 +317,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReportsOrganizer.DI\ReportsOrganizer.DI.csproj">
+      <Project>{32ec9bf8-1a4b-44fd-ba0e-a4d929c90b11}</Project>
+      <Name>ReportsOrganizer.DI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportsOrganizer.Models\ReportsOrganizer.Models.csproj">
       <Project>{E1768370-C9EC-4C3F-B6C2-0F1D1C6BC695}</Project>
       <Name>ReportsOrganizer.Models</Name>
