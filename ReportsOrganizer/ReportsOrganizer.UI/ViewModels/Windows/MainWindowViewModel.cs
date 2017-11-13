@@ -1,6 +1,8 @@
-﻿using ReportsOrganizer.UI.Abstractions;
+﻿using ReportsOrganizer.Core.Providers;
+using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.ViewModels.Settings;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -9,10 +11,13 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 {
     public class MainWindowViewModel : BaseViewModel
     {
+        private bool _settingsIsOpen;
+
         private Visibility _windowVisibility;
         private WindowState _prevWindowState;
         private WindowState _currentWindowState;
-        private bool _settingsIsOpen;
+        private BaseViewModel _currentSettingsPage;
+        private Visibility _mainSettingsVisibility;
 
         public Visibility WindowVisibility
         {
@@ -35,7 +40,21 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             get => _settingsIsOpen;
             set => SetValue(ref _settingsIsOpen, value, nameof(SettingsIsOpen));
         }
-        
+
+        public BaseViewModel CurrentSettingsPage
+        {
+            get => _currentSettingsPage;
+            set => SetValue(ref _currentSettingsPage, value, nameof(CurrentSettingsPage));
+        }
+
+        public Visibility MainSettingsVisibility
+        {
+            get => _mainSettingsVisibility;
+            set => SetValue(ref _mainSettingsVisibility, value, nameof(MainSettingsVisibility));
+        }
+
+        public Stack<BaseViewModel> SettingsNavigation { get; set; }
+
         public ICommand TaskbarIconDoubleClickCommand { get; }
         public ICommand TaskbarIconOpenCommand { get; }
         public ICommand TaskbarIconWriteReportCommand { get; }
@@ -44,8 +63,12 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public ICommand WindowClosingCommand { get; }
         public ICommand WindowOpenSettingsCommand { get; }
 
+        public ICommand OpenGeneralSettingsCommand { get; }
+
         public MainWindowViewModel()
         {
+            _mainSettingsVisibility = Visibility.Visible;
+
             TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconWriteReportCommand = new RelayCommand(TaskbarIconWriteReportAction, true);
@@ -53,6 +76,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
             WindowOpenSettingsCommand = new RelayCommand(WindowOpenSettingsAction, true);
+
+            OpenGeneralSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
         }
 
         private void TaskbarIconOpenAction(object sender)
@@ -84,6 +109,17 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void WindowOpenSettingsAction(object obj)
         {
             SettingsIsOpen = !SettingsIsOpen;
+        }
+
+        private void OpenGeneralSettingsAction(object obj)
+        {
+            MainSettingsVisibility = Visibility.Hidden;
+
+            var page = ServiceCollectionProvider.Container
+                .GetInstance<GeneralSettingsViewModel>();
+
+            CurrentSettingsPage = page;
+            SettingsNavigation.Push(page);
         }
     }
 }

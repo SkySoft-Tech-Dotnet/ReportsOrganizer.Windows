@@ -26,6 +26,9 @@
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
 
     <controls:MetroWindow.Resources>
+        <DataTemplate DataType="{x:Type settingsViewModel:GeneralSettingsViewModel}">
+            <settingsView:GeneralSettingsView />
+        </DataTemplate>
     </controls:MetroWindow.Resources>
 
     <controls:MetroWindow.LeftWindowCommands>
@@ -48,20 +51,24 @@
                              IsOpen="{Binding Path=SettingsIsOpen}"
                              Style="{StaticResource MetroFlyout}"
                              helper:FlyoutHelper.BackButtonVisibility="Visible">
-                <StackPanel VerticalAlignment="Top">
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="General" />
-                    </Button>
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="Manage Projects" />
-                    </Button>
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="Notification" />
-                    </Button>
-                    <Button Style="{StaticResource FlyoutButton}">
-                        <TextBlock Text="Personalization" />
-                    </Button>
-                </StackPanel>
+                <Grid>
+                    <StackPanel VerticalAlignment="Top"
+                                Visibility="{Binding Path=MainSettingsVisibility}">
+                        <Button Style="{StaticResource FlyoutButton}"
+                                Command="{Binding Path=OpenGeneralSettingsCommand}"
+                                Content="General" />
+                        <Button Style="{StaticResource FlyoutButton}">
+                            <TextBlock Text="Manage Projects" />
+                        </Button>
+                        <Button Style="{StaticResource FlyoutButton}">
+                            <TextBlock Text="Notification" />
+                        </Button>
+                        <Button Style="{StaticResource FlyoutButton}">
+                            <TextBlock Text="Personalization" />
+                        </Button>
+                    </StackPanel>
+                    <ContentControl Content="{Binding Path=CurrentSettingsPage}" />
+                </Grid>
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>

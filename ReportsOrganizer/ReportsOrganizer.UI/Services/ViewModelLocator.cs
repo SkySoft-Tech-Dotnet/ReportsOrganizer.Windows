@@ -1,4 +1,5 @@
 ﻿using ReportsOrganizer.Core.Providers;
+using ReportsOrganizer.UI.ViewModels.Settings;
 using ReportsOrganizer.UI.ViewModels.Windows;
 
 namespace ReportsOrganizer.UI.ViewModels
@@ -7,6 +8,11 @@ namespace ReportsOrganizer.UI.ViewModels
     {
         public MainWindowViewModel MainWindow =>
             ServiceCollectionProvider.Container.GetInstance<MainWindowViewModel>();
+
+        public GeneralSettingsViewModel GeneralSettings =>
+            ServiceCollectionProvider.Container.GetInstance<GeneralSettingsViewModel>();
+
+
 
 
 

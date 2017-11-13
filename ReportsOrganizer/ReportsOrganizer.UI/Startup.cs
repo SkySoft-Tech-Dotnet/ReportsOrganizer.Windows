@@ -1,4 +1,5 @@
 ﻿using ReportsOrganizer.Core.Extensions;
+using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.Models;
 using ReportsOrganizer.UI.Services;
 using ReportsOrganizer.UI.ViewModels;
@@ -31,7 +32,10 @@ namespace ReportsOrganizer.UI
 
         public void Configure(Container container)
         {
-            LocalizeDictionary.Instance.Culture = new CultureInfo("en");
+            var applicationSettings = container
+                .GetInstance<IApplicationOptions<ApplicationSettings>>().Value;
+
+            LocalizeDictionary.Instance.Culture = new CultureInfo(applicationSettings.General.Language);
         }
     }
 }
