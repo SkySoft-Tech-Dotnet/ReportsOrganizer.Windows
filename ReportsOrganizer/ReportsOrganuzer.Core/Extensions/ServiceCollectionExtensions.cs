@@ -3,6 +3,7 @@ using ReportsOrganizer.DAL;
 using ReportsOrganizer.DI.Extensions;
 using SimpleInjector;
 using System.Threading;
+using ReportsOrganizer.DAL.Extensions;
 
 namespace ReportsOrganizer.Core.Extensions
 {
@@ -19,8 +20,9 @@ namespace ReportsOrganizer.Core.Extensions
 
         public static void AddCore(this Container container)
         {
-            container.AddSingleton<IReportsRepository, ReportsRepository>();
-            container.AddSingleton<IReportsService, ReportsService>();
+            //container.AddSingleton<IReportRepository, ReportRepository>();
+            container.AddSingleton<IReportService, ReportService>();
+            container.AddDataAccessLayer();
         }
     }
 }

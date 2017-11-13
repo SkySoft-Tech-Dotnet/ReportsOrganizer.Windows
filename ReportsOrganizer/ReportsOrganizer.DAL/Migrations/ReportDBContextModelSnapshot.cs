@@ -7,7 +7,7 @@ using ReportsOrganizer.DAL;
 
 namespace ReportsOrganizer.DAL.Migrations
 {
-    [DbContext(typeof(ReportDBContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class ReportDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

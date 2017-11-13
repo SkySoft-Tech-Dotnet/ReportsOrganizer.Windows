@@ -7,7 +7,7 @@ using ReportsOrganizer.DAL;
 
 namespace ReportsOrganizer.DAL.Migrations
 {
-    [DbContext(typeof(ReportDBContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20170809065644_InitialMigration")]
     partial class InitialMigration
     {

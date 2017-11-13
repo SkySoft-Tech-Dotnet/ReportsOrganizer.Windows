@@ -29,12 +29,12 @@ namespace ReportsOrganizer.UI.Services
     public class NotificationService : INotificationService
     {
         INavigationService _navigationService;
-        IReportsService _reportsService;
+        IReportService _reportService;
 
-        public NotificationService(IReportsService reportsService, INavigationService navigationService)
+        public NotificationService(IReportService reportService, INavigationService navigationService)
         {
             _navigationService = navigationService;
-            _reportsService = reportsService;
+            _reportService = reportService;
         }
 
         public void ShowNotificationWindow()
@@ -49,12 +49,12 @@ namespace ReportsOrganizer.UI.Services
 
         public void AddReport(string report)
         {
-            _reportsService.Add(report);
+            _reportService.Add(report);
         }
 
         public Task<Report> GetLastReport()
         {
-            return _reportsService.GetLastReport();
+            return _reportService.GetLastReport();
         }
         
     }

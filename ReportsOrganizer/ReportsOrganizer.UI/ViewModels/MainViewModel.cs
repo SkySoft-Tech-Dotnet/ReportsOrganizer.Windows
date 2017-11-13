@@ -37,7 +37,7 @@ namespace ReportsOrganizer.UI.ViewModels
 
 
         INotificationService _notificationService;
-        IReportsService _reportsService;
+        IReportService _reportService;
 
         public ICommand TaskbarIconDoubleClickCommand { get; private set; }
         public ICommand TaskbarIconOpenCommand { get; private set; }
@@ -108,7 +108,7 @@ namespace ReportsOrganizer.UI.ViewModels
             }
         }
 
-        public MainViewModel(IReportsService reportsService, INotificationService notificationService, INavigationService navigationService)
+        public MainViewModel(IReportService reportService, INotificationService notificationService, INavigationService navigationService)
         {
             OpenSettingsCommand = new RelayCommand(OpenSettingsAction, true);
 
@@ -128,7 +128,7 @@ namespace ReportsOrganizer.UI.ViewModels
             IsVisibleIconOpenSetting = true;
             IsVisibleIconPrev = false;
 
-            _reportsService = reportsService;
+            _reportService = reportService;
             _notificationService = notificationService;
         }
 

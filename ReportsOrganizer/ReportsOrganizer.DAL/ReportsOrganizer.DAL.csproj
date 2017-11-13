@@ -101,6 +101,7 @@
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.1.1\lib\net45\Remotion.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99" />
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.3.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
@@ -134,20 +135,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Migrations\20170809065644_InitialMigration.cs" />
     <Compile Include="Migrations\20170809065644_InitialMigration.designer.cs">
       <DependentUpon>20170809065644_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ReportDBContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportDBContext.cs" />
-    <Compile Include="Base\IEntity.cs" />
-    <Compile Include="Base\IRepository.cs" />
-    <Compile Include="DTOs\ReportDTO.cs" />
-    <Compile Include="Repositories\ReportsRepository.cs" />
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\ReportRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataBase\ReportsDataBase.db">
+    <None Include="Database\ReportDatabase.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
