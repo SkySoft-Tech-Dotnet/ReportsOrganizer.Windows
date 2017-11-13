@@ -31,18 +31,18 @@ namespace ReportsOrganizer.DI.Extensions
             container.RegisterSingleton<TService, TImplementation>();
         }
 
-        public static void AddSingleton<TService>(this Container container)
-            where TService : class
-        {
-            container.RegisterSingleton<TService>();
-        }
-
-        public static void AddSingleton<TService, TImplementation>(this Container container,
-            TImplementation implementation)
+        public static void AddSingleton<TService, TImplementation>(
+            this Container container, TImplementation implementation)
             where TService : class
             where TImplementation : class, TService
         {
             container.RegisterSingleton<TService>(implementation);
+        }
+
+        public static void AddSingleton<TService>(this Container container)
+            where TService : class
+        {
+            container.RegisterSingleton<TService>();
         }
     }
 }
