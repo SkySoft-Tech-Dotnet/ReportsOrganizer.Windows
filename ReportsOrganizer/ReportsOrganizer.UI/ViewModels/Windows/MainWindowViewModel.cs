@@ -53,7 +53,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _mainSettingsVisibility, value, nameof(MainSettingsVisibility));
         }
 
-        public Stack<BaseViewModel> SettingsNavigation { get; set; }
+        public Stack<BaseViewModel> SettingsNavigation { get; }
 
         public ICommand TaskbarIconDoubleClickCommand { get; }
         public ICommand TaskbarIconOpenCommand { get; }
@@ -68,6 +68,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public MainWindowViewModel()
         {
             _mainSettingsVisibility = Visibility.Visible;
+
+            SettingsNavigation = new Stack<BaseViewModel>();
 
             TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);

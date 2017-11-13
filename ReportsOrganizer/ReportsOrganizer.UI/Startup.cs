@@ -1,8 +1,9 @@
 ﻿using ReportsOrganizer.Core.Extensions;
 using ReportsOrganizer.Core.Services;
-using ReportsOrganizer.Models;
+using ReportsOrganizer.UI.Models;
 using ReportsOrganizer.UI.Services;
-using ReportsOrganizer.UI.ViewModels;
+using ReportsOrganizer.UI.ViewModels.Settings;
+using ReportsOrganizer.UI.ViewModels.Windows;
 using SimpleInjector;
 using System.Globalization;
 using WPFLocalizeExtension.Engine;
@@ -18,10 +19,15 @@ namespace ReportsOrganizer.UI
             container.AddSingleton<INotificationService, NotificationService>();
             container.AddSingleton<INavigationService, NavigationService>();
 
-            container.AddTransient<IHomeViewModel, HomeViewModel>();
+            container.AddTransient<MainWindowViewModel>();
+
+            container.AddTransient<GeneralSettingsViewModel>();
 
             container.AddCore();
 
+
+
+            //container.AddTransient<IHomeViewModel, HomeViewModel>();
             //container.Register<INotificationService, NotificationService>(Lifestyle.Singleton);
             //container.Register<INavigationService, NavigationService>(Lifestyle.Singleton);
 

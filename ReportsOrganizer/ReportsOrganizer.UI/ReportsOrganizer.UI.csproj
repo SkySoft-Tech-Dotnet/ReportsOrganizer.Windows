@@ -122,7 +122,6 @@
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Helpers\FlyoutHelper.cs" />
-    <Compile Include="Internal\ApplicationSettingsManager.cs" />
     <Compile Include="Localizations\General\General.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -14,6 +14,12 @@ namespace ReportsOrganizer.Core.Extensions
             container.Register(typeof(TService), typeof(TImplementation), Lifestyle.Transient);
         }
 
+        public static void AddTransient<TService>(this Container container)
+            where TService : class
+        {
+            container.Register(typeof(TService));
+        }
+
         public static void AddScoped<TService, TImplementation>(this Container container)
             where TService : class
             where TImplementation : class, TService
