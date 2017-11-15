@@ -5,7 +5,7 @@
 
     <Thickness x:Key="FlyoutHeaderTemplateMargin" x:Shared="False" Left="0" Top="25" Right="10" Bottom="10" />
     <Thickness x:Key="FlyoutTextHeaderTemplateMargin" x:Shared="False" Left="15" Top="5" Right="0" Bottom="10" />
-    <Thickness x:Key="FlyoutTextHeaderTemplateAnimationMargin" x:Shared="False" Left="45" Top="5" Right="0" Bottom="10" />
+    <Thickness x:Key="FlyoutTextHeaderTemplateAnimationMargin" x:Shared="False" Left="40" Top="5" Right="0" Bottom="10" />
 
     <DataTemplate DataType="{x:Type controls:Flyout}" x:Key="FlyoutHeaderTemplate" x:Shared="False">
         <Grid VerticalAlignment="Center">
@@ -19,6 +19,30 @@
                        Margin="{StaticResource FlyoutTextHeaderTemplateMargin}"
                        Text="{Binding}" />
         </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Flyout}}, Path=(helper:FlyoutHelper.BackButtonVisibility), Mode=OneWay}" Value="Visible">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetName="MetroFlyoutHeader"
+                                                Storyboard.TargetProperty="(TextBlock.Margin)"
+                                                To="{StaticResource FlyoutTextHeaderTemplateAnimationMargin}"
+                                                Duration="0:0:.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetName="MetroFlyoutHeader"
+                                                Storyboard.TargetProperty="(TextBlock.Margin)"
+                                                To="{StaticResource FlyoutTextHeaderTemplateMargin}"
+                                                Duration="0:0:.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 
     <Style TargetType="controls:Flyout" x:Key="MetroFlyout">
@@ -38,5 +62,10 @@
         <!-- Header template -->
         <Setter Property="HeaderTemplate" Value="{StaticResource FlyoutHeaderTemplate}" />
         <Setter Property="controls:ControlsHelper.HeaderMargin" Value="{StaticResource FlyoutHeaderTemplateMargin}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=IsActive, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Value="False">
+                <Setter Property="BorderBrush" Value="{DynamicResource NonActiveBorderColorBrush}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
