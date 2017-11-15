@@ -6,6 +6,12 @@
     <Thickness x:Key="FlyoutHeaderTemplateMargin" x:Shared="False" Left="0" Top="25" Right="10" Bottom="10" />
     <Thickness x:Key="FlyoutTextHeaderTemplateMargin" x:Shared="False" Left="15" Top="5" Right="0" Bottom="10" />
     <Thickness x:Key="FlyoutTextHeaderTemplateAnimationMargin" x:Shared="False" Left="40" Top="5" Right="0" Bottom="10" />
+    
+    <Thickness x:Key="FlyoutContentTemplateMargin" x:Shared="False" Left="0" Top="0" Right="0" Bottom="0" />
+    <Thickness x:Key="FlyoutContentTemplateInitMargin" x:Shared="False" Left="20" Top="0" Right="0" Bottom="0" />
+    <Thickness x:Key="FlyoutContentTemplateAnimationMargin" x:Shared="False" Left="-20" Top="0" Right="0" Bottom="0" />
+
+    <Duration x:Key="FlyoutContentAnimationDuration">0:0:.15</Duration>
 
     <DataTemplate DataType="{x:Type controls:Flyout}" x:Key="FlyoutHeaderTemplate" x:Shared="False">
         <Grid VerticalAlignment="Center">
@@ -45,7 +51,73 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style TargetType="controls:Flyout" x:Key="MetroFlyout">
+    <DataTemplate DataType="{x:Type controls:Flyout}" x:Key="FlyoutContentTemplate" x:Shared="False">
+        <Grid ClipToBounds="True">
+            <ContentControl x:Name="MetroFlyoutRoot"
+                            VerticalAlignment="Top"
+                            Opacity="1.0"
+                            Content="{Binding}" />
+            <ContentControl x:Name="MetroFlyoutPage"
+                            VerticalAlignment="Top"
+                            Opacity="0.0"
+                            Margin="{StaticResource FlyoutContentTemplateInitMargin}"
+                            Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Flyout}}, Path=(helper:FlyoutHelper.PageContent), Mode=OneWay}" />
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Flyout}}, Path=(helper:FlyoutHelper.PageVisibility), Mode=OneWay}" Value="Visible">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetName="MetroFlyoutRoot"
+                                                Storyboard.TargetProperty="(ContentControl.Margin)"
+                                                From="{StaticResource FlyoutContentTemplateMargin}"
+                                                To="{StaticResource FlyoutContentTemplateAnimationMargin}"
+                                                Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                            <ThicknessAnimation Storyboard.TargetName="MetroFlyoutPage"
+                                                Storyboard.TargetProperty="(ContentControl.Margin)"
+                                                From="{StaticResource FlyoutContentTemplateInitMargin}"
+                                                To="{StaticResource FlyoutContentTemplateMargin}"
+                                                Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                            <DoubleAnimation Storyboard.TargetName="MetroFlyoutRoot"
+                                             Storyboard.TargetProperty="(ContentControl.Opacity)"
+                                             From="1.0" To="0.0"
+                                             Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                            <DoubleAnimation Storyboard.TargetName="MetroFlyoutPage"
+                                             Storyboard.TargetProperty="(ContentControl.Opacity)"
+                                             From="0.0" To="1.0"
+                                             Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetName="MetroFlyoutRoot"
+                                                Storyboard.TargetProperty="(ContentControl.Margin)"
+                                                From="{StaticResource FlyoutContentTemplateInitMargin}"
+                                                To="{StaticResource FlyoutContentTemplateMargin}"
+                                                Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                            <ThicknessAnimation Storyboard.TargetName="MetroFlyoutPage"
+                                                Storyboard.TargetProperty="(ContentControl.Margin)"
+                                                From="{StaticResource FlyoutContentTemplateMargin}"
+                                                To="{StaticResource FlyoutContentTemplateAnimationMargin}"
+                                                Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                            <DoubleAnimation Storyboard.TargetName="MetroFlyoutRoot"
+                                             Storyboard.TargetProperty="(ContentControl.Opacity)"
+                                             From="0.0" To="1.0"
+                                             Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                            <DoubleAnimation Storyboard.TargetName="MetroFlyoutPage"
+                                             Storyboard.TargetProperty="(ContentControl.Opacity)"
+                                             From="1.0" To="0.0"
+                                             Duration="{StaticResource FlyoutContentAnimationDuration}" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+        <Style TargetType="controls:Flyout" x:Key="MetroFlyout">
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="{StaticResource FlyoutMinWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource FlyoutMinWidth}" />
@@ -62,6 +134,7 @@
         <Setter Property="Background" Value="{StaticResource FlyoutBackgroundBrush}" />
         <!-- Header template -->
         <Setter Property="HeaderTemplate" Value="{StaticResource FlyoutHeaderTemplate}" />
+        <Setter Property="ContentTemplate" Value="{StaticResource FlyoutContentTemplate}" />
         <Setter Property="controls:ControlsHelper.HeaderMargin" Value="{StaticResource FlyoutHeaderTemplateMargin}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=IsActive, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Value="False">

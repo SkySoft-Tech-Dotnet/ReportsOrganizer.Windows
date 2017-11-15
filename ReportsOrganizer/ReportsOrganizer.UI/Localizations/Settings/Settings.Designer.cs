@@ -70,7 +70,7 @@ namespace ReportsOrganizer.UI.Localizations.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language.
+        ///   Looks up a localized string similar to Display language.
         /// </summary>
         internal static string General_Language {
             get {

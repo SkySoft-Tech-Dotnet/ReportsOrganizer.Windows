@@ -12,9 +12,11 @@
     <!-- Flyout -->
     <sys:Double x:Key="FlyoutMinWidth">300</sys:Double>
     <sys:Double x:Key="FlyoutHeaderFontSize">20</sys:Double>
-    
+
+    <!-- Font styles -->
     <sys:Double x:Key="FontSize">11</sys:Double>
 
+    <!-- Colors -->
     <Color x:Key="FlyoutBackground" A="255" R="253" G="253" B="253" />
     <Color x:Key="FlyoutButtonBackground" A="255" R="253" G="253" B="253" />
     <Color x:Key="FlyoutButtonBackgroundMouseEnter" A="255" R="230" G="230" B="230" />
@@ -22,6 +24,7 @@
     <Color x:Key="FlyoutButtonForegroundMouseClick" A="255" R="255" G="255" B="255" />
     <Color x:Key="FontForeground" A="255" R="97" G="97" B="97" />
 
+    <!-- Solid color brush -->
     <SolidColorBrush x:Key="FlyoutBackgroundBrush" Color="{StaticResource FlyoutBackground}" />
     <SolidColorBrush x:Key="FlyoutButtonBackgroundBrush" Color="{StaticResource FlyoutButtonBackground}" />
     <SolidColorBrush x:Key="FlyoutButtonBackgroundMouseEnterBrush" Color="{StaticResource FlyoutButtonBackgroundMouseEnter}" />

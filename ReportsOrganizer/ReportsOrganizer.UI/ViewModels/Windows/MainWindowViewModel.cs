@@ -3,11 +3,9 @@ using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Helpers;
 using ReportsOrganizer.UI.ViewModels.Settings;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
-using WPFLocalizeExtension.Providers;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -17,7 +15,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private string _headerSettingsGroup;
 
         private Visibility _windowVisibility;
-        private Visibility _groupSettingsVisibility;
+        private Visibility _settingsGroupVisibility;
         private Visibility _navigationSettingsVisibility;
 
         private WindowState _prevWindowState;
@@ -53,10 +51,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _currentSettingsGroup, value, nameof(CurrentSettingsGroup));
         }
 
-        public Visibility GroupSettingsVisibility
+        public Visibility SettingsGroupVisibility
         {
-            get => _groupSettingsVisibility;
-            set => SetValue(ref _groupSettingsVisibility, value, nameof(GroupSettingsVisibility));
+            get => _settingsGroupVisibility;
+            set => SetValue(ref _settingsGroupVisibility, value, nameof(SettingsGroupVisibility));
         }
 
         public Visibility NavigationSettingsVisibility
@@ -87,7 +85,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         public MainWindowViewModel()
         {
-            _groupSettingsVisibility = Visibility.Visible;
+            _settingsGroupVisibility = Visibility.Hidden;
             _navigationSettingsVisibility = Visibility.Hidden;
             _headerSettingsGroup = LocalizationHelper.GetLocalizedValue("Settings:Group_Settings");
 
@@ -140,7 +138,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void OpenGeneralSettingsAction(object obj)
         {
-            GroupSettingsVisibility = Visibility.Collapsed;
+            SettingsGroupVisibility = Visibility.Visible;
             NavigationSettingsVisibility = Visibility.Visible;
 
             var page = ServiceCollectionProvider.Container
@@ -153,7 +151,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void BackNavigateSettingsAction(object obj)
         {
-            GroupSettingsVisibility = Visibility.Visible;
+            SettingsGroupVisibility = Visibility.Hidden;
             NavigationSettingsVisibility = Visibility.Hidden;
 
             CurrentSettingsGroup = null;

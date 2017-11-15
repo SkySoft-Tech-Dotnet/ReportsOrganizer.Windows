@@ -3,10 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:lex="http://wpflocalizeextension.codeplex.com"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
              DataContext="{Binding Path=GeneralSettings, Source={StaticResource ViewModelLocator}}">
-    <Grid>
+    <Grid Margin="10,5">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -15,16 +16,46 @@
 
         <controls:ToggleSwitch Grid.Row="0"
                                Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
-                               Header="Start with windows"
-                               IsChecked="{Binding EnabledAutorun}" />
+                               IsChecked="{Binding EnabledAutorun}"
+                               Margin="0,0,0,15">
+            <controls:ToggleSwitch.Header>
+                <TextBlock Text="{lex:Loc Settings:General_AutoRun}"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,5" />
+            </controls:ToggleSwitch.Header>
+        </controls:ToggleSwitch>
         <controls:ToggleSwitch Grid.Row="1"
                                Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
-                               Header="Run minimized"
                                IsEnabled="{Binding EnabledAutorun}"
-                               IsChecked="{Binding EnabledRunMinimized}" />
-        <ComboBox Grid.Row="2">
+                               IsChecked="{Binding EnabledRunMinimized}"
+                               Margin="0,0,0,10">
+            <controls:ToggleSwitch.Header>
+                <TextBlock Text="{lex:Loc Settings:General_RunMinimized}"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,5" />
+            </controls:ToggleSwitch.Header>
+        </controls:ToggleSwitch>
+        <ContentControl Grid.Row="2"
+                        Margin="0,0,0,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                           Text="{lex:Loc Settings:General_Language}"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,5" />
+                <ComboBox Grid.Row="1">
+                    <ComboBoxItem Content="English" />
+                    <ComboBoxItem Content="Russian" />
+                    <ComboBoxItem Content="Ukrainian" />
+                </ComboBox>
+            </Grid>
+        </ContentControl>
+        <!--<ComboBox Grid.Row="2">
             <ComboBoxItem Content="Russian" />
             <ComboBoxItem Content="English" />
-        </ComboBox>
+        </ComboBox>-->
     </Grid>
 </UserControl>

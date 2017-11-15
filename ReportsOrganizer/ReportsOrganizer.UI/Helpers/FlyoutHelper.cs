@@ -7,13 +7,29 @@ namespace ReportsOrganizer.UI.Helpers
 {
     public static class FlyoutHelper
     {
+        public static readonly DependencyProperty BackCommandProperty =
+            DependencyProperty.RegisterAttached("BackCommand", typeof(ICommand), typeof(FlyoutHelper));
+
         public static readonly DependencyProperty BackButtonVisibilityProperty =
             DependencyProperty.RegisterAttached("BackButtonVisibility", typeof(Visibility), typeof(FlyoutHelper),
                 new FrameworkPropertyMetadata(Visibility.Visible,
                     FrameworkPropertyMetadataOptions.AffectsArrange | FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
 
-        public static readonly DependencyProperty BackCommandProperty =
-            DependencyProperty.RegisterAttached("BackCommand", typeof(ICommand), typeof(FlyoutHelper));
+        public static readonly DependencyProperty PageContentProperty =
+            DependencyProperty.RegisterAttached("PageContent", typeof(object), typeof(FlyoutHelper));
+
+        public static readonly DependencyProperty PageVisibilityProperty =
+            DependencyProperty.RegisterAttached("PageVisibility", typeof(Visibility), typeof(FlyoutHelper));
+
+        public static void SetBackCommand(Flyout dependencyObject, ICommand value)
+        {
+            dependencyObject.SetValue(BackCommandProperty, value);
+        }
+
+        public static ICommand GetBackCommand(Flyout dependencyObject)
+        {
+            return dependencyObject.GetValue<ICommand>(BackCommandProperty);
+        }
 
         public static void SetBackButtonVisibility(Flyout dependencyObject, Visibility value)
         {
@@ -25,14 +41,24 @@ namespace ReportsOrganizer.UI.Helpers
             return dependencyObject.GetValue<Visibility>(BackButtonVisibilityProperty);
         }
 
-        public static void SetBackCommand(Flyout dependencyObject, ICommand value)
+        public static void SetPageContent(Flyout dependencyObject, object value)
         {
-            dependencyObject.SetValue(BackCommandProperty, value);
+            dependencyObject.SetValue(PageContentProperty, value);
         }
 
-        public static ICommand GetBackCommand(Flyout dependencyObject)
+        public static object GetPageContent(Flyout dependencyObject)
         {
-            return dependencyObject.GetValue<ICommand>(BackCommandProperty);
+            return dependencyObject.GetValue<object>(PageContentProperty);
+        }
+
+        public static void SetPageVisibility(Flyout dependencyObject, Visibility value)
+        {
+            dependencyObject.SetValue(PageVisibilityProperty, value);
+        }
+
+        public static Visibility GetPageVisibility(Flyout dependencyObject)
+        {
+            return dependencyObject.GetValue<Visibility>(PageVisibilityProperty);
         }
     }
 }
