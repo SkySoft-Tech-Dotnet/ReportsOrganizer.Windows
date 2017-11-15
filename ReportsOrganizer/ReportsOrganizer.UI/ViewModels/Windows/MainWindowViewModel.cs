@@ -14,10 +14,13 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private bool _settingsIsOpen;
 
         private Visibility _windowVisibility;
+        private Visibility _groupSettingsVisibility;
+        private Visibility _navigationSettingsVisibility;
+
         private WindowState _prevWindowState;
         private WindowState _currentWindowState;
+
         private BaseViewModel _currentSettingsPage;
-        private Visibility _mainSettingsVisibility;
 
         public Visibility WindowVisibility
         {
@@ -47,10 +50,16 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _currentSettingsPage, value, nameof(CurrentSettingsPage));
         }
 
-        public Visibility MainSettingsVisibility
+        public Visibility GroupSettingsVisibility
         {
-            get => _mainSettingsVisibility;
-            set => SetValue(ref _mainSettingsVisibility, value, nameof(MainSettingsVisibility));
+            get => _groupSettingsVisibility;
+            set => SetValue(ref _groupSettingsVisibility, value, nameof(GroupSettingsVisibility));
+        }
+
+        public Visibility NavigationSettingsVisibility
+        {
+            get => _navigationSettingsVisibility;
+            set => SetValue(ref _navigationSettingsVisibility, value, nameof(NavigationSettingsVisibility));
         }
 
         public Stack<BaseViewModel> SettingsNavigation { get; }
@@ -63,11 +72,13 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public ICommand WindowClosingCommand { get; }
         public ICommand WindowOpenSettingsCommand { get; }
 
+        public ICommand BackNavigateSettingsCommand { get; set; }
         public ICommand OpenGeneralSettingsCommand { get; }
 
         public MainWindowViewModel()
         {
-            _mainSettingsVisibility = Visibility.Visible;
+            _groupSettingsVisibility = Visibility.Visible;
+            _navigationSettingsVisibility = Visibility.Hidden;
 
             SettingsNavigation = new Stack<BaseViewModel>();
 
@@ -79,6 +90,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
             WindowOpenSettingsCommand = new RelayCommand(WindowOpenSettingsAction, true);
 
+            BackNavigateSettingsCommand = new RelayCommand(BackNavigateSettingsAction, true);
             OpenGeneralSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
         }
 
@@ -105,7 +117,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void WindowClosingAction(object sender)
         {
             ((CancelEventArgs)sender).Cancel = true;
-            WindowVisibility = Visibility.Hidden;
+            WindowVisibility = Visibility.Collapsed;
         }
 
         private void WindowOpenSettingsAction(object obj)
@@ -115,7 +127,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void OpenGeneralSettingsAction(object obj)
         {
-            MainSettingsVisibility = Visibility.Hidden;
+            GroupSettingsVisibility = Visibility.Collapsed;
+            NavigationSettingsVisibility = Visibility.Visible;
 
             var page = ServiceCollectionProvider.Container
                 .GetInstance<GeneralSettingsViewModel>();
@@ -123,5 +136,21 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             CurrentSettingsPage = page;
             SettingsNavigation.Push(page);
         }
+
+        private void BackNavigateSettingsAction(object obj)
+        {
+            SettingsNavigation.Pop();
+            if (SettingsNavigation.Count == 0)
+            {
+                GroupSettingsVisibility = Visibility.Visible;
+                NavigationSettingsVisibility = Visibility.Hidden;
+                CurrentSettingsPage = null;
+            }
+            else
+            {
+                CurrentSettingsPage = SettingsNavigation.Peek();
+            }
+        }
+        
     }
 }

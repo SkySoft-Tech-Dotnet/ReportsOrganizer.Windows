@@ -48,12 +48,13 @@
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
             <controls:Flyout Header="{lex:Loc General:Settings}"
-                             IsOpen="{Binding Path=SettingsIsOpen}"
                              Style="{StaticResource MetroFlyout}"
-                             helper:FlyoutHelper.BackButtonVisibility="Visible">
+                             IsOpen="{Binding Path=SettingsIsOpen}"
+                             helper:FlyoutHelper.BackButtonVisibility="{Binding Path=NavigationSettingsVisibility}"
+                             helper:FlyoutHelper.BackCommand="{Binding Path=BackNavigateSettingsCommand}">
                 <Grid>
                     <StackPanel VerticalAlignment="Top"
-                                Visibility="{Binding Path=MainSettingsVisibility}">
+                                Visibility="{Binding Path=GroupSettingsVisibility}">
                         <Button Style="{StaticResource FlyoutButton}"
                                 Command="{Binding Path=OpenGeneralSettingsCommand}"
                                 Content="General" />

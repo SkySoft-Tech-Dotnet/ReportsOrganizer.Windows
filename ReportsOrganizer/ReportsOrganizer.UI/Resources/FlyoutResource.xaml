@@ -1,17 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
-                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers">
 
     <Thickness x:Key="FlyoutHeaderTemplateMargin" x:Shared="False" Left="0" Top="25" Right="10" Bottom="10" />
-    <Thickness x:Key="FlyoutTextHeaderTemplateMargin" x:Shared="False" Left="35" Top="0" Right="0" Bottom="0" />
+    <Thickness x:Key="FlyoutTextHeaderTemplateMargin" x:Shared="False" Left="15" Top="5" Right="0" Bottom="10" />
+    <Thickness x:Key="FlyoutTextHeaderTemplateAnimationMargin" x:Shared="False" Left="45" Top="5" Right="0" Bottom="10" />
 
     <DataTemplate DataType="{x:Type controls:Flyout}" x:Key="FlyoutHeaderTemplate" x:Shared="False">
         <Grid VerticalAlignment="Center">
             <Button x:Name="FlyoutBackButton"
-                    Style="{StaticResource FlyoutBackButton}" />
+                    Style="{StaticResource FlyoutBackButton}"
+                    Opacity="0"
+                    Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Flyout}}, Path=(helper:FlyoutHelper.BackButtonVisibility), Mode=OneWay}"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Flyout}}, Path=(helper:FlyoutHelper.BackCommand), Mode=OneWay}" />
             <TextBlock x:Name="MetroFlyoutHeader"
                        VerticalAlignment="Center"
                        Margin="{StaticResource FlyoutTextHeaderTemplateMargin}"

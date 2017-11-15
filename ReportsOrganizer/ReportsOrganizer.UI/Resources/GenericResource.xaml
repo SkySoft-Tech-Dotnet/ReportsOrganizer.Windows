@@ -11,7 +11,7 @@
     <sys:Double x:Key="WindowMinHeight">500</sys:Double>
     <!-- Flyout -->
     <sys:Double x:Key="FlyoutMinWidth">300</sys:Double>
-    <sys:Double x:Key="FlyoutHeaderFontSize">18</sys:Double>
+    <sys:Double x:Key="FlyoutHeaderFontSize">20</sys:Double>
     
     <sys:Double x:Key="FontSize">11</sys:Double>
 

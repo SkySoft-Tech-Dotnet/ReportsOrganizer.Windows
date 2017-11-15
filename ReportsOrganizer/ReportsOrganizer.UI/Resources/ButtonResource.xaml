@@ -59,7 +59,7 @@
               Height="{TemplateBinding Height}"
               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-            <iconPacks:PackIconMaterial Kind="KeyboardBackspace"
+            <iconPacks:PackIconOcticons Kind="ChevronLeft"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         Panel.ZIndex="1000" />
@@ -116,5 +116,19 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <!-- Button template -->
         <Setter Property="Template" Value="{StaticResource FlyoutBackButtonTemplate}" />
+        <!-- Button triggers -->
+        <Style.Triggers>
+            <Trigger Property="Visibility" Value="Visible">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="0.0" To="1.0"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
