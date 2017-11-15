@@ -6,7 +6,6 @@ using ReportsOrganizer.UI.ViewModels.Settings;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
-using System;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
