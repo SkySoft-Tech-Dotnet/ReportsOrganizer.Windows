@@ -20,7 +20,7 @@ namespace ReportsOrganizer.UI
             container.AddConfiguration<ApplicationSettings>("appsettings.json");
 
             container.AddTransient<MainWindowViewModel>();
-            container.AddTransient<GeneralSettingsViewModel>();
+            container.AddTransient<GeneralViewModel>();
 
 
             

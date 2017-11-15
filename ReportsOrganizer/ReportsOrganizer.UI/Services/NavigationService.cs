@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using ReportsOrganizer.UI.ViewModels;
 using ReportsOrganizer.UI.Views;
+using ReportsOrganizer.UI.Abstractions;
 
 namespace ReportsOrganizer.UI.Services
 {
     public interface INavigationService : INotifyPropertyChanged
     {
-        BaseViewModel2 CurrentPage { get; }
-        BaseViewModel2 PreviousPage { get; }
+        BaseViewModel CurrentPage { get; }
+        BaseViewModel PreviousPage { get; }
 
         void ShowNotificationWindow();
         void HideNotificationWindow();
@@ -29,8 +30,8 @@ namespace ReportsOrganizer.UI.Services
 
         private NotificationView NotificationViewInstance => _notificationView.Value;
 
-        private BaseViewModel2 currentPage;
-        public BaseViewModel2 CurrentPage
+        private BaseViewModel currentPage;
+        public BaseViewModel CurrentPage
         {
             get
             {
@@ -43,8 +44,8 @@ namespace ReportsOrganizer.UI.Services
             }
         }
 
-        private BaseViewModel2 _previousPage;
-        public BaseViewModel2 PreviousPage
+        private BaseViewModel _previousPage;
+        public BaseViewModel PreviousPage
         {
             get
             {

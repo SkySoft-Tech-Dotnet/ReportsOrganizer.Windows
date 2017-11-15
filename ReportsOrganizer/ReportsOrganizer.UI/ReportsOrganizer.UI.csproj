@@ -157,19 +157,25 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\Settings\GeneralSettingsViewModel.cs" />
-    <Compile Include="ViewModels\Settings\NotificationSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Settings\GeneralViewModel.cs" />
+    <Compile Include="ViewModels\Settings\ManageProjectsViewModel.cs" />
+    <Compile Include="ViewModels\Settings\NotificationViewModel.cs" />
+    <Compile Include="ViewModels\Settings\PersonalizationViewModel.cs" />
     <Compile Include="ViewModels\Windows\MainWindowViewModel.cs" />
-    <Compile Include="Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
+    <Compile Include="ViewModels\Windows\ManageProjectWindowViewModel.cs" />
+    <Compile Include="ViewModels\Windows\NotificationWindowViewModel.cs" />
+    <Compile Include="Views\Settings\GeneralView.xaml.cs">
+      <DependentUpon>GeneralView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings\GeneralSettingsView.xaml.cs">
-      <DependentUpon>GeneralSettingsView.xaml</DependentUpon>
+    <Compile Include="Views\Settings\ManageProjectsView.xaml.cs">
+      <DependentUpon>ManageProjectsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings\NotificationSettingsView.xaml.cs">
-      <DependentUpon>NotificationSettingsView.xaml</DependentUpon>
+    <Compile Include="Views\Settings\NotificationView.xaml.cs">
+      <DependentUpon>NotificationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\PersonalizationView.xaml.cs">
+      <DependentUpon>PersonalizationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
@@ -179,6 +185,12 @@
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\ManageProjectView.xaml.cs">
+      <DependentUpon>ManageProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\NotificationWindowView.xaml.cs">
+      <DependentUpon>NotificationWindowView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\ButtonResource.xaml">
       <SubType>Designer</SubType>
@@ -220,25 +232,28 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DependencyProperties\WindowProperties.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\NotificationViewModel.cs" />
     <Compile Include="Services\ViewModelLocator.cs" />
-    <Page Include="Views\Settings\GeneralSettingsView.xaml">
+    <Page Include="Views\Settings\GeneralView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Settings\NotificationSettingsView.xaml">
+    <Page Include="Views\Settings\ManageProjectsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\NotificationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\PersonalizationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -251,6 +266,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\ManageProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\NotificationWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

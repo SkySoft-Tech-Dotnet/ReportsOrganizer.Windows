@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Services;
+using ReportsOrganizer.UI.Abstractions;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
-    public class NotificationViewModel : BaseViewModel2
+    public class NotificationViewModel : BaseViewModel
     {
         INotificationService _notificationService;
 

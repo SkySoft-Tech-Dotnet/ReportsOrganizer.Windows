@@ -6,6 +6,7 @@ using ReportsOrganizer.UI.ViewModels.Settings;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using System;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -99,10 +100,9 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             BackNavigateSettingsCommand = new RelayCommand(BackNavigateSettingsAction, true);
             OpenGeneralSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
-            OpenNotificationSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
-            OpenNotificationSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
-            OpenManageProjectsSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
-            OpenPersonalizationSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
+            OpenManageProjectsSettingsCommand = new RelayCommand(OpenManageProjectsSettingsAction, true);
+            OpenNotificationSettingsCommand = new RelayCommand(OpenNotificationSettingsAction, true);
+            OpenPersonalizationSettingsCommand = new RelayCommand(OpenPersonalizationSettingsAction, true);
         }
 
         private void TaskbarIconOpenAction(object sender)
@@ -136,17 +136,44 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             SettingsIsOpen = !SettingsIsOpen;
         }
 
-        private void OpenGeneralSettingsAction(object obj)
+        private void OpenSettingsPage<TViewModel>()
+            where TViewModel : BaseViewModel
         {
             SettingsGroupVisibility = Visibility.Visible;
             NavigationSettingsVisibility = Visibility.Visible;
 
             var page = ServiceCollectionProvider.Container
-                .GetInstance<GeneralSettingsViewModel>();
+                .GetInstance<TViewModel>();
 
             CurrentSettingsGroup = page;
+        }
+
+        private void OpenGeneralSettingsAction(object obj)
+        {
+            OpenSettingsPage<GeneralViewModel>();
             HeaderSettingsGroup = LocalizationHelper
                 .GetLocalizedValue("Settings:Group_General");
+        }
+
+        private void OpenManageProjectsSettingsAction(object obj)
+        {
+            OpenSettingsPage<ManageProjectsViewModel>();
+            HeaderSettingsGroup = LocalizationHelper
+                .GetLocalizedValue("Settings:Group_ManageProjects");
+        }
+
+        private void OpenNotificationSettingsAction(object obj)
+        {
+            OpenSettingsPage<NotificationViewModel>();
+            HeaderSettingsGroup = LocalizationHelper
+                .GetLocalizedValue("Settings:Group_Notification");
+        }
+
+        private void OpenPersonalizationSettingsAction(object obj)
+        {
+            OpenSettingsPage<PersonalizationViewModel>();
+            HeaderSettingsGroup = LocalizationHelper
+                .GetLocalizedValue("Settings:Group_Personalization");
         }
 
         private void BackNavigateSettingsAction(object obj)

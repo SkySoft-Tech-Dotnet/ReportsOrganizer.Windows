@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
-    public class GeneralSettingsViewModel : BaseViewModel
+    public class GeneralViewModel : BaseViewModel
     {
         private IApplicationOptions<ApplicationSettings> _applicationSettings;
 
@@ -36,7 +36,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             }
         }
 
-        public GeneralSettingsViewModel(IApplicationOptions<ApplicationSettings> applicationSettings)
+        public GeneralViewModel(IApplicationOptions<ApplicationSettings> applicationSettings)
             => _applicationSettings = applicationSettings;
     }
 }

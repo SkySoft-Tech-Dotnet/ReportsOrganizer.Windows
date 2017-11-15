@@ -1,4 +1,5 @@
 ﻿using ReportsOrganizer.Core.Services;
+using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Services;
 using System.ComponentModel;
@@ -7,7 +8,7 @@ using System.Windows.Input;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
-    public class MainViewModel : BaseViewModel2
+    public class MainViewModel : BaseViewModel
     {
         public ICommand OpenSettingsCommand { get; private set; }
 

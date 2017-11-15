@@ -9,8 +9,25 @@ namespace ReportsOrganizer.UI.ViewModels
         public MainWindowViewModel MainWindow =>
             ServiceCollectionProvider.Container.GetInstance<MainWindowViewModel>();
 
-        public GeneralSettingsViewModel GeneralSettings =>
-            ServiceCollectionProvider.Container.GetInstance<GeneralSettingsViewModel>();
+        public ManageProjectWindowViewModel ManageProjectWindow =>
+            ServiceCollectionProvider.Container.GetInstance<ManageProjectWindowViewModel>();
+
+        public NotificationWindowViewModel NotificationWindow =>
+            ServiceCollectionProvider.Container.GetInstance<NotificationWindowViewModel>();
+
+        public GeneralViewModel GeneralSettings =>
+            ServiceCollectionProvider.Container.GetInstance<GeneralViewModel>();
+
+        public ManageProjectsViewModel ManageProjectsSettings =>
+            ServiceCollectionProvider.Container.GetInstance<ManageProjectsViewModel>();
+
+        public NotificationViewModel NotificationSettings =>
+            ServiceCollectionProvider.Container.GetInstance<NotificationViewModel>();
+
+        public PersonalizationViewModel PersonalizationSettings =>
+            ServiceCollectionProvider.Container.GetInstance<PersonalizationViewModel>();
+
+        
 
 
 
@@ -26,12 +43,6 @@ namespace ReportsOrganizer.UI.ViewModels
         {
             get { return null; }
             //get { return IoC.Container.GetInstance<NotificationViewModel>(); }
-        }
-
-        public HomeViewModel HomePage
-        {
-            get { return null; }
-            //get { return IoC.Container.GetInstance<HomeViewModel>(); }
         }
 
         //public SettingsViewModel SettingsPage

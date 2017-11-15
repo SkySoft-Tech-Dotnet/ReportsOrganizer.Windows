@@ -26,11 +26,19 @@
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
 
     <controls:MetroWindow.Resources>
-        <DataTemplate DataType="{x:Type settingsViewModel:GeneralSettingsViewModel}">
-            <settingsView:GeneralSettingsView />
+        <DataTemplate DataType="{x:Type settingsViewModel:GeneralViewModel}">
+            <settingsView:GeneralView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type settingsViewModel:ManageProjectsViewModel}">
+            <settingsView:ManageProjectsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type settingsViewModel:NotificationViewModel}">
+            <settingsView:NotificationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type settingsViewModel:PersonalizationViewModel}">
+            <settingsView:PersonalizationView />
         </DataTemplate>
     </controls:MetroWindow.Resources>
-
 
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands ShowSeparators="False">
@@ -72,23 +80,6 @@
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
-
-
-
-    <!--<controls:MetroWindow.Resources>
-        <DataTemplate DataType="{x:Type vm:HomeViewModel}">
-            <local:HomeView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
-            <local:SettingsView />
-        </DataTemplate>
-    </controls:MetroWindow.Resources>
-    DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}"-->
-
-
-
-
-
 
     <Grid>
         <Grid.RowDefinitions>

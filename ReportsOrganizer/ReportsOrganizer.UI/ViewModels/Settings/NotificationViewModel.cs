@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
-    public class NotificationSettingsViewModel : BaseViewModel
+    public class NotificationViewModel : BaseViewModel
     {
         private IApplicationOptions<ApplicationSettings> _applicationOptions;
 
@@ -74,7 +74,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             }
         }
 
-        public NotificationSettingsViewModel(IApplicationOptions<ApplicationSettings> applicationOptions)
+        public NotificationViewModel(IApplicationOptions<ApplicationSettings> applicationOptions)
             => _applicationOptions = applicationOptions;
     }
 }
