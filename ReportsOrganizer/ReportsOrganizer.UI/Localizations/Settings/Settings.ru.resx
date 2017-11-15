@@ -129,6 +129,21 @@
   <data name="General" xml:space="preserve">
     <value>Главная</value>
   </data>
+  <data name="Group_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Group_ManageProjects" xml:space="preserve">
+    <value>Manage projects</value>
+  </data>
+  <data name="Group_Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="Group_Personalization" xml:space="preserve">
+    <value>Personalization</value>
+  </data>
+  <data name="Group_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Язык</value>
   </data>

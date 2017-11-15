@@ -53,6 +53,7 @@
         <Setter Property="IsPinned" Value="False" />
         <!-- Font styles -->
         <Setter Property="FontSize" Value="{StaticResource FlyoutHeaderFontSize}" />
+        <Setter Property="Foreground" Value="{StaticResource FontForegroundBrush}" />
         <!-- Border styles -->
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />

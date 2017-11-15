@@ -1,17 +1,20 @@
 ﻿using ReportsOrganizer.DI.Providers;
 using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
+using ReportsOrganizer.UI.Helpers;
 using ReportsOrganizer.UI.ViewModels.Settings;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using WPFLocalizeExtension.Providers;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
     public class MainWindowViewModel : BaseViewModel
     {
         private bool _settingsIsOpen;
+        private string _headerSettingsGroup;
 
         private Visibility _windowVisibility;
         private Visibility _groupSettingsVisibility;
@@ -20,7 +23,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private WindowState _prevWindowState;
         private WindowState _currentWindowState;
 
-        private BaseViewModel _currentSettingsPage;
+        private BaseViewModel _currentSettingsGroup;
 
         public Visibility WindowVisibility
         {
@@ -44,10 +47,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _settingsIsOpen, value, nameof(SettingsIsOpen));
         }
 
-        public BaseViewModel CurrentSettingsPage
+        public BaseViewModel CurrentSettingsGroup
         {
-            get => _currentSettingsPage;
-            set => SetValue(ref _currentSettingsPage, value, nameof(CurrentSettingsPage));
+            get => _currentSettingsGroup;
+            set => SetValue(ref _currentSettingsGroup, value, nameof(CurrentSettingsGroup));
         }
 
         public Visibility GroupSettingsVisibility
@@ -62,7 +65,11 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _navigationSettingsVisibility, value, nameof(NavigationSettingsVisibility));
         }
 
-        public Stack<BaseViewModel> SettingsNavigation { get; }
+        public string HeaderSettingsGroup
+        {
+            get => _headerSettingsGroup;
+            set => SetValue(ref _headerSettingsGroup, value, nameof(HeaderSettingsGroup));
+        }
 
         public ICommand TaskbarIconDoubleClickCommand { get; }
         public ICommand TaskbarIconOpenCommand { get; }
@@ -74,13 +81,15 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         public ICommand BackNavigateSettingsCommand { get; set; }
         public ICommand OpenGeneralSettingsCommand { get; }
+        public ICommand OpenNotificationSettingsCommand { get; }
+        public ICommand OpenManageProjectsSettingsCommand { get; }
+        public ICommand OpenPersonalizationSettingsCommand { get; }
 
         public MainWindowViewModel()
         {
             _groupSettingsVisibility = Visibility.Visible;
             _navigationSettingsVisibility = Visibility.Hidden;
-
-            SettingsNavigation = new Stack<BaseViewModel>();
+            _headerSettingsGroup = LocalizationHelper.GetLocalizedValue("Settings:Group_Settings");
 
             TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
@@ -92,6 +101,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             BackNavigateSettingsCommand = new RelayCommand(BackNavigateSettingsAction, true);
             OpenGeneralSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
+            OpenNotificationSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
+            OpenNotificationSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
+            OpenManageProjectsSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
+            OpenPersonalizationSettingsCommand = new RelayCommand(OpenGeneralSettingsAction, true);
         }
 
         private void TaskbarIconOpenAction(object sender)
@@ -133,23 +146,19 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             var page = ServiceCollectionProvider.Container
                 .GetInstance<GeneralSettingsViewModel>();
 
-            CurrentSettingsPage = page;
-            SettingsNavigation.Push(page);
+            CurrentSettingsGroup = page;
+            HeaderSettingsGroup = LocalizationHelper
+                .GetLocalizedValue("Settings:Group_General");
         }
 
         private void BackNavigateSettingsAction(object obj)
         {
-            SettingsNavigation.Pop();
-            if (SettingsNavigation.Count == 0)
-            {
-                GroupSettingsVisibility = Visibility.Visible;
-                NavigationSettingsVisibility = Visibility.Hidden;
-                CurrentSettingsPage = null;
-            }
-            else
-            {
-                CurrentSettingsPage = SettingsNavigation.Peek();
-            }
+            GroupSettingsVisibility = Visibility.Visible;
+            NavigationSettingsVisibility = Visibility.Hidden;
+
+            CurrentSettingsGroup = null;
+            HeaderSettingsGroup = LocalizationHelper
+                .GetLocalizedValue("Settings:Group_Settings");
         }
         
     }

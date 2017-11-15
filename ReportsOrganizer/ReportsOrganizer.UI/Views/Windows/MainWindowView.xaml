@@ -31,6 +31,7 @@
         </DataTemplate>
     </controls:MetroWindow.Resources>
 
+    
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands ShowSeparators="False">
             <Button Command="{Binding Path=WindowOpenSettingsCommand}"
@@ -47,7 +48,7 @@
 
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
-            <controls:Flyout Header="{lex:Loc General:Settings}"
+            <controls:Flyout Header="{Binding Path=HeaderSettingsGroup}"
                              Style="{StaticResource MetroFlyout}"
                              IsOpen="{Binding Path=SettingsIsOpen}"
                              helper:FlyoutHelper.BackButtonVisibility="{Binding Path=NavigationSettingsVisibility}"
@@ -56,19 +57,19 @@
                     <StackPanel VerticalAlignment="Top"
                                 Visibility="{Binding Path=GroupSettingsVisibility}">
                         <Button Style="{StaticResource FlyoutButton}"
-                                Command="{Binding Path=OpenGeneralSettingsCommand}"
-                                Content="General" />
-                        <Button Style="{StaticResource FlyoutButton}">
-                            <TextBlock Text="Manage Projects" />
-                        </Button>
-                        <Button Style="{StaticResource FlyoutButton}">
-                            <TextBlock Text="Notification" />
-                        </Button>
-                        <Button Style="{StaticResource FlyoutButton}">
-                            <TextBlock Text="Personalization" />
-                        </Button>
+                                Content="{lex:Loc Settings:Group_General}"
+                                Command="{Binding Path=OpenGeneralSettingsCommand}" />
+                        <Button Style="{StaticResource FlyoutButton}"
+                                Content="{lex:Loc Settings:Group_Notification}"
+                                Command="{Binding Path=OpenNotificationSettingsCommand}" />
+                        <Button Style="{StaticResource FlyoutButton}"
+                                Content="{lex:Loc Settings:Group_ManageProjects}"
+                                Command="{Binding Path=OpenManageProjectsSettingsCommand}" />
+                        <Button Style="{StaticResource FlyoutButton}"
+                                Content="{lex:Loc Settings:Group_Personalization}"
+                                Command="{Binding Path=OpenPersonalizationSettingsCommand}" />
                     </StackPanel>
-                    <ContentControl Content="{Binding Path=CurrentSettingsPage}" />
+                    <ContentControl Content="{Binding Path=CurrentSettingsGroup}" />
                 </Grid>
             </controls:Flyout>
         </controls:FlyoutsControl>

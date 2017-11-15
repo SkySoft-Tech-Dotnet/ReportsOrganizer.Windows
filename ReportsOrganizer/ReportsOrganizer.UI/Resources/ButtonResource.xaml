@@ -108,6 +108,7 @@
         <Setter Property="Width" Value="{StaticResource FlyoutBackButtonWidth}" />
         <Setter Property="Height" Value="{StaticResource FlyoutBackButtonHeight}" />
         <Setter Property="Background" Value="{StaticResource FlyoutButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource FontForegroundBrush}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <!-- Alignments -->
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -124,7 +125,7 @@
                         <Storyboard>
                             <DoubleAnimation Storyboard.TargetProperty="Opacity"
                                              From="0.0" To="1.0"
-                                             Duration="0:0:0.2" />
+                                             Duration="0:0:.15" />
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>

@@ -61,74 +61,155 @@ namespace ReportsOrganizer.UI.Localizations.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add another one.
+        ///   Looks up a localized string similar to Start ReportsOrginizer with Windows.
         /// </summary>
-        internal static string AddAnotherOne {
+        internal static string General_AutoRun {
             get {
-                return ResourceManager.GetString("AddAnotherOne", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to At intervals.
-        /// </summary>
-        internal static string AtIntervals {
-            get {
-                return ResourceManager.GetString("AtIntervals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to At specific time.
-        /// </summary>
-        internal static string AtSpecificTime {
-            get {
-                return ResourceManager.GetString("AtSpecificTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to General.
-        /// </summary>
-        internal static string General {
-            get {
-                return ResourceManager.GetString("General", resourceCulture);
+                return ResourceManager.GetString("General_AutoRun", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
-        internal static string Language {
+        internal static string General_Language {
             get {
-                return ResourceManager.GetString("Language", resourceCulture);
+                return ResourceManager.GetString("General_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start ReportsOrginizer minimized in the system tray.
+        /// </summary>
+        internal static string General_RunMinimized {
+            get {
+                return ResourceManager.GetString("General_RunMinimized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string Group_General {
+            get {
+                return ResourceManager.GetString("Group_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage projects.
+        /// </summary>
+        internal static string Group_ManageProjects {
+            get {
+                return ResourceManager.GetString("Group_ManageProjects", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Notification.
         /// </summary>
-        internal static string Notification {
+        internal static string Group_Notification {
             get {
-                return ResourceManager.GetString("Notification", resourceCulture);
+                return ResourceManager.GetString("Group_Notification", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start ReportsOrganizer when Windows Starts.
+        ///   Looks up a localized string similar to Personalization.
         /// </summary>
-        internal static string ReportsOrganizerStart {
+        internal static string Group_Personalization {
             get {
-                return ResourceManager.GetString("ReportsOrganizerStart", resourceCulture);
+                return ResourceManager.GetString("Group_Personalization", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start minimized.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string StartMinimized {
+        internal static string Group_Settings {
             get {
-                return ResourceManager.GetString("StartMinimized", resourceCulture);
+                return ResourceManager.GetString("Group_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add project.
+        /// </summary>
+        internal static string ManageProjects_AddProject {
+            get {
+                return ResourceManager.GetString("ManageProjects_AddProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full name.
+        /// </summary>
+        internal static string ManageProjects_FullName {
+            get {
+                return ResourceManager.GetString("ManageProjects_FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual.
+        /// </summary>
+        internal static string ManageProjects_IsActual {
+            get {
+                return ResourceManager.GetString("ManageProjects_IsActual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select an project to edit.
+        /// </summary>
+        internal static string ManageProjects_SelectProject {
+            get {
+                return ResourceManager.GetString("ManageProjects_SelectProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Short name.
+        /// </summary>
+        internal static string ManageProjects_ShortName {
+            get {
+                return ResourceManager.GetString("ManageProjects_ShortName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t show notification at selected times.
+        /// </summary>
+        internal static string Notification_IgnoreTime {
+            get {
+                return ResourceManager.GetString("Notification_IgnoreTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show notification at intervals.
+        /// </summary>
+        internal static string Notification_Interval {
+            get {
+                return ResourceManager.GetString("Notification_Interval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show notification at selected times.
+        /// </summary>
+        internal static string Notification_SelectedTime {
+            get {
+                return ResourceManager.GetString("Notification_SelectedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose your color theme.
+        /// </summary>
+        internal static string Personalization_Theme {
+            get {
+                return ResourceManager.GetString("Personalization_Theme", resourceCulture);
             }
         }
     }

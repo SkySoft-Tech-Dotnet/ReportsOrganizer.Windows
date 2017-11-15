@@ -117,28 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAnotherOne" xml:space="preserve">
-    <value>Add another one</value>
+  <data name="General_AutoRun" xml:space="preserve">
+    <value>Start ReportsOrginizer with Windows</value>
   </data>
-  <data name="AtIntervals" xml:space="preserve">
-    <value>At intervals</value>
-  </data>
-  <data name="AtSpecificTime" xml:space="preserve">
-    <value>At specific time</value>
-  </data>
-  <data name="General" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="Language" xml:space="preserve">
+  <data name="General_Language" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="Notification" xml:space="preserve">
+  <data name="General_RunMinimized" xml:space="preserve">
+    <value>Start ReportsOrginizer minimized in the system tray</value>
+  </data>
+  <data name="Group_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Group_ManageProjects" xml:space="preserve">
+    <value>Manage projects</value>
+  </data>
+  <data name="Group_Notification" xml:space="preserve">
     <value>Notification</value>
   </data>
-  <data name="ReportsOrganizerStart" xml:space="preserve">
-    <value>Start ReportsOrganizer when Windows Starts</value>
+  <data name="Group_Personalization" xml:space="preserve">
+    <value>Personalization</value>
   </data>
-  <data name="StartMinimized" xml:space="preserve">
-    <value>Start minimized</value>
+  <data name="Group_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ManageProjects_AddProject" xml:space="preserve">
+    <value>Add project</value>
+  </data>
+  <data name="ManageProjects_FullName" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="ManageProjects_IsActual" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="ManageProjects_SelectProject" xml:space="preserve">
+    <value>Select an project to edit</value>
+  </data>
+  <data name="ManageProjects_ShortName" xml:space="preserve">
+    <value>Short name</value>
+  </data>
+  <data name="Notification_IgnoreTime" xml:space="preserve">
+    <value>Don't show notification at selected times</value>
+  </data>
+  <data name="Notification_Interval" xml:space="preserve">
+    <value>Show notification at intervals</value>
+  </data>
+  <data name="Notification_SelectedTime" xml:space="preserve">
+    <value>Show notification at selected times</value>
+  </data>
+  <data name="Personalization_Theme" xml:space="preserve">
+    <value>Choose your color theme</value>
   </data>
 </root>
