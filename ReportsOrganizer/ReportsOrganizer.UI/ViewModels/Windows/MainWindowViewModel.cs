@@ -127,7 +127,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void WindowClosingAction(object sender)
         {
             ((CancelEventArgs)sender).Cancel = true;
-            WindowVisibility = Visibility.Collapsed;
+            WindowVisibility = Visibility.Hidden;
         }
 
         private void WindowOpenSettingsAction(object obj)
