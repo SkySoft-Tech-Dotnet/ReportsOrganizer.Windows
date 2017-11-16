@@ -8,23 +8,31 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
     {
         private IApplicationOptions<ApplicationSettings> _applicationSettings;
         private IApplicationManage _applicationManage;
-        
+
+        private bool _enabledAutorun;
         public bool EnabledAutorun
         {
-            get => _applicationManage.IsAutorun;
+            get => _enabledAutorun;
             set
             {
+                if (!value)
+                {
+                    _enabledRunMinimized = value;
+                    NotifyPropertyChanged(nameof(EnabledRunMinimized));
+                }
+                _enabledAutorun = value;
                 _applicationManage.ChangeAutorun(value);
                 NotifyPropertyChanged(nameof(EnabledAutorun));
-                NotifyPropertyChanged(nameof(EnabledRunMinimized));
             }
         }
 
+        private bool _enabledRunMinimized;
         public bool EnabledRunMinimized
         {
-            get => _applicationManage.IsAutorunMinimize;
+            get => _enabledRunMinimized;
             set
             {
+                _enabledRunMinimized = value;
                 _applicationManage.ChangeAutorunMinimize(value);
                 NotifyPropertyChanged(nameof(EnabledRunMinimized));
             }
@@ -36,6 +44,9 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         {
             _applicationSettings = applicationSettings;
             _applicationManage = applicationManage;
+
+            _enabledAutorun = _applicationManage.IsAutorun;
+            _enabledRunMinimized = _applicationManage.IsAutorunMinimize;
         }
     }
 }
