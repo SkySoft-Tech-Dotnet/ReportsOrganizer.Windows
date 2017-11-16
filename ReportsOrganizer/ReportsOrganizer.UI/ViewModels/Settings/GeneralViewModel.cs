@@ -8,11 +8,12 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
     public class GeneralViewModel : BaseViewModel
     {
         private IApplicationOptions<ApplicationSettings> _applicationSettings;
+        private IApplicationManage _applicationManage;
 
         private bool _enableAutorun;
         public bool EnabledAutorun
         {
-            get => _enableAutorun;
+            get => _applicationManage.IsAutorun;
             set
             {
                 if (!(_enableAutorun = value))
@@ -21,7 +22,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
                     _applicationSettings.UpdateAsync(default(CancellationToken));
                     NotifyPropertyChanged(nameof(EnabledRunMinimized));
                 }
-                NotifyPropertyChanged(nameof(EnabledAutorun));
+                _applicationManage.IsAutorun = value;
             }
         }
 
@@ -36,7 +37,12 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             }
         }
 
-        public GeneralViewModel(IApplicationOptions<ApplicationSettings> applicationSettings)
-            => _applicationSettings = applicationSettings;
+        public GeneralViewModel(
+            IApplicationOptions<ApplicationSettings> applicationSettings,
+            IApplicationManage applicationManage)
+        {
+            _applicationSettings = applicationSettings;
+            _applicationManage = applicationManage;
+        }
     }
 }

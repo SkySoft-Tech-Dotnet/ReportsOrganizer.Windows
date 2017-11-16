@@ -157,7 +157,6 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Settings\GeneralViewModel.cs" />
     <Compile Include="ViewModels\Settings\ManageProjectsViewModel.cs" />
     <Compile Include="ViewModels\Settings\NotificationViewModel.cs" />
