@@ -1,72 +1,82 @@
 ﻿using Microsoft.Win32;
-using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ReportsOrganizer.Core.Services
 {
     public interface IApplicationManage
     {
-        bool IsAutorun { get; set; }
+        bool IsAutorun { get; }
+        bool IsAutorunMinimize { get; }
+
+        void ChangeAutorun(bool enable);
+        void ChangeAutorunMinimize(bool enable);
     }
 
     internal class ApplicationManage : IApplicationManage
     {
         private static string AutorunRegistry = "ReportsOrganizer";
-        private static byte[] AutorunEnableBin = { 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+        private static byte[] AutorunApprovedBin = { 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-        private string CurrentPath
-            => Assembly.GetEntryAssembly().Location;
+        private static string AutorunRegistryPath
+            => @"Software\Microsoft\Windows\CurrentVersion\Run";
 
-        private RegistryKey AutorunRegistryKey
-            => Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+        private static string AutorunApprovedRegistryPath
+            => @"Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run";
 
-        private RegistryKey AutorunInTaskManagerRegistryKey
-            => Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run", true);
-        
+        private static Regex AutorunPathRegex => new Regex("^\"([^\"]+)\"(.*)$");
+
         public bool IsAutorun
         {
-            get => CheckAutorun();
-            set
-            {
-                if (value)
-                {
-                    EnableAutorun();
-                }
-                else
-                {
-                    DisableAutorun();
-                }
-            }
+            get => GetAutorunValue<string>(AutorunRegistryPath) != null
+                && GetAutorunValue<byte[]>(AutorunApprovedRegistryPath, new byte[] { }) .SequenceEqual(AutorunApprovedBin);
         }
 
-        private bool CheckAutorun()
+        public bool IsAutorunMinimize
         {
-            return AutorunRegistryKey.GetValue(AutorunRegistry) != null
-                && AutorunInTaskManagerRegistryKey.GetValue(AutorunRegistry)?.Equals(AutorunEnableBin) != null;
+            get => AutorunPathRegex.Match(GetAutorunValue<string>(AutorunRegistryPath, string.Empty)).Groups[2]
+                .Value.Split(new char[] { ' ' }).Any(property => property.Trim() == "/minimize");
         }
 
-        private void EnableAutorun()
+        public void ChangeAutorun(bool enable)
         {
-            AutorunRegistryKey.SetValue(AutorunRegistry, CurrentPath);
-            AutorunRegistryKey.Close();
-            
-            AutorunInTaskManagerRegistryKey.SetValue(AutorunRegistry, AutorunEnableBin, RegistryValueKind.Binary);
-            AutorunInTaskManagerRegistryKey.Close();
+            var key = Registry.CurrentUser.OpenSubKey(AutorunRegistryPath, true);
+            var keyApproved = Registry.CurrentUser.OpenSubKey(AutorunApprovedRegistryPath, true);
+            if (enable)
+            {
+                key.SetValue(AutorunRegistry, $"\"{Assembly.GetEntryAssembly().Location}\"");
+                keyApproved.SetValue(AutorunRegistry, AutorunApprovedBin, RegistryValueKind.Binary);
+            }
+            else
+            {
+                key.DeleteValue(AutorunRegistry);
+                keyApproved.DeleteValue(AutorunRegistry);
+            }
+            key.Close();
         }
 
-        private void DisableAutorun()
+        public void ChangeAutorunMinimize(bool enable)
         {
-            if (AutorunRegistryKey.GetValue(AutorunRegistry) != null)
-            {
-                AutorunRegistryKey.DeleteValue(AutorunRegistry);
-                AutorunRegistryKey.Close();
-            }
+            var key = Registry.CurrentUser.OpenSubKey(AutorunRegistryPath, true);
+            key.SetValue(AutorunRegistry, enable
+                ? $"\"{Assembly.GetEntryAssembly().Location}\" /minimize"
+                : $"\"{Assembly.GetEntryAssembly().Location}\"");
+            key.Close();
+        }
 
-            if (AutorunInTaskManagerRegistryKey.GetValue(AutorunRegistry)?.Equals(AutorunEnableBin) != null)
-            {
-                AutorunInTaskManagerRegistryKey.DeleteValue(AutorunRegistry);
-                AutorunRegistryKey.Close();
-            }
+        private T GetAutorunValue<T>(string path)
+        {
+            return GetAutorunValue<T>(path, null);
+        }
+
+        private T GetAutorunValue<T>(string path, object defaultValue)
+        {
+            var key = Registry.CurrentUser.OpenSubKey(path);
+            var value = key.GetValue(AutorunRegistry, defaultValue);
+
+            key.Close();
+            return (T)value;
         }
     }
 }

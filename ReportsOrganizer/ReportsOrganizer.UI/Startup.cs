@@ -9,6 +9,8 @@ using ReportsOrganizer.UI.ViewModels.Windows;
 using SimpleInjector;
 using System;
 using System.Globalization;
+using System.IO;
+using System.Text.RegularExpressions;
 using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI
