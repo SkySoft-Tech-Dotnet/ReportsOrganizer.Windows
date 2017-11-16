@@ -17,9 +17,6 @@ namespace ReportsOrganizer.UI.Models
 
     public class ApplicationGeneralSettings
     {
-        [JsonProperty("start_minimized")]
-        public bool StartMinimized { get; set; }
-
         [JsonProperty("language")]
         public string Language { get; set; }
     }
