@@ -22,6 +22,7 @@ namespace ReportsOrganizer.Core.Extensions
             container.AddTransient<IApplicationManage, ApplicationManage>();
             
             container.AddSingleton<IReportService, ReportService>();
+            container.AddSingleton<IProjectService, ProjectService>();
             container.AddRepository();
         }
     }

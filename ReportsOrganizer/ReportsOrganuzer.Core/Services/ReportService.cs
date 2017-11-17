@@ -3,30 +3,33 @@ using ReportsOrganizer.Models;
 using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
+using ReportsOrganizer.Core.Abstractions;
+using ReportsOrganizer.DAL.Abstractions;
+using ReportsOrganizer.DAL.Repositories;
 
 namespace ReportsOrganizer.Core.Services
 {
-    public interface IReportService
+    public interface IReportService : IBaseService<Report>
     {
         void Add(string description, CancellationToken cancellationToken);
         Task<Report> GetLastReport(CancellationToken cancellationToken);
     }
-    public class ReportService : IReportService
+    internal class ReportService : BaseService<Report>, IReportService
     {
-        private readonly IReportRepository _reportsRepository;
+        private readonly IReportRepository _reportRepository;
 
-        public ReportService(IReportRepository reportsRepository)
-            => _reportsRepository = reportsRepository;
+        public ReportService(IReportRepository reportRepository) : base(reportRepository)
+            => _reportRepository = reportRepository;
 
         public void Add(string description, CancellationToken cancellationToken)
         {
-            var newReport = new Report{ Description = description };
-            _reportsRepository.AddAsync(newReport, cancellationToken);
+            var newReport = new Report { Description = description };
+            _reportRepository.AddAsync(newReport, cancellationToken);
         }
 
         public Task<Report> GetLastReport(CancellationToken cancellationToken)
         {
-            return _reportsRepository.LastReport.FirstAsync(cancellationToken);
+            return _reportRepository.LastReport.FirstAsync(cancellationToken);
         }
     }
 }
