@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using ReportsOrganizer.UI.Services;
+using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -17,7 +18,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private INavigationService _navigationService;
 
         private bool _settingsIsOpen;
-        private string _headerSettingsGroup;
+        private string _headerSettingsGroupLocalizeKey;
 
         private Visibility _windowVisibility;
         private Visibility _settingsGroupVisibility;
@@ -69,9 +70,12 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         }
 
         public string HeaderSettingsGroup
+            => LocalizationHelper.GetLocalizedValue(HeaderSettingsGroupLocalizeKey);
+
+        public string HeaderSettingsGroupLocalizeKey
         {
-            get => _headerSettingsGroup;
-            set => SetValue(ref _headerSettingsGroup, value, nameof(HeaderSettingsGroup));
+            get => _headerSettingsGroupLocalizeKey;
+            set => SetValue(ref _headerSettingsGroupLocalizeKey, value, nameof(HeaderSettingsGroup));
         }
 
         public ICommand TaskbarIconDoubleClickCommand { get; }
@@ -94,7 +98,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             _settingsGroupVisibility = Visibility.Hidden;
             _navigationSettingsVisibility = Visibility.Hidden;
-            _headerSettingsGroup = LocalizationHelper.GetLocalizedValue("Settings:Group_Settings");
+            _headerSettingsGroupLocalizeKey = "Settings:Group_Settings";
 
             WindowVisibility = Environment.GetCommandLineArgs().Any(arg => arg == "/minimize")
                 ? Visibility.Hidden
@@ -113,6 +117,13 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             OpenManageProjectsSettingsCommand = new RelayCommand(OpenManageProjectsSettingsAction, true);
             OpenNotificationSettingsCommand = new RelayCommand(OpenNotificationSettingsAction, true);
             OpenPersonalizationSettingsCommand = new RelayCommand(OpenPersonalizationSettingsAction, true);
+
+            LocalizeDictionary.Instance.PropertyChanged += LocalizeChanged;
+        }
+
+        ~MainWindowViewModel()
+        {
+            LocalizeDictionary.Instance.PropertyChanged -= LocalizeChanged;
         }
 
         private void TaskbarIconOpenAction(object sender)
@@ -162,29 +173,25 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void OpenGeneralSettingsAction(object obj)
         {
             OpenSettingsPage<GeneralViewModel>();
-            HeaderSettingsGroup = LocalizationHelper
-                .GetLocalizedValue("Settings:Group_General");
+            HeaderSettingsGroupLocalizeKey = "Settings:Group_General";
         }
 
         private void OpenManageProjectsSettingsAction(object obj)
         {
             OpenSettingsPage<ManageProjectsViewModel>();
-            HeaderSettingsGroup = LocalizationHelper
-                .GetLocalizedValue("Settings:Group_ManageProjects");
+            HeaderSettingsGroupLocalizeKey = "Settings:Group_ManageProjects";
         }
 
         private void OpenNotificationSettingsAction(object obj)
         {
             OpenSettingsPage<NotificationViewModel>();
-            HeaderSettingsGroup = LocalizationHelper
-                .GetLocalizedValue("Settings:Group_Notification");
+            HeaderSettingsGroupLocalizeKey = "Settings:Group_Notification";
         }
 
         private void OpenPersonalizationSettingsAction(object obj)
         {
             OpenSettingsPage<PersonalizationViewModel>();
-            HeaderSettingsGroup = LocalizationHelper
-                .GetLocalizedValue("Settings:Group_Personalization");
+            HeaderSettingsGroupLocalizeKey = "Settings:Group_Personalization";
         }
 
         private void BackNavigateSettingsAction(object obj)
@@ -193,9 +200,12 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             NavigationSettingsVisibility = Visibility.Hidden;
 
             CurrentSettingsGroup = null;
-            HeaderSettingsGroup = LocalizationHelper
-                .GetLocalizedValue("Settings:Group_Settings");
+            HeaderSettingsGroupLocalizeKey = "Settings:Group_Settings";
         }
-        
+
+        private void LocalizeChanged(object sender, PropertyChangedEventArgs e)
+        {
+            NotifyPropertyChanged(nameof(HeaderSettingsGroup));
+        }
     }
 }
