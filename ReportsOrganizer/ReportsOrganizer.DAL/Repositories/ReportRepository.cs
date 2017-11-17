@@ -1,8 +1,8 @@
-﻿using ReportsOrganizer.DAL.Abstractions;
+﻿using System.Linq;
+using ReportsOrganizer.DAL.Abstractions;
 using ReportsOrganizer.Models;
-using System.Linq;
 
-namespace ReportsOrganizer.DAL
+namespace ReportsOrganizer.DAL.Repositories
 {
     public interface IReportRepository : IBaseRepository<Report>
     {
@@ -13,7 +13,7 @@ namespace ReportsOrganizer.DAL
     {
         private readonly ApplicationDbContext _applicationContext;
 
-        public ReportRepository(ApplicationDbContext applicationContext):base(applicationContext)
+        public ReportRepository(ApplicationDbContext applicationContext) : base(applicationContext)
         {
             _applicationContext = applicationContext;
         }

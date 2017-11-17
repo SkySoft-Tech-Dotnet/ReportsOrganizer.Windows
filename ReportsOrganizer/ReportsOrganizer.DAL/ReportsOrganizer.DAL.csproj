@@ -147,6 +147,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Abstractions\BaseRepository.cs" />
+    <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\ReportRepository.cs" />
   </ItemGroup>
   <ItemGroup>
