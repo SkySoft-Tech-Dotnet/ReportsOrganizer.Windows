@@ -14,7 +14,7 @@ namespace ReportsOrganizer.UI.Abstractions
         protected virtual void SetValue<T>(ref T field, T value, string propertyName)
         {
             field = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            NotifyPropertyChanged(propertyName);
         }
     }
 }

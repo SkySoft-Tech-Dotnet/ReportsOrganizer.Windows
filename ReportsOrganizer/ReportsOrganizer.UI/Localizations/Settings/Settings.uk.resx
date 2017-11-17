@@ -118,54 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="General_AutoRun" xml:space="preserve">
-    <value>Запускать ReportsOrginizer при загрузке Windows</value>
+    <value>Запускати ReportsOrginizer при загрузці Windows</value>
   </data>
   <data name="General_Language" xml:space="preserve">
-    <value>Язык отображения</value>
+    <value>Мова відображення</value>
   </data>
   <data name="General_RunMinimized" xml:space="preserve">
-    <value>Запускать ReportsOrginizer в трее</value>
+    <value>Запускати ReportsOrginizer в треї</value>
   </data>
   <data name="Group_General" xml:space="preserve">
-    <value>Общее</value>
+    <value>Основні</value>
   </data>
   <data name="Group_ManageProjects" xml:space="preserve">
-    <value>Менеджер проектов</value>
+    <value>Менеджер проектів</value>
   </data>
   <data name="Group_Notification" xml:space="preserve">
-    <value>Уведомления</value>
+    <value>Сповіщення</value>
   </data>
   <data name="Group_Personalization" xml:space="preserve">
-    <value>Персонализация</value>
+    <value>Персоналізація</value>
   </data>
   <data name="Group_Settings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Налаштування</value>
   </data>
   <data name="ManageProjects_AddProject" xml:space="preserve">
-    <value>Добавить проект</value>
+    <value>Додати проект</value>
   </data>
   <data name="ManageProjects_FullName" xml:space="preserve">
-    <value>Полное имя</value>
+    <value>Повна назва</value>
   </data>
   <data name="ManageProjects_IsActual" xml:space="preserve">
-    <value>Актуальный</value>
+    <value>Актувальний</value>
   </data>
   <data name="ManageProjects_SelectProject" xml:space="preserve">
-    <value>Выберите проект для редактирования</value>
+    <value>Виберіть проект для редагування</value>
   </data>
   <data name="ManageProjects_ShortName" xml:space="preserve">
-    <value>Краткое имя</value>
+    <value>Коротка назва</value>
   </data>
   <data name="Notification_IgnoreTime" xml:space="preserve">
-    <value>Не отображать уведомления в указанное время</value>
+    <value>Не відображати сповіщення у вказаний час</value>
   </data>
   <data name="Notification_Interval" xml:space="preserve">
-    <value>Отображать уведомления с интервалом</value>
+    <value>Відображати сповіщення з інтервалом</value>
   </data>
   <data name="Notification_SelectedTime" xml:space="preserve">
-    <value>Отображать уведомления в указанное время</value>
+    <value>Відображати сповіщення у вказаний час</value>
   </data>
   <data name="Personalization_Theme" xml:space="preserve">
-    <value>Выберите цветную тему</value>
+    <value>Виберіть кольорову тему</value>
   </data>
 </root>

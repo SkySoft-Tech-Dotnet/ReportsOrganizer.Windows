@@ -1,6 +1,11 @@
 ﻿using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Models;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
@@ -35,6 +40,27 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
                 _enabledRunMinimized = value;
                 _applicationManage.ChangeAutorunMinimize(value);
                 NotifyPropertyChanged(nameof(EnabledRunMinimized));
+            }
+        }
+
+        public Dictionary<string, string> Languages
+            => new Dictionary<string, string>
+            {
+                { "en", "English" },
+                { "ru", "Русский" },
+                { "uk", "Українська" }
+            };
+
+        public KeyValuePair<string, string> SelectedLanguage
+        {
+            get => Languages.FirstOrDefault(language
+                => language.Key == LocalizeDictionary.Instance.Culture.Name);
+            set
+            {
+                _applicationSettings.Value.General.Language = value.Key;
+                LocalizeDictionary.Instance.Culture = new CultureInfo(value.Key);
+                NotifyPropertyChanged(nameof(SelectedLanguage));
+                _applicationSettings.UpdateAsync(default(CancellationToken));
             }
         }
 

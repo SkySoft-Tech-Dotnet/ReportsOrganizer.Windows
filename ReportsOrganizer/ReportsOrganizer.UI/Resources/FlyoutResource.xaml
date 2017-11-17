@@ -6,7 +6,7 @@
     <Thickness x:Key="FlyoutHeaderTemplateMargin" x:Shared="False" Left="0" Top="25" Right="10" Bottom="10" />
     <Thickness x:Key="FlyoutTextHeaderTemplateMargin" x:Shared="False" Left="15" Top="5" Right="0" Bottom="10" />
     <Thickness x:Key="FlyoutTextHeaderTemplateAnimationMargin" x:Shared="False" Left="40" Top="5" Right="0" Bottom="10" />
-    
+
     <Thickness x:Key="FlyoutContentTemplateMargin" x:Shared="False" Left="0" Top="0" Right="0" Bottom="0" />
     <Thickness x:Key="FlyoutContentTemplateInitMargin" x:Shared="False" Left="20" Top="0" Right="0" Bottom="0" />
     <Thickness x:Key="FlyoutContentTemplateAnimationMargin" x:Shared="False" Left="-20" Top="0" Right="0" Bottom="0" />
@@ -117,7 +117,7 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-        <Style TargetType="controls:Flyout" x:Key="MetroFlyout">
+    <Style TargetType="controls:Flyout" x:Key="MetroFlyout">
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="{StaticResource FlyoutMinWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource FlyoutMinWidth}" />

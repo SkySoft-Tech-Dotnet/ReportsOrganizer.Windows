@@ -336,6 +336,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localizations\Settings\Settings.ru.resx" />
+    <EmbeddedResource Include="Localizations\Settings\Settings.uk.resx" />
     <EmbeddedResource Include="Localizations\TaskbarIcon\TaskbarIcon.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskbarIcon.Designer.cs</LastGenOutput>
