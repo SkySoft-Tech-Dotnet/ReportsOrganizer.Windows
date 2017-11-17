@@ -26,13 +26,13 @@ namespace ReportsOrganizer.Core.Services
         }
         public void Add(string description, CancellationToken cancellationToken)
         {
-            var newReport = new Report{ Description = description};
+            var newReport = new Report{ Description = description };
             _reportsRepository.AddAsync(newReport, cancellationToken);
         }
-        public async Task<Report> GetLastReport(CancellationToken cancellationToken)
+
+        public Task<Report> GetLastReport(CancellationToken cancellationToken)
         {
-            var lastReports = await _reportsRepository.Get().ToListAsync(cancellationToken);
-            return lastReports.LastOrDefault();
+            return _reportsRepository.LastReport.FirstAsync(cancellationToken);
         }
     }
 }

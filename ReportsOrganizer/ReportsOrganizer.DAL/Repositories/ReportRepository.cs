@@ -14,7 +14,7 @@ namespace ReportsOrganizer.DAL
 {
     public interface IReportRepository : IBaseRepository<Report>
     {
-
+        IQueryable<Report> LastReport { get; }
     }
 
     internal class ReportRepository : BaseRepository<Report>, IReportRepository
@@ -25,5 +25,9 @@ namespace ReportsOrganizer.DAL
         {
             _applicationContext = applicationContext;
         }
+
+        public IQueryable<Report> LastReport
+            => _applicationContext.Reports
+                .OrderByDescending(property => property.EndDate).Take(1);
     }
 }

@@ -18,7 +18,6 @@ namespace ReportsOrganizer.DAL.Base
         Task DeleteAsync(ICollection<TModel> entity, CancellationToken cancellationToken);
         Task DeleteAsync(IQueryable<TModel> entity, CancellationToken cancellationToken);
         Task SaveChangesAsync(CancellationToken cancellationToken);
-        IQueryable<TModel> Get();
     }
 
     internal class BaseRepository<TModel> : IBaseRepository<TModel>
@@ -82,11 +81,6 @@ namespace ReportsOrganizer.DAL.Base
         public virtual async Task SaveChangesAsync(CancellationToken cancellationToken)
         {
             await _dbContext.SaveChangesAsync(cancellationToken);
-        }
-
-        public IQueryable<TModel> Get()
-        {
-            return _dbContext.Set<TModel>();
         }
     }
 }
