@@ -31,8 +31,7 @@ namespace ReportsOrganizer.Core.Services
         }
         public async Task<Report> GetLastReport(CancellationToken cancellationToken)
         {
-            var lastReports = await _reportsRepository.Get().ToListAsync(cancellationToken);
-            return lastReports.LastOrDefault();
+            return await _reportsRepository.LastReport.SingleOrDefaultAsync();
         }
     }
 }
