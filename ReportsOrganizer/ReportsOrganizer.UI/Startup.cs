@@ -9,6 +9,7 @@ using ReportsOrganizer.UI.ViewModels.Windows;
 using SimpleInjector;
 using System;
 using System.Globalization;
+using System.IO;
 using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI
@@ -17,7 +18,8 @@ namespace ReportsOrganizer.UI
     {
         public void ConfigureServices(Container container)
         {
-            container.AddConfiguration<ApplicationSettings>("appsettings.json");
+            container.AddConfiguration<ApplicationSettings>(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json"));
 
             container.AddTransient<GeneralViewModel>();
             container.AddTransient<ManageProjectsViewModel>();
@@ -28,16 +30,14 @@ namespace ReportsOrganizer.UI
             container.AddTransient<ManageProjectWindowViewModel>();
             container.AddTransient<NotificationWindowViewModel>();
 
+            container.AddCore();
+            container.AddThemeManager();
+
 
 
 
             container.AddSingleton<INotificationService, NotificationService>();
             container.AddSingleton<INavigationService, NavigationService>();
-
-
-
-            container.AddCore();
-            container.AddThemeManager();
         }
 
         public void Configure(Container container)

@@ -1,11 +1,9 @@
-﻿using MahApps.Metro;
-using ReportsOrganizer.Core.Services;
+﻿using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.DI.Providers;
 using ReportsOrganizer.UI.Extensions;
 using ReportsOrganizer.UI.Models;
 using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading;
 using System.Windows;
 
@@ -25,17 +23,17 @@ namespace ReportsOrganizer.UI
             {
                 Current.Shutdown();
             }
+        }
 
+        protected override void OnStartup(StartupEventArgs startupEvent)
+        {
             var startup = new Startup();
 
             startup.ConfigureServices(ServiceCollectionProvider.Container);
             ServiceCollectionProvider.Container.Verify();
 
             startup.Configure(ServiceCollectionProvider.Container);
-        }
 
-        protected override void OnStartup(StartupEventArgs startupEvent)
-        {
             var applicationSettings = ServiceCollectionProvider.Container
                 .GetInstance<IApplicationOptions<ApplicationSettings>>();
 

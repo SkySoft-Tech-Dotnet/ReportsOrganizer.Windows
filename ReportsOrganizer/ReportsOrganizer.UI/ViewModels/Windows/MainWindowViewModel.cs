@@ -3,7 +3,9 @@ using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Helpers;
 using ReportsOrganizer.UI.ViewModels.Settings;
+using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -88,6 +90,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             _settingsGroupVisibility = Visibility.Hidden;
             _navigationSettingsVisibility = Visibility.Hidden;
             _headerSettingsGroup = LocalizationHelper.GetLocalizedValue("Settings:Group_Settings");
+
+            WindowVisibility = Environment.GetCommandLineArgs().Any(arg => arg == "/minimize")
+                ? Visibility.Hidden
+                : Visibility.Visible;
 
             TaskbarIconDoubleClickCommand = new RelayCommand(TaskbarIconOpenAction, true);
             TaskbarIconOpenCommand = new RelayCommand(TaskbarIconOpenAction, true);
