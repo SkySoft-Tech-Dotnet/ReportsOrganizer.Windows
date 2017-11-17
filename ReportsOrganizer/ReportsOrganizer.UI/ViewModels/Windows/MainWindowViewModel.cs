@@ -8,11 +8,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using ReportsOrganizer.UI.Services;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
     public class MainWindowViewModel : BaseViewModel
     {
+        private INavigationService _navigationService;
+
         private bool _settingsIsOpen;
         private string _headerSettingsGroup;
 
@@ -85,8 +88,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public ICommand OpenManageProjectsSettingsCommand { get; }
         public ICommand OpenPersonalizationSettingsCommand { get; }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
+
             _settingsGroupVisibility = Visibility.Hidden;
             _navigationSettingsVisibility = Visibility.Hidden;
             _headerSettingsGroup = LocalizationHelper.GetLocalizedValue("Settings:Group_Settings");
@@ -123,6 +128,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void TaskbarIconWriteReportAction(object sender)
         {
+            _navigationService.ShowNotificationWindow();
         }
 
         private void TaskbarIconExitAction(object sender)

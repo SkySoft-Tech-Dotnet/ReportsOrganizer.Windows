@@ -13,11 +13,13 @@ namespace ReportsOrganizer.DAL
     {
         private readonly ApplicationDbContext _applicationContext;
 
-        public ReportRepository(ApplicationDbContext applicationContext) : base(applicationContext)
-            => _applicationContext = applicationContext;
+        public ReportRepository(ApplicationDbContext applicationContext):base(applicationContext)
+        {
+            _applicationContext = applicationContext;
+        }
 
         public IQueryable<Report> LastReport
             => _applicationContext.Reports
-                .OrderByDescending(property => property.Id).Take(1);
+                .OrderByDescending(property => property.EndDate).Take(1);
     }
 }

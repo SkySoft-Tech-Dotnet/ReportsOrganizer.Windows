@@ -15,10 +15,7 @@ namespace ReportsOrganizer.UI.ViewModels
         private bool _settingsIsOpen;
         public bool SettingsIsOpen
         {
-            get
-            {
-                return _settingsIsOpen;
-            }
+            get => _settingsIsOpen;
             set
             {
                 _settingsIsOpen = value;
