@@ -1,13 +1,8 @@
-﻿
-using ReportsOrganizer.DAL;
+﻿using ReportsOrganizer.DAL;
 using ReportsOrganizer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace ReportsOrganizer.Core.Services
 {
@@ -21,9 +16,8 @@ namespace ReportsOrganizer.Core.Services
         private readonly IReportRepository _reportsRepository;
 
         public ReportService(IReportRepository reportsRepository)
-        {
-            _reportsRepository = reportsRepository;
-        }
+            => _reportsRepository = reportsRepository;
+
         public void Add(string description, CancellationToken cancellationToken)
         {
             var newReport = new Report{ Description = description };
