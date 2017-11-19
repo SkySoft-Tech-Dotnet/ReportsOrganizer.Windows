@@ -117,55 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="General_AutoRun" xml:space="preserve">
-    <value>Запускать ReportsOrginizer при загрузке Windows</value>
+  <data name="Notification_AddNote" xml:space="preserve">
+    <value>Add note</value>
   </data>
-  <data name="General_Language" xml:space="preserve">
-    <value>Язык отображения</value>
+  <data name="Notification_GetPrevious" xml:space="preserve">
+    <value>Get previous</value>
   </data>
-  <data name="General_RunMinimized" xml:space="preserve">
-    <value>Запускать ReportsOrginizer в трее</value>
+  <data name="Notification_Postpone" xml:space="preserve">
+    <value>Postpone</value>
   </data>
-  <data name="Group_General" xml:space="preserve">
-    <value>Общее</value>
-  </data>
-  <data name="Group_ManageProjects" xml:space="preserve">
-    <value>Менеджер проектов</value>
-  </data>
-  <data name="Group_Notification" xml:space="preserve">
-    <value>Уведомления</value>
-  </data>
-  <data name="Group_Personalization" xml:space="preserve">
-    <value>Персонализация</value>
-  </data>
-  <data name="Group_Settings" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="ManageProjects_AddProject" xml:space="preserve">
-    <value>Добавить проект</value>
-  </data>
-  <data name="ManageProjects_FullName" xml:space="preserve">
-    <value>Полное имя</value>
-  </data>
-  <data name="ManageProjects_IsActual" xml:space="preserve">
-    <value>Актуальный</value>
-  </data>
-  <data name="ManageProjects_SelectProject" xml:space="preserve">
-    <value>Выберите проект для редактирования</value>
-  </data>
-  <data name="ManageProjects_ShortName" xml:space="preserve">
-    <value>Краткое имя</value>
-  </data>
-  <data name="Notification_IgnoreTime" xml:space="preserve">
-    <value>Не отображать уведомления в указанное время</value>
-  </data>
-  <data name="Notification_Interval" xml:space="preserve">
-    <value>Отображать уведомления с интервалом</value>
-  </data>
-  <data name="Notification_SelectedTime" xml:space="preserve">
-    <value>Отображать уведомления в указанное время</value>
-  </data>
-  <data name="Personalization_Theme" xml:space="preserve">
-    <value>Выберите цветную тему</value>
+  <data name="Placeholder_Report" xml:space="preserve">
+    <value>Enter your report</value>
   </data>
 </root>

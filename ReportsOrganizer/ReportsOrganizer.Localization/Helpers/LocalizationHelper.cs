@@ -1,14 +1,14 @@
 ﻿using System.Reflection;
 using WPFLocalizeExtension.Extensions;
 
-namespace ReportsOrganizer.UI.Helpers
+namespace ReportsOrganizer.Localization.Helpers
 {
-    internal static class LocalizationHelper
+    public static class LocalizationHelper
     {
         public static T GetLocalizedValue<T>(string path)
         {
-            var ns = Assembly.GetCallingAssembly().GetName().Name;
-            return LocExtension.GetLocalizedValue<T>($"{ns}:{path}");
+            return LocExtension.GetLocalizedValue<T>(
+                $"{Assembly.GetExecutingAssembly().GetName().Name}:{path}");
         }
 
         public static string GetLocalizedValue(string path)

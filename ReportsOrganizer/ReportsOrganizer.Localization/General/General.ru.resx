@@ -117,55 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="General_AutoRun" xml:space="preserve">
-    <value>Запускати ReportsOrginizer при загрузці Windows</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="General_Language" xml:space="preserve">
-    <value>Мова відображення</value>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
   </data>
-  <data name="General_RunMinimized" xml:space="preserve">
-    <value>Запускати ReportsOrginizer в треї</value>
+  <data name="Month_April" xml:space="preserve">
+    <value>April</value>
   </data>
-  <data name="Group_General" xml:space="preserve">
-    <value>Основні</value>
+  <data name="Month_August" xml:space="preserve">
+    <value>August</value>
   </data>
-  <data name="Group_ManageProjects" xml:space="preserve">
-    <value>Менеджер проектів</value>
+  <data name="Month_December" xml:space="preserve">
+    <value>December</value>
   </data>
-  <data name="Group_Notification" xml:space="preserve">
-    <value>Сповіщення</value>
+  <data name="Month_February" xml:space="preserve">
+    <value>February</value>
   </data>
-  <data name="Group_Personalization" xml:space="preserve">
-    <value>Персоналізація</value>
+  <data name="Month_January" xml:space="preserve">
+    <value>January</value>
   </data>
-  <data name="Group_Settings" xml:space="preserve">
-    <value>Налаштування</value>
+  <data name="Month_July" xml:space="preserve">
+    <value>July</value>
   </data>
-  <data name="ManageProjects_AddProject" xml:space="preserve">
-    <value>Додати проект</value>
+  <data name="Month_June" xml:space="preserve">
+    <value>June</value>
   </data>
-  <data name="ManageProjects_FullName" xml:space="preserve">
-    <value>Повна назва</value>
+  <data name="Month_March" xml:space="preserve">
+    <value>March</value>
   </data>
-  <data name="ManageProjects_IsActual" xml:space="preserve">
-    <value>Актувальний</value>
+  <data name="Month_May" xml:space="preserve">
+    <value>May</value>
   </data>
-  <data name="ManageProjects_SelectProject" xml:space="preserve">
-    <value>Виберіть проект для редагування</value>
+  <data name="Month_November" xml:space="preserve">
+    <value>November</value>
   </data>
-  <data name="ManageProjects_ShortName" xml:space="preserve">
-    <value>Коротка назва</value>
+  <data name="Month_October" xml:space="preserve">
+    <value>October</value>
   </data>
-  <data name="Notification_IgnoreTime" xml:space="preserve">
-    <value>Не відображати сповіщення у вказаний час</value>
+  <data name="Month_September" xml:space="preserve">
+    <value>September</value>
   </data>
-  <data name="Notification_Interval" xml:space="preserve">
-    <value>Відображати сповіщення з інтервалом</value>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="Notification_SelectedTime" xml:space="preserve">
-    <value>Відображати сповіщення у вказаний час</value>
-  </data>
-  <data name="Personalization_Theme" xml:space="preserve">
-    <value>Виберіть кольорову тему</value>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

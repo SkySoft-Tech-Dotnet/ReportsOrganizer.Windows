@@ -117,79 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddNotes" xml:space="preserve">
-    <value>Add notes</value>
+  <data name="Notification_AddNote" xml:space="preserve">
+    <value>Add note</value>
   </data>
-  <data name="ComeBack" xml:space="preserve">
-    <value>Come back</value>
-  </data>
-  <data name="GetPrevious" xml:space="preserve">
+  <data name="Notification_GetPrevious" xml:space="preserve">
     <value>Get previous</value>
   </data>
-  <data name="Hours" xml:space="preserve">
-    <value>Hours</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>Minutes</value>
-  </data>
-  <data name="Month" xml:space="preserve">
-    <value>Month</value>
-  </data>
-  <data name="MonthApr" xml:space="preserve">
-    <value>April</value>
-  </data>
-  <data name="MonthAug" xml:space="preserve">
-    <value>August</value>
-  </data>
-  <data name="MonthDec" xml:space="preserve">
-    <value>December</value>
-  </data>
-  <data name="MonthFeb" xml:space="preserve">
-    <value>February</value>
-  </data>
-  <data name="MonthJan" xml:space="preserve">
-    <value>January</value>
-  </data>
-  <data name="MonthJuly" xml:space="preserve">
-    <value>July</value>
-  </data>
-  <data name="MonthJune" xml:space="preserve">
-    <value>June</value>
-  </data>
-  <data name="MonthMar" xml:space="preserve">
-    <value>March</value>
-  </data>
-  <data name="MonthMay" xml:space="preserve">
-    <value>May</value>
-  </data>
-  <data name="MonthNov" xml:space="preserve">
-    <value>November</value>
-  </data>
-  <data name="MonthOct" xml:space="preserve">
-    <value>October</value>
-  </data>
-  <data name="MonthSept" xml:space="preserve">
-    <value>September</value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="Postpone" xml:space="preserve">
+  <data name="Notification_Postpone" xml:space="preserve">
     <value>Postpone</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="Time" xml:space="preserve">
-    <value>Time</value>
-  </data>
-  <data name="WriteReport" xml:space="preserve">
-    <value>Enter your report here</value>
-  </data>
-  <data name="Year" xml:space="preserve">
-    <value>Year</value>
+  <data name="Placeholder_Report" xml:space="preserve">
+    <value>Enter your report</value>
   </data>
 </root>

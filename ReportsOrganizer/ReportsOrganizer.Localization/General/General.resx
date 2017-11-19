@@ -117,13 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Exit" xml:space="preserve">
-    <value>Выход</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="Open" xml:space="preserve">
-    <value>Открыть</value>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
   </data>
-  <data name="WriteReport" xml:space="preserve">
-    <value>Написать отчет</value>
+  <data name="Month_April" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="Month_August" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="Month_December" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="Month_February" xml:space="preserve">
+    <value>February</value>
+  </data>
+  <data name="Month_January" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="Month_July" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="Month_June" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="Month_March" xml:space="preserve">
+    <value>March</value>
+  </data>
+  <data name="Month_May" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="Month_November" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="Month_October" xml:space="preserve">
+    <value>October</value>
+  </data>
+  <data name="Month_September" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

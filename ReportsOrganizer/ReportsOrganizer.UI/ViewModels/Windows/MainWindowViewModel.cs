@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using ReportsOrganizer.UI.Services;
 using WPFLocalizeExtension.Engine;
+using ReportsOrganizer.Localization.Helpers;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {

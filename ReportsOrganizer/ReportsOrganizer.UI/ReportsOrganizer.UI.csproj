@@ -120,32 +120,6 @@
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\ThemeServiceCollectionExtensions.cs" />
     <Compile Include="Helpers\FlyoutHelper.cs" />
-    <Compile Include="Helpers\LocalizationHelper.cs" />
-    <Compile Include="Localizations\General\General.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>General.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Localizations\General\General.ru.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>General.ru.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Localizations\Settings\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Settings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Localizations\TaskbarIcon\TaskbarIcon.Designer.cs">
-      <DependentUpon>TaskbarIcon.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Localizations\TaskbarIcon\TaskbarIcon.ru.Designer.cs">
-      <DependentUpon>TaskbarIcon.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Models\ApplicationNotification.cs" />
     <Compile Include="Models\ApplicationSettings.cs" />
     <Compile Include="Models\IntItem.cs" />
@@ -327,33 +301,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Localizations\General\General.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>General.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localizations\Settings\Settings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localizations\Settings\Settings.ru.resx" />
-    <EmbeddedResource Include="Localizations\Settings\Settings.uk.resx" />
-    <EmbeddedResource Include="Localizations\TaskbarIcon\TaskbarIcon.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>TaskbarIcon.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localizations\TaskbarIcon\TaskbarIcon.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>TaskbarIcon.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <EmbeddedResource Include="Localizations\General\General.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>General.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -384,6 +336,10 @@
     <ProjectReference Include="..\ReportsOrganizer.DI\ReportsOrganizer.DI.csproj">
       <Project>{32ec9bf8-1a4b-44fd-ba0e-a4d929c90b11}</Project>
       <Name>ReportsOrganizer.DI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportsOrganizer.Localization\ReportsOrganizer.Localization.csproj">
+      <Project>{92ddbbe4-fb02-47c4-b833-2cc36396876b}</Project>
+      <Name>ReportsOrganizer.Localization</Name>
     </ProjectReference>
     <ProjectReference Include="..\ReportsOrganizer.Models\ReportsOrganizer.Models.csproj">
       <Project>{E1768370-C9EC-4C3F-B6C2-0F1D1C6BC695}</Project>

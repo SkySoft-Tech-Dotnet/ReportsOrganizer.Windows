@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReportsOrganizer.UI.Localizations.TaskbarIcon {
+namespace ReportsOrganizer.Localization.TaskbarIcon {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace ReportsOrganizer.UI.Localizations.TaskbarIcon {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class TaskbarIcon {
+    internal class TaskbarIcon {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace ReportsOrganizer.UI.Localizations.TaskbarIcon {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReportsOrganizer.UI.Localizations.TaskbarIcon.TaskbarIcon", typeof(TaskbarIcon).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReportsOrganizer.Localization.TaskbarIcon.TaskbarIcon", typeof(TaskbarIcon).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ReportsOrganizer.UI.Localizations.TaskbarIcon {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,27 +63,27 @@ namespace ReportsOrganizer.UI.Localizations.TaskbarIcon {
         /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
-        public static string Exit {
+        internal static string ContextMenu_Exit {
             get {
-                return ResourceManager.GetString("Exit", resourceCulture);
+                return ResourceManager.GetString("ContextMenu_Exit", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
-        public static string Open {
+        internal static string ContextMenu_Open {
             get {
-                return ResourceManager.GetString("Open", resourceCulture);
+                return ResourceManager.GetString("ContextMenu_Open", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Write report.
         /// </summary>
-        public static string WriteReport {
+        internal static string ContextMenu_WriteReport {
             get {
-                return ResourceManager.GetString("WriteReport", resourceCulture);
+                return ResourceManager.GetString("ContextMenu_WriteReport", resourceCulture);
             }
         }
     }

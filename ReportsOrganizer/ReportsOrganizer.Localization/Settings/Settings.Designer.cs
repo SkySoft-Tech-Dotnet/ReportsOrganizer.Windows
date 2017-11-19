@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReportsOrganizer.UI.Localizations.Settings {
+namespace ReportsOrganizer.Localization.Settings {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ReportsOrganizer.UI.Localizations.Settings {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReportsOrganizer.UI.Localizations.Settings.Settings", typeof(Settings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReportsOrganizer.Localization.Settings.Settings", typeof(Settings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -21,7 +21,7 @@
                       WindowState="{Binding Path=CurrentWindowState}"
                       d:DesignHeight="{StaticResource WindowMinHeight}"
                       d:DesignWidth="{StaticResource WindowWidth}"
-                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.UI"
+                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
                       lex:ResxLocalizationProvider.DefaultDictionary="Strings"
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReportsOrganizer.UI.Localizations.General {
+namespace ReportsOrganizer.Localization.General {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace ReportsOrganizer.UI.Localizations.General {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class General {
+    internal class General {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace ReportsOrganizer.UI.Localizations.General {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReportsOrganizer.UI.Localizations.General.General", typeof(General).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReportsOrganizer.Localization.General.General", typeof(General).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ReportsOrganizer.UI.Localizations.General {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,54 +61,18 @@ namespace ReportsOrganizer.UI.Localizations.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add notes.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        public static string AddNotes {
+        internal static string Cancel {
             get {
-                return ResourceManager.GetString("AddNotes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Come back.
-        /// </summary>
-        public static string ComeBack {
-            get {
-                return ResourceManager.GetString("ComeBack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Get previous.
-        /// </summary>
-        public static string GetPrevious {
-            get {
-                return ResourceManager.GetString("GetPrevious", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hours.
-        /// </summary>
-        public static string Hours {
-            get {
-                return ResourceManager.GetString("Hours", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Minutes.
-        /// </summary>
-        public static string Minutes {
-            get {
-                return ResourceManager.GetString("Minutes", resourceCulture);
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Month.
         /// </summary>
-        public static string Month {
+        internal static string Month {
             get {
                 return ResourceManager.GetString("Month", resourceCulture);
             }
@@ -117,171 +81,126 @@ namespace ReportsOrganizer.UI.Localizations.General {
         /// <summary>
         ///   Looks up a localized string similar to April.
         /// </summary>
-        public static string MonthApr {
+        internal static string Month_April {
             get {
-                return ResourceManager.GetString("MonthApr", resourceCulture);
+                return ResourceManager.GetString("Month_April", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to August.
         /// </summary>
-        public static string MonthAug {
+        internal static string Month_August {
             get {
-                return ResourceManager.GetString("MonthAug", resourceCulture);
+                return ResourceManager.GetString("Month_August", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to December.
         /// </summary>
-        public static string MonthDec {
+        internal static string Month_December {
             get {
-                return ResourceManager.GetString("MonthDec", resourceCulture);
+                return ResourceManager.GetString("Month_December", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to February.
         /// </summary>
-        public static string MonthFeb {
+        internal static string Month_February {
             get {
-                return ResourceManager.GetString("MonthFeb", resourceCulture);
+                return ResourceManager.GetString("Month_February", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to January.
         /// </summary>
-        public static string MonthJan {
+        internal static string Month_January {
             get {
-                return ResourceManager.GetString("MonthJan", resourceCulture);
+                return ResourceManager.GetString("Month_January", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to July.
         /// </summary>
-        public static string MonthJuly {
+        internal static string Month_July {
             get {
-                return ResourceManager.GetString("MonthJuly", resourceCulture);
+                return ResourceManager.GetString("Month_July", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to June.
         /// </summary>
-        public static string MonthJune {
+        internal static string Month_June {
             get {
-                return ResourceManager.GetString("MonthJune", resourceCulture);
+                return ResourceManager.GetString("Month_June", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to March.
         /// </summary>
-        public static string MonthMar {
+        internal static string Month_March {
             get {
-                return ResourceManager.GetString("MonthMar", resourceCulture);
+                return ResourceManager.GetString("Month_March", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to May.
         /// </summary>
-        public static string MonthMay {
+        internal static string Month_May {
             get {
-                return ResourceManager.GetString("MonthMay", resourceCulture);
+                return ResourceManager.GetString("Month_May", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
-        public static string MonthNov {
+        internal static string Month_November {
             get {
-                return ResourceManager.GetString("MonthNov", resourceCulture);
+                return ResourceManager.GetString("Month_November", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to October.
         /// </summary>
-        public static string MonthOct {
+        internal static string Month_October {
             get {
-                return ResourceManager.GetString("MonthOct", resourceCulture);
+                return ResourceManager.GetString("Month_October", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to September.
         /// </summary>
-        public static string MonthSept {
+        internal static string Month_September {
             get {
-                return ResourceManager.GetString("MonthSept", resourceCulture);
+                return ResourceManager.GetString("Month_September", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
-        public static string OK {
+        internal static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postpone.
-        /// </summary>
-        public static string Postpone {
-            get {
-                return ResourceManager.GetString("Postpone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
-        public static string Save {
+        internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Settings.
-        /// </summary>
-        public static string Settings {
-            get {
-                return ResourceManager.GetString("Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Time.
-        /// </summary>
-        public static string Time {
-            get {
-                return ResourceManager.GetString("Time", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter your report here.
-        /// </summary>
-        public static string WriteReport {
-            get {
-                return ResourceManager.GetString("WriteReport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Year.
-        /// </summary>
-        public static string Year {
-            get {
-                return ResourceManager.GetString("Year", resourceCulture);
             }
         }
     }
