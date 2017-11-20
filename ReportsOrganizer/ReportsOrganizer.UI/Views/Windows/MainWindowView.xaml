@@ -91,12 +91,12 @@
                              DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
             <taskBar:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="{lex:Loc TaskbarIcon:Open}"
+                    <MenuItem Header="{lex:Loc TaskbarIcon:ContextMenu_Open}"
                               Command="{Binding Path=TaskbarIconOpenCommand}" />
-                    <MenuItem Header="{lex:Loc TaskbarIcon:WriteReport}"
+                    <MenuItem Header="{lex:Loc TaskbarIcon:ContextMenu_WriteReport}"
                               Command="{Binding Path=TaskbarIconWriteReportCommand}" />
                     <Separator />
-                    <MenuItem Header="{lex:Loc TaskbarIcon:Exit}"
+                    <MenuItem Header="{lex:Loc TaskbarIcon:ContextMenu_Exit}"
                               Command="{Binding Path=TaskbarIconExitCommand}" />
                 </ContextMenu>
             </taskBar:TaskbarIcon.ContextMenu>

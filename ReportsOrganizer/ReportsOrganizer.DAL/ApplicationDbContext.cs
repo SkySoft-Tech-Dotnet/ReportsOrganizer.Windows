@@ -14,12 +14,12 @@ namespace ReportsOrganizer.DAL
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlite(@"data source=DataBase\ReportsDataBase.db");
-            optionsBuilder.UseSqlite(@"data source=E:\Work\ReportsOrganizer\ReportsOrganizer.DAL\DataBase\ReportDatabase.db");
+            optionsBuilder.UseSqlite(@"data source=reports.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
 
         }
 
