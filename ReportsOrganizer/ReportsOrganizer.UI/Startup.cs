@@ -33,9 +33,7 @@ namespace ReportsOrganizer.UI
             container.AddCore();
             container.AddThemeManager();
 
-
-
-
+            
             container.AddSingleton<INotificationService, NotificationService>();
             container.AddSingleton<INavigationService, NavigationService>();
         }

@@ -14,7 +14,7 @@ namespace ReportsOrganizer.DAL
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"data source=reports.db");
+            optionsBuilder.UseSqlite(@"data source=Reports.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

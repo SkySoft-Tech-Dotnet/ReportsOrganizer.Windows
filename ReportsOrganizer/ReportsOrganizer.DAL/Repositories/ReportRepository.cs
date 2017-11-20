@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using ReportsOrganizer.DAL.Abstractions;
 using ReportsOrganizer.Models;
 
@@ -6,6 +7,7 @@ namespace ReportsOrganizer.DAL.Repositories
 {
     public interface IReportRepository : IBaseRepository<Report>
     {
+        IQueryable<Report> FindReport(DateTime startDate, DateTime endDate);
         IQueryable<Report> LastReport { get; }
     }
 
@@ -17,6 +19,10 @@ namespace ReportsOrganizer.DAL.Repositories
         {
             _applicationContext = applicationContext;
         }
+
+        public IQueryable<Report> FindReport(DateTime startDate, DateTime endDate)
+            => _applicationContext.Reports
+                .Where(property => property.StartDate >= startDate && property.EndDate <= endDate);
 
         public IQueryable<Report> LastReport
             => _applicationContext.Reports

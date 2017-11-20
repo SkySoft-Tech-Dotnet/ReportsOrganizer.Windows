@@ -117,6 +117,7 @@
     <Compile Include="Abstractions\BaseViewModel.cs" />
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
     <Compile Include="Converters\DateConverter.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\ThemeServiceCollectionExtensions.cs" />
     <Compile Include="Helpers\FlyoutHelper.cs" />
