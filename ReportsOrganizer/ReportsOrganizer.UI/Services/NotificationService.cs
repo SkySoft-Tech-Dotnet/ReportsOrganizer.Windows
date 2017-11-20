@@ -50,7 +50,7 @@ namespace ReportsOrganizer.UI.Services
 
         public void AddReport(string report)
         {
-            _reportService.Add(report, CancellationToken.None);
+            //_reportService.Add(report, CancellationToken.None);
         }
 
         public Task<Report> GetLastReport()
