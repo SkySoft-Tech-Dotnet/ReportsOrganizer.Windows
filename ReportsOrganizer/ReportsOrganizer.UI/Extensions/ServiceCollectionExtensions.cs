@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace ReportsOrganizer.UI.Extensions
 {
-    internal static class ThemeServiceCollectionExtensions
+    internal static class ServiceCollectionExtensions
     {
         public static void AddThemeManager(this Container container)
         {

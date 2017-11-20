@@ -33,20 +33,14 @@ namespace ReportsOrganizer.UI
             container.AddCore();
             container.AddThemeManager();
 
-
-
-
             container.AddSingleton<INotificationService, NotificationService>();
             container.AddSingleton<INavigationService, NavigationService>();
         }
 
         public void Configure(Container container)
         {
-            var applicationSettings = container
-                .GetInstance<IApplicationOptions<ApplicationSettings>>().Value;
-
-            LocalizeDictionary.Instance.Culture
-                = new CultureInfo(applicationSettings.General.Language);
+            var applicationSettings = container.GetInstance<IApplicationOptions<ApplicationSettings>>().Value;
+            LocalizeDictionary.Instance.Culture = new CultureInfo(applicationSettings.General.Language);
 
             container.UseThemeManager()
                 .AddTheme("Amber", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Amber.xaml"))

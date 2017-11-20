@@ -118,7 +118,7 @@
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
-    <Compile Include="Extensions\ThemeServiceCollectionExtensions.cs" />
+    <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Helpers\FlyoutHelper.cs" />
     <Compile Include="Models\ApplicationNotification.cs" />
     <Compile Include="Models\ApplicationSettings.cs" />
