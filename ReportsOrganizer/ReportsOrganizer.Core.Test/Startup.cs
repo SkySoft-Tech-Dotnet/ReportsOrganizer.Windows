@@ -13,6 +13,8 @@ namespace ReportsOrganizer.Core.Test
         {
             ServiceCollectionProvider.Container
                 .AddConfiguration<ApplicationSettings>("appsettings.test.json");
+
+            ServiceCollectionProvider.Container.AddCore();
         }
     }
 }

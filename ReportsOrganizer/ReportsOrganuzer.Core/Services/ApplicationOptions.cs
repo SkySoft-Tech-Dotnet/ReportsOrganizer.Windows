@@ -85,6 +85,7 @@ namespace ReportsOrganizer.Core.Services
                             .Wait(cancellationTokenSource.Token);
                     }
                     catch (AggregateException) { }
+                    catch (OperationCanceledException) { }
                 }
             }
 

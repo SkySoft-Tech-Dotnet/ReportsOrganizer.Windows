@@ -1,4 +1,5 @@
-﻿using ReportsOrganizer.Core.Services;
+﻿using ReportsOrganizer.Core.Managers;
+using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Models;
 using System.Collections.Generic;

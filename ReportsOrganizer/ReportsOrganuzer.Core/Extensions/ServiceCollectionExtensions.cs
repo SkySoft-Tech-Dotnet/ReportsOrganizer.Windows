@@ -1,4 +1,5 @@
-﻿using ReportsOrganizer.Core.Services;
+﻿using ReportsOrganizer.Core.Managers;
+using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.DAL.Extensions;
 using ReportsOrganizer.DI.Extensions;
 using SimpleInjector;
@@ -20,9 +21,11 @@ namespace ReportsOrganizer.Core.Extensions
         public static void AddCore(this Container container)
         {
             container.AddTransient<IApplicationManage, ApplicationManage>();
-            
+            container.AddSingleton<ISchedulerManage, SchedulerManage>();
+
             container.AddSingleton<IReportService, ReportService>();
             container.AddSingleton<IProjectService, ProjectService>();
+
             container.AddRepository();
         }
     }

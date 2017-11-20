@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace ReportsOrganizer.Core.Services
+namespace ReportsOrganizer.Core.Managers
 {
     public interface IApplicationManage
     {

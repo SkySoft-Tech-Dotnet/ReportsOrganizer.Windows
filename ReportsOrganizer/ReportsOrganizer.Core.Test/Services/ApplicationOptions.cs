@@ -16,7 +16,7 @@ namespace ReportsOrganizer.Core.Test.Services
     {
         [DataTestMethod]
         [DataRow("ru"), DataRow("ua"), DataRow("en")]
-        public async Task UpdateAsync(string language)
+        public async Task ApplicationOptions_UpdateAsync(string language)
         {
             var service = ServiceCollectionProvider.Container
                 .GetInstance<IApplicationOptions<ApplicationSettings>>();
@@ -30,7 +30,7 @@ namespace ReportsOrganizer.Core.Test.Services
 
         [DataTestMethod]
         [DataRow("ru", 5), DataRow("ua", 10), DataRow("en", 50)]
-        public async Task UpdateAsyncThreads(string language, int taskCount)
+        public async Task ApplicationOptions_UpdateAsyncThreads(string language, int taskCount)
         {
             var service = ServiceCollectionProvider.Container
                 .GetInstance<IApplicationOptions<ApplicationSettings>>();
@@ -49,7 +49,7 @@ namespace ReportsOrganizer.Core.Test.Services
 
         [DataTestMethod]
         [DataRow("ru", 5), DataRow("ua", 10), DataRow("en", 50)]
-        public async Task UpdateAsyncThreadsDelay(string language, int taskCount)
+        public async Task ApplicationOptions_UpdateAsyncThreadsDelay(string language, int taskCount)
         {
             var service = ServiceCollectionProvider.Container
                 .GetInstance<IApplicationOptions<ApplicationSettings>>();
