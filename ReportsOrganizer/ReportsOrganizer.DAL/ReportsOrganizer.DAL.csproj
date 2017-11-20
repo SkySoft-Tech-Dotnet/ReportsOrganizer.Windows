@@ -175,7 +175,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="reports.db" />
+    <None Include="Reports.db" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReportsOrganizer.DI\ReportsOrganizer.DI.csproj">
