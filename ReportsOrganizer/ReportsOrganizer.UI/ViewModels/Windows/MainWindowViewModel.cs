@@ -11,6 +11,8 @@ using System.Windows.Input;
 using ReportsOrganizer.UI.Services;
 using WPFLocalizeExtension.Engine;
 using ReportsOrganizer.Localization.Helpers;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -120,6 +122,22 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             OpenPersonalizationSettingsCommand = new RelayCommand(OpenPersonalizationSettingsAction, true);
 
             LocalizeDictionary.Instance.PropertyChanged += LocalizeChanged;
+
+            new Task(() =>
+            {
+                var handle = new EventWaitHandle(true, EventResetMode.AutoReset, App.OpenEventHandle);
+                while (true)
+                {
+                    handle.WaitOne();
+
+                    if (WindowState.Minimized == CurrentWindowState)
+                    {
+                        CurrentWindowState = _prevWindowState;
+                    }
+
+                    WindowVisibility = Visibility.Visible;
+                }
+            }).Start();
         }
 
         ~MainWindowViewModel()

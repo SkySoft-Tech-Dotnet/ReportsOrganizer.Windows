@@ -26,9 +26,9 @@ namespace ReportsOrganizer.UI
             container.AddTransient<NotificationViewModel>();
             container.AddTransient<PersonalizationViewModel>();
 
-            container.AddTransient<MainWindowViewModel>();
+            container.AddSingleton<MainWindowViewModel>();
+            container.AddSingleton<NotificationWindowViewModel>();
             container.AddTransient<ManageProjectWindowViewModel>();
-            container.AddTransient<NotificationWindowViewModel>();
 
             container.AddCore();
             container.AddThemeManager();

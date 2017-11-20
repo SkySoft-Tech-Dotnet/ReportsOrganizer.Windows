@@ -53,7 +53,7 @@ namespace ReportsOrganizer.UI
 
         private void SetEventWaitHandle(string name)
         {
-            if (!EventWaitHandle.TryOpenExisting(name, out EventWaitHandle eventHandle))
+            if (EventWaitHandle.TryOpenExisting(name, out EventWaitHandle eventHandle))
             {
                 eventHandle.Set();
             }
