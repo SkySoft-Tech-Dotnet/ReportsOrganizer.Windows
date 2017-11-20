@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Notification_AddNote" xml:space="preserve">
-    <value>Add note</value>
+    <value>Додати запис</value>
   </data>
   <data name="Notification_GetPrevious" xml:space="preserve">
-    <value>Get previous</value>
+    <value>Попередній</value>
   </data>
   <data name="Notification_Postpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>Відкласти</value>
   </data>
   <data name="Placeholder_Report" xml:space="preserve">
-    <value>Enter your report</value>
+    <value>Введіть звіт</value>
   </data>
 </root>

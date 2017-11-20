@@ -118,54 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="General_AutoRun" xml:space="preserve">
-    <value>Start ReportsOrginizer with Windows</value>
+    <value>Запускати ReportsOrginizer разом з Windows</value>
   </data>
   <data name="General_Language" xml:space="preserve">
-    <value>Display language</value>
+    <value>Мова</value>
   </data>
   <data name="General_RunMinimized" xml:space="preserve">
-    <value>Start ReportsOrginizer minimized in the system tray</value>
+    <value>Запускати звернуто</value>
   </data>
   <data name="Group_General" xml:space="preserve">
-    <value>General</value>
+    <value>Загальне</value>
   </data>
   <data name="Group_ManageProjects" xml:space="preserve">
-    <value>Manage projects</value>
+    <value>Менеджер проектів</value>
   </data>
   <data name="Group_Notification" xml:space="preserve">
-    <value>Notification</value>
+    <value>Сповіщення</value>
   </data>
   <data name="Group_Personalization" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Персоналізація</value>
   </data>
   <data name="Group_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Налаштування</value>
   </data>
   <data name="ManageProjects_AddProject" xml:space="preserve">
-    <value>Add project</value>
+    <value>Додати проект</value>
   </data>
   <data name="ManageProjects_FullName" xml:space="preserve">
-    <value>Full name</value>
+    <value>Повне ім'я</value>
   </data>
   <data name="ManageProjects_IsActual" xml:space="preserve">
-    <value>Actual</value>
+    <value>Актуальний</value>
   </data>
   <data name="ManageProjects_SelectProject" xml:space="preserve">
-    <value>Select an project to edit</value>
+    <value>Виберіть проект для редагування</value>
   </data>
   <data name="ManageProjects_ShortName" xml:space="preserve">
-    <value>Short name</value>
+    <value>Коротке ім'я</value>
   </data>
   <data name="Notification_IgnoreTime" xml:space="preserve">
-    <value>Don't show notification at selected times</value>
+    <value>Не показувати сповіщення у вибраний час</value>
   </data>
   <data name="Notification_Interval" xml:space="preserve">
-    <value>Show notification at intervals</value>
+    <value>Показувати сповіщення через інтервал</value>
   </data>
   <data name="Notification_SelectedTime" xml:space="preserve">
-    <value>Show notification at selected times</value>
+    <value>Показувати сповіщення в заданий час</value>
   </data>
   <data name="Personalization_Theme" xml:space="preserve">
-    <value>Choose your color theme</value>
+    <value>Виберіть тему</value>
   </data>
 </root>
