@@ -8,10 +8,10 @@ namespace ReportsOrganizer.DAL.Extensions
     {
         public static void AddRepository(this Container container)
         {
-            container.AddSingleton<ApplicationDbContext>();
+            container.AddTransient<ApplicationDbContext>();
 
-            container.AddSingleton<IReportRepository, ReportRepository>();
-            container.AddSingleton<IProjectRepository, ProjectRepository>();
+            container.AddTransient<IReportRepository, ReportRepository>();
+            container.AddTransient<IProjectRepository, ProjectRepository>();
         }
     }
 }

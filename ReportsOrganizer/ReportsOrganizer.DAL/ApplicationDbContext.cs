@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using Microsoft.EntityFrameworkCore;
 using ReportsOrganizer.Models;
 
 namespace ReportsOrganizer.DAL
@@ -17,15 +12,5 @@ namespace ReportsOrganizer.DAL
         {
             optionsBuilder.UseSqlite(@"data source=Reports.db");
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-
-        }
-
-        
-
-        
     }
 }
