@@ -1,18 +1,17 @@
 ﻿using ReportsOrganizer.DI.Providers;
+using ReportsOrganizer.Localization.Helpers;
 using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
-using ReportsOrganizer.UI.Helpers;
+using ReportsOrganizer.UI.Services;
 using ReportsOrganizer.UI.ViewModels.Settings;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using ReportsOrganizer.UI.Services;
 using WPFLocalizeExtension.Engine;
-using ReportsOrganizer.Localization.Helpers;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -203,7 +202,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void OpenNotificationSettingsAction(object obj)
         {
-            OpenSettingsPage<NotificationViewModel>();
+            OpenSettingsPage<Settings.NotificationViewModel>();
             HeaderSettingsGroupLocalizeKey = "Settings:Group_Notification";
         }
 
