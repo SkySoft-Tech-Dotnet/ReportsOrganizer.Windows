@@ -26,28 +26,5 @@ namespace ReportsOrganizer.UI.ViewModels
 
         public PersonalizationViewModel PersonalizationSettings =>
             ServiceCollectionProvider.Container.GetInstance<PersonalizationViewModel>();
-
-        
-
-
-
-
-
-        public MainViewModel Main
-        {
-            get { return null; }
-            //get { return IoC.Container.GetInstance<MainViewModel>(); }
-        }
-
-        public NotificationViewModel Notification
-        {
-            get { return null; }
-            //get { return IoC.Container.GetInstance<NotificationViewModel>(); }
-        }
-
-        //public SettingsViewModel SettingsPage
-        //{
-        //    get { return IoC.Container.GetInstance<SettingsViewModel>(); }
-        //}
     }
 }

@@ -44,5 +44,11 @@ namespace ReportsOrganizer.DI.Extensions
         {
             container.RegisterSingleton<TService>();
         }
+
+        public static void AddSingleton<TService>(this Container container, TService instance)
+            where TService : class
+        {
+            container.RegisterSingleton<TService>(instance);
+        }
     }
 }

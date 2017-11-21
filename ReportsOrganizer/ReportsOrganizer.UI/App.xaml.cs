@@ -3,11 +3,10 @@ using ReportsOrganizer.DI.Providers;
 using ReportsOrganizer.UI.Extensions;
 using ReportsOrganizer.UI.Models;
 using System;
-using System.Linq;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Windows;
-using System.Globalization;
 
 namespace ReportsOrganizer.UI
 {
@@ -36,17 +35,15 @@ namespace ReportsOrganizer.UI
         protected override void OnStartup(StartupEventArgs startupEvent)
         {
             var startup = new Startup();
-
             startup.ConfigureServices(ServiceCollectionProvider.Container);
             ServiceCollectionProvider.Container.Verify();
 
-            startup.Configure(ServiceCollectionProvider.Container);
+            var startupType = typeof(Startup);
+            var methodInfo = startupType.GetMethod(nameof(startup.Configure));
+            var parameters = methodInfo.GetParameters();
 
-            var applicationSettings = ServiceCollectionProvider.Container
-                .GetInstance<IApplicationOptions<ApplicationSettings>>();
-
-            ServiceCollectionProvider.Container.UseTheme(
-                applicationSettings.Value.Personalization.Theme);
+            methodInfo.Invoke(startup, parameters.Select(parameter
+                => ServiceCollectionProvider.Container.GetInstance(parameter.ParameterType)).ToArray());
 
             base.OnStartup(startupEvent);
         }
