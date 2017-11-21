@@ -68,6 +68,9 @@
                 <DataTrigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MetroFlyoutRoot" Storyboard.TargetProperty="(ContentControl.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="00:00:00.1500000" Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
                             <ThicknessAnimation Storyboard.TargetName="MetroFlyoutRoot"
                                                 Storyboard.TargetProperty="(ContentControl.Margin)"
                                                 From="{StaticResource FlyoutContentTemplateMargin}"
@@ -92,6 +95,9 @@
                 <DataTrigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MetroFlyoutRoot" Storyboard.TargetProperty="(ContentControl.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="00:00:00.0000000" Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
                             <ThicknessAnimation Storyboard.TargetName="MetroFlyoutRoot"
                                                 Storyboard.TargetProperty="(ContentControl.Margin)"
                                                 From="{StaticResource FlyoutContentTemplateInitMargin}"
