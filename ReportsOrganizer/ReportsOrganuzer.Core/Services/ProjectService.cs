@@ -1,6 +1,8 @@
-﻿using ReportsOrganizer.DAL;
+﻿using System.Collections.Generic;
+using ReportsOrganizer.DAL;
 using ReportsOrganizer.Models;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ReportsOrganizer.Core.Abstractions;
@@ -11,6 +13,7 @@ namespace ReportsOrganizer.Core.Services
 {
     public interface IProjectService : IBaseService<Project>
     {
+        Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken);
     }
 
     internal class ProjectService : BaseService<Project>, IProjectService
@@ -19,5 +22,11 @@ namespace ReportsOrganizer.Core.Services
 
         public ProjectService(IProjectRepository projectRepository) : base(projectRepository)
             => _projectRepository = projectRepository;
+
+        public async Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken)
+        {
+            return await Task.Run(() => _projectRepository.Get().ToList(), cancellationToken);
+            //return await ;
+        }
     }
 }

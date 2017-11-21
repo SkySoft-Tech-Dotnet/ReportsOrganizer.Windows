@@ -5,7 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
-                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
+             lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
              mc:Ignorable="d"
              DataContext="{Binding Path=GeneralSettings, Source={StaticResource ViewModelLocator}}">
     

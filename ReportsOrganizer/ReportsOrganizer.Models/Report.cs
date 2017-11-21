@@ -9,7 +9,7 @@ namespace ReportsOrganizer.Models
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public TimeSpan Duration { get; set; }
+        public DateTime Duration { get; set; }
 
         public Project Project { get; set; }
     }

@@ -5,7 +5,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
-                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
+             lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
+             DataContext="{Binding Path=ManageProjectsSettings, Source={StaticResource ViewModelLocator}}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="10">
@@ -18,33 +19,46 @@
 
         <TextBlock Text="{lex:Loc Settings:ManageProjects_SelectProject}"
                    Grid.Row="0" />
-        <Button Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+        <ItemsControl 
+            Background="Transparent"
+            Grid.Row="1"
+            ItemsSource="{Binding Path=CurrentProjects, UpdateSourceTrigger=PropertyChanged}">
+            <!---->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                        <Button Grid.Row="1" HorizontalContentAlignment="Left">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                <iconPacks:PackIconMaterial Kind="AccountMultiple"
-                                            Grid.Column="0"
-                                            Height="Auto"
-                                            VerticalAlignment="Center"
-                                            Grid.RowSpan="2"
-                                            Margin="2,0"/>
-                <TextBlock Text="UCCC"
-                           Grid.Column="1"
-                           Grid.Row="0" />
-                <TextBlock Text="Universal Cross-Connection Control"
-                           TextWrapping="Wrap"
-                           Grid.Column="1"
-                           Grid.Row="1" />
-            </Grid>
-        </Button>
-        <Button Grid.Row="2">
+                                <iconPacks:PackIconMaterial Kind="AccountMultiple"
+                                                            Grid.Column="0"
+                                                            Height="Auto"
+                                                            VerticalAlignment="Center"
+                                                            Grid.RowSpan="2"
+                                                            Margin="2,0"/>
+                                <TextBlock Text="{Binding Path=ShortName}"
+                                           Grid.Column="1"
+                                           Grid.Row="0" />
+                                <TextBlock Text="{Binding Path=FullName}"
+                                           TextWrapping="Wrap"
+                                           Grid.Column="1"
+                                           Grid.Row="1" />
+                            </Grid>
+                        </Button>
+                    <!--<StackPanel Orientation="Horizontal">
+                    </StackPanel>-->
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <!--<Button Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -69,7 +83,7 @@
                            Grid.Column="1"
                            Grid.Row="1" />
             </Grid>
-        </Button>
+        </Button>-->
 
         <Button Grid.Row="3">
             <Grid>

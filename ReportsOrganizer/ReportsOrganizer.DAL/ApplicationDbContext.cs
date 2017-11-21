@@ -11,6 +11,7 @@ namespace ReportsOrganizer.DAL
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Project> Projects { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

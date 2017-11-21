@@ -175,7 +175,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Reports.db" />
+    <None Include="Reports.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReportsOrganizer.DI\ReportsOrganizer.DI.csproj">

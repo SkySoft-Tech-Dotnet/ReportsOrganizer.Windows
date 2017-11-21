@@ -1,11 +1,12 @@
-﻿using ReportsOrganizer.DAL.Abstractions;
+﻿using System.Linq;
+using ReportsOrganizer.DAL.Abstractions;
 using ReportsOrganizer.Models;
 
 namespace ReportsOrganizer.DAL.Repositories
 {
     public interface IProjectRepository : IBaseRepository<Project>
     {
-
+        IQueryable<Project> Get();
     }
 
     internal class ProjectRepository : BaseRepository<Project>, IProjectRepository
@@ -17,5 +18,9 @@ namespace ReportsOrganizer.DAL.Repositories
             _applicationContext = applicationContext;
         }
 
+        public IQueryable<Project> Get()
+        {
+            return _applicationContext.Projects;
+        }
     }
 }
