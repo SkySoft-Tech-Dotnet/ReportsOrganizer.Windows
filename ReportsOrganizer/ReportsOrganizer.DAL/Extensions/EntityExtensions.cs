@@ -17,16 +17,16 @@ namespace ReportsOrganizer.DAL.Extensions
             }, cancellationToken);
         }
 
-        public static async Task AddAsync<TEntity>(this ApplicationDbContext dbContext, TEntity entity,
+        public static Task AddAsync<TEntity>(this ApplicationDbContext dbContext, TEntity entity,
             CancellationToken cancellationToken) where TEntity : class
         {
-            await AddAsync(dbContext.Set<TEntity>(), entity, cancellationToken);
+            return AddAsync(dbContext.Set<TEntity>(), entity, cancellationToken);
         }
 
-        public static Task DeleteAsync<TEntity>(this DbSet<TEntity> entities, TEntity entity,
+        public static async Task DeleteAsync<TEntity>(this DbSet<TEntity> entities, TEntity entity,
             CancellationToken cancellationToken) where TEntity : class
         {
-            return Task.Run(() =>
+            await Task.Run(() =>
             {
                 entities.Remove(entity);
             }, cancellationToken);
@@ -38,10 +38,10 @@ namespace ReportsOrganizer.DAL.Extensions
             return DeleteAsync(dbContext.Set<TEntity>(), entity, cancellationToken);
         }
 
-        public static Task DeleteAsync<TEntity>(this DbSet<TEntity> entities, IEnumerable<TEntity> entity,
+        public static async Task DeleteAsync<TEntity>(this DbSet<TEntity> entities, IEnumerable<TEntity> entity,
             CancellationToken cancellationToken) where TEntity : class
         {
-            return Task.Run(() =>
+            await Task.Run(() =>
             {
                 entities.RemoveRange(entity);
             }, cancellationToken);

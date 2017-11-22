@@ -9,10 +9,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
     {
         private IApplicationOptions<ApplicationSettings> _applicationOptions;
 
-        private ApplicationSettings ApplicationSettings
-        {
-            get => _applicationOptions.Value;
-        }
+        private ApplicationSettings ApplicationSettings => _applicationOptions.Value;
 
         public bool EnableInterval
         {

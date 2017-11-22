@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Abstractions;
@@ -17,25 +19,12 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         public ManageProjectsViewModel(IProjectService projectService)
         {
             _projectService = projectService;
-            CurrentProjects = new BindingList<Project>();
-            CurrentProjects.Add(new Project
+            Task.Run(async () =>
             {
-                ShortName = "UCCC",
-                FullName = "Universal",
-                IsActive = true
-            });
-            CurrentProjects.Add(new Project
-            {
-                ShortName = "RO",
-                FullName = "ReportOrganaizer",
-                IsActive = true
-            });
-            CurrentProjects.Add(new Project
-            {
-                ShortName = "BCH",
-                FullName = "Blockchain",
-                IsActive = true
-            });
+                var result = await projectService.ToListAsync(CancellationToken.None);
+                CurrentProjects = new BindingList<Project>(result.ToList());
+            }).Wait();
+            
         }
 
         public BindingList<Project> CurrentProjects { get; set; }
