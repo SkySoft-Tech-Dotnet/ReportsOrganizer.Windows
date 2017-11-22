@@ -10,22 +10,22 @@ namespace ReportsOrganizer.DAL.Extensions
         public static Task AddAsync<TEntity>(this DbSet<TEntity> entities, TEntity entity,
             CancellationToken cancellationToken) where TEntity : class
         {
-            return new Task(() =>
+            return Task.Run(() =>
             {
                 entities.Add(entity);
             }, cancellationToken);
         }
 
-        public static async Task AddAsync<TEntity>(this ApplicationDbContext dbContext, TEntity entity,
+        public static Task AddAsync<TEntity>(this ApplicationDbContext dbContext, TEntity entity,
             CancellationToken cancellationToken) where TEntity : class
         {
-            await AddAsync(dbContext.Set<TEntity>(), entity, cancellationToken);
+            return AddAsync(dbContext.Set<TEntity>(), entity, cancellationToken);
         }
 
         public static Task DeleteAsync<TEntity>(this DbSet<TEntity> entities, TEntity entity,
             CancellationToken cancellationToken) where TEntity : class
         {
-            return new Task(() =>
+            return Task.Run(() =>
             {
                 entities.Remove(entity);
             }, cancellationToken);
@@ -40,7 +40,7 @@ namespace ReportsOrganizer.DAL.Extensions
         public static Task DeleteAsync<TEntity>(this DbSet<TEntity> entities, IEnumerable<TEntity> entity,
             CancellationToken cancellationToken) where TEntity : class
         {
-            return new Task(() =>
+            return Task.Run(() =>
             {
                 entities.RemoveRange(entity);
             }, cancellationToken);

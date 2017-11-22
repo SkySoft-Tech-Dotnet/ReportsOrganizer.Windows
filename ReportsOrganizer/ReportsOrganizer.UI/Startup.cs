@@ -62,15 +62,15 @@ namespace ReportsOrganizer.UI
                 ThemeManager.DetectAppStyle(Application.Current).Item1);
 
             //TEST PROJECT SERVICE
-            projectService.AddAsync(new Project
-            {
-                ShortName = "UCCC",
-                FullName = "LongName",
-                IsActive = true
-            }, CancellationToken.None).Wait();
+            //projectService.AddAsync(new Project
+            //{
+            //    ShortName = "UCCC",
+            //    FullName = "LongName",
+            //    IsActive = true
+            //}, CancellationToken.None).Wait();
 
-            var a = projectService.ToListAsync(CancellationToken.None).Result;
-            projectService.DeleteAsync(a.First(), CancellationToken.None);
+            //var a = projectService.ToListAsync(CancellationToken.None).Result;
+            //projectService.DeleteAsync(a.First(), CancellationToken.None);
         }
     }
 }
