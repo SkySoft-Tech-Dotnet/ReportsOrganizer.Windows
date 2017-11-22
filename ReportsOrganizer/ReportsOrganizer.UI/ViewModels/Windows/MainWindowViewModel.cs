@@ -23,8 +23,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private string _headerSettingsGroupLocalizeKey;
 
         private Visibility _windowVisibility;
-        private Visibility _settingsGroupVisibility;
-        private Visibility _navigationSettingsVisibility;
+        private Visibility _settingsPageVisibility;
+        private Visibility _settingsBackButtonVisibility;
 
         private WindowState _prevWindowState;
         private WindowState _currentWindowState;
@@ -59,16 +59,16 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _currentSettingsGroup, value, nameof(CurrentSettingsGroup));
         }
 
-        public Visibility SettingsGroupVisibility
+        public Visibility SettingsPageVisibility
         {
-            get => _settingsGroupVisibility;
-            set => SetValue(ref _settingsGroupVisibility, value, nameof(SettingsGroupVisibility));
+            get => _settingsPageVisibility;
+            set => SetValue(ref _settingsPageVisibility, value, nameof(SettingsPageVisibility));
         }
 
-        public Visibility NavigationSettingsVisibility
+        public Visibility SettingsBackButtonVisibility
         {
-            get => _navigationSettingsVisibility;
-            set => SetValue(ref _navigationSettingsVisibility, value, nameof(NavigationSettingsVisibility));
+            get => _settingsBackButtonVisibility;
+            set => SetValue(ref _settingsBackButtonVisibility, value, nameof(SettingsBackButtonVisibility));
         }
 
         public string HeaderSettingsGroup
@@ -98,8 +98,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         {
             _navigationService = navigationService;
 
-            _settingsGroupVisibility = Visibility.Hidden;
-            _navigationSettingsVisibility = Visibility.Hidden;
+            _settingsPageVisibility = Visibility.Hidden;
+            _settingsBackButtonVisibility = Visibility.Hidden;
             _headerSettingsGroupLocalizeKey = "Settings:Group_Settings";
 
             WindowVisibility = Environment.GetCommandLineArgs().Any(arg => arg == "/minimize")
@@ -179,8 +179,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void OpenSettingsPage<TViewModel>()
             where TViewModel : BaseViewModel
         {
-            SettingsGroupVisibility = Visibility.Visible;
-            NavigationSettingsVisibility = Visibility.Visible;
+            SettingsPageVisibility = Visibility.Visible;
+            SettingsBackButtonVisibility = Visibility.Visible;
 
             var page = ServiceCollectionProvider.Container
                 .GetInstance<TViewModel>();
@@ -214,8 +214,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void BackNavigateSettingsAction(object obj)
         {
-            SettingsGroupVisibility = Visibility.Hidden;
-            NavigationSettingsVisibility = Visibility.Hidden;
+            SettingsPageVisibility = Visibility.Hidden;
+            SettingsBackButtonVisibility = Visibility.Hidden;
 
             CurrentSettingsGroup = null;
             HeaderSettingsGroupLocalizeKey = "Settings:Group_Settings";

@@ -4,5 +4,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 {
     public class ManageProjectWindowViewModel : BaseViewModel
     {
+
     }
 }

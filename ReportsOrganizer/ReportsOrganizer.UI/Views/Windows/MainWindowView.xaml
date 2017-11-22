@@ -60,9 +60,9 @@
                              Style="{StaticResource MetroFlyout}"
                              IsOpen="{Binding Path=SettingsIsOpen}"
                              helper:FlyoutHelper.BackCommand="{Binding Path=BackNavigateSettingsCommand}"
-                             helper:FlyoutHelper.BackButtonVisibility="{Binding Path=NavigationSettingsVisibility}"
+                             helper:FlyoutHelper.BackButtonVisibility="{Binding Path=SettingsBackButtonVisibility}"
                              helper:FlyoutHelper.PageContent="{Binding Path=CurrentSettingsGroup}"
-                             helper:FlyoutHelper.PageVisibility="{Binding Path=SettingsGroupVisibility}">
+                             helper:FlyoutHelper.PageVisibility="{Binding Path=SettingsPageVisibility}">
                 <StackPanel>
                     <Button Style="{StaticResource FlyoutButton}"
                                 Content="{lex:Loc Settings:Group_General}"
