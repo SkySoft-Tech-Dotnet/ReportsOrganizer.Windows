@@ -44,7 +44,7 @@ namespace ReportsOrganizer.UI.ViewModels
 
         private async Task NotificationWindowGetPreviousAction(object sender)
         {
-            var report  = await _notificationService.GetLastReport();
+            var report  = await _notificationService.FindLastReport();
             MultilineReportText = report.Description;
         }
 

@@ -1,23 +1,21 @@
-﻿
-using System.Collections.Generic;
-using ReportsOrganizer.DAL;
-using ReportsOrganizer.Models;
-using System.Threading;
-using System.Threading.Tasks;
-using ReportsOrganizer.Core.Abstractions;
-using ReportsOrganizer.DAL.Abstractions;
+﻿using ReportsOrganizer.Core.Abstractions;
 using ReportsOrganizer.DAL.Repositories;
+using ReportsOrganizer.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ReportsOrganizer.Core.Services
 {
     public interface IReportService : IBaseService<Report>
     {
-        Task<IEnumerable<Report>> GetWeekReport(int year, int month, int week, CancellationToken cancellationToken);
+        Task<IEnumerable<Report>> FindReportsAsync(int year, int month, int week, CancellationToken cancellationToken);
+        Task<Report> FindLastReportAsync(CancellationToken cancellationToken);
+
         int GetWeeksOfMonth(int year, int month);
-        Task<Report> GetLastReport(CancellationToken cancellationToken);
     }
     internal class ReportService : BaseService<Report>, IReportService
     {
@@ -26,7 +24,8 @@ namespace ReportsOrganizer.Core.Services
         public ReportService(IReportRepository reportRepository) : base(reportRepository)
             => _reportRepository = reportRepository;
 
-        public async Task<IEnumerable<Report>> GetWeekReport(int year, int month, int week, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Report>> FindReportsAsync(int year, int month, int week,
+            CancellationToken cancellationToken)
         {
             var begin = new DateTime(year, month, 1);
             var beginWeekDay = (int)begin.DayOfWeek;
@@ -43,6 +42,11 @@ namespace ReportsOrganizer.Core.Services
                 .ToListAsync(cancellationToken);
         }
 
+        public Task<Report> FindLastReportAsync(CancellationToken cancellationToken)
+        {
+            return _reportRepository.FindReports().FirstOrDefaultAsync(cancellationToken);
+        }
+
         public int GetWeeksOfMonth(int year, int month)
         {
             var culture = CultureInfo.CurrentCulture;
@@ -54,11 +58,6 @@ namespace ReportsOrganizer.Core.Services
             var endWeek = culture.Calendar.GetWeekOfYear(endDay, culture.DateTimeFormat.CalendarWeekRule, DayOfWeek.Sunday);
 
             return endWeek - beginWeek + 1;
-        }
-
-        public Task<Report> GetLastReport(CancellationToken cancellationToken)
-        {
-            return _reportRepository.LastReport.FirstAsync(cancellationToken);
         }
     }
 }

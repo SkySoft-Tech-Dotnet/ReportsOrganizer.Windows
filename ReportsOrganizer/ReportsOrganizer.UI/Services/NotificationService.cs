@@ -25,7 +25,7 @@ namespace ReportsOrganizer.UI.Services
         void ShowNotificationWindow();
         void HideNotificationWindow();
         void AddReport(string report);
-        Task<Report> GetLastReport();
+        Task<Report> FindLastReport();
     }
     public class NotificationService : INotificationService
     {
@@ -53,10 +53,9 @@ namespace ReportsOrganizer.UI.Services
             //_reportService.Add(report, CancellationToken.None);
         }
 
-        public Task<Report> GetLastReport()
+        public Task<Report> FindLastReport()
         {
-            return _reportService.GetLastReport(CancellationToken.None);
+            return _reportService.FindLastReportAsync(CancellationToken.None);
         }
-        
     }
 }

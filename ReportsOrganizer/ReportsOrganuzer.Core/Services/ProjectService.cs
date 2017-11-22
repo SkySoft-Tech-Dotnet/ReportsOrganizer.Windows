@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using ReportsOrganizer.DAL;
+﻿using ReportsOrganizer.Core.Abstractions;
+using ReportsOrganizer.DAL.Repositories;
 using ReportsOrganizer.Models;
-using System.Data.Entity;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using ReportsOrganizer.Core.Abstractions;
-using ReportsOrganizer.DAL.Abstractions;
-using ReportsOrganizer.DAL.Repositories;
 
 namespace ReportsOrganizer.Core.Services
 {
@@ -23,10 +19,7 @@ namespace ReportsOrganizer.Core.Services
         public ProjectService(IProjectRepository projectRepository) : base(projectRepository)
             => _projectRepository = projectRepository;
 
-        public async Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken)
-        {
-            return await Task.Run(() => _projectRepository.Get().ToList(), cancellationToken);
-            //return await ;
-        }
+        public Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken)
+            => _projectRepository.ToListAsync(cancellationToken);
     }
 }
