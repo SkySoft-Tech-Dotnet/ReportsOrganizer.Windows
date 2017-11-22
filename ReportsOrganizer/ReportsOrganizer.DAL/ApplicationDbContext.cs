@@ -1,5 +1,6 @@
-﻿//using Microsoft.EntityFrameworkCore;
-using ReportsOrganizer.Models;
+﻿using ReportsOrganizer.Models;
+using SQLite.CodeFirst;
+using System.Data.Entity;
 
 namespace ReportsOrganizer.DAL
 {
@@ -7,10 +8,15 @@ namespace ReportsOrganizer.DAL
     {
         public DbSet<Report> Reports { get; set; }
         public DbSet<Project> Projects { get; set; }
-        
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public ApplicationDbContext() : base("ReportConnection")
         {
-            optionsBuilder.UseSqlite(@"data source=Reports.db");
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<DbContext>(modelBuilder);
+            Database.SetInitializer(sqliteConnectionInitializer);
         }
     }
 }

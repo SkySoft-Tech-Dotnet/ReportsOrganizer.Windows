@@ -19,19 +19,19 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             {
                 ShortName = "UCCC",
                 FullName = "Universal",
-                Active = true
+                IsActive = true
             });
             CurrentProjects.Add(new Project
             {
                 ShortName = "RO",
                 FullName = "ReportOrganaizer",
-                Active = true
+                IsActive = true
             });
             CurrentProjects.Add(new Project
             {
                 ShortName = "BCH",
                 FullName = "Blockchain",
-                Active = true
+                IsActive = true
             });
         }
 

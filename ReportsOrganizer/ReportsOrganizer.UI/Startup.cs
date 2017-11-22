@@ -10,7 +10,10 @@ using SimpleInjector;
 using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Windows;
+using ReportsOrganizer.Models;
 using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI
@@ -49,7 +52,7 @@ namespace ReportsOrganizer.UI
             container.AddSingleton<INavigationService, NavigationService>();
         }
 
-        public void Configure(IApplicationOptions<ApplicationSettings> applicationSettings)
+        public void Configure(IApplicationOptions<ApplicationSettings> applicationSettings, IProjectService projectService)
         {
             LocalizeDictionary.Instance.Culture = new CultureInfo(applicationSettings.Value.General.Language);
 
@@ -57,6 +60,17 @@ namespace ReportsOrganizer.UI
                 Application.Current,
                 ThemeManager.GetAccent(applicationSettings.Value.Personalization.Theme),
                 ThemeManager.DetectAppStyle(Application.Current).Item1);
+
+            //TEST PROJECT SERVICE
+            projectService.AddAsync(new Project
+            {
+                ShortName = "UCCC",
+                FullName = "LongName",
+                IsActive = true
+            }, CancellationToken.None).Wait();
+
+            var a = projectService.ToListAsync(CancellationToken.None).Result;
+            projectService.DeleteAsync(a.First(), CancellationToken.None);
         }
     }
 }

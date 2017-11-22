@@ -1,31 +1,28 @@
-﻿using System;
-using System.Linq;
-using ReportsOrganizer.DAL.Abstractions;
+﻿using ReportsOrganizer.DAL.Abstractions;
 using ReportsOrganizer.Models;
+using System;
+using System.Linq;
 
 namespace ReportsOrganizer.DAL.Repositories
 {
     public interface IReportRepository : IBaseRepository<Report>
     {
         IQueryable<Report> FindReport(DateTime startDate, DateTime endDate);
-        IQueryable<Report> LastReport { get; }
+        IQueryable<Report> FindReports();
     }
 
     internal class ReportRepository : BaseRepository<Report>, IReportRepository
     {
-        private readonly ApplicationDbContext _applicationContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public ReportRepository(ApplicationDbContext applicationContext) : base(applicationContext)
-        {
-            _applicationContext = applicationContext;
-        }
+        public ReportRepository(ApplicationDbContext dbContext) : base(dbContext)
+            => _dbContext = dbContext;
 
         public IQueryable<Report> FindReport(DateTime startDate, DateTime endDate)
-            => _applicationContext.Reports
-                .Where(property => property.StartDate >= startDate && property.EndDate <= endDate);
+            => _dbContext.Reports.Where(property
+                => property.Created >= startDate && property.Created <= endDate);
 
-        public IQueryable<Report> LastReport
-            => _applicationContext.Reports
-                .OrderByDescending(property => property.EndDate).Take(1);
+        public IQueryable<Report> FindReports()
+            => _dbContext.Reports.OrderByDescending(property => property.Created);
     }
 }

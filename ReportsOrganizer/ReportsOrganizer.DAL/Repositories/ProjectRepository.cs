@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ReportsOrganizer.DAL.Abstractions;
+﻿using ReportsOrganizer.DAL.Abstractions;
 using ReportsOrganizer.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,14 +14,12 @@ namespace ReportsOrganizer.DAL.Repositories
 
     internal class ProjectRepository : BaseRepository<Project>, IProjectRepository
     {
-        private readonly ApplicationDbContext _applicationContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public ProjectRepository(ApplicationDbContext applicationContext)
-            : base(applicationContext) => _applicationContext = applicationContext;
+        public ProjectRepository(ApplicationDbContext dbContext) : base(dbContext)
+            => _dbContext = dbContext;
 
         public async Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken)
-        {
-            return await _applicationContext.Projects.ToListAsync(cancellationToken);
-        }
+            => await _dbContext.Projects.ToListAsync(cancellationToken);
     }
 }

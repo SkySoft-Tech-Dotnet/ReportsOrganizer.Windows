@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ReportsOrganizer.DAL.Extensions;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,9 +9,8 @@ namespace ReportsOrganizer.DAL.Abstractions
         where TModel : class
     {
         Task AddAsync(TModel entity, CancellationToken cancellationToken);
-        Task UpdateAsync(TModel entity, CancellationToken cancellationToken);
         Task DeleteAsync(TModel entity, CancellationToken cancellationToken);
-        Task DeleteAsync(ICollection<TModel> entity, CancellationToken cancellationToken);
+        Task DeleteAsync(IEnumerable<TModel> entity, CancellationToken cancellationToken);
         Task SaveChangesAsync(CancellationToken cancellationToken);
     }
 
@@ -28,21 +28,15 @@ namespace ReportsOrganizer.DAL.Abstractions
             await SaveChangesAsync(cancellationToken);
         }
 
-        public virtual async Task UpdateAsync(TModel entity, CancellationToken cancellationToken)
-        {
-            _dbContext.Update(entity);
-            await SaveChangesAsync(cancellationToken);
-        }
-
         public virtual async Task DeleteAsync(TModel entity, CancellationToken cancellationToken)
         {
-            _dbContext.Remove(entity);
+            await _dbContext.DeleteAsync(entity, cancellationToken);
             await SaveChangesAsync(cancellationToken);
         }
 
-        public virtual async Task DeleteAsync(ICollection<TModel> entity, CancellationToken cancellationToken)
+        public virtual async Task DeleteAsync(IEnumerable<TModel> entity, CancellationToken cancellationToken)
         {
-            _dbContext.RemoveRange(entity);
+            await _dbContext.DeleteAsync(entity, cancellationToken);
             await SaveChangesAsync(cancellationToken);
         }
 
