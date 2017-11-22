@@ -10,5 +10,10 @@ namespace ReportsOrganizer.Models
         public bool IsActive { get; set; }
 
         public IEnumerable<Report> Reports { get; set; }
+
+        public Project()
+        {
+            Reports = new List<Report>();
+        }
     }
 }
