@@ -11,6 +11,7 @@ namespace ReportsOrganizer.Core.Abstractions
         Task AddAsync(TModel entity, CancellationToken cancellationToken);
         Task DeleteAsync(TModel entity, CancellationToken cancellationToken);
         Task DeleteAsync(ICollection<TModel> entity, CancellationToken cancellationToken);
+        Task SaveChangesAsync(CancellationToken cancellationToken);
     }
 
     internal class BaseService<TModel> : IBaseService<TModel>
@@ -34,6 +35,11 @@ namespace ReportsOrganizer.Core.Abstractions
         public virtual Task DeleteAsync(ICollection<TModel> entity, CancellationToken cancellationToken)
         {
             return _baseRepository.DeleteAsync(entity, cancellationToken);
+        }
+
+        public virtual async Task SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            await _baseRepository.SaveChangesAsync(cancellationToken);
         }
     }
 }

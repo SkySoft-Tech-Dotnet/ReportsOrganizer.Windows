@@ -61,6 +61,8 @@ namespace ReportsOrganizer.UI
                 Application.Current,
                 ThemeManager.GetAccent(applicationSettings.Value.Personalization.Theme),
                 ThemeManager.DetectAppStyle(Application.Current).Item1);
+
+            Task.Run(async () => await projectService.ToListAsync(CancellationToken.None)).Wait();
         }
     }
 }
