@@ -21,9 +21,9 @@ namespace ReportsOrganizer.Core.Abstractions
         public BaseService(IBaseRepository<TModel> baseRepository)
             => _baseRepository = baseRepository;
 
-        public virtual async Task AddAsync(TModel entity, CancellationToken cancellationToken)
+        public virtual Task AddAsync(TModel entity, CancellationToken cancellationToken)
         {
-            await _baseRepository.AddAsync(entity, cancellationToken);
+            return _baseRepository.AddAsync(entity, cancellationToken);
         }
 
         public virtual Task DeleteAsync(TModel entity, CancellationToken cancellationToken)

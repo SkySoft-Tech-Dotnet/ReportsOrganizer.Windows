@@ -145,7 +145,7 @@
     <Compile Include="ViewModels\Settings\NotificationViewModel.cs" />
     <Compile Include="ViewModels\Settings\PersonalizationViewModel.cs" />
     <Compile Include="ViewModels\Windows\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\Windows\ManageProjectWindowViewModel.cs" />
+    <Compile Include="ViewModels\Windows\ManageProjectsWindowViewModel.cs" />
     <Compile Include="ViewModels\Windows\NotificationWindowViewModel.cs" />
     <Compile Include="Views\Settings\GeneralView.xaml.cs">
       <DependentUpon>GeneralView.xaml</DependentUpon>
@@ -168,8 +168,8 @@
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Windows\ManageProjectView.xaml.cs">
-      <DependentUpon>ManageProjectView.xaml</DependentUpon>
+    <Compile Include="Views\Windows\ManageProjectsWindowView.xaml.cs">
+      <DependentUpon>ManageProjectsWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\NotificationWindowView.xaml.cs">
       <DependentUpon>NotificationWindowView.xaml</DependentUpon>
@@ -291,7 +291,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Windows\ManageProjectView.xaml">
+    <Page Include="Views\Windows\ManageProjectsWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

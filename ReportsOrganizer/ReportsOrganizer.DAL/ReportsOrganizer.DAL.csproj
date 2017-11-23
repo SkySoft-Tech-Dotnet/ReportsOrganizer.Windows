@@ -62,9 +62,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Reports.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Content Include="Reports.db" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReportsOrganizer.DI\ReportsOrganizer.DI.csproj">

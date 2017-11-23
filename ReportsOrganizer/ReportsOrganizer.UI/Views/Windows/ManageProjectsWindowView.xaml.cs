@@ -2,9 +2,9 @@
 
 namespace ReportsOrganizer.UI.Views.Windows
 {
-    public partial class ManageProjectView : MetroWindow
+    public partial class ManageProjectsWindowView : MetroWindow
     {
-        public ManageProjectView()
+        public ManageProjectsWindowView()
         {
             InitializeComponent();
         }

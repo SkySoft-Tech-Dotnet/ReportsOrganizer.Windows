@@ -17,7 +17,7 @@ namespace ReportsOrganizer.UI.DependencyProperties
 
         private static void OnWindowClosing(DependencyObject dp, DependencyPropertyChangedEventArgs e)
         {
-            Window window = dp as Window;
+            var window = dp as Window;
 
             if (dp == null || GetBoundClosing(dp) == null || window == null)
             {
@@ -30,7 +30,7 @@ namespace ReportsOrganizer.UI.DependencyProperties
 
         private static void HandleWindowClosing(object sender, CancelEventArgs e)
         {
-            ICommand command = GetBoundClosing((DependencyObject)sender);
+            var command = GetBoundClosing((DependencyObject)sender);
             command.Execute(e);
         }
 

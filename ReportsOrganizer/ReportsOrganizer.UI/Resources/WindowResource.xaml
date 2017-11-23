@@ -43,4 +43,21 @@
         <!-- Icon template -->
         <Setter Property="IconTemplate" Value="{StaticResource IconTemplate}" />
     </Style>
+    <Style TargetType="controls:MetroWindow" x:Key="MinorMetroWindow">
+        <Setter Property="Width" Value="{StaticResource MinorWindowWidth}" />
+        <Setter Property="MinWidth" Value="{StaticResource MinorWindowMinWidth}" />
+        <Setter Property="Height" Value="{StaticResource MinorWindowHeight}" />
+        <Setter Property="MinHeight" Value="{StaticResource MinorWindowMinHeight}" />
+        <!--<Setter Property="WindowTransitionsEnabled" Value="False" />-->
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <!-- Border styles -->
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
+        <!-- Text styles -->
+        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="TextElement.FontWeight" Value="Regular" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+    </Style>
 </ResourceDictionary>

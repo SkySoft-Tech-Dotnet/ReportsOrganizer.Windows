@@ -9,8 +9,8 @@ namespace ReportsOrganizer.UI.ViewModels
         public MainWindowViewModel MainWindow =>
             ServiceCollectionProvider.Container.GetInstance<MainWindowViewModel>();
 
-        public ManageProjectWindowViewModel ManageProjectWindow =>
-            ServiceCollectionProvider.Container.GetInstance<ManageProjectWindowViewModel>();
+        public ManageProjectsWindowViewModel ManageProjectsWindow =>
+            ServiceCollectionProvider.Container.GetInstance<ManageProjectsWindowViewModel>();
 
         public NotificationWindowViewModel NotificationWindow =>
             ServiceCollectionProvider.Container.GetInstance<NotificationWindowViewModel>();

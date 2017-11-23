@@ -22,7 +22,7 @@
         <ItemsControl 
             Background="Transparent"
             Grid.Row="1"
-            ItemsSource="{Binding Path=CurrentProjects, UpdateSourceTrigger=PropertyChanged}">
+            ItemsSource="{Binding Path=ProjectList, UpdateSourceTrigger=PropertyChanged}">
             <!---->
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -85,7 +85,7 @@
             </Grid>
         </Button>-->
 
-        <Button Grid.Row="3">
+        <Button Grid.Row="3" Command="{Binding Path=CreateProjectCommand}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
