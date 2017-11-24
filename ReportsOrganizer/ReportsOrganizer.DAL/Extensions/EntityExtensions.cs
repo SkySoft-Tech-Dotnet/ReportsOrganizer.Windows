@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,6 +22,21 @@ namespace ReportsOrganizer.DAL.Extensions
             CancellationToken cancellationToken) where TEntity : class
         {
             return AddAsync(dbContext.Set<TEntity>(), entity, cancellationToken);
+        }
+
+        public static async Task AddOrUpdateAsync<TEntity>(this DbSet<TEntity> entities, TEntity entity,
+            CancellationToken cancellationToken) where TEntity : class
+        {
+            await Task.Run(() =>
+            {
+                entities.AddOrUpdate(entity);
+            }, cancellationToken);
+        }
+
+        public static Task AddOrUpdateAsync<TEntity>(this ApplicationDbContext dbContext, TEntity entity,
+            CancellationToken cancellationToken) where TEntity : class
+        {
+            return AddOrUpdateAsync(dbContext.Set<TEntity>(), entity, cancellationToken);
         }
 
         public static async Task DeleteAsync<TEntity>(this DbSet<TEntity> entities, TEntity entity,

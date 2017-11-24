@@ -9,6 +9,7 @@ namespace ReportsOrganizer.Core.Abstractions
         where TModel : class
     {
         Task AddAsync(TModel entity, CancellationToken cancellationToken);
+        Task AddOrUpdateAsync(TModel entity, CancellationToken cancellationToken);
         Task DeleteAsync(TModel entity, CancellationToken cancellationToken);
         Task DeleteAsync(ICollection<TModel> entity, CancellationToken cancellationToken);
         Task SaveChangesAsync(CancellationToken cancellationToken);
@@ -25,6 +26,10 @@ namespace ReportsOrganizer.Core.Abstractions
         public virtual Task AddAsync(TModel entity, CancellationToken cancellationToken)
         {
             return _baseRepository.AddAsync(entity, cancellationToken);
+        }
+        public virtual Task AddOrUpdateAsync(TModel entity, CancellationToken cancellationToken)
+        {
+            return _baseRepository.AddOrUpdateAsync(entity, cancellationToken);
         }
 
         public virtual Task DeleteAsync(TModel entity, CancellationToken cancellationToken)

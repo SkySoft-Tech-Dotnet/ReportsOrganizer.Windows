@@ -9,6 +9,7 @@ namespace ReportsOrganizer.DAL.Abstractions
         where TModel : class
     {
         Task AddAsync(TModel entity, CancellationToken cancellationToken);
+        Task AddOrUpdateAsync(TModel entity, CancellationToken cancellationToken);
         Task DeleteAsync(TModel entity, CancellationToken cancellationToken);
         Task DeleteAsync(IEnumerable<TModel> entity, CancellationToken cancellationToken);
         Task SaveChangesAsync(CancellationToken cancellationToken);
@@ -25,6 +26,11 @@ namespace ReportsOrganizer.DAL.Abstractions
         public virtual async Task AddAsync(TModel entity, CancellationToken cancellationToken)
         {
             await _dbContext.AddAsync(entity, cancellationToken);
+            await SaveChangesAsync(cancellationToken);
+        }
+        public virtual async Task AddOrUpdateAsync(TModel entity, CancellationToken cancellationToken)
+        {
+            await _dbContext.AddOrUpdateAsync(entity, cancellationToken);
             await SaveChangesAsync(cancellationToken);
         }
 

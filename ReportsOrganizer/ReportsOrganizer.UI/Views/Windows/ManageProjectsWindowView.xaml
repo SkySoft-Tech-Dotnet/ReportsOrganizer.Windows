@@ -25,7 +25,7 @@
         <TextBox Grid.Row="3" Text="{Binding Path=FullName}" controls:TextBoxHelper.Watermark="Full Name" />
         <StackPanel Grid.Row="5" Orientation="Horizontal">
             <Button Height="50" Width="100" Command="{Binding Path=OkCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Ok</Button>
-            <Button Height="50" Width="100" >Cancel</Button>
+            <Button Height="50" Width="100" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Cancel</Button>
         </StackPanel>
     </Grid>
 </controls:MetroWindow>

@@ -2,6 +2,7 @@
 using ReportsOrganizer.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace ReportsOrganizer.DAL.Repositories
 {
     public interface IProjectRepository : IBaseRepository<Project>
     {
+        Task<Project> FindById(int id, CancellationToken cancellationToken);
         Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken);
     }
 
@@ -18,6 +20,9 @@ namespace ReportsOrganizer.DAL.Repositories
 
         public ProjectRepository(ApplicationDbContext dbContext) : base(dbContext)
             => _dbContext = dbContext;
+
+        public async Task<Project> FindById(int id, CancellationToken cancellationToken)
+            => await _dbContext.Projects.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
 
         public async Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken)
             => await _dbContext.Projects.ToListAsync(cancellationToken);
