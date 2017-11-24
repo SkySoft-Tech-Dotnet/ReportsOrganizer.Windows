@@ -1,5 +1,6 @@
 ﻿using ReportsOrganizer.Models;
 using System.Data.Entity;
+using SQLite.CodeFirst;
 
 namespace ReportsOrganizer.DAL
 {
@@ -15,6 +16,8 @@ namespace ReportsOrganizer.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            var sqliteConnectionInitializer = new ApplicationDbInitializer(modelBuilder);
+            Database.SetInitializer(sqliteConnectionInitializer);
         }
     }
 }
