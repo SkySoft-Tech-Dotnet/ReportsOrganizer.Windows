@@ -61,15 +61,6 @@ namespace ReportsOrganizer.Localization.Notification {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add note.
-        /// </summary>
-        internal static string Notification_AddNote {
-            get {
-                return ResourceManager.GetString("Notification_AddNote", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Get previous.
         /// </summary>
         internal static string Notification_GetPrevious {
