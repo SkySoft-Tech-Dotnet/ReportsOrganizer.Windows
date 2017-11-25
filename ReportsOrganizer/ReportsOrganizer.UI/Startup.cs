@@ -2,6 +2,7 @@
 using ReportsOrganizer.Core.Extensions;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.DI.Extensions;
+using ReportsOrganizer.UI.Managers;
 using ReportsOrganizer.UI.Models;
 using ReportsOrganizer.UI.Services;
 using ReportsOrganizer.UI.ViewModels.Settings;
@@ -10,11 +11,9 @@ using SimpleInjector;
 using System;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using ReportsOrganizer.Models;
 using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI
@@ -33,6 +32,7 @@ namespace ReportsOrganizer.UI
 
             container.AddSingleton<MainWindowViewModel>();
             container.AddSingleton<NotificationWindowViewModel>();
+            container.AddSingleton<ApplicationManager>();
 
             container.AddCore();
 

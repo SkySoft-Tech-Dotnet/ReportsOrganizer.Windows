@@ -5,8 +5,8 @@ namespace ReportsOrganizer.UI.Managers
 {
     public class ApplicationManager
     {
-        private Lazy<MainWindowView> _mainWindowView;
-        private Lazy<NotificationWindowView> _notificationWindowView;
+        private readonly Lazy<MainWindowView> _mainWindowView;
+        private readonly Lazy<NotificationWindowView> _notificationWindowView;
 
         public MainWindowView MainWindow => _mainWindowView.Value;
         public NotificationWindowView NotificationWindow => _notificationWindowView.Value;

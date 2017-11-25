@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ReportsOrganizer.UI.Managers;
 using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
@@ -30,6 +31,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private WindowState _currentWindowState;
 
         private BaseViewModel _currentSettingsGroup;
+
+        private ApplicationManager _applicationManager;
 
         public Visibility WindowVisibility
         {
@@ -94,8 +97,11 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public ICommand OpenManageProjectsSettingsCommand { get; }
         public ICommand OpenPersonalizationSettingsCommand { get; }
 
-        public MainWindowViewModel(INavigationService navigationService)
+        public MainWindowViewModel(
+            ApplicationManager applicationManager,
+            INavigationService navigationService)
         {
+            _applicationManager = applicationManager;
             _navigationService = navigationService;
 
             _settingsPageVisibility = Visibility.Hidden;
@@ -157,7 +163,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void TaskbarIconWriteReportAction(object sender)
         {
-            _navigationService.ShowNotificationWindow();
+            _applicationManager.NotificationWindow.Show();
+            //_navigationService.ShowNotificationWindow();
         }
 
         private void TaskbarIconExitAction(object sender)

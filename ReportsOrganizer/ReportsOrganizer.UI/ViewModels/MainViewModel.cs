@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using ReportsOrganizer.UI.Managers;
 
 namespace ReportsOrganizer.UI.ViewModels
 {
@@ -33,7 +34,7 @@ namespace ReportsOrganizer.UI.ViewModels
 
 
 
-
+        private ApplicationManager _applicationManager;
 
 
         INotificationService _notificationService;
@@ -108,8 +109,10 @@ namespace ReportsOrganizer.UI.ViewModels
             }
         }
 
-        public MainViewModel(IReportService reportService, INotificationService notificationService, INavigationService navigationService)
+        public MainViewModel(ApplicationManager applicationManager, IReportService reportService, INotificationService notificationService, INavigationService navigationService)
         {
+            _applicationManager = applicationManager;
+
             OpenSettingsCommand = new RelayCommand(OpenSettingsAction, true);
 
 
@@ -144,7 +147,8 @@ namespace ReportsOrganizer.UI.ViewModels
 
         private void TaskbarIconWriteReportAction(object sender)
         {
-            _notificationService.ShowNotificationWindow();
+            _applicationManager.NotificationWindow.Show();
+            //_notificationService.ShowNotificationWindow();
         }
 
         private void TaskbarIconExitAction(object sender)
