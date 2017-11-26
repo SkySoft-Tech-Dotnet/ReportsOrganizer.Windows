@@ -7,6 +7,9 @@
                       xmlns:lex="http://wpflocalizeextension.codeplex.com"
                       lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
                       mc:Ignorable="d"
+                      BorderBrush="{DynamicResource AccentColorBrush}"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      BorderThickness="1"
                       Title="NotificationWindowView" Height="150" Width="400" ShowTitleBar="False" ShowCloseButton="False" ShowMaxRestoreButton="False"
                       ShowMinButton="False" WindowStyle="None" ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False">
     <Grid>
@@ -28,10 +31,17 @@
                    Grid.ColumnSpan="3"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top" />
-        
-        <ComboBox Grid.Row="1"
+
+        <ComboBox Width="Auto"
+                  Grid.Row="1"
                   Grid.Column="0"
-                  SelectedValue="UCCC" />
+                  controls:TextBoxHelper.ClearTextButton="True"
+                  controls:TextBoxHelper.Watermark="Project"
+                  SelectedIndex="0">
+            <ComboBoxItem Content="UCCC" />
+            <ComboBoxItem Content="INV" />
+            <ComboBoxItem Content="OTHER" />
+        </ComboBox>
 
         <Button Grid.Row="1"
                 Grid.Column="1"
@@ -48,11 +58,17 @@
         <TextBox TextWrapping="Wrap"
                  Grid.ColumnSpan="3"
                  Grid.Column="0"
-                 Grid.Row="2"/>
+                 Grid.Row="2"
+                 x:Name="Report"/>
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
-                   Text="0/125"/>
+                   Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/125}" />
+        <controls:TimePicker Grid.Column="1"
+                             Grid.Row="3"
+                             HandVisibility="HourMinute"
+                             PickerVisibility="HourMinute"
+                             IsClockVisible="False" />
         <Button Grid.Row="3"
                 Grid.Column="2"
                 Width="40"
