@@ -128,6 +128,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Abstractions\BaseViewModel.cs" />
+    <Compile Include="Attributes\UniqueShortNameAttribute.cs" />
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />

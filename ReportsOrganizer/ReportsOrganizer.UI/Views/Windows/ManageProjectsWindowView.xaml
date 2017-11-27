@@ -21,8 +21,38 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="1" Text="{Binding Path=ShortName}" controls:TextBoxHelper.Watermark="Short Name" />
-        <TextBox Grid.Row="3" Text="{Binding Path=FullName}" controls:TextBoxHelper.Watermark="Full Name" />
+        <TextBox Grid.Row="1" Text="{Binding Path=ShortName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" controls:TextBoxHelper.Watermark="Short Name">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder/>
+                        <ItemsControl ItemsSource="{Binding}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+        <TextBox Grid.Row="3" Text="{Binding Path=FullName}" controls:TextBoxHelper.Watermark="Full Name" >
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder/>
+                        <ItemsControl ItemsSource="{Binding}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
         <StackPanel Grid.Row="5" Orientation="Horizontal">
             <Button Height="50" Width="100" Command="{Binding Path=OkCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Ok</Button>
             <Button Height="50" Width="100" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Cancel</Button>

@@ -40,10 +40,14 @@
                   Grid.Column="0"
                   controls:TextBoxHelper.ClearTextButton="False"
                   controls:TextBoxHelper.Watermark="Project"
-                  SelectedIndex="0">
-            <ComboBoxItem Content="UCCC" />
-            <ComboBoxItem Content="INV" />
-            <ComboBoxItem Content="OTHER" />
+                  SelectedIndex="0"
+                  ItemsSource="{Binding Path=ProjectList}"
+                  SelectedItem="{Binding Path=SelectedProject}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=ShortName}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
         <Button Grid.Row="1"
@@ -51,18 +55,22 @@
                 Width="100"
                 Content="Use previous"
                 HorizontalAlignment="Right"
-                Margin="10,0" />
+                Margin="10,0" 
+                IsEnabled="{Binding Path=UsePreviousEnable}"
+                Command="{Binding Path=UsePreviousCommand}" />
         <Button Grid.Row="1"
                 Grid.Column="2"
                 Width="100"
                 Content="Postpone"
-                HorizontalAlignment="Right" />
+                HorizontalAlignment="Right" 
+                Command="{Binding Path=PostponeCommand}" />
 
         <TextBox TextWrapping="Wrap"
                  Grid.ColumnSpan="3"
                  Grid.Column="0"
                  Grid.Row="2"
-                 x:Name="Report">
+                 x:Name="Report"
+                 Text="{Binding Path=Description}">
             <TextBox.Style>
                 <Style BasedOn="{StaticResource MetroTextBox}" TargetType="{x:Type TextBox}">
                     <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="True" />
@@ -89,18 +97,15 @@
                              HandVisibility="HourMinute"
                              PickerVisibility="HourMinute"
                              IsClockVisible="False"
-                             Visibility="Hidden"/>
-        <controls:DateTimePicker Grid.Column="1"
-                             Grid.Row="3"
-                             HandVisibility="HourMinute"
-                             PickerVisibility="HourMinute"
-                             IsClockVisible="False" />
+                             Culture="{Binding Path=DurationCultureInfo}"
+                             SelectedTime="{Binding Path=SelectedTime}"/>
 
         <Button Grid.Row="3"
                 Grid.Column="2"
                 Width="40"
                 Content="OK"
-                HorizontalAlignment="Right" />
+                HorizontalAlignment="Right"
+                Command="{Binding Path=OkCommand}" />
 
         <!--<StackPanel Grid.Row="0"
                     Orientation="Horizontal"

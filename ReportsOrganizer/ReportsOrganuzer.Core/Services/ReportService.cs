@@ -13,7 +13,7 @@ namespace ReportsOrganizer.Core.Services
     public interface IReportService : IBaseService<Report>
     {
         Task<IEnumerable<Report>> FindReportsAsync(int year, int month, int week, CancellationToken cancellationToken);
-        Task<Report> FindLastReportAsync(CancellationToken cancellationToken);
+        Task<Report> GetLastReportAsync(CancellationToken cancellationToken);
 
         int GetWeeksOfMonth(int year, int month);
     }
@@ -42,9 +42,11 @@ namespace ReportsOrganizer.Core.Services
                 .ToListAsync(cancellationToken);
         }
 
-        public Task<Report> FindLastReportAsync(CancellationToken cancellationToken)
+        public Task<Report> GetLastReportAsync(CancellationToken cancellationToken)
         {
-            return _reportRepository.FindReports().FirstOrDefaultAsync(cancellationToken);
+            return _reportRepository.FindReports()
+                .Include(table => table.Project)
+                .FirstOrDefaultAsync(cancellationToken);
         }
 
         public int GetWeeksOfMonth(int year, int month)

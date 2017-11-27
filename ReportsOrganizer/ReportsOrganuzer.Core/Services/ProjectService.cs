@@ -10,6 +10,7 @@ namespace ReportsOrganizer.Core.Services
     public interface IProjectService : IBaseService<Project>
     {
         Task<Project> FindById(int id, CancellationToken cancellationToken);
+        Task<Project> FindByShortName(string shortName, CancellationToken cancellationToken);
         Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken);
     }
 
@@ -22,6 +23,9 @@ namespace ReportsOrganizer.Core.Services
 
         public Task<Project> FindById(int id, CancellationToken cancellationToken)
             => _projectRepository.FindById(id, cancellationToken);
+
+        public Task<Project> FindByShortName(string shortName, CancellationToken cancellationToken)
+            => _projectRepository.FindByShortNameAsync(shortName, cancellationToken);
 
         public Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken)
             => _projectRepository.ToListAsync(cancellationToken);

@@ -1,4 +1,9 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Threading;
 using System.Windows.Input;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.Models;
@@ -6,6 +11,8 @@ using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Views.Windows;
 using System.Threading.Tasks;
+using System.Windows;
+using ReportsOrganizer.UI.Attributes;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -18,12 +25,19 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private string _shortName;
         private string _fullName;
 
+        [UniqueShortName(nameof(Id))]
+        [Required(AllowEmptyStrings = false)]
         public string ShortName
         {
             get => _shortName;
-            set => SetValue(ref _shortName, value, nameof(ShortName));
+            set
+            {
+                SetValue(ref _shortName, value, nameof(ShortName));
+                ValidatePropertyAsync(nameof(ShortName), value);
+            }
         }
 
+        [Required(AllowEmptyStrings = false)]
         public string FullName
         {
             get => _fullName;
@@ -45,6 +59,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private async Task OkAction(object obj)
         {
+            Validate();
+            if (HasErrors)
+                return;
+
             await _projectService.AddOrUpdateAsync(new Project
             {
                 Id = Id,

@@ -55,7 +55,7 @@ namespace ReportsOrganizer.UI.Services
 
         public Task<Report> FindLastReport()
         {
-            return _reportService.FindLastReportAsync(CancellationToken.None);
+            return _reportService.GetLastReportAsync(CancellationToken.None);
         }
     }
 }
