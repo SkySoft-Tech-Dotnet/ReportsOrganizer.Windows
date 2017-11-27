@@ -26,10 +26,6 @@ namespace ReportsOrganizer.UI.Services
 
     class NavigationService : INavigationService
     {
-        private Lazy<NotificationView> _notificationView;
-
-        private NotificationView NotificationViewInstance => _notificationView.Value;
-
         private BaseViewModel currentPage;
         public BaseViewModel CurrentPage
         {
@@ -60,24 +56,13 @@ namespace ReportsOrganizer.UI.Services
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public NavigationService()
-        {
-            _notificationView = new Lazy<NotificationView>(() => new NotificationView());
-        }
-
         public void ShowNotificationWindow()
         {
             var desktopWorkingArea = SystemParameters.WorkArea;
-            NotificationViewInstance.Left = desktopWorkingArea.Right - NotificationViewInstance.Width - 10;
-            NotificationViewInstance.Top = desktopWorkingArea.Bottom - NotificationViewInstance.Height - 10;
-
-            NotificationViewInstance.Report.Text = null;
-            NotificationViewInstance.Show();
         }
 
         public void HideNotificationWindow()
         {
-            NotificationViewInstance.Hide();
         }
 
         public void NavigateToHome()

@@ -162,12 +162,6 @@
     <Compile Include="Views\Windows\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NotificationView.xaml.cs">
-      <DependentUpon>NotificationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SettingsView.xaml.cs">
-      <DependentUpon>SettingsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Windows\ManageProjectsWindowView.xaml.cs">
       <DependentUpon>ManageProjectsWindowView.xaml</DependentUpon>
     </Compile>
@@ -229,7 +223,6 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DependencyProperties\WindowProperties.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\NotificationViewModel.cs" />
     <Compile Include="Services\ViewModelLocator.cs" />
     <Page Include="Themes\Cyan.xaml">
       <SubType>Designer</SubType>
@@ -280,14 +273,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\MainWindowView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\NotificationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

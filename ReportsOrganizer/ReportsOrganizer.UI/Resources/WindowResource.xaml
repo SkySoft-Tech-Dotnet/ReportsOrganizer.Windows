@@ -19,11 +19,6 @@
                                     Padding="{StaticResource IconTemplatePadding}" />
     </DataTemplate>
 
-    <Style TargetType="iconPacks:PackIconMaterial" x:Key="WindowCommand">
-        <Setter Property="Width" Value="{StaticResource IconWidth}" />
-        <Setter Property="Height" Value="{StaticResource IconHeight}" />
-    </Style>
-
     <Style TargetType="controls:MetroWindow" x:Key="MetroWindow">
         <Setter Property="Width" Value="{StaticResource WindowWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource WindowMinWidth}" />
@@ -40,9 +35,26 @@
         <Setter Property="TextElement.FontWeight" Value="Regular" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
         <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-        <!-- Icon template -->
         <Setter Property="IconTemplate" Value="{StaticResource IconTemplate}" />
     </Style>
+    <Style TargetType="controls:MetroWindow" x:Key="MetroNotification" BasedOn="{StaticResource MetroWindow}">
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="Topmost" Value="True" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="ShowTitleBar" Value="False" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="ShowCloseButton" Value="False" />
+        <Setter Property="ShowMinButton" Value="False" />
+        <Setter Property="ShowMaxRestoreButton" Value="False" />
+    </Style>
+    <Style TargetType="iconPacks:PackIconMaterial" x:Key="MetroWindowCommand">
+        <Setter Property="Width" Value="{StaticResource IconWidth}" />
+        <Setter Property="Height" Value="{StaticResource IconHeight}" />
+    </Style>
+
+    
+    
+    
     <Style TargetType="controls:MetroWindow" x:Key="MinorMetroWindow">
         <Setter Property="Width" Value="{StaticResource MinorWindowWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource MinorWindowMinWidth}" />

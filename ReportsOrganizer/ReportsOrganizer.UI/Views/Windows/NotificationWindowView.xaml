@@ -7,11 +7,12 @@
                       xmlns:lex="http://wpflocalizeextension.codeplex.com"
                       lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
                       mc:Ignorable="d"
-                      BorderBrush="{DynamicResource AccentColorBrush}"
-                      GlowBrush="{DynamicResource AccentColorBrush}"
-                      BorderThickness="1"
-                      Title="NotificationWindowView" Height="150" Width="400" ShowTitleBar="False" ShowCloseButton="False" ShowMaxRestoreButton="False"
-                      ShowMinButton="False" WindowStyle="None" ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False">
+                      DataContext="{Binding Path=NotificationWindow, Source={StaticResource ViewModelLocator}}"
+                      Visibility="{Binding Path=Visibility, Mode=TwoWay}"
+                      Style="{StaticResource MetroNotification}"
+                      Title="NotificationWindowView"
+                      Height="150" Width="400"
+                      MinHeight="150" MinWidth="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="20" />
@@ -35,7 +36,7 @@
         <ComboBox Width="Auto"
                   Grid.Row="1"
                   Grid.Column="0"
-                  controls:TextBoxHelper.ClearTextButton="True"
+                  controls:TextBoxHelper.ClearTextButton="False"
                   controls:TextBoxHelper.Watermark="Project"
                   SelectedIndex="0">
             <ComboBoxItem Content="UCCC" />
@@ -52,23 +53,47 @@
         <Button Grid.Row="1"
                 Grid.Column="2"
                 Width="100"
-                Content="Postpone (30)"
+                Content="Postpone"
                 HorizontalAlignment="Right" />
-        
+
         <TextBox TextWrapping="Wrap"
                  Grid.ColumnSpan="3"
                  Grid.Column="0"
                  Grid.Row="2"
-                 x:Name="Report"/>
+                 x:Name="Report">
+            <TextBox.Style>
+                <Style BasedOn="{StaticResource MetroTextBox}" TargetType="{x:Type TextBox}">
+                    <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="True" />
+                    <Style.Triggers>
+                        <Trigger Property="controls:TextBoxHelper.HasText" Value="False">
+                            <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="False" />
+                            <Setter Property="controls:TextBoxHelper.Watermark" Value="Now enter some text..." />
+                        </Trigger>
+                        <Trigger Property="controls:TextBoxHelper.HasText" Value="True">
+                            <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="True" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
+                   VerticalAlignment="Center"
                    Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/125}" />
+
         <controls:TimePicker Grid.Column="1"
                              Grid.Row="3"
                              HandVisibility="HourMinute"
                              PickerVisibility="HourMinute"
+                             IsClockVisible="False"
+                             Visibility="Hidden"/>
+        <controls:DateTimePicker Grid.Column="1"
+                             Grid.Row="3"
+                             HandVisibility="HourMinute"
+                             PickerVisibility="HourMinute"
                              IsClockVisible="False" />
+
         <Button Grid.Row="3"
                 Grid.Column="2"
                 Width="40"

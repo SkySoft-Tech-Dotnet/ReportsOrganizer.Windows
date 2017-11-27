@@ -45,7 +45,7 @@
             <Button Command="{Binding Path=WindowOpenSettingsCommand}"
                     ToolTip="{lex:Loc General:Settings}">
                 <iconPacks:PackIconMaterial Kind="Settings"
-                                            Style="{StaticResource WindowCommand}" />
+                                            Style="{StaticResource MetroWindowCommand}" />
             </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>

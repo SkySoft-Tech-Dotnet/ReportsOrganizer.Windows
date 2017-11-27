@@ -164,6 +164,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void TaskbarIconWriteReportAction(object sender)
         {
             _applicationManager.NotificationWindow.Show();
+            //_applicationManager.NotificationWindow.Visibility = Visibility.Visible;
             //_navigationService.ShowNotificationWindow();
         }
 
