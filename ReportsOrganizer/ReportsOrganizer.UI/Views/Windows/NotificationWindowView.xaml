@@ -5,14 +5,16 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                      xmlns:prop="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                       lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
                       mc:Ignorable="d"
                       DataContext="{Binding Path=NotificationWindow, Source={StaticResource ViewModelLocator}}"
-                      Visibility="{Binding Path=Visibility, Mode=TwoWay}"
+                      Visibility="{Binding Path=WindowVisibility, Mode=TwoWay}"
                       Style="{StaticResource MetroNotification}"
                       Title="NotificationWindowView"
                       Height="150" Width="400"
-                      MinHeight="150" MinWidth="400">
+                      MinHeight="150" MinWidth="400"
+                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="20" />
