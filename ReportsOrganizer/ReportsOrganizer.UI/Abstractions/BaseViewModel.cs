@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace ReportsOrganizer.UI.Abstractions
@@ -21,6 +22,17 @@ namespace ReportsOrganizer.UI.Abstractions
         protected virtual void SetValue<T>(ref T field, T value, string propertyName)
         {
             field = value;
+            NotifyPropertyChanged(propertyName);
+        }
+
+        protected void SetAndValidateProperty<T>(ref T property, T newValue, [CallerMemberName] string propertyName = null)
+        {
+            if (Equals(property, newValue))
+                return;
+
+            ValidatePropertyAsync(propertyName, newValue);
+
+            property = newValue;
             NotifyPropertyChanged(propertyName);
         }
 
@@ -128,6 +140,13 @@ namespace ReportsOrganizer.UI.Abstractions
                 _errors.TryAdd(propertyName, existedErrors);
                 OnErrorsChanged(propertyName);
             }
+        }
+
+        protected void ClearValidationErrors(string propertyName)
+        {
+            _errors.TryRemove(propertyName, out var errors);
+
+            OnErrorsChanged(propertyName);
         }
 
         #endregion

@@ -5,6 +5,7 @@ using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.ViewModels.Windows;
 using ReportsOrganizer.UI.Views.Windows;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -14,8 +15,18 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
     public class ManageProjectsViewModel : BaseViewModel
     {
         private readonly IProjectService _projectService;
+        private IEnumerable<Project> _projectList;
 
-        public IEnumerable<Project> ProjectList => _projectService.ToListAsync(CancellationToken.None).Result;
+        public IEnumerable<Project> ProjectList =>
+            _projectList ?? (_projectList = _projectService.ToListAsync(CancellationToken.None).Result);
+
+        public IEnumerable<Project> ActiveProjectList =>
+            ProjectList.Where(p => p.IsActive).OrderBy(p => p.ShortName);
+
+        public IEnumerable<Project> InactiveProjectList =>
+            ProjectList.Where(p => p.IsActive == false).OrderBy(p => p.ShortName);
+
+
 
         public ICommand CreateProjectCommand { get; }
         public ICommand EditProjectCommand { get; }
@@ -36,7 +47,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         {
             var window = new ManageProjectsWindowView();
             if (window.ShowDialog() == true)
-                NotifyPropertyChanged(nameof(ProjectList));
+                NotifyPropertyChanged(nameof(ActiveProjectList));
         }
 
         private void EditProjectAction(object obj)
@@ -50,19 +61,24 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             context.FullName = project.FullName;
 
             if (window.ShowDialog() == true)
-                NotifyPropertyChanged(nameof(ProjectList));
+            {
+                NotifyPropertyChanged(nameof(ActiveProjectList));
+                NotifyPropertyChanged(nameof(InactiveProjectList));
+            }
         }
 
         private async Task IsActiveProjectAction(object obj)
         {
             await _projectService.SaveChangesAsync(CancellationToken.None);
-            NotifyPropertyChanged(nameof(ProjectList));
+            NotifyPropertyChanged(nameof(ActiveProjectList));
+            NotifyPropertyChanged(nameof(InactiveProjectList));
         }
 
         private async Task DeleteProjectAction(object obj)
         {
             await _projectService.DeleteAsync(obj as Project, CancellationToken.None);
-            NotifyPropertyChanged(nameof(ProjectList));
+            NotifyPropertyChanged(nameof(ActiveProjectList));
+            NotifyPropertyChanged(nameof(InactiveProjectList));
         }
     }
 }

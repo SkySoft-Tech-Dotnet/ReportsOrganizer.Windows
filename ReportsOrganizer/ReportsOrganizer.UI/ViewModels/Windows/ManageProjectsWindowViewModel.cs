@@ -33,7 +33,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set
             {
                 SetValue(ref _shortName, value, nameof(ShortName));
-                ValidatePropertyAsync(nameof(ShortName), value);
+                ClearValidationErrors(nameof(ShortName));
             }
         }
 
@@ -41,7 +41,11 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public string FullName
         {
             get => _fullName;
-            set => SetValue(ref _fullName, value, nameof(FullName));
+            set
+            {
+                SetValue(ref _fullName, value, nameof(FullName));
+                ClearValidationErrors(nameof(FullName));
+            }
         }
 
         public ICommand OkCommand { get; }

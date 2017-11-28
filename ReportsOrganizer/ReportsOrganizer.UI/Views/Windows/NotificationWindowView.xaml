@@ -69,11 +69,13 @@
                  Grid.ColumnSpan="3"
                  Grid.Column="0"
                  Grid.Row="2"
+                 VerticalScrollBarVisibility="Auto"
                  x:Name="Report"
-                 Text="{Binding Path=Description}">
+                 Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}">
             <TextBox.Style>
                 <Style BasedOn="{StaticResource MetroTextBox}" TargetType="{x:Type TextBox}">
                     <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="True" />
+                    <Setter Property="MaxLength" Value="250" />
                     <Style.Triggers>
                         <Trigger Property="controls:TextBoxHelper.HasText" Value="False">
                             <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="False" />
@@ -90,7 +92,7 @@
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
                    VerticalAlignment="Center"
-                   Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/125}" />
+                   Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/250}" />
 
         <controls:TimePicker Grid.Column="1"
                              Grid.Row="3"

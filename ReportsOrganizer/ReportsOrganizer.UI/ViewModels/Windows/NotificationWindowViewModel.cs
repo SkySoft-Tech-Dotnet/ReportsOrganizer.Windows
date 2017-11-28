@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -33,23 +34,28 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                 {
                     LastReport = _reportService.GetLastReportAsync(CancellationToken.None).Result;
                     ProjectList = _projectService.ToListAsync(CancellationToken.None).Result
+                        .Where(property=> property.IsActive)
                         .OrderBy(property => property.ShortName);
 
                     NotifyPropertyChanged(nameof(ProjectList));
                     NotifyPropertyChanged(nameof(UsePreviousEnable));
 
-                    SelectedProject = LastReport?.Project ?? ProjectList.FirstOrDefault();
-                    Description = null;
+                    SelectedProject = LastReport.Project.IsActive ? LastReport.Project : ProjectList.FirstOrDefault();
+                    _description = null;
                     SelectedTime = new TimeSpan();
+
+                    NotifyPropertyChanged(nameof(Description));
+                    ClearValidationErrors(nameof(Description));
                 }
                 SetValue(ref _windowVisibility, value, nameof(WindowVisibility));
             }
         }
-
+        
+        [Required(AllowEmptyStrings = false)]
         public string Description
         {
             get => _description;
-            set => SetValue(ref _description, value, nameof(Description));
+            set => SetAndValidateProperty(ref _description, value, nameof(Description));
         }
 
         public Project SelectedProject
@@ -103,7 +109,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void UsePreviousAction(object obj)
         {
-            SelectedProject = LastReport.Project;
+            if(LastReport.Project.IsActive)
+                SelectedProject = LastReport.Project;
             Description = LastReport.Description;
         }
 
@@ -114,6 +121,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void OkAction(object obj)
         {
+            Validate();
+            if (HasErrors)
+                return;
+
             _reportService.AddAsync(new Report
             {
                 Description = _description,

@@ -33,7 +33,7 @@ namespace ReportsOrganizer.UI.Attributes
 
                 if (uniqueProject != null && (uniqueProject.Id != id || uniqueProject.Id == 0))
                 {
-                    return new ValidationResult("Current Short Name is already exist", new []{"ShortName"});
+                    return new ValidationResult($"Current Short Name is already exist", new []{validationContext.MemberName});
                 }
             }
 

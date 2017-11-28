@@ -60,7 +60,7 @@
         <Setter Property="MinWidth" Value="{StaticResource MinorWindowMinWidth}" />
         <Setter Property="Height" Value="{StaticResource MinorWindowHeight}" />
         <Setter Property="MinHeight" Value="{StaticResource MinorWindowMinHeight}" />
-        <!--<Setter Property="WindowTransitionsEnabled" Value="False" />-->
+        <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <!-- Border styles -->
         <Setter Property="BorderThickness" Value="1" />

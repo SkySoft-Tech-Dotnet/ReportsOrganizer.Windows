@@ -37,7 +37,7 @@
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </TextBox>
-        <TextBox Grid.Row="3" Text="{Binding Path=FullName}" controls:TextBoxHelper.Watermark="Full Name" >
+        <TextBox Grid.Row="3" Text="{Binding Path=FullName, UpdateSourceTrigger=PropertyChanged}" controls:TextBoxHelper.Watermark="Full Name" >
             <Validation.ErrorTemplate>
                 <ControlTemplate>
                     <StackPanel>
