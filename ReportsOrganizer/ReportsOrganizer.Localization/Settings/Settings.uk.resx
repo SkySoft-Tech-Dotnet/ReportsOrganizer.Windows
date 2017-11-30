@@ -123,6 +123,9 @@
   <data name="General_Language" xml:space="preserve">
     <value>Мова</value>
   </data>
+  <data name="General_RememberLastLocation" xml:space="preserve">
+    <value>Запам'ятати місцезнаходження вікна сповіщення</value>
+  </data>
   <data name="General_RunMinimized" xml:space="preserve">
     <value>Запускати звернуто</value>
   </data>

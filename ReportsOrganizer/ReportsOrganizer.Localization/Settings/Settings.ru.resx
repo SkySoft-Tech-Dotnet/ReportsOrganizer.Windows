@@ -123,6 +123,9 @@
   <data name="General_Language" xml:space="preserve">
     <value>Язык</value>
   </data>
+  <data name="General_RememberLastLocation" xml:space="preserve">
+    <value>Запомнить расположение окна оповещения</value>
+  </data>
   <data name="General_RunMinimized" xml:space="preserve">
     <value>Запускать свернуто</value>
   </data>

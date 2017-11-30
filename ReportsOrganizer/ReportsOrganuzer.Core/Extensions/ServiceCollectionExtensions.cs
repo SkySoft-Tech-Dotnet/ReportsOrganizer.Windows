@@ -25,6 +25,7 @@ namespace ReportsOrganizer.Core.Extensions
 
             container.AddSingleton<IReportService, ReportService>();
             container.AddSingleton<IProjectService, ProjectService>();
+            container.AddSingleton<IExportService, ExportService>();
 
             container.AddRepository();
         }

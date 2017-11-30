@@ -15,6 +15,7 @@ namespace ReportsOrganizer.Core.Services
         Task<IEnumerable<Report>> FindReportsAsync(int year, int month, int week, CancellationToken cancellationToken);
         Task<Report> GetLastReportAsync(CancellationToken cancellationToken);
 
+        Task<Dictionary<int, IEnumerable<Report>>> GetMonthReport(int year, int month, CancellationToken cancellationToken);
         int GetWeeksOfMonth(int year, int month);
     }
     internal class ReportService : BaseService<Report>, IReportService
@@ -47,6 +48,21 @@ namespace ReportsOrganizer.Core.Services
             return _reportRepository.FindReports()
                 .Include(table => table.Project)
                 .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task<Dictionary<int, IEnumerable<Report>>> GetMonthReport(int year, int month, CancellationToken cancellationToken)
+        {
+            var numberOfWeeks = GetWeeksOfMonth(year, month);
+
+            var index = 0;
+            var dict = new Dictionary<int, IEnumerable<Report>>();
+
+            while (index++ < numberOfWeeks)
+            {
+                dict.Add(index, await FindReportsAsync(year, month, index, cancellationToken));
+            }
+
+            return dict;
         }
 
         public int GetWeeksOfMonth(int year, int month)

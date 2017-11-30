@@ -8,17 +8,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
     public class ManageProjectsViewModel : BaseViewModel
     {
         private readonly IProjectService _projectService;
-        private IEnumerable<Project> _projectList;
 
         public IEnumerable<Project> ProjectList =>
-            _projectList ?? (_projectList = _projectService.ToListAsync(CancellationToken.None).Result);
+            _projectService.ToListAsync(CancellationToken.None).Result;
 
         public IEnumerable<Project> ActiveProjectList =>
             ProjectList.Where(p => p.IsActive).OrderBy(p => p.ShortName);
@@ -46,6 +50,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         private void CreateProjectAction(object obj)
         {
             var window = new ManageProjectsWindowView();
+            window.Owner = Application.Current.MainWindow;
             if (window.ShowDialog() == true)
                 NotifyPropertyChanged(nameof(ActiveProjectList));
         }
@@ -53,12 +58,11 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         private void EditProjectAction(object obj)
         {
             var window = new ManageProjectsWindowView();
+            window.Owner = Application.Current.MainWindow;
             var context = (ManageProjectsWindowViewModel)window.DataContext;
             var project = (Project)obj;
 
-            context.Id = project.Id;
-            context.ShortName = project.ShortName;
-            context.FullName = project.FullName;
+            context.CurrentProject = project;
 
             if (window.ShowDialog() == true)
             {
@@ -76,9 +80,13 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
         private async Task DeleteProjectAction(object obj)
         {
-            await _projectService.DeleteAsync(obj as Project, CancellationToken.None);
-            NotifyPropertyChanged(nameof(ActiveProjectList));
-            NotifyPropertyChanged(nameof(InactiveProjectList));
+            var result = MessageBox.Show("Do you want to delete this element?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                await _projectService.DeleteAsync(obj as Project, CancellationToken.None);
+                NotifyPropertyChanged(nameof(ActiveProjectList));
+                NotifyPropertyChanged(nameof(InactiveProjectList));
+            }
         }
     }
 }

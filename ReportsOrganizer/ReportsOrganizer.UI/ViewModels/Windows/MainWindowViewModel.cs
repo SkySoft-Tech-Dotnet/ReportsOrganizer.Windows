@@ -6,11 +6,14 @@ using ReportsOrganizer.UI.Services;
 using ReportsOrganizer.UI.ViewModels.Settings;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Win32;
+using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Managers;
 using WPFLocalizeExtension.Engine;
 
@@ -19,6 +22,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
     public class MainWindowViewModel : BaseViewModel
     {
         private INavigationService _navigationService;
+        private IExportService _exportService;
 
         private bool _settingsIsOpen;
         private string _headerSettingsGroupLocalizeKey;
@@ -97,12 +101,16 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public ICommand OpenManageProjectsSettingsCommand { get; }
         public ICommand OpenPersonalizationSettingsCommand { get; }
 
+        public ICommand ExportMonthReportCommand { get; }
+
         public MainWindowViewModel(
             ApplicationManager applicationManager,
-            INavigationService navigationService)
+            INavigationService navigationService, 
+            IExportService exportService)
         {
             _applicationManager = applicationManager;
             _navigationService = navigationService;
+            _exportService = exportService;
 
             _settingsPageVisibility = Visibility.Hidden;
             _settingsBackButtonVisibility = Visibility.Hidden;
@@ -125,6 +133,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             OpenManageProjectsSettingsCommand = new RelayCommand(OpenManageProjectsSettingsAction, true);
             OpenNotificationSettingsCommand = new RelayCommand(OpenNotificationSettingsAction, true);
             OpenPersonalizationSettingsCommand = new RelayCommand(OpenPersonalizationSettingsAction, true);
+
+            ExportMonthReportCommand = new AsyncCommand(ExportMonthReportAction);
 
             LocalizeDictionary.Instance.PropertyChanged += LocalizeChanged;
 
@@ -227,6 +237,19 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             CurrentSettingsGroup = null;
             HeaderSettingsGroupLocalizeKey = "Settings:Group_Settings";
+        }
+
+        private async Task ExportMonthReportAction(object obj)
+        {
+            var fileDialog = new SaveFileDialog
+            {
+                FileName = "MonthReport",
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            };
+
+            if (fileDialog.ShowDialog() == true)
+                await _exportService.WriteMonthReport(2017, 11, fileDialog.FileName, CancellationToken.None);
         }
 
         private void LocalizeChanged(object sender, PropertyChangedEventArgs e)

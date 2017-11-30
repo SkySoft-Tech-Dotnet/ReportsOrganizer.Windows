@@ -2,6 +2,8 @@
 using ReportsOrganizer.DAL.Repositories;
 using ReportsOrganizer.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +27,8 @@ namespace ReportsOrganizer.Core.Services
             => _projectRepository.FindById(id, cancellationToken);
 
         public Task<Project> FindByShortName(string shortName, CancellationToken cancellationToken)
-            => _projectRepository.FindByShortNameAsync(shortName, cancellationToken);
+            => _projectRepository.FindByShortName(shortName.ToUpper())
+                .FirstOrDefaultAsync(cancellationToken);
 
         public Task<IEnumerable<Project>> ToListAsync(CancellationToken cancellationToken)
             => _projectRepository.ToListAsync(cancellationToken);

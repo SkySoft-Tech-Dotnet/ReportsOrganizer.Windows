@@ -20,19 +20,28 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
     {
         private readonly IProjectService _projectService;
 
-        public int Id { get; set; }
+        private Project _currentProject;
+        public Project CurrentProject
+        {
+            get => _currentProject;
+            set
+            {
+                _currentProject = value;
+                NotifyPropertyChanged(nameof(ShortName));
+                NotifyPropertyChanged(nameof(FullName));
+            }
+        }
+        
 
-        private string _shortName;
-        private string _fullName;
-
-        [UniqueShortName(nameof(Id))]
+        [UniqueShortName(nameof(CurrentProject))]
         [Required(AllowEmptyStrings = false)]
         public string ShortName
         {
-            get => _shortName;
+            get => CurrentProject.ShortName;
             set
             {
-                SetValue(ref _shortName, value, nameof(ShortName));
+                CurrentProject.ShortName = value;
+                NotifyPropertyChanged(nameof(ShortName));
                 ClearValidationErrors(nameof(ShortName));
             }
         }
@@ -40,10 +49,11 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         [Required(AllowEmptyStrings = false)]
         public string FullName
         {
-            get => _fullName;
+            get => CurrentProject.FullName;
             set
             {
-                SetValue(ref _fullName, value, nameof(FullName));
+                CurrentProject.FullName = value;
+                NotifyPropertyChanged(nameof(FullName));
                 ClearValidationErrors(nameof(FullName));
             }
         }
@@ -58,6 +68,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             OkCommand = new AsyncCommand(OkAction);
             CancelCommand = new RelayCommand(CancelAction, true);
+
+            CurrentProject = new Project();
         }
 
 
@@ -67,12 +79,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             if (HasErrors)
                 return;
 
-            await _projectService.AddOrUpdateAsync(new Project
-            {
-                Id = Id,
-                ShortName = ShortName,
-                FullName = FullName
-            }, CancellationToken.None);
+            await _projectService.AddOrUpdateAsync(CurrentProject, CancellationToken.None);
 
             ((ManageProjectsWindowView)obj).DialogResult = true;
             ((ManageProjectsWindowView)obj).Close();

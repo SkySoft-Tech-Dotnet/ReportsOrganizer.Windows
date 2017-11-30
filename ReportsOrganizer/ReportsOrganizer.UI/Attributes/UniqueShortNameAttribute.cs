@@ -7,16 +7,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.DI.Providers;
+using ReportsOrganizer.Models;
 
 namespace ReportsOrganizer.UI.Attributes
 {
     public class UniqueShortNameAttribute : ValidationAttribute
     {
-        private readonly string _idProperty;
+        private readonly string _projectProperty;
 
         public UniqueShortNameAttribute(string idProperty)
         {
-            _idProperty = idProperty;
+            _projectProperty = idProperty;
         }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -29,11 +30,11 @@ namespace ReportsOrganizer.UI.Attributes
                 var uniqueProject = projectService
                     .FindByShortName((string)value, CancellationToken.None).Result;
 
-                var id = GetPropertyValue<int>(_idProperty, validationContext);
+                var currProject = GetPropertyValue<Project>(_projectProperty, validationContext);
 
-                if (uniqueProject != null && (uniqueProject.Id != id || uniqueProject.Id == 0))
+                if (uniqueProject != null && (uniqueProject.Id != currProject.Id || uniqueProject.Id == 0))
                 {
-                    return new ValidationResult($"Current Short Name is already exist", new []{validationContext.MemberName});
+                    return new ValidationResult("Current Short Name is already exist", new []{validationContext.MemberName});
                 }
             }
 

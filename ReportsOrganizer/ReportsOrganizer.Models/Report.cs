@@ -10,5 +10,14 @@ namespace ReportsOrganizer.Models
         public DateTime Created { get; set; }
 
         public Project Project { get; set; }
+
+        public override string ToString()
+        {
+            return
+                $"{Description}\t" +
+                $"{Created.ToShortDateString()}\t" +
+                $"{Duration}\t\t" +
+                $"{Project?.ShortName}\t";
+        }
     }
 }

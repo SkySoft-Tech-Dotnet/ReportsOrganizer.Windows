@@ -12,6 +12,7 @@ using System.Windows.Threading;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.Models;
 using ReportsOrganizer.UI.Command;
+using ReportsOrganizer.UI.Managers;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -19,6 +20,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
     {
         private readonly IReportService _reportService;
         private IProjectService _projectService;
+        private ApplicationManager _applicationManager;
 
         private Visibility _windowVisibility;
         private string _description;
@@ -32,6 +34,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             {
                 if (value == Visibility.Visible)
                 {
+                    var desktopWorkingArea = SystemParameters.WorkArea;
+                    _applicationManager.NotificationWindow.Left = desktopWorkingArea.Right - _applicationManager.NotificationWindow.Width - 10;
+                    _applicationManager.NotificationWindow.Top = desktopWorkingArea.Bottom - _applicationManager.NotificationWindow.Height - 10;
+
                     LastReport = _reportService.GetLastReportAsync(CancellationToken.None).Result;
                     ProjectList = _projectService.ToListAsync(CancellationToken.None).Result
                         .Where(property=> property.IsActive)
@@ -40,7 +46,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                     NotifyPropertyChanged(nameof(ProjectList));
                     NotifyPropertyChanged(nameof(UsePreviousEnable));
 
-                    SelectedProject = LastReport.Project.IsActive ? LastReport.Project : ProjectList.FirstOrDefault();
+                    SelectedProject = LastReport.Project != null && LastReport.Project.IsActive ? LastReport.Project : ProjectList.FirstOrDefault();
                     _description = null;
                     SelectedTime = new TimeSpan();
 
@@ -81,10 +87,11 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public ICommand PostponeCommand { get; }
         public ICommand OkCommand { get; }
 
-        public NotificationWindowViewModel(IReportService reportService, IProjectService projectService)
+        public NotificationWindowViewModel(IReportService reportService, IProjectService projectService, ApplicationManager applicationManager)
         {
             _reportService = reportService;
             _projectService = projectService;
+            _applicationManager = applicationManager;
 
             WindowClosingCommand = new RelayCommand(WindowClosingAction, true);
             UsePreviousCommand = new RelayCommand(UsePreviousAction, true);
@@ -109,7 +116,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void UsePreviousAction(object obj)
         {
-            if(LastReport.Project.IsActive)
+            if(LastReport.Project != null && LastReport.Project.IsActive)
                 SelectedProject = LastReport.Project;
             Description = LastReport.Description;
         }

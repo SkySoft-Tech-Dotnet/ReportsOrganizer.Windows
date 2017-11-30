@@ -79,6 +79,15 @@ namespace ReportsOrganizer.Localization.Settings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remember last location of Notification window.
+        /// </summary>
+        internal static string General_RememberLastLocation {
+            get {
+                return ResourceManager.GetString("General_RememberLastLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start ReportsOrginizer minimized in the system tray.
         /// </summary>
         internal static string General_RunMinimized {

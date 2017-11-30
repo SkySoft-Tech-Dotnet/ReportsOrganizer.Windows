@@ -38,7 +38,6 @@
             </controls:ToggleSwitch.Header>
         </controls:ToggleSwitch>
         
-        
         <ContentControl Grid.Row="2"
                         Margin="0,0,0,10">
             <Grid>
@@ -57,8 +56,16 @@
                           DisplayMemberPath="Value" />
             </Grid>
         </ContentControl>
-        
-        
+        <!--<controls:ToggleSwitch Grid.Row="3"
+                               Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                               IsChecked="{Binding EnabledRunMinimized}"
+                               Margin="0,0,0,10">
+            <controls:ToggleSwitch.Header>
+                <TextBlock Text="{lex:Loc Settings:General_RememberLastLocation}"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,5" />
+            </controls:ToggleSwitch.Header>
+        </controls:ToggleSwitch>-->
         
     </Grid>
 </UserControl>
