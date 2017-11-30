@@ -5,22 +5,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
              DataContext="{Binding Path=ManageProjectsSettings, Source={StaticResource ViewModelLocator}}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="10" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <TextBlock Text="{lex:Loc Settings:ManageProjects_SelectProject}"
                    Grid.Row="0" />
-        
+
         <Button Grid.Row="1" Command="{Binding Path=CreateProjectCommand}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -38,115 +39,120 @@
                            Grid.Column="1" />
             </Grid>
         </Button>
-        
-        <ItemsControl 
-            Background="Transparent"
-            Grid.Row="2"
-            ItemsSource="{Binding Path=ActiveProjectList, UpdateSourceTrigger=PropertyChanged}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                        <Button HorizontalContentAlignment="Left">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="{Binding Path=ShortName}"
+        <ScrollViewer Grid.Row="2" MaxHeight="240" VerticalScrollBarVisibility="Auto">
+            
+                <ItemsControl 
+                    Background="Transparent"
+                    Grid.Row="0"
+                    ItemsSource="{Binding Path=ActiveProjectList, UpdateSourceTrigger=PropertyChanged}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button HorizontalContentAlignment="Left">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding Path=ShortName}"
                                            Grid.Column="0"
                                            Grid.RowSpan="2"
                                            Height="Auto"
                                            VerticalAlignment="Center"
                                            FontSize="20"/>
-                                <TextBlock Text="{Binding Path=FullName}"
+                                    <TextBlock Text="{Binding Path=FullName}"
                                            TextWrapping="Wrap"
                                            Grid.Column="1"
                                            Grid.Row="1" 
                                            Margin="20,0,0,0" />
-                                <CheckBox Command="{Binding DataContext.IsActiveProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    <CheckBox Command="{Binding DataContext.IsActiveProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                           CommandParameter="{Binding}"
                                           IsChecked="{Binding Path=IsActive}"
                                           Grid.Column="2"
                                           Grid.Row="1" 
                                           Margin="20,0,0,0"/>
-                                <Button Command="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    <Button Command="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         CommandParameter="{Binding}"
                                         Content="E"
                                         Grid.Column="3"
                                         Grid.Row="1" 
                                         Margin="20,0,0,0"/>
-                                <Button Command="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    <Button Command="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         CommandParameter="{Binding}"
                                         Content="X"
                                         Grid.Column="4"
                                         Grid.Row="1" 
                                         Margin="20,0,0,0"/>
-                            </Grid>
-                        </Button>
-            </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <ItemsControl 
-            Background="Transparent"
-            Grid.Row="4"
-            ItemsSource="{Binding Path=InactiveProjectList, UpdateSourceTrigger=PropertyChanged}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                        <Button HorizontalContentAlignment="Left">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
+                                </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="Auto">
+                <ItemsControl 
+                    Background="Transparent"
+                    Grid.Row="2"
+                    ItemsSource="{Binding Path=InactiveProjectList, UpdateSourceTrigger=PropertyChanged}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button HorizontalContentAlignment="Left">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="{Binding Path=ShortName}"
+                                    <TextBlock Text="{Binding Path=ShortName}"
                                            Grid.Column="0"
                                            Grid.RowSpan="2"
                                            Height="Auto"
                                            VerticalAlignment="Center"
                                            FontSize="20"/>
-                                <TextBlock Text="{Binding Path=FullName}"
+                                    <TextBlock Text="{Binding Path=FullName}"
                                            TextWrapping="Wrap"
                                            Grid.Column="1"
                                            Grid.Row="1" 
                                            Margin="20,0,0,0" />
-                                <CheckBox Command="{Binding DataContext.IsActiveProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    <CheckBox Command="{Binding DataContext.IsActiveProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                           CommandParameter="{Binding}"
                                           IsChecked="{Binding Path=IsActive}"
                                           Grid.Column="2"
                                           Grid.Row="1" 
                                           Margin="20,0,0,0"/>
-                                <Button Command="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    <Button Command="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         CommandParameter="{Binding}"
                                         Content="E"
                                         Grid.Column="3"
                                         Grid.Row="1" 
                                         Margin="20,0,0,0"/>
-                                <Button Command="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    <Button Command="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         CommandParameter="{Binding}"
                                         Content="X"
                                         Grid.Column="4"
                                         Grid.Row="1" 
                                         Margin="20,0,0,0"/>
-                            </Grid>
-                        </Button>
-            </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                                </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+        </ScrollViewer>
 
     </Grid>
 </UserControl>
