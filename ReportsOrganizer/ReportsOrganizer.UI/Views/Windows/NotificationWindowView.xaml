@@ -16,8 +16,11 @@
                       MinHeight="150" MinWidth="400"
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
     <Grid>
+        <Grid.Resources>
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
+        </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="20" />
+            <RowDefinition Height="Auto" MinHeight="30" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -35,19 +38,12 @@
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top" />
 
-        <ComboBox Width="Auto"
+        <ComboBox
                   Grid.Row="1"
                   Grid.Column="0"
-                  controls:TextBoxHelper.ClearTextButton="False"
-                  controls:TextBoxHelper.Watermark="Project"
-                  SelectedIndex="0"
+                  DisplayMemberPath="ShortName"
                   ItemsSource="{Binding Path=ProjectList}"
                   SelectedItem="{Binding Path=SelectedProject}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=ShortName}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
         </ComboBox>
 
         <Button Grid.Row="1"
@@ -56,7 +52,7 @@
                 Content="Use previous"
                 HorizontalAlignment="Right"
                 Margin="10,0" 
-                IsEnabled="{Binding Path=UsePreviousEnable}"
+                IsEnabled="{Binding Path=UsePreviousAvailable}"
                 Command="{Binding Path=UsePreviousCommand}" />
         <Button Grid.Row="1"
                 Grid.Column="2"
@@ -92,7 +88,7 @@
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
                    VerticalAlignment="Center"
-                   Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/250}" />
+                   Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/250}" Margin="5" />
 
         <controls:TimePicker Grid.Column="1"
                              Grid.Row="3"
@@ -108,37 +104,5 @@
                 Content="OK"
                 HorizontalAlignment="Right"
                 Command="{Binding Path=OkCommand}" />
-
-        <!--<StackPanel Grid.Row="0"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-            <Button Content="{lex:Loc General:GetPrevious}"
-                   Command="{Binding Path=NotificationWindowGetPreviousCommand}"
-                   Style="{StaticResource NotificationWindowButtonPrev}" Width="90" Height="28" />
-            <Button Content="{lex:Loc General:Postpone}"
-                    Command="{Binding Path=NotificationWindowPostponeCommand}"
-                    Style="{StaticResource NotificationWindowButtonPostpone}" Height="28" Width="70" />
-
-        </StackPanel>
-        <TextBox x:Name="Report" 
-                 Grid.Row="1" 
-                 materialDesign:HintAssist.Hint="{lex:Loc General:WriteReport}"
-                 Style="{StaticResource NotificationWindowReport}" 
-                 Text="{Binding Path=MultilineReportText}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch"/>
-        <Button Content="{lex:Loc General:OK}" 
-                Grid.Row="2"
-                Command="{Binding Path=NotificationWindowOKCommand}"
-                Style="{StaticResource NotificationWindowButtonOK}"/>
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Label x:Name="CharCounterLbl" 
-                   Content="{Binding Text.Length, ElementName=Report}"
-                   Style="{StaticResource NotificationWindowReportLength}" />
-            <Label x:Name="CharSplitterLbl" 
-                   Content="/"
-                   Style="{StaticResource NotificationWindowReportLength}" />
-            <Label x:Name="MaxCharLbl" 
-                   Content="125"
-                   Style="{StaticResource NotificationWindowReportLength}" />
-        </StackPanel>-->
     </Grid>
 </controls:MetroWindow>

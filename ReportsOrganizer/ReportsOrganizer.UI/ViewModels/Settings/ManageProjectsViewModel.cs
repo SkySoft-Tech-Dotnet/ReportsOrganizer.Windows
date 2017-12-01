@@ -14,51 +14,53 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
+using ReportsOrganizer.UI.Managers;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
     public class ManageProjectsViewModel : BaseViewModel
     {
         private readonly IProjectService _projectService;
-
-        public IEnumerable<Project> ProjectList =>
-            _projectService.ToListAsync(CancellationToken.None).Result;
+        private readonly ApplicationManager _applicationManager;
+        private IEnumerable<Project> _projectList;
 
         public IEnumerable<Project> ActiveProjectList =>
-            ProjectList.Where(p => p.IsActive).OrderBy(p => p.ShortName);
+            _projectList.Where(p => p.IsActive).OrderBy(p => p.ShortName);
 
         public IEnumerable<Project> InactiveProjectList =>
-            ProjectList.Where(p => p.IsActive == false).OrderBy(p => p.ShortName);
-
-
+            _projectList.Where(p => p.IsActive == false).OrderBy(p => p.ShortName);
 
         public ICommand CreateProjectCommand { get; }
         public ICommand EditProjectCommand { get; }
         public ICommand IsActiveProjectCommand { get; }
         public ICommand DeleteProjectCommand { get; }
 
-        public ManageProjectsViewModel(IProjectService projectService)
+        public ManageProjectsViewModel(IProjectService projectService, ApplicationManager applicationManager)
         {
             _projectService = projectService;
+            _applicationManager = applicationManager;
 
-            CreateProjectCommand = new RelayCommand(CreateProjectAction, true);
+            CreateProjectCommand = new AsyncCommand(CreateProjectAction);
             EditProjectCommand = new RelayCommand(EditProjectAction);
             IsActiveProjectCommand = new AsyncCommand(IsActiveProjectAction);
             DeleteProjectCommand = new AsyncCommand(DeleteProjectAction);
+
+            Task.Run(async () => await LoadProjects()).Wait();
         }
 
-        private void CreateProjectAction(object obj)
+        private async Task CreateProjectAction(object obj)
         {
-            var window = new ManageProjectsWindowView();
-            window.Owner = Application.Current.MainWindow;
+            var window = new ManageProjectsWindowView { Owner = Application.Current.MainWindow };
             if (window.ShowDialog() == true)
-                NotifyPropertyChanged(nameof(ActiveProjectList));
+            {
+                await LoadProjects();
+                ProjectsUpdated();
+            }
         }
 
         private void EditProjectAction(object obj)
         {
-            var window = new ManageProjectsWindowView();
-            window.Owner = Application.Current.MainWindow;
+            var window = new ManageProjectsWindowView { Owner = Application.Current.MainWindow };
             var context = (ManageProjectsWindowViewModel)window.DataContext;
             var project = (Project)obj;
 
@@ -66,16 +68,14 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
             if (window.ShowDialog() == true)
             {
-                NotifyPropertyChanged(nameof(ActiveProjectList));
-                NotifyPropertyChanged(nameof(InactiveProjectList));
+                ProjectsUpdated();
             }
         }
 
         private async Task IsActiveProjectAction(object obj)
         {
             await _projectService.SaveChangesAsync(CancellationToken.None);
-            NotifyPropertyChanged(nameof(ActiveProjectList));
-            NotifyPropertyChanged(nameof(InactiveProjectList));
+            ProjectsUpdated();
         }
 
         private async Task DeleteProjectAction(object obj)
@@ -84,9 +84,21 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             if (result == MessageBoxResult.Yes)
             {
                 await _projectService.DeleteAsync(obj as Project, CancellationToken.None);
-                NotifyPropertyChanged(nameof(ActiveProjectList));
-                NotifyPropertyChanged(nameof(InactiveProjectList));
+                await LoadProjects();
+                ProjectsUpdated();
             }
+        }
+
+        private void ProjectsUpdated()
+        {
+            NotifyPropertyChanged(nameof(ActiveProjectList));
+            NotifyPropertyChanged(nameof(InactiveProjectList));
+            (_applicationManager.NotificationWindow.DataContext as NotificationWindowViewModel)?.ProjectsUpdated(ActiveProjectList);
+        }
+
+        private async Task LoadProjects()
+        {
+            _projectList = await _projectService.ToListAsync(CancellationToken.None);
         }
     }
 }

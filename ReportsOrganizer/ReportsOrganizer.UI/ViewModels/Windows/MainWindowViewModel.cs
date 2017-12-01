@@ -204,6 +204,9 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                 .GetInstance<TViewModel>();
 
             CurrentSettingsGroup = page;
+
+            //var pageWithLoad = page as INavigateble;
+            //pageWithLoad.OnNavigate();
         }
 
         private void OpenGeneralSettingsAction(object obj)
