@@ -127,7 +127,7 @@
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="{StaticResource FlyoutMinWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource FlyoutMinWidth}" />
-        <Setter Property="Position" Value="Right" />
+        <Setter Property="Position" Value="Left" />
         <Setter Property="IsPinned" Value="False" />
         <!-- Font styles -->
         <Setter Property="FontSize" Value="{StaticResource FlyoutHeaderFontSize}" />

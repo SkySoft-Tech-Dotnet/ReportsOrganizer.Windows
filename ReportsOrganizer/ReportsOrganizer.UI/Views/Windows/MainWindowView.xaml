@@ -101,13 +101,13 @@
                 </ContextMenu>
             </taskBar:TaskbarIcon.ContextMenu>
         </taskBar:TaskbarIcon>
+        
         <Button Grid.Row="0" Content="Export" Height="100" Width="100" Command="{Binding Path=ExportMonthReportCommand}"/>
-        <!--<ContentControl Grid.Row="0"
-                        Content="{Binding Navigation.CurrentPage}" />-->
+        
         <StatusBar Grid.Row="1">
-            <StatusBarItem Content="{StaticResource ProgramName}" />
+            <!--<StatusBarItem Content="{StaticResource ProgramName}" />
             <Separator Style="{DynamicResource MetroStatusBarSeparator}" />
-            <StatusBarItem Content="Version 1.0.0.0" />
+            <StatusBarItem Content="Version 1.0.0.0" />-->
         </StatusBar>
     </Grid>
 

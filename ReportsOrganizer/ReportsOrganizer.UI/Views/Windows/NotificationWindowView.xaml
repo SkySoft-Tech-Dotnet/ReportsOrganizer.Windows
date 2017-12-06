@@ -77,7 +77,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="2" Grid.ColumnSpan="5" Background="#e6e6e6" BorderThickness="0"/>
+        <Border Grid.Row="2" Grid.ColumnSpan="5" Background="#e6e6e6" BorderBrush="#ababab" BorderThickness="0 1 0 0"/>
 
         <TextBox TextWrapping="Wrap"
                  Grid.ColumnSpan="5"
