@@ -18,6 +18,7 @@
         <TextBlock Text="{lex:Loc Settings:Personalization_Theme}"
                    Grid.Row="0" />
         <WrapPanel Grid.Row="1">
+            <Button Background="#FF077568" CommandParameter="Default" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
             <Button Background="#FFB17807" CommandParameter="Amber" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
             <Button Background="#FF003BB0" CommandParameter="Cobalt" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
             <Button Background="#FF77001B" CommandParameter="Crimson" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
@@ -28,7 +29,7 @@
             <Button Background="#FF9F0055" CommandParameter="Magenta" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
             <Button Background="#FFB94C00" CommandParameter="Orange" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
             <Button Background="#FF5133AB" CommandParameter="Purple" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
-            <Button Background="#FF007E7D" CommandParameter="Teal" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
+            <Button Background="#FF00ABA9" CommandParameter="Teal" Width="50" Height="50" Margin="5" Command="{Binding ChooseThemeClickCommand}" />
         </WrapPanel>
     </Grid>
 </UserControl>

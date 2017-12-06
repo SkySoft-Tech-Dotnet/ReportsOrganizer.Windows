@@ -6,7 +6,8 @@
 
     <sys:Double x:Key="IconWidth" x:Shared="False">16</sys:Double>
     <sys:Double x:Key="IconHeight" x:Shared="False">16</sys:Double>
-
+    <sys:Double x:Key="FloatingWatermarkFontSize">20</sys:Double>
+    
     <Thickness x:Key="IconTemplatePadding" x:Shared="False">4</Thickness>
     <Thickness x:Key="IconTemplateMargin" x:Shared="False" Left="5" Top="2" Right="0" Bottom="2" />
 
@@ -19,6 +20,8 @@
                                     Padding="{StaticResource IconTemplatePadding}" />
     </DataTemplate>
 
+    
+    
     <Style TargetType="controls:MetroWindow" x:Key="MetroWindow">
         <Setter Property="Width" Value="{StaticResource WindowWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource WindowMinWidth}" />
@@ -26,6 +29,7 @@
         <Setter Property="MinHeight" Value="{StaticResource WindowMinHeight}" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource GrayBrush2}" />
         <!-- Border styles -->
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
@@ -35,15 +39,15 @@
         <Setter Property="TextElement.FontWeight" Value="Regular" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
         <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-        <Setter Property="IconTemplate" Value="{StaticResource IconTemplate}" />
+        <!--<Setter Property="IconTemplate" Value="{StaticResource IconTemplate}" />-->
+        <Setter Property="ShowIconOnTitleBar" Value="False" />
     </Style>
     <Style TargetType="controls:MetroWindow" x:Key="MetroNotification" BasedOn="{StaticResource MetroWindow}">
-        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="Topmost" Value="True" />
+        <Setter Property="TitlebarHeight" Value="30" />
         <Setter Property="ResizeMode" Value="NoResize" />
-        <Setter Property="ShowTitleBar" Value="False" />
         <Setter Property="ShowInTaskbar" Value="False" />
-        <Setter Property="ShowCloseButton" Value="False" />
         <Setter Property="ShowMinButton" Value="False" />
         <Setter Property="ShowMaxRestoreButton" Value="False" />
     </Style>

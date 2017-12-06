@@ -32,6 +32,10 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             _applicationSettings.Value.Personalization.Theme = (string)obj;
             _applicationSettings.UpdateAsync(default(CancellationToken));
 
+            var theme = _applicationSettings.Value.Personalization.Theme == "Default" ?
+                ThemeManager.GetAppTheme("DefaultTheme") :
+                ThemeManager.GetAppTheme("BaseLight");
+
             ThemeManager.ChangeAppStyle(
                 Application.Current,
                 ThemeManager.GetAccent(_applicationSettings.Value.Personalization.Theme),

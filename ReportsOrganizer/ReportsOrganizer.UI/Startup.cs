@@ -47,7 +47,8 @@ namespace ReportsOrganizer.UI
             ThemeManager.AddAccent("Orange", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Orange.xaml"));
             ThemeManager.AddAccent("Purple", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Purple.xaml"));
             ThemeManager.AddAccent("Teal", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Teal.xaml"));
-
+            ThemeManager.AddAccent("Default", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Default.xaml"));
+            ThemeManager.AddAppTheme("DefaultTheme", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/DefaultTheme.xaml"));
 
             container.AddSingleton<INotificationService, NotificationService>();
             container.AddSingleton<INavigationService, NavigationService>();
@@ -57,10 +58,13 @@ namespace ReportsOrganizer.UI
         {
             LocalizeDictionary.Instance.Culture = new CultureInfo(applicationSettings.Value.General.Language);
 
+            var r = ThemeManager.DetectAppStyle(Application.Current).Item1;
+
             ThemeManager.ChangeAppStyle(
                 Application.Current,
                 ThemeManager.GetAccent(applicationSettings.Value.Personalization.Theme),
-                ThemeManager.DetectAppStyle(Application.Current).Item1);
+                ThemeManager.GetAppTheme("DefaultTheme"));
+                //ThemeManager.DetectAppStyle(Application.Current).Item1);
 
             Task.Run(async () => await projectService.ToListAsync(CancellationToken.None)).Wait();
         }

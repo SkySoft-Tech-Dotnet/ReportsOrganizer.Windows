@@ -11,71 +11,94 @@
                       DataContext="{Binding Path=NotificationWindow, Source={StaticResource ViewModelLocator}}"
                       Visibility="{Binding Path=WindowVisibility, Mode=TwoWay}"
                       Style="{StaticResource MetroNotification}"
-                      Title="NotificationWindowView"
-                      Height="150" Width="400"
-                      MinHeight="150" MinWidth="400"
-                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}">
+                      Title="Add reports record"
+                      Height="187" Width="400"
+                      MinHeight="187" MinWidth="400"
+                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
+                      >
+
+    <controls:MetroWindow.Resources>
+        <ControlTemplate x:Key="ClosingButton">
+            <Button Width="120"
+                    HorizontalAlignment="Right" 
+                    Padding="0"
+                    Command="{Binding Path=PostponeCommand}"
+                    BorderThickness="0">
+                
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" FontFamily="Segoe UI" FontSize="16" FontWeight="Regular" VerticalAlignment="Center" Foreground="White">Postpone</TextBlock>
+                    <Viewbox Grid.Column="1" Height="27" HorizontalAlignment="Right">
+                        <Canvas Height="19" Width="19" Margin="0,4,17,7">
+                            <Path Canvas.Left="5" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Fill="White" />
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+            </Button>
+        </ControlTemplate>
+        
+        <DataTemplate x:Key="TitleText">
+            <TextBlock Text="{TemplateBinding Content}"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"
+                       Margin="7 -1 8 0"
+                       FontWeight="Regular"
+                       FontSize="16"
+                       FontFamily="Segoe UI" />
+        </DataTemplate>
+    </controls:MetroWindow.Resources>
+
+    <controls:MetroWindow.TitleTemplate>
+        <StaticResource ResourceKey="TitleText" />
+    </controls:MetroWindow.TitleTemplate>
+    <controls:MetroWindow.WindowButtonCommands>
+        <controls:WindowButtonCommands Template="{StaticResource ClosingButton}" />
+    </controls:MetroWindow.WindowButtonCommands>
+
     <Grid>
-        <Grid.Resources>
-            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
-        </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="30" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="37" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="100" />
-            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Add note"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top" />
-
-        <ComboBox
-                  Grid.Row="1"
-                  Grid.Column="0"
-                  DisplayMemberPath="ShortName"
-                  ItemsSource="{Binding Path=ProjectList}"
-                  SelectedItem="{Binding Path=SelectedProject}">
-        </ComboBox>
-
-        <Button Grid.Row="1"
-                Grid.Column="1"
-                Width="100"
-                Content="Use previous"
-                HorizontalAlignment="Right"
-                Margin="10,0" 
-                IsEnabled="{Binding Path=UsePreviousAvailable}"
-                Command="{Binding Path=UsePreviousCommand}" />
-        <Button Grid.Row="1"
-                Grid.Column="2"
-                Width="100"
-                Content="Postpone"
-                HorizontalAlignment="Right" 
-                Command="{Binding Path=PostponeCommand}" />
+        <Border Grid.Row="2" Grid.ColumnSpan="5" Background="#e6e6e6" BorderThickness="0"/>
 
         <TextBox TextWrapping="Wrap"
-                 Grid.ColumnSpan="3"
+                 Grid.ColumnSpan="5"
                  Grid.Column="0"
-                 Grid.Row="2"
+                 Grid.Row="0"
+                 BorderThickness="0"
                  VerticalScrollBarVisibility="Auto"
                  x:Name="Report"
                  Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}">
             <TextBox.Style>
                 <Style BasedOn="{StaticResource MetroTextBox}" TargetType="{x:Type TextBox}">
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="FontFamily" Value="Segoe UI"/>
+                    <Setter Property="FontWeight" Value="500"/>
                     <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="True" />
                     <Setter Property="MaxLength" Value="250" />
                     <Style.Triggers>
                         <Trigger Property="controls:TextBoxHelper.HasText" Value="False">
+                            <Setter Property="Opacity" Value="0.6" />
                             <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="False" />
-                            <Setter Property="controls:TextBoxHelper.Watermark" Value="Now enter some text..." />
+                            <Setter Property="controls:TextBoxHelper.Watermark" Value="What did you manage to do?" />
                         </Trigger>
                         <Trigger Property="controls:TextBoxHelper.HasText" Value="True">
                             <Setter Property="controls:TextBoxHelper.ClearTextButton" Value="True" />
@@ -85,24 +108,54 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBlock Grid.Column="0"
-                   Grid.Row="3"
-                   VerticalAlignment="Center"
-                   Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/250}" Margin="5" />
+
+        <ComboBox Grid.Column="0"
+                  Grid.Row="2"
+                  Height="25"
+                  Width="57"
+                  Margin="7,4,5,6"
+                  DisplayMemberPath="ShortName"
+                  ItemsSource="{Binding Path=ProjectList}"
+                  SelectedItem="{Binding Path=SelectedProject}"/>
 
         <controls:TimePicker Grid.Column="1"
-                             Grid.Row="3"
+                             Grid.Row="2"
+                             Height="25"
+                             Width="85"
+                             Margin="0,3,0,5"
                              HandVisibility="HourMinute"
                              PickerVisibility="HourMinute"
                              IsClockVisible="False"
+                             controls:TextBoxHelper.Watermark="00:00"
                              Culture="{Binding Path=DurationCultureInfo}"
                              SelectedTime="{Binding Path=SelectedTime}"/>
 
-        <Button Grid.Row="3"
-                Grid.Column="2"
-                Width="40"
-                Content="OK"
-                HorizontalAlignment="Right"
-                Command="{Binding Path=OkCommand}" />
+        <Button Grid.Column="2"
+                Grid.Row="2"
+                Width="90"
+                Height="30"
+                Padding="0"
+                Margin="5,2,5,3"
+                Content="Load previous"
+                IsEnabled="{Binding Path=UsePreviousAvailable}"
+                Command="{Binding Path=UsePreviousCommand}" 
+                controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+
+        <TextBlock Grid.Column="3"
+                   Grid.Row="2"
+                   FontSize="16"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="{Binding Text.Length, ElementName=Report, StringFormat={}{0}/250}" Margin="5" />
+
+        <Button Grid.Column="4" 
+                Grid.Row="2"
+                Height="30"
+                Width="70"
+                Margin="5,2,4,3"
+                Content="Save"
+                Command="{Binding Path=OkCommand}" 
+                controls:ControlsHelper.ContentCharacterCasing="Normal" />
     </Grid>
 </controls:MetroWindow>
+

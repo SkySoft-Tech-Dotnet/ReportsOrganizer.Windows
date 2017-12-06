@@ -26,6 +26,17 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private string _description;
         private Project _selectedProject;
         private TimeSpan _selectedTime;
+        private BindingList<Project> _projectList;
+
+
+        public bool UsePreviousAvailable => LastReport != null;
+        public Report LastReport { get; private set; }
+        public CultureInfo DurationCultureInfo { get; }
+
+        public ICommand WindowClosingCommand { get; }
+        public ICommand UsePreviousCommand { get; }
+        public ICommand PostponeCommand { get; }
+        public ICommand OkCommand { get; }
 
         public Visibility WindowVisibility
         {
@@ -39,9 +50,8 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                     _applicationManager.NotificationWindow.Top = desktopWorkingArea.Bottom - _applicationManager.NotificationWindow.Height - 10;
 
                     LastReport = _reportService.GetLastReportAsync(CancellationToken.None).Result;
-                    ProjectList = _projectService.ToListAsync(CancellationToken.None).Result
-                        .Where(property => property.IsActive)
-                        .OrderBy(property => property.ShortName);
+                    _projectList = _projectService.ToBindingListAsync(CancellationToken.None).Result;
+                    _projectList.ListChanged += ProjectsUpdated;
 
                     NotifyPropertyChanged(nameof(ProjectList));
                     NotifyPropertyChanged(nameof(UsePreviousAvailable));
@@ -76,15 +86,12 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _selectedTime, value, nameof(SelectedTime));
         }
 
-        public IEnumerable<Project> ProjectList { get; private set; }
-        public bool UsePreviousAvailable => LastReport != null;
-        public Report LastReport { get; private set; }
-        public CultureInfo DurationCultureInfo { get; }
-
-        public ICommand WindowClosingCommand { get; }
-        public ICommand UsePreviousCommand { get; }
-        public ICommand PostponeCommand { get; }
-        public ICommand OkCommand { get; }
+        public IEnumerable<Project> ProjectList
+        {
+            get { return _projectList
+                    .Where(property => property.IsActive)
+                    .OrderBy(property => property.ShortName); }
+        }
 
         public NotificationWindowViewModel(IReportService reportService, IProjectService projectService, ApplicationManager applicationManager)
         {
@@ -142,10 +149,9 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             WindowVisibility = Visibility.Hidden;
         }
 
-        public void ProjectsUpdated(IEnumerable<Project> projects)
+        private void ProjectsUpdated(object sender, ListChangedEventArgs e)
         {
-            ProjectList = projects;
-            var tmpId = _selectedProject.Id;
+            var tmpId = _selectedProject?.Id;
             SelectedProject = null;
             SelectedProject = ProjectList.FirstOrDefault(p => p.Id == tmpId) ?? ProjectList.FirstOrDefault();
             NotifyPropertyChanged(nameof(ProjectList));

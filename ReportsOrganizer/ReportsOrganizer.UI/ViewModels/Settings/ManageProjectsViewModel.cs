@@ -93,12 +93,9 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         {
             NotifyPropertyChanged(nameof(ActiveProjectList));
             NotifyPropertyChanged(nameof(InactiveProjectList));
-            (_applicationManager.NotificationWindow.DataContext as NotificationWindowViewModel)?.ProjectsUpdated(ActiveProjectList);
         }
 
-        private async Task LoadProjects()
-        {
-            _projectList = await _projectService.ToListAsync(CancellationToken.None);
-        }
+        private async Task LoadProjects() 
+            => _projectList = await _projectService.ToListAsync(CancellationToken.None);
     }
 }
