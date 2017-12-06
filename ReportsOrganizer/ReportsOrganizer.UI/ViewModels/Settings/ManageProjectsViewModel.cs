@@ -2,6 +2,7 @@
 using ReportsOrganizer.Models;
 using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Command;
+using ReportsOrganizer.UI.Managers;
 using ReportsOrganizer.UI.ViewModels.Windows;
 using ReportsOrganizer.UI.Views.Windows;
 using System.Collections.Generic;
@@ -10,11 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
-using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
-using ReportsOrganizer.UI.Managers;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {

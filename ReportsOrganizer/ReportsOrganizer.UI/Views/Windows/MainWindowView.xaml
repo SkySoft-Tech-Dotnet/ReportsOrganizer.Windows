@@ -40,15 +40,14 @@
         </DataTemplate>
     </controls:MetroWindow.Resources>
 
-    <controls:MetroWindow.LeftWindowCommands>
+    <!--<controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands ShowSeparators="False">
             <Button Command="{Binding Path=WindowOpenSettingsCommand}"
                     ToolTip="{lex:Loc General:Settings}">
-                <iconPacks:PackIconMaterial Kind="Settings"
-                                            Style="{StaticResource MetroWindowCommand}" />
+                settings
             </Button>
         </controls:WindowCommands>
-    </controls:MetroWindow.LeftWindowCommands>
+    </controls:MetroWindow.LeftWindowCommands>-->
 
     <controls:MetroWindow.WindowButtonCommands>
         <controls:WindowButtonCommands Template="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}" />
@@ -80,9 +79,10 @@
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
-
+    
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -101,10 +101,38 @@
                 </ContextMenu>
             </taskBar:TaskbarIcon.ContextMenu>
         </taskBar:TaskbarIcon>
-        
-        <Button Grid.Row="0" Content="Export" Height="100" Width="100" Command="{Binding Path=ExportMonthReportCommand}"/>
-        
-        <StatusBar Grid.Row="1">
+
+        <Button Grid.Row="1" Content="Export" VerticalAlignment="Top" Height="100" Width="100" Command="{Binding Path=ExportMonthReportCommand}"
+                Style="{StaticResource ButtonBase}"/>
+        <Border Grid.Row="0" Height="60" VerticalAlignment="Top">
+            <Border.Effect>
+                <DropShadowEffect Color="Gray" Opacity=".20" ShadowDepth="3" Direction="-90" />
+            </Border.Effect>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="62" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                    Grid.Column="0" 
+                    Background="White" 
+                    controls:ButtonHelper.CornerRadius="0" Style="{StaticResource ButtonBase}"
+                    Command="{Binding Path=WindowOpenSettingsCommand}">
+                    <Viewbox Height="27" HorizontalAlignment="Right">
+                        <Canvas Height="25" Width="25">
+                            <Path Data="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" Fill="Black" />
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+            </Grid>
+        </Border>
+
+        <StatusBar Grid.Row="2">
             <!--<StatusBarItem Content="{StaticResource ProgramName}" />
             <Separator Style="{DynamicResource MetroStatusBarSeparator}" />
             <StatusBarItem Content="Version 1.0.0.0" />-->

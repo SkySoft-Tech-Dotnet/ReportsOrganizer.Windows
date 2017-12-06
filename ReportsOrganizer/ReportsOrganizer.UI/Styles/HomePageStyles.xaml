@@ -15,9 +15,9 @@
         <Setter Property="Height" Value="50" />
         <Setter Property="ToolTip" Value="MaterialDesignFloatingActionLightButton" />
     </Style>
-    <Style TargetType="materialDesign:PackIcon" x:Key="AddReportIconButton">
+    <!--<Style TargetType="materialDesign:PackIcon" x:Key="AddReportIconButton">
         <Setter Property="Width" Value="25" />
         <Setter Property="Height" Value="25" />
         <Setter Property="Kind" Value="Plus" />
-    </Style>
+    </Style>-->
 </ResourceDictionary>

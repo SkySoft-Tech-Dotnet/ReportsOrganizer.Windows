@@ -1,26 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:Double x:Key="IconWidth" x:Shared="False">16</sys:Double>
-    <sys:Double x:Key="IconHeight" x:Shared="False">16</sys:Double>
     <sys:Double x:Key="FloatingWatermarkFontSize">20</sys:Double>
-    
-    <Thickness x:Key="IconTemplatePadding" x:Shared="False">4</Thickness>
-    <Thickness x:Key="IconTemplateMargin" x:Shared="False" Left="5" Top="2" Right="0" Bottom="2" />
-
-    <DataTemplate x:Key="IconTemplate" x:Shared="False">
-        <iconPacks:PackIconMaterial Kind="FileDocument"
-                                    Foreground="{StaticResource IdealForegroundColorBrush}"
-                                    Width="{TemplateBinding Width}"
-                                    Height="{TemplateBinding Height}"
-                                    Margin="{StaticResource IconTemplateMargin}"
-                                    Padding="{StaticResource IconTemplatePadding}" />
-    </DataTemplate>
-
-    
     
     <Style TargetType="controls:MetroWindow" x:Key="MetroWindow">
         <Setter Property="Width" Value="{StaticResource WindowWidth}" />
@@ -51,13 +34,6 @@
         <Setter Property="ShowMinButton" Value="False" />
         <Setter Property="ShowMaxRestoreButton" Value="False" />
     </Style>
-    <Style TargetType="iconPacks:PackIconMaterial" x:Key="MetroWindowCommand">
-        <Setter Property="Width" Value="{StaticResource IconWidth}" />
-        <Setter Property="Height" Value="{StaticResource IconHeight}" />
-    </Style>
-
-    
-    
     
     <Style TargetType="controls:MetroWindow" x:Key="MinorMetroWindow">
         <Setter Property="Width" Value="{StaticResource MinorWindowWidth}" />

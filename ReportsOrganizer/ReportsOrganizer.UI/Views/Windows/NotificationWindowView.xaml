@@ -21,9 +21,9 @@
         <ControlTemplate x:Key="ClosingButton">
             <Button Width="120"
                     HorizontalAlignment="Right" 
-                    Padding="0"
+                    Focusable="False"
                     Command="{Binding Path=PostponeCommand}"
-                    BorderThickness="0">
+                    Style="{StaticResource ButtonBase}">
                 
 
                 <Grid>
@@ -134,12 +134,11 @@
                 Grid.Row="2"
                 Width="90"
                 Height="30"
-                Padding="0"
                 Margin="5,2,5,3"
                 Content="Load previous"
+                Style="{StaticResource ButtonBase}"
                 IsEnabled="{Binding Path=UsePreviousAvailable}"
-                Command="{Binding Path=UsePreviousCommand}" 
-                controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+                Command="{Binding Path=UsePreviousCommand}" />
 
         <TextBlock Grid.Column="3"
                    Grid.Row="2"
@@ -154,8 +153,8 @@
                 Width="70"
                 Margin="5,2,4,3"
                 Content="Save"
-                Command="{Binding Path=OkCommand}" 
-                controls:ControlsHelper.ContentCharacterCasing="Normal" />
+                Style="{StaticResource ButtonBase}"
+                Command="{Binding Path=OkCommand}" />
     </Grid>
 </controls:MetroWindow>
 
