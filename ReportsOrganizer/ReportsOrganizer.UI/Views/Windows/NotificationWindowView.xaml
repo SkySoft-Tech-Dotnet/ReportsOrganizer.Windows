@@ -24,8 +24,6 @@
                     Focusable="False"
                     Command="{Binding Path=PostponeCommand}"
                     Style="{StaticResource ButtonBase}">
-                
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
