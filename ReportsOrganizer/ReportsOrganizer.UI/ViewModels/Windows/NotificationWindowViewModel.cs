@@ -56,7 +56,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                     NotifyPropertyChanged(nameof(ProjectList));
                     NotifyPropertyChanged(nameof(UsePreviousAvailable));
 
-                    SelectedProject = LastReport.Project != null && LastReport.Project.IsActive ? LastReport.Project : ProjectList.FirstOrDefault();
+                    SelectedProject = LastReport?.Project != null && LastReport.Project.IsActive ? LastReport.Project : ProjectList.FirstOrDefault();
                     _description = null;
                     SelectedTime = new TimeSpan();
 
