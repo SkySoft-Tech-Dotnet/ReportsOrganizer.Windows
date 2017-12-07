@@ -136,6 +136,9 @@
     <Compile Include="ViewModels\Windows\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\Windows\ManageProjectsWindowViewModel.cs" />
     <Compile Include="ViewModels\Windows\NotificationWindowViewModel.cs" />
+    <Compile Include="Views\Controls\ManageProjectsItem.xaml.cs">
+      <DependentUpon>ManageProjectsItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings\GeneralView.xaml.cs">
       <DependentUpon>GeneralView.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\GenericResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Images.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,6 +238,10 @@
     <Page Include="Themes\Teal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\ManageProjectsItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Settings\GeneralView.xaml">
       <SubType>Designer</SubType>

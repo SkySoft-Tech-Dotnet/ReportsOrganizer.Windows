@@ -2,7 +2,7 @@
 using ReportsOrganizer.UI.ViewModels.Settings;
 using ReportsOrganizer.UI.ViewModels.Windows;
 
-namespace ReportsOrganizer.UI.ViewModels
+namespace ReportsOrganizer.UI.Services
 {
     public class ViewModelLocator
     {

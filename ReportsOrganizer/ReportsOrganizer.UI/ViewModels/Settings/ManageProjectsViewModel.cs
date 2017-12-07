@@ -17,7 +17,6 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
     public class ManageProjectsViewModel : BaseViewModel
     {
         private readonly IProjectService _projectService;
-        private readonly ApplicationManager _applicationManager;
         private IEnumerable<Project> _projectList;
 
         public IEnumerable<Project> ActiveProjectList =>
@@ -28,17 +27,16 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
         public ICommand CreateProjectCommand { get; }
         public ICommand EditProjectCommand { get; }
-        public ICommand IsActiveProjectCommand { get; }
+        public ICommand ActivateProjectCommand { get; }
         public ICommand DeleteProjectCommand { get; }
 
-        public ManageProjectsViewModel(IProjectService projectService, ApplicationManager applicationManager)
+        public ManageProjectsViewModel(IProjectService projectService)
         {
             _projectService = projectService;
-            _applicationManager = applicationManager;
 
             CreateProjectCommand = new AsyncCommand(CreateProjectAction);
             EditProjectCommand = new RelayCommand(EditProjectAction);
-            IsActiveProjectCommand = new AsyncCommand(IsActiveProjectAction);
+            ActivateProjectCommand = new AsyncCommand(ActivateProjectAction);
             DeleteProjectCommand = new AsyncCommand(DeleteProjectAction);
 
             Task.Run(async () => await LoadProjects()).Wait();
@@ -68,7 +66,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             }
         }
 
-        private async Task IsActiveProjectAction(object obj)
+        private async Task ActivateProjectAction(object obj)
         {
             await _projectService.SaveChangesAsync(CancellationToken.None);
             ProjectsUpdated();
