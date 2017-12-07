@@ -10,11 +10,6 @@ namespace ReportsOrganizer.UI.Helpers
         public static readonly DependencyProperty BackCommandProperty =
             DependencyProperty.RegisterAttached("BackCommand", typeof(ICommand), typeof(FlyoutHelper));
 
-        public static readonly DependencyProperty BackButtonVisibilityProperty =
-            DependencyProperty.RegisterAttached("BackButtonVisibility", typeof(Visibility), typeof(FlyoutHelper),
-                new FrameworkPropertyMetadata(Visibility.Visible,
-                    FrameworkPropertyMetadataOptions.AffectsArrange | FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
-
         public static readonly DependencyProperty PageContentProperty =
             DependencyProperty.RegisterAttached("PageContent", typeof(object), typeof(FlyoutHelper));
 
@@ -29,16 +24,6 @@ namespace ReportsOrganizer.UI.Helpers
         public static ICommand GetBackCommand(Flyout dependencyObject)
         {
             return dependencyObject.GetValue<ICommand>(BackCommandProperty);
-        }
-
-        public static void SetBackButtonVisibility(Flyout dependencyObject, Visibility value)
-        {
-            dependencyObject.SetValue(BackButtonVisibilityProperty, value);
-        }
-
-        public static Visibility GetBackButtonVisibility(Flyout dependencyObject)
-        {
-            return dependencyObject.GetValue<Visibility>(BackButtonVisibilityProperty);
         }
 
         public static void SetPageContent(Flyout dependencyObject, object value)

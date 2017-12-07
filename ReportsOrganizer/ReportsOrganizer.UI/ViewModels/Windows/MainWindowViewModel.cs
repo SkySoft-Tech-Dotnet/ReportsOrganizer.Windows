@@ -29,7 +29,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private Visibility _windowVisibility;
         private Visibility _settingsPageVisibility;
-        private Visibility _settingsBackButtonVisibility;
 
         private WindowState _prevWindowState;
         private WindowState _currentWindowState;
@@ -72,12 +71,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _settingsPageVisibility, value, nameof(SettingsPageVisibility));
         }
 
-        public Visibility SettingsBackButtonVisibility
-        {
-            get => _settingsBackButtonVisibility;
-            set => SetValue(ref _settingsBackButtonVisibility, value, nameof(SettingsBackButtonVisibility));
-        }
-
         public string HeaderSettingsGroup
             => LocalizationHelper.GetLocalizedValue(HeaderSettingsGroupLocalizeKey);
 
@@ -113,7 +106,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             _exportService = exportService;
 
             _settingsPageVisibility = Visibility.Hidden;
-            _settingsBackButtonVisibility = Visibility.Hidden;
             _headerSettingsGroupLocalizeKey = "Settings:Group_Settings";
 
             WindowVisibility = Environment.GetCommandLineArgs().Any(arg => arg == "/minimize")
@@ -198,7 +190,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             where TViewModel : BaseViewModel
         {
             SettingsPageVisibility = Visibility.Visible;
-            SettingsBackButtonVisibility = Visibility.Visible;
 
             var page = ServiceCollectionProvider.Container
                 .GetInstance<TViewModel>();
@@ -236,7 +227,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void BackNavigateSettingsAction(object obj)
         {
             SettingsPageVisibility = Visibility.Hidden;
-            SettingsBackButtonVisibility = Visibility.Hidden;
 
             CurrentSettingsGroup = null;
             HeaderSettingsGroupLocalizeKey = "Settings:Group_Settings";

@@ -20,6 +20,7 @@
         <CheckBox Command="{Binding Path=ActivateProjectCommand}"
                   CommandParameter="{Binding Path=ProjectCommandParameter}"
                   IsChecked="{Binding Path=IsProjectActive}"
+                  VerticalAlignment="Center"
                   Grid.Column="0"/>
 
         <TextBlock Grid.Column="1" 

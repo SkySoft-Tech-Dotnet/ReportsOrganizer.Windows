@@ -8,7 +8,7 @@
     <sys:Double x:Key="FlyoutBackButtonWidth" x:Shared="False">40</sys:Double>
     <sys:Double x:Key="FlyoutBackButtonHeight" x:Shared="False">40</sys:Double>
 
-    <Thickness x:Key="FlyoutMenuButtonPadding" x:Shared="False">15,0</Thickness>
+    <Thickness x:Key="FlyoutMenuButtonPadding" x:Shared="False">20,0</Thickness>
 
     <Storyboard x:Key="FlyoutButtonMouseEnter" x:Shared="False">
         <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
