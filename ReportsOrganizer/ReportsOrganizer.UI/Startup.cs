@@ -50,7 +50,6 @@ namespace ReportsOrganizer.UI
             ThemeManager.AddAccent("Default", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Default.xaml"));
             ThemeManager.AddAppTheme("DefaultTheme", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/DefaultTheme.xaml"));
 
-            container.AddSingleton<INotificationService, NotificationService>();
             container.AddSingleton<INavigationService, NavigationService>();
         }
 

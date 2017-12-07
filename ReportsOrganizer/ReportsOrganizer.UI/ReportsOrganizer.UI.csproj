@@ -121,16 +121,13 @@
     <Compile Include="Abstractions\BaseViewModel.cs" />
     <Compile Include="Attributes\UniqueShortNameAttribute.cs" />
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
-    <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Helpers\FlyoutHelper.cs" />
     <Compile Include="Managers\ApplicationManager.cs" />
     <Compile Include="Models\ApplicationNotification.cs" />
     <Compile Include="Models\ApplicationSettings.cs" />
-    <Compile Include="Models\IntItem.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Settings\GeneralViewModel.cs" />
     <Compile Include="ViewModels\Settings\ManageProjectsViewModel.cs" />
