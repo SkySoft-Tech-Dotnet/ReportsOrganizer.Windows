@@ -7,7 +7,7 @@ namespace ReportsOrganizer.UI.Views.Controls
     /// <summary>
     /// Interaction logic for ManageProjectsItem.xaml
     /// </summary>
-    public partial class ManageProjectsItem : UserControl
+    public partial class ManageProjectsItem
     {
         public static readonly DependencyProperty ShortNameProperty =
             DependencyProperty.Register("ShortName", typeof(object),
@@ -19,6 +19,10 @@ namespace ReportsOrganizer.UI.Views.Controls
 
         public static readonly DependencyProperty ActivateProjectCommandProperty =
             DependencyProperty.Register("ActivateProjectCommand", typeof(ICommand),
+                typeof(ManageProjectsItem), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty CheckBoxVisibilityProperty =
+            DependencyProperty.Register("CheckBoxVisibility", typeof(object),
                 typeof(ManageProjectsItem), new PropertyMetadata(null));
 
         public static readonly DependencyProperty IsProjectActiveProperty =
@@ -59,6 +63,12 @@ namespace ReportsOrganizer.UI.Views.Controls
         {
             get => (ICommand)GetValue(ActivateProjectCommandProperty);
             set => SetValue(ActivateProjectCommandProperty, value);
+        }
+
+        public object CheckBoxVisibility
+        {
+            get => GetValue(CheckBoxVisibilityProperty);
+            set => SetValue(CheckBoxVisibilityProperty, value);
         }
 
         public object IsProjectActive

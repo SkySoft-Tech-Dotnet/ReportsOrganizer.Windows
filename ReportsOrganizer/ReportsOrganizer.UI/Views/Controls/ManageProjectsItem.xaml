@@ -16,10 +16,23 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
+        <Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="False">
+                        <Setter Property="Background" Value="White"></Setter>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#e6e6e6"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
 
-        <CheckBox 
-                Command="{Binding Path=ActivateProjectCommand}"
+        <CheckBox Margin="10,0,0,0"
+                  Command="{Binding Path=ActivateProjectCommand}"
                   CommandParameter="{Binding Path=ProjectCommandParameter}"
+                  Visibility="{Binding Path=CheckBoxVisibility, Converter={StaticResource BooleanToVisibilityConverter}}"
                   IsChecked="{Binding Path=IsProjectActive}"
                   VerticalAlignment="Center"
                   Grid.Column="0"/>
@@ -41,8 +54,8 @@
                        Text="{Binding Path=FullName}" />
 
         <Button Grid.Column="3"
-                Height="38"
-                Width="38"
+                Height="35"
+                Width="35"
                 BorderThickness="0"
                 Command="{Binding Path=EditProjectCommand}"
                 CommandParameter="{Binding Path=ProjectCommandParameter}">
@@ -67,8 +80,8 @@
         </Button>
 
         <Button Grid.Column="4"
-                Height="38"
-                Width="38"
+                Height="35"
+                Width="35"
                 BorderThickness="0"
                 Command="{Binding Path=DeleteProjectCommand}"
                 CommandParameter="{Binding Path=ProjectCommandParameter}">

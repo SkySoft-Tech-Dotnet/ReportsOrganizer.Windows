@@ -22,7 +22,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
 
         public IEnumerable<Project> ProjectList =>
-            _projectList.Where(p => ShowAll || p.IsActive).OrderByDescending(p => p.IsActive).ThenBy(p=>p.ShortName);
+            _projectList.Where(p => ShowAll || p.IsActive).OrderBy(p=>p.ShortName);
 
         public bool ShowAll
         {
@@ -79,7 +79,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         {
             //await Task.Delay(4000);
             await _projectService.SaveChangesAsync(CancellationToken.None);
-            ProjectsUpdated();
+            //ProjectsUpdated();
         }
 
         private async Task DeleteProjectAction(object obj)
