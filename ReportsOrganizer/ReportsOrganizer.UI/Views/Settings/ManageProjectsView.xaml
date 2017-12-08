@@ -10,45 +10,46 @@
              DataContext="{Binding Path=ManageProjectsSettings, Source={StaticResource ViewModelLocator}}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="10,10,3,10">
+    <Grid Margin="6,10,5,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10" />
             <RowDefinition />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="{lex:Loc Settings:ManageProjects_SelectProject}"
                    Grid.Row="0" />
 
-        <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="#e4e4e4">
-            <Button Margin="0,5,0,15" Command="{Binding Path=CreateProjectCommand}" Foreground="Black">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+        <Button Grid.Row="1" Margin="0,5,0,15" Foreground="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-                    <!--<iconPacks:PackIconMaterial Kind="AccountMultiplePlus"
+                <!--<iconPacks:PackIconMaterial Kind="AccountMultiplePlus"
                                             Grid.Column="0"
                                             Height="Auto"
                                             VerticalAlignment="Center"
                                             Margin="2,0" />-->
-                    <TextBlock Text="Add project"
+                <TextBlock Text="Search"
                                TextWrapping="Wrap"
                                Grid.Column="1" />
-                </Grid>
-            </Button>
-        </Border>
+            </Grid>
+        </Button>
 
-            <ScrollViewer Margin="10,0,0,0" Grid.Row="2"  MaxHeight="200" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="2" Margin="10,0,0,0" MaxHeight="200" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Separator Height="1" Background="#e4e4e4" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
                 <ItemsControl 
                         Background="Transparent"
                         ItemsSource="{Binding Path=ActiveProjectList, UpdateSourceTrigger=PropertyChanged}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderThickness="0,0,0,1" BorderBrush="#e4e4e4">
+                            <StackPanel>
                                 <local:ManageProjectsItem 
                                         ShortName="{Binding Path=ShortName}"
                                         FullName="{Binding Path=FullName}"
@@ -57,30 +58,34 @@
                                         EditProjectCommand="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         DeleteProjectCommand="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         ProjectCommandParameter="{Binding}"/>
-                            </Border>
+                                <Separator Height="1" Background="#e4e4e4" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
+                            </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </ScrollViewer>
+            </StackPanel>
+        </ScrollViewer>
 
-        <Border Margin="10,0,0,0" Grid.Row="4" BorderThickness="0,1,0,0" BorderBrush="#e4e4e4">
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="4" Grid.RowSpan="2" Margin="10,0,0,0" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Separator Height="1" Background="#e4e4e4" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
                 <ItemsControl 
-                    Background="Transparent"
-                    ItemsSource="{Binding Path=InactiveProjectList, UpdateSourceTrigger=PropertyChanged}">
+                            Background="Transparent"
+                            ItemsSource="{Binding Path=InactiveProjectList, UpdateSourceTrigger=PropertyChanged}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderThickness="0,0,0,1" BorderBrush="#e4e4e4">
-                            <local:ManageProjectsItem 
-                                    ShortName="{Binding Path=ShortName}"
-                                    FullName="{Binding Path=FullName}"
-                                    IsProjectActive="{Binding Path=IsActive, Mode=TwoWay}"
-                                    ActivateProjectCommand="{Binding DataContext.ActivateProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                    EditProjectCommand="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                    DeleteProjectCommand="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                    ProjectCommandParameter="{Binding}"/>
-                            </Border>
-                        <!--<Button HorizontalContentAlignment="Left">
+                            <StackPanel>
+                                <local:ManageProjectsItem 
+                                        ShortName="{Binding Path=ShortName}"
+                                        FullName="{Binding Path=FullName}"
+                                        IsProjectActive="{Binding Path=IsActive, Mode=TwoWay}"
+                                        ActivateProjectCommand="{Binding DataContext.ActivateProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        EditProjectCommand="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        DeleteProjectCommand="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        ProjectCommandParameter="{Binding}"/>
+                                <Separator Height="1" Background="#e4e4e4" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
+                            </StackPanel>
+                            <!--<Button HorizontalContentAlignment="Left">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
@@ -128,8 +133,28 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+            </StackPanel>
         </ScrollViewer>
-        </Border>
 
+        <Button Grid.Row="5"
+                Height="46"
+                Width="46"
+                Margin="0,0,13,0"
+                BorderThickness="0"
+                HorizontalAlignment="Right"
+                Command="{Binding Path=CreateProjectCommand}" >
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource MetroCircleButtonStyle}">
+                    <Setter Property="Background" Value="{StaticResource AccentBaseColorBrush}"/>
+                    <Setter Property="Padding" Value="16"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="5" Opacity="0.5" />
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Image Source="{StaticResource PlusImageSource}" />
+        </Button>
     </Grid>
 </UserControl>
