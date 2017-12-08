@@ -228,7 +228,11 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         {
             SettingsPageVisibility = Visibility.Hidden;
 
-            CurrentSettingsGroup = null;
+            if (CurrentSettingsGroup != null)
+                CurrentSettingsGroup = null;
+            else
+                WindowOpenSettingsAction(null);
+
             HeaderSettingsGroupLocalizeKey = "Settings:Group_Settings";
         }
 
