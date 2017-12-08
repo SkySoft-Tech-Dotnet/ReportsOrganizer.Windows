@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ReportsOrganizer.UI.Views.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="150"
-             Height="50">
+             Height="35">
     <Grid x:Name="MainGrid" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -17,14 +17,16 @@
         </Grid.ColumnDefinitions>
 
 
-        <CheckBox Command="{Binding Path=ActivateProjectCommand}"
+        <CheckBox 
+                Command="{Binding Path=ActivateProjectCommand}"
                   CommandParameter="{Binding Path=ProjectCommandParameter}"
                   IsChecked="{Binding Path=IsProjectActive}"
                   VerticalAlignment="Center"
                   Grid.Column="0"/>
 
         <TextBlock Grid.Column="1" 
-                    FontSize="16"
+                    FontSize="14"
+                   Padding="5,0,0,0"
                        Foreground="#313131"
                        TextTrimming="CharacterEllipsis"
                        VerticalAlignment="Center"
@@ -32,7 +34,7 @@
 
         <TextBlock Grid.Column="2" 
                    Grid.ColumnSpan="3"
-                   FontSize="16"
+                   FontSize="14"
                    Padding="10,0,0,0"
                        TextTrimming="CharacterEllipsis"
                        VerticalAlignment="Center"

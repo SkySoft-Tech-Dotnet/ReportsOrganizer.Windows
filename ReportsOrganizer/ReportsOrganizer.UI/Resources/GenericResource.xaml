@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:String x:Key="ProgramName">Reports orginizer</sys:String>
+    <sys:String x:Key="ProgramName">Reports Organizer</sys:String>
     <!-- Window -->
     <sys:Double x:Key="WindowWidth">900</sys:Double>
     <sys:Double x:Key="WindowMinWidth">700</sys:Double>

@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              DataContext="{Binding Path=GeneralSettings, Source={StaticResource ViewModelLocator}}">
     
-    <Grid Margin="10,5">
+    <Grid Margin="10,5" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />

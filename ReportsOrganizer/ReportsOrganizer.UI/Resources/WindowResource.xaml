@@ -60,7 +60,7 @@
             <Setter.Value>
                 <DataTemplate>
                     <!--  Modern - Magnify  -->
-                    <ContentControl x:Name="PART_PackIcon"
+                    <ContentControl 
                                     Width="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=(controls:TextBoxHelper.ButtonWidth), Mode=OneWay}"
                                     Height="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=(controls:TextBoxHelper.ButtonWidth), Mode=OneWay}"
                                     Padding="3"

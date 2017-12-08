@@ -9,7 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Path=PersonalizationSettings, Source={StaticResource ViewModelLocator}}">
     
-    <Grid Margin="10">
+    <Grid Margin="10" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />

@@ -57,7 +57,7 @@
                             Opacity="1.0"
                             Content="{Binding}" />
             <ContentControl x:Name="MetroFlyoutPage"
-                            VerticalAlignment="Top"
+                            VerticalAlignment="Stretch"
                             Opacity="0.0"
                             Margin="{StaticResource FlyoutContentTemplateInitMargin}"
                             Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Flyout}}, Path=(helper:FlyoutHelper.PageContent), Mode=OneWay}" />

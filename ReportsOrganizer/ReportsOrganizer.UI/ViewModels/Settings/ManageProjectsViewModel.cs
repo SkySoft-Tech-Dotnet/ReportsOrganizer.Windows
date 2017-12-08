@@ -18,12 +18,21 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
     {
         private readonly IProjectService _projectService;
         private IEnumerable<Project> _projectList;
+        private bool _showAll;
 
-        public IEnumerable<Project> ActiveProjectList =>
-            _projectList.Where(p => p.IsActive).OrderBy(p => p.ShortName);
 
-        public IEnumerable<Project> InactiveProjectList =>
-            _projectList.Where(p => p.IsActive == false).OrderBy(p => p.ShortName);
+        public IEnumerable<Project> ProjectList =>
+            _projectList.Where(p => ShowAll || p.IsActive).OrderByDescending(p => p.IsActive).ThenBy(p=>p.ShortName);
+
+        public bool ShowAll
+        {
+            get => _showAll;
+            set
+            {
+                SetValue(ref _showAll, value);
+                ProjectsUpdated();
+            }
+        }
 
         public ICommand CreateProjectCommand { get; }
         public ICommand EditProjectCommand { get; }
@@ -68,6 +77,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
         private async Task ActivateProjectAction(object obj)
         {
+            //await Task.Delay(4000);
             await _projectService.SaveChangesAsync(CancellationToken.None);
             ProjectsUpdated();
         }
@@ -85,8 +95,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
         private void ProjectsUpdated()
         {
-            NotifyPropertyChanged(nameof(ActiveProjectList));
-            NotifyPropertyChanged(nameof(InactiveProjectList));
+            NotifyPropertyChanged(nameof(ProjectList));
         }
 
         private async Task LoadProjects() 
