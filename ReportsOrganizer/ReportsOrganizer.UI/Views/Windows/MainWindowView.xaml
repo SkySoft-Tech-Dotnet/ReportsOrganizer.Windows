@@ -10,6 +10,7 @@
                       xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
                       xmlns:settingsViewModel="clr-namespace:ReportsOrganizer.UI.ViewModels.Settings"
                       xmlns:settingsView="clr-namespace:ReportsOrganizer.UI.Views.Settings"
+                      xmlns:system="clr-namespace:System;assembly=mscorlib"
                       mc:Ignorable="d"
                       DataContext="{Binding Path=MainWindow, Source={StaticResource ViewModelLocator}}"
                       Icon="../../App.ico"
@@ -138,7 +139,7 @@
                          controls:TextBoxHelper.ButtonsAlignment="Left"
                          Style="{DynamicResource SearchMetroTextBox}" />
 
-                <Button Grid.Column="5"
+                <!--<Button Grid.Column="5"
                         Height="30"
                         Width="100"
                         Margin="25,0,25,0"
@@ -162,7 +163,32 @@
                             </Canvas>
                         </Viewbox>
                     </Grid>
-                </Button>
+                </Button>-->
+                <controls:SplitButton 
+                    Grid.Column="5"
+                    Height="30"
+                    Width="150"
+                    Margin="25,0,25,0"
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    controls:ButtonHelper.CornerRadius="3"
+                    
+                    >
+                    <controls:SplitButton.ItemsSource>
+                        <x:Array Type="system:String">
+                            <system:String>Export to csv</system:String>
+                            <system:String>Export to google</system:String>
+                            <system:String>Export all</system:String>
+                        </x:Array>
+                    </controls:SplitButton.ItemsSource>
+                    <controls:SplitButton.IconTemplate>
+                        <DataTemplate>
+                            <Image Margin="5,5" Source="{StaticResource ExportImageSource}" />
+                        </DataTemplate>
+                    </controls:SplitButton.IconTemplate>
+                </controls:SplitButton>
+
             </Grid>
         </Border>
 
