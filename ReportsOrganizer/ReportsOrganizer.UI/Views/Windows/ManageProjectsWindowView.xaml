@@ -11,18 +11,14 @@
                       DataContext="{Binding Path=ManageProjectsWindow, Source={StaticResource ViewModelLocator}}"
                       Style="{StaticResource MinorMetroWindow}"
                       Title="ManageProjectsWindowView"
-                      WindowStartupLocation="CenterScreen" >
+                      WindowStartupLocation="CenterOwner" >
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
+        <StackPanel Margin="15">
+            
+        
+        
 
-        <TextBox Grid.Row="1" Text="{Binding Path=ShortName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" controls:TextBoxHelper.Watermark="Short Name">
+        <TextBox Text="{Binding Path=ShortName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" controls:TextBoxHelper.Watermark="Short Name">
             <Validation.ErrorTemplate>
                 <ControlTemplate>
                     <StackPanel>
@@ -38,7 +34,7 @@
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </TextBox>
-        <TextBox Grid.Row="3" Text="{Binding Path=FullName, UpdateSourceTrigger=PropertyChanged}" controls:TextBoxHelper.Watermark="Full Name" >
+        <TextBox Margin="0,20,0,0" Text="{Binding Path=FullName, UpdateSourceTrigger=PropertyChanged}" controls:TextBoxHelper.Watermark="Full Name" >
             <Validation.ErrorTemplate>
                 <ControlTemplate>
                     <StackPanel>
@@ -54,9 +50,10 @@
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </TextBox>
-        <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <Button Height="50" Width="100" Command="{Binding Path=OkCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Ok</Button>
-            <Button Height="50" Width="100" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Cancel</Button>
+        <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Height="32" Width="100" Margin="0,0,10,0" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Cancel</Button>
+            <Button Height="32" Width="100" Command="{Binding Path=OkCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">Ok</Button>
+        </StackPanel>
         </StackPanel>
     </Grid>
 </controls:MetroWindow>

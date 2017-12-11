@@ -9,7 +9,7 @@
 
     <Color x:Key="Gray1">Black</Color> <!--DropDownArrow-->
     <Color x:Key="Gray2">#373643</Color> <!--ContextMenuDisabledItems-->
-    <Color x:Key="Gray7">Red</Color> <!--ButtonDownBackground-->
+    <Color x:Key="Gray7">#06695d</Color> <!--ButtonDownBackground-->
     <Color x:Key="Gray8">#458c84</Color> <!--MouseEnterButtonBackground-->
     <Color x:Key="Gray10">#FF077568</Color> <!--NormalButtonBackground-->
 

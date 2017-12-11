@@ -15,10 +15,10 @@
     <sys:Double x:Key="NotificationWindowWidth">400</sys:Double>
     <sys:Double x:Key="NotificationWindowMinWidth">400</sys:Double>
     <!-- MinorWindow -->
-    <sys:Double x:Key="MinorWindowHeight">450</sys:Double>
-    <sys:Double x:Key="MinorWindowMinHeight">550</sys:Double>
-    <sys:Double x:Key="MinorWindowWidth">350</sys:Double>
-    <sys:Double x:Key="MinorWindowMinWidth">450</sys:Double>
+    <sys:Double x:Key="MinorWindowHeight">180</sys:Double>
+    <sys:Double x:Key="MinorWindowMinHeight">150</sys:Double>
+    <sys:Double x:Key="MinorWindowWidth">400</sys:Double>
+    <sys:Double x:Key="MinorWindowMinWidth">150</sys:Double>
     <sys:Double x:Key="MinorWindowFontSize">20</sys:Double>
     <!-- Flyout -->
     <sys:Double x:Key="FlyoutMinWidth">300</sys:Double>
