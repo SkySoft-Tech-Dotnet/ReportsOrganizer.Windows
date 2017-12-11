@@ -176,10 +176,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\NotificationWindowResource.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\TextBoxResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

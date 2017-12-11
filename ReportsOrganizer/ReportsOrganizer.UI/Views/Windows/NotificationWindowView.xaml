@@ -12,20 +12,35 @@
                       Visibility="{Binding Path=WindowVisibility, Mode=TwoWay}"
                       Style="{StaticResource MetroNotification}"
                       Title="{StaticResource NotificationTitle}"
-                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}"
-                      >
+                      prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}" >
 
-    <controls:MetroWindow.Resources>
-        <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI;component/Resources/NotificationWindowResource.xaml" />
-    </controls:MetroWindow.Resources>
-    
     <controls:MetroWindow.WindowButtonCommands>
         <controls:WindowButtonCommands>
             <controls:WindowButtonCommands.Template>
-                <ControlTemplate>
-                    <Button 
-                        Command="{Binding Path=PostponeCommand}" 
-                        Style="{StaticResource ClosingButton}"/>
+                <ControlTemplate >
+                    <Button Width="120"
+                            HorizontalAlignment="Right" 
+                            Focusable="False"
+                            Command="{Binding Path=PostponeCommand}" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock 
+                                Grid.Column="0" 
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center" 
+                                Foreground="White"
+                                FontSize="16"
+                                Text="Postpone" />
+                            <Image Grid.Column="1" Margin="10,0" Source="{StaticResource CloseImageSource}" />
+                        </Grid>
+                    </Button>
                 </ControlTemplate>
             </controls:WindowButtonCommands.Template>
         </controls:WindowButtonCommands>
@@ -106,6 +121,3 @@
                 Command="{Binding Path=OkCommand}" />
     </Grid>
 </controls:MetroWindow>
-
-
-
