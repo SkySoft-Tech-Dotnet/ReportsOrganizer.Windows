@@ -3,11 +3,23 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <sys:String x:Key="ProgramName">Reports Organizer</sys:String>
+    <sys:String x:Key="NotificationTitle">Add reports record</sys:String>
     <!-- Window -->
-    <sys:Double x:Key="WindowWidth">900</sys:Double>
-    <sys:Double x:Key="WindowMinWidth">700</sys:Double>
     <sys:Double x:Key="WindowHeight">600</sys:Double>
     <sys:Double x:Key="WindowMinHeight">500</sys:Double>
+    <sys:Double x:Key="WindowWidth">900</sys:Double>
+    <sys:Double x:Key="WindowMinWidth">700</sys:Double>
+    <!-- NotificationWindow -->
+    <sys:Double x:Key="NotificationWindowHeight">187</sys:Double>
+    <sys:Double x:Key="NotificationWindowMinHeight">187</sys:Double>
+    <sys:Double x:Key="NotificationWindowWidth">400</sys:Double>
+    <sys:Double x:Key="NotificationWindowMinWidth">400</sys:Double>
+    <!-- MinorWindow -->
+    <sys:Double x:Key="MinorWindowHeight">450</sys:Double>
+    <sys:Double x:Key="MinorWindowMinHeight">550</sys:Double>
+    <sys:Double x:Key="MinorWindowWidth">350</sys:Double>
+    <sys:Double x:Key="MinorWindowMinWidth">450</sys:Double>
+    <sys:Double x:Key="MinorWindowFontSize">20</sys:Double>
     <!-- Flyout -->
     <sys:Double x:Key="FlyoutMinWidth">300</sys:Double>
     <sys:Double x:Key="FlyoutHeaderFontSize">20</sys:Double>
@@ -34,10 +46,4 @@
     <SolidColorBrush x:Key="FlyoutButtonForegroundMouseClickBrush" Color="{StaticResource FlyoutButtonForegroundMouseClick}" />
     <SolidColorBrush x:Key="FontForegroundBrush" Color="{StaticResource FontForeground}" />
     
-    <!-- MinorWindow -->
-    <sys:Double x:Key="MinorWindowFontSize">20</sys:Double>
-    <sys:Double x:Key="MinorWindowWidth">350</sys:Double>
-    <sys:Double x:Key="MinorWindowMinWidth">450</sys:Double>
-    <sys:Double x:Key="MinorWindowHeight">450</sys:Double>
-    <sys:Double x:Key="MinorWindowMinHeight">550</sys:Double>
 </ResourceDictionary>

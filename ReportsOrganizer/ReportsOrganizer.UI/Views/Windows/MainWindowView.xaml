@@ -119,7 +119,7 @@
                 <Button 
                     Grid.Column="0" 
                     Background="White" 
-                    controls:ButtonHelper.CornerRadius="0" Style="{StaticResource ButtonBase}"
+                    controls:ButtonHelper.CornerRadius="0" 
                     Command="{Binding Path=WindowOpenSettingsCommand}">
                     <Viewbox Height="27" HorizontalAlignment="Right">
                         <Canvas Height="25" Width="25">
@@ -132,7 +132,6 @@
                          Height="30"
                          Width="150"
                          BorderThickness="0,0,0,1"
-                         FontFamily="Segoe UI"
                          FontWeight="Light" 
                          FontSize ="16" 
                          controls:TextBoxHelper.Watermark="Search"
@@ -146,8 +145,7 @@
                         HorizontalAlignment="Right" 
                         Background="White" 
                         Focusable="False"
-                        Command="{Binding Path=ExportMonthReportCommand}"
-                        Style="{StaticResource ButtonBase}">
+                        Command="{Binding Path=ExportMonthReportCommand}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -157,7 +155,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Column="0" FontFamily="Segoe UI" FontSize="18" FontWeight="Regular" VerticalAlignment="Center" Foreground="#444444">Export</TextBlock>
+                        <TextBlock Grid.Column="0" FontSize="18" FontWeight="Regular" VerticalAlignment="Center" Foreground="#444444">Export</TextBlock>
                         <Viewbox Grid.Column="1" Height="27" HorizontalAlignment="Right">
                             <Canvas Height="25" Width="25" >
                                 <Path Canvas.Left="5" Data="M23,12L19,8V11H10V13H19V16M1,18V6C1,4.89 1.9,4 3,4H15A2,2 0 0,1 17,6V9H15V6H3V18H15V15H17V18A2,2 0 0,1 15,20H3A2,2 0 0,1 1,18Z" Fill="#444444" />
