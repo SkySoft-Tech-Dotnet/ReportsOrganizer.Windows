@@ -50,5 +50,25 @@
             </GeometryDrawing>
         </DrawingImage.Drawing>
     </DrawingImage>
+    
+    <DrawingImage x:Key="MenuImageSource">
+        <DrawingImage.Drawing>
+            <GeometryDrawing Geometry="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z">
+                <GeometryDrawing.Brush>
+                    <SolidColorBrush Color="#444444"></SolidColorBrush>
+                </GeometryDrawing.Brush>
+            </GeometryDrawing>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    
+    <DrawingImage x:Key="BackImageSource">
+        <DrawingImage.Drawing>
+            <GeometryDrawing Geometry="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
+                <GeometryDrawing.Brush>
+                    <SolidColorBrush Color="#444444"></SolidColorBrush>
+                </GeometryDrawing.Brush>
+            </GeometryDrawing>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 
 </ResourceDictionary>

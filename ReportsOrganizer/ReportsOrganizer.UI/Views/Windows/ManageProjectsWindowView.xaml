@@ -9,7 +9,7 @@
                       mc:Ignorable="d"
                       ShowInTaskbar="False"
                       DataContext="{Binding Path=ManageProjectsWindow, Source={StaticResource ViewModelLocator}}"
-                      Style="{StaticResource MinorMetroWindow}"
+                      Style="{StaticResource MetroMinorWindow}"
                       Title="ManageProjectsWindowView"
                       WindowStartupLocation="CenterOwner" >
     <Grid>

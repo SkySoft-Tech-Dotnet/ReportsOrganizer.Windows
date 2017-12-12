@@ -3,7 +3,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:Double x:Key="FloatingWatermarkFontSize">20</sys:Double>
     
     <Style TargetType="controls:MetroWindow" x:Key="MetroWindow">
         <Setter Property="Height" Value="{StaticResource WindowHeight}" />
@@ -18,8 +17,8 @@
         <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
         <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
         <!-- Text styles -->
-        <Setter Property="FontFamily" Value="Segoe UI" />
-        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize}" />
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="TextElement.FontWeight" Value="Regular" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
@@ -28,22 +27,24 @@
         <Setter Property="ShowIconOnTitleBar" Value="False" />
     </Style>
     
-    <Style TargetType="controls:MetroWindow" x:Key="MetroNotification" BasedOn="{StaticResource MetroWindow}">
+    
+    
+    <Style TargetType="controls:MetroWindow" x:Key="MetroNotificationWindow" BasedOn="{StaticResource MetroWindow}">
         <Setter Property="Height" Value="{StaticResource NotificationWindowHeight}" />
         <Setter Property="MinHeight" Value="{StaticResource NotificationWindowMinHeight}" />
         <Setter Property="Width" Value="{StaticResource NotificationWindowWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource NotificationWindowMinWidth}" />
+        <Setter Property="TitlebarHeight" Value="{StaticResource NotificationWindowTitlebarHeight}" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="Topmost" Value="True" />
-        <Setter Property="TitlebarHeight" Value="30" />
         <Setter Property="ShowInTaskbar" Value="False" />
         <Setter Property="ShowMinButton" Value="False" />
         <Setter Property="ShowMaxRestoreButton" Value="False" />
         <!-- Text styles -->
     </Style>
     
-    <Style TargetType="controls:MetroWindow" x:Key="MinorMetroWindow">
+    <Style TargetType="controls:MetroWindow" x:Key="MetroMinorWindow">
         <Setter Property="Width" Value="{StaticResource MinorWindowWidth}" />
         <Setter Property="MinWidth" Value="{StaticResource MinorWindowMinWidth}" />
         <Setter Property="Height" Value="{StaticResource MinorWindowHeight}" />

@@ -10,7 +10,7 @@
                       mc:Ignorable="d"
                       DataContext="{Binding Path=NotificationWindow, Source={StaticResource ViewModelLocator}}"
                       Visibility="{Binding Path=WindowVisibility, Mode=TwoWay}"
-                      Style="{StaticResource MetroNotification}"
+                      Style="{StaticResource MetroNotificationWindow}"
                       Title="{StaticResource NotificationTitle}"
                       prop:WindowProperties.BoundClosing="{Binding Path=WindowClosingCommand}" >
 
@@ -21,6 +21,7 @@
                     <Button Width="120"
                             HorizontalAlignment="Right" 
                             Focusable="False"
+                            controls:ControlsHelper.CornerRadius="0"
                             Command="{Binding Path=PostponeCommand}" >
                         <Grid>
                             <Grid.ColumnDefinitions>

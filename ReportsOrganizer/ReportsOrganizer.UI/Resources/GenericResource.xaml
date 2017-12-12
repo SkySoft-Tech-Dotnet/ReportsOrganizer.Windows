@@ -14,6 +14,7 @@
     <sys:Double x:Key="NotificationWindowMinHeight">187</sys:Double>
     <sys:Double x:Key="NotificationWindowWidth">400</sys:Double>
     <sys:Double x:Key="NotificationWindowMinWidth">400</sys:Double>
+    <sys:Int32 x:Key="NotificationWindowTitlebarHeight">30</sys:Int32>
     <!-- MinorWindow -->
     <sys:Double x:Key="MinorWindowHeight">180</sys:Double>
     <sys:Double x:Key="MinorWindowMinHeight">150</sys:Double>
@@ -23,27 +24,29 @@
     <!-- Flyout -->
     <sys:Double x:Key="FlyoutMinWidth">300</sys:Double>
     <sys:Double x:Key="FlyoutHeaderFontSize">20</sys:Double>
+    <!-- Buttons -->
+    <Thickness x:Key="FlatButtonPadding" Left="20" Top="20" Right="20" Bottom="20" />
 
-    
-    
-    
+
     <!-- Font styles -->
-    <sys:Double x:Key="FontSize">11</sys:Double>
+    <sys:Double x:Key="FontSize">16</sys:Double>
+    <sys:Double x:Key="ButtonFontSize">13</sys:Double>
+    <FontFamily x:Key="FontFamily">Segoe UI</FontFamily>
 
     <!-- Colors -->
     <Color x:Key="FlyoutBackground" A="255" R="253" G="253" B="253" />
-    <Color x:Key="FlyoutButtonBackground" A="255" R="253" G="253" B="253" />
-    <Color x:Key="FlyoutButtonBackgroundMouseEnter" A="255" R="230" G="230" B="230" />
-    <Color x:Key="FlyoutButtonBackgroundMouseClick" A="255" R="150" G="150" B="150" />
-    <Color x:Key="FlyoutButtonForegroundMouseClick" A="255" R="255" G="255" B="255" />
+    <Color x:Key="FlatButtonBackground" A="255" R="253" G="253" B="253" />
+    <Color x:Key="FlatButtonBackgroundMouseEnter" A="255" R="230" G="230" B="230" />
+    <Color x:Key="FlatButtonBackgroundMouseClick" A="255" R="150" G="150" B="150" />
+    <Color x:Key="FlatButtonForegroundMouseClick" A="255" R="255" G="255" B="255" />
     <Color x:Key="FontForeground" A="255" R="97" G="97" B="97" />
 
     <!-- Solid color brush -->
-    <SolidColorBrush x:Key="FlyoutBackgroundBrush" Color="{StaticResource FlyoutBackground}" />
-    <SolidColorBrush x:Key="FlyoutButtonBackgroundBrush" Color="{StaticResource FlyoutButtonBackground}" />
-    <SolidColorBrush x:Key="FlyoutButtonBackgroundMouseEnterBrush" Color="{StaticResource FlyoutButtonBackgroundMouseEnter}" />
-    <SolidColorBrush x:Key="FlyoutButtonBackgroundMouseClickBrush" Color="{StaticResource FlyoutButtonBackgroundMouseClick}" />
-    <SolidColorBrush x:Key="FlyoutButtonForegroundMouseClickBrush" Color="{StaticResource FlyoutButtonForegroundMouseClick}" />
+    <SolidColorBrush x:Key="FlatBackgroundBrush" Color="{StaticResource FlyoutBackground}" />
+    <SolidColorBrush x:Key="FlatButtonBackgroundBrush" Color="{StaticResource FlatButtonBackground}" />
+    <SolidColorBrush x:Key="FlatButtonBackgroundMouseEnterBrush" Color="{StaticResource FlatButtonBackgroundMouseEnter}" />
+    <SolidColorBrush x:Key="FlatButtonBackgroundMouseClickBrush" Color="{StaticResource FlatButtonBackgroundMouseClick}" />
+    <SolidColorBrush x:Key="FlatButtonForegroundMouseClickBrush" Color="{StaticResource FlatButtonForegroundMouseClick}" />
     <SolidColorBrush x:Key="FontForegroundBrush" Color="{StaticResource FontForeground}" />
     
 </ResourceDictionary>

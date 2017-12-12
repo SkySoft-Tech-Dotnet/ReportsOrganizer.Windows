@@ -5,6 +5,7 @@ using ReportsOrganizer.UI.Command;
 using ReportsOrganizer.UI.Services;
 using ReportsOrganizer.UI.ViewModels.Settings;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -36,6 +37,14 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private BaseViewModel _currentSettingsGroup;
 
         private ApplicationManager _applicationManager;
+
+
+
+
+        private Dictionary<string, AsyncCommand> _exportDictionary;
+
+        public List<string> ExportOptions => _exportDictionary.Keys.ToList();
+
 
         public Visibility WindowVisibility
         {
@@ -94,7 +103,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         public ICommand OpenManageProjectsSettingsCommand { get; }
         public ICommand OpenPersonalizationSettingsCommand { get; }
 
-        public ICommand ExportMonthReportCommand { get; }
+        public ICommand ExportCommand { get; }
 
         public MainWindowViewModel(
             ApplicationManager applicationManager,
@@ -126,7 +135,14 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             OpenNotificationSettingsCommand = new RelayCommand(OpenNotificationSettingsAction, true);
             OpenPersonalizationSettingsCommand = new RelayCommand(OpenPersonalizationSettingsAction, true);
 
-            ExportMonthReportCommand = new AsyncCommand(ExportMonthReportAction);
+            ExportCommand = new RelayCommand(ExportAction, true);
+
+            _exportDictionary = new Dictionary<string, AsyncCommand>
+            {
+                {"Export to csv", new AsyncCommand(ExportMonthReportAction) },
+                {"Export to google", new AsyncCommand(ExportMonthReportAction) },
+                {"Export all", new AsyncCommand(ExportAllAction) }
+            };
 
             LocalizeDictionary.Instance.PropertyChanged += LocalizeChanged;
 
@@ -236,7 +252,26 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             HeaderSettingsGroupLocalizeKey = "Settings:Group_Settings";
         }
 
+        private void ExportAction(object obj)
+        {
+            if(obj is string option)
+                _exportDictionary[option].Execute(null);
+        }
+
         private async Task ExportMonthReportAction(object obj)
+        {
+            var fileDialog = new SaveFileDialog
+            {
+                FileName = "MonthReport",
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            };
+
+            if (fileDialog.ShowDialog() == true)
+                await _exportService.WriteMonthReport(2017, 11, fileDialog.FileName, CancellationToken.None);
+        }
+
+        private async Task ExportAllAction(object obj)
         {
             var fileDialog = new SaveFileDialog
             {

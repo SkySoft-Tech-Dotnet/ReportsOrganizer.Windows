@@ -37,5 +37,19 @@ namespace ReportsOrganizer.Core.Services
                 }
             }
         }
+
+        public async Task WriteAll(int year, int month, string path, CancellationToken cancellationToken)
+        {
+            var report = await _reportService.GetMonthReport(year, month, CancellationToken.None);
+            using (var writer = new StreamWriter(path))
+            {
+                foreach (var reportForWeek in report)
+                {
+                    await writer.WriteLineAsync($"Week {reportForWeek.Key}");
+                    reportForWeek.Value.ToList().ForEach(async record
+                        => await writer.WriteLineAsync(record.ToString()));
+                }
+            }
+        }
     }
 }
