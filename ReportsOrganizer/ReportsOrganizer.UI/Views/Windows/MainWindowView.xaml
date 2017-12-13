@@ -10,7 +10,7 @@
                       xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
                       xmlns:settingsViewModel="clr-namespace:ReportsOrganizer.UI.ViewModels.Settings"
                       xmlns:settingsView="clr-namespace:ReportsOrganizer.UI.Views.Settings"
-                      xmlns:system="clr-namespace:System;assembly=mscorlib"
+                      xmlns:packIcons="clr-namespace:ReportsOrganizer.UI.Controls"
                       mc:Ignorable="d"
                       DataContext="{Binding Path=MainWindow, Source={StaticResource ViewModelLocator}}"
                       Icon="../../App.ico"
@@ -78,14 +78,14 @@
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <taskBar:TaskbarIcon IconSource="../../App.ico"
                              ToolTipText="{StaticResource ProgramName}"
                              DoubleClickCommand="{Binding Path=TaskbarIconDoubleClickCommand}">
@@ -101,7 +101,7 @@
                 </ContextMenu>
             </taskBar:TaskbarIcon.ContextMenu>
         </taskBar:TaskbarIcon>
-        
+
         <Border Grid.Row="0" Height="60" VerticalAlignment="Top">
             <Border.Effect>
                 <DropShadowEffect Color="Gray" Opacity=".20" ShadowDepth="3" Direction="-90" />
@@ -154,6 +154,11 @@
 
             </Grid>
         </Border>
+        
+        <packIcons:PackIconMaterial Grid.Row="1"
+                                    Kind="ArrowLeft"
+                                    Flip="Vertical"
+                                    Rotation="90" />
 
         <StatusBar Grid.Row="2">
             <!--<StatusBarItem Content="{StaticResource ProgramName}" />

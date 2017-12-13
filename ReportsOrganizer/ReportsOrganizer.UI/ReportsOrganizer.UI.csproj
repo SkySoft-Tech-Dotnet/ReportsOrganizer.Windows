@@ -121,7 +121,13 @@
     <Compile Include="Abstractions\BaseViewModel.cs" />
     <Compile Include="Attributes\UniqueShortNameAttribute.cs" />
     <Compile Include="Commands\WeakEventHandlerManager.cs" />
+    <Compile Include="Controls\PackIcon.cs" />
+    <Compile Include="Controls\PackIconBase.cs" />
+    <Compile Include="Controls\PackIconMaterial.cs" />
+    <Compile Include="Converters\FlipToScaleValueConverter.cs" />
+    <Compile Include="Enums\PackIconMaterialKind.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
+    <Compile Include="Factories\PackIconMaterialDataFactory.cs" />
     <Compile Include="Helpers\FlyoutHelper.cs" />
     <Compile Include="Managers\ApplicationManager.cs" />
     <Compile Include="Models\ApplicationNotification.cs" />
@@ -191,6 +197,10 @@
     <Page Include="Themes\Cobalt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Controls\PackIconMaterial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Crimson.xaml">
       <SubType>Designer</SubType>
