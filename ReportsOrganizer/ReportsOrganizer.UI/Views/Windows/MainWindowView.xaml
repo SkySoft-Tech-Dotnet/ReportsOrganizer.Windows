@@ -117,10 +117,38 @@
                 </Grid.ColumnDefinitions>
 
                 <Button 
+                    Grid.Column="0" 
                     Style="{StaticResource FlatButton}"
                     Command="{Binding Path=WindowOpenSettingsCommand}">
-                    <Image Grid.Column="1" Source="{StaticResource MenuImageSource}" />
+                    <Image Source="{StaticResource MenuImageSource}" />
                 </Button>
+                
+                <ComboBox 
+                    Grid.Column="2"
+                    Height="30"
+                    Width="150"
+                    Margin="25,0"/>
+                <ComboBox 
+                    Grid.Column="3"
+                    Height="30"
+                    Width="150"
+                    Margin="0,0,50,0"
+                    SelectedIndex="{Binding Path=SelectedMonth}" >
+                    <ComboBox.Items>
+                        <ComboBoxItem  Content="{lex:Loc General:Month_January}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_February}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_March}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_April}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_May}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_June}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_July}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_August}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_September}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_October}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_November}" />
+                        <ComboBoxItem  Content="{lex:Loc General:Month_December}" />
+                    </ComboBox.Items>
+                </ComboBox>
 
                 <TextBox Grid.Column="4"
                          Height="30"
@@ -136,7 +164,7 @@
                     Grid.Column="5"
                     Height="30"
                     Width="150"
-                    Margin="25,0,25,0"
+                    Margin="25,0"
                     BorderThickness="0"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
@@ -163,3 +191,4 @@
     </Grid>
 
 </controls:MetroWindow>
+
