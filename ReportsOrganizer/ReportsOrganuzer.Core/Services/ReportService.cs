@@ -15,7 +15,7 @@ namespace ReportsOrganizer.Core.Services
         Task<IEnumerable<Report>> FindReportsAsync(int year, int month, int week, CancellationToken cancellationToken);
         Task<Report> GetLastReportAsync(CancellationToken cancellationToken);
 
-        Task<Dictionary<int, IEnumerable<Report>>> GetMonthReport(int year, int month, CancellationToken cancellationToken);
+        Task<Dictionary<int, IEnumerable<Report>>> GetMonthReportAsync(int year, int month, CancellationToken cancellationToken);
         int GetWeeksOfMonth(int year, int month);
     }
     internal class ReportService : BaseService<Report>, IReportService
@@ -50,7 +50,7 @@ namespace ReportsOrganizer.Core.Services
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<Dictionary<int, IEnumerable<Report>>> GetMonthReport(int year, int month, CancellationToken cancellationToken)
+        public async Task<Dictionary<int, IEnumerable<Report>>> GetMonthReportAsync(int year, int month, CancellationToken cancellationToken)
         {
             var numberOfWeeks = GetWeeksOfMonth(year, month);
 

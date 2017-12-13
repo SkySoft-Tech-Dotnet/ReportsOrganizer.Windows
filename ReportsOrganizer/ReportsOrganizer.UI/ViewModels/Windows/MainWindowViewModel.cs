@@ -24,9 +24,11 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
     {
         private INavigationService _navigationService;
         private IExportService _exportService;
+        private ApplicationManager _applicationManager;
 
         private bool _settingsIsOpen;
         private string _headerSettingsGroupLocalizeKey;
+        private int _selectedMonth;
 
         private Visibility _windowVisibility;
         private Visibility _settingsPageVisibility;
@@ -36,15 +38,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private BaseViewModel _currentSettingsGroup;
 
-        private ApplicationManager _applicationManager;
-
-
-
-
         private Dictionary<string, AsyncCommand> _exportDictionary;
-
-        public List<string> ExportOptions => _exportDictionary.Keys.ToList();
-
 
         public Visibility WindowVisibility
         {
@@ -89,6 +83,14 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _headerSettingsGroupLocalizeKey, value, nameof(HeaderSettingsGroup));
         }
 
+        public List<string> ExportOptions => _exportDictionary.Keys.ToList();
+
+        public int SelectedMonth
+        {
+            get => _selectedMonth;
+            set => SetValue(ref _selectedMonth, value);
+        }
+
         public ICommand TaskbarIconDoubleClickCommand { get; }
         public ICommand TaskbarIconOpenCommand { get; }
         public ICommand TaskbarIconWriteReportCommand { get; }
@@ -113,7 +115,9 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             _applicationManager = applicationManager;
             _navigationService = navigationService;
             _exportService = exportService;
+            
 
+            SelectedMonth = DateTime.Now.Month - 1;
             _settingsPageVisibility = Visibility.Hidden;
             _headerSettingsGroupLocalizeKey = "Settings:Group_Settings";
 

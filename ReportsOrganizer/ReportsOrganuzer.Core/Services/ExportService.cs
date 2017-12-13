@@ -26,7 +26,7 @@ namespace ReportsOrganizer.Core.Services
 
         public async Task WriteMonthReport(int year, int month, string path, CancellationToken cancellationToken)
         {
-            var report = await _reportService.GetMonthReport(year, month, CancellationToken.None);
+            var report = await _reportService.GetMonthReportAsync(year, month, CancellationToken.None);
             using (var writer = new StreamWriter(path))
             {
                 foreach (var reportForWeek in report)
@@ -40,7 +40,7 @@ namespace ReportsOrganizer.Core.Services
 
         public async Task WriteAll(int year, int month, string path, CancellationToken cancellationToken)
         {
-            var report = await _reportService.GetMonthReport(year, month, CancellationToken.None);
+            var report = await _reportService.GetMonthReportAsync(year, month, CancellationToken.None);
             using (var writer = new StreamWriter(path))
             {
                 foreach (var reportForWeek in report)
