@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers">
+                    xmlns:helper="clr-namespace:ReportsOrganizer.UI.Helpers"
+                    xmlns:controls1="clr-namespace:ReportsOrganizer.UI.Controls">
 
     <Thickness x:Key="FlyoutButtonPadding" x:Shared="False">20,0</Thickness>
 
@@ -22,7 +23,8 @@
                     Width="50"
                     Style="{StaticResource FlatButton}"
                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Flyout}}, Path=(helper:FlyoutHelper.BackCommand), Mode=OneWay}">
-                <Image Source="{StaticResource BackImageSource}" />
+                <controls1:PackIconMaterial Kind="ArrowLeft" Width="23" />
+                <!--<Image Source="{StaticResource BackImageSource}" />-->
                 <!--Hello-->
             </Button>
             <TextBlock x:Name="MetroFlyoutHeader"

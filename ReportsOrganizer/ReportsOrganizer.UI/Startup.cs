@@ -49,8 +49,6 @@ namespace ReportsOrganizer.UI
             ThemeManager.AddAccent("Teal", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Teal.xaml"));
             ThemeManager.AddAccent("Default", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Default.xaml"));
             ThemeManager.AddAppTheme("DefaultTheme", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/DefaultTheme.xaml"));
-
-            container.AddSingleton<INavigationService, NavigationService>();
         }
 
         public void Configure(IApplicationOptions<ApplicationSettings> applicationSettings, IProjectService projectService)
