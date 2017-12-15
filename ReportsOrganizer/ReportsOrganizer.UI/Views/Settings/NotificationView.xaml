@@ -4,11 +4,100 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
-                      lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             lex:ResxLocalizationProvider.DefaultAssembly="ReportsOrganizer.Localization"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="300" 
+             d:DesignWidth="300"
              DataContext="{Binding Path=NotificationSettings, Source={StaticResource ViewModelLocator}}">
     <Grid Margin="10,5" VerticalAlignment="Top">
-        <TextBlock Text="Notification" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <controls:ToggleSwitch Grid.Row="0"
+                               Padding="10,0,0,0"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                               Content="Enable notification" />
+        <controls:ToggleSwitch Grid.Row="1"
+                               Padding="10,0,0,0"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                               Content="Enable interval notification" 
+                               IsChecked="{Binding Path=EnableInterval}"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock
+                Height="25"
+                Text="Every"/>
+            <controls:TimePicker Height="25"
+                                 Width="85"
+                                 Margin="10"
+                                 HorizontalAlignment="Left"
+                                 HandVisibility="HourMinute"
+                                 PickerVisibility="HourMinute"
+                                 IsClockVisible="False"
+                                 controls:TextBoxHelper.Watermark="00:00"
+                                 Culture="{Binding Path=DurationCultureInfo}"/>
+           
+        </StackPanel>
+        
+        <controls:ToggleSwitch Grid.Row="3"
+                               Padding="10,0,0,0"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                               Content="Enable ignore time" 
+                               IsChecked="{Binding Path=EnableIgnoreTime}"/>
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <TextBlock
+                Height="25"
+                Text="From"/>
+            <controls:TimePicker Height="25"
+                                 Width="85"
+                                 Margin="10"
+                                 HorizontalAlignment="Left"
+                                 HandVisibility="HourMinute"
+                                 PickerVisibility="HourMinute"
+                                 IsClockVisible="False"
+                                 controls:TextBoxHelper.Watermark="00:00"
+                                 Culture="{Binding Path=DurationCultureInfo}"/>
+            <TextBlock 
+                Height="25"
+                Text="To"/>
+            <controls:TimePicker Height="25"
+                                 Width="85"
+                                 Margin="10"
+                                 HorizontalAlignment="Left"
+                                 HandVisibility="HourMinute"
+                                 PickerVisibility="HourMinute"
+                                 IsClockVisible="False"
+                                 controls:TextBoxHelper.Watermark="00:00"
+                                 Culture="{Binding Path=DurationCultureInfo}"/>
+        </StackPanel>
+        <ItemsControl
+            Grid.Row="5"
+            ItemsSource="{Binding Path=CustomTimes}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <controls:TimePicker Height="25"
+                                         Width="85"
+                                         Margin="10"
+                                         HorizontalAlignment="Left"
+                                         HandVisibility="HourMinute"
+                                         PickerVisibility="HourMinute"
+                                         IsClockVisible="False"
+                                         controls:TextBoxHelper.Watermark="00:00"
+                                         Culture="{Binding DataContext.DurationCultureInfo, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                         SelectedTime="{Binding Path=.}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

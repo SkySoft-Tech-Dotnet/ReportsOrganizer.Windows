@@ -1,7 +1,10 @@
-﻿using ReportsOrganizer.Core.Services;
+﻿using System;
+using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Models;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
@@ -11,6 +14,10 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
         private ApplicationSettings ApplicationSettings => _applicationOptions.Value;
 
+        public CultureInfo DurationCultureInfo { get; }
+
+        public List<TimeSpan> CustomTimes { get; }
+
         public bool EnableInterval
         {
             get => ApplicationSettings.Notification.EnableInterval;
@@ -18,6 +25,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             {
                 ApplicationSettings.Notification.EnableInterval = value;
                 NotifyPropertyChanged(nameof(EnableInterval));
+                _applicationOptions.UpdateAsync(default(CancellationToken));
             }
         }
 
@@ -28,6 +36,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             {
                 ApplicationSettings.Notification.EnableAtTime = value;
                 NotifyPropertyChanged(nameof(EnableAtTime));
+                _applicationOptions.UpdateAsync(default(CancellationToken));
             }
         }
 
@@ -38,6 +47,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             {
                 ApplicationSettings.Notification.EnableIgnoreTime = value;
                 NotifyPropertyChanged(nameof(EnableIgnoreTime));
+                _applicationOptions.UpdateAsync(default(CancellationToken));
             }
         }
 
@@ -48,6 +58,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             {
                 ApplicationSettings.Notification.Interval = value;
                 NotifyPropertyChanged(nameof(Interval));
+                _applicationOptions.UpdateAsync(default(CancellationToken));
             }
         }
 
@@ -58,6 +69,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             {
                 ApplicationSettings.Notification.AtTimes = value;
                 NotifyPropertyChanged(nameof(AtTimes));
+                _applicationOptions.UpdateAsync(default(CancellationToken));
             }
         }
 
@@ -68,10 +80,28 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             {
                 ApplicationSettings.Notification.IgnoreTimes = value;
                 NotifyPropertyChanged(nameof(IgnoreTimes));
+                _applicationOptions.UpdateAsync(default(CancellationToken));
             }
         }
 
         public NotificationViewModel(IApplicationOptions<ApplicationSettings> applicationOptions)
-            => _applicationOptions = applicationOptions;
+        {
+            _applicationOptions = applicationOptions;
+
+            DurationCultureInfo = new CultureInfo("uk-UA")
+            {
+                DateTimeFormat =
+                {
+                    ShortTimePattern = "HH:mm",
+                    LongTimePattern = "HH:mm"
+                }
+            };
+
+            CustomTimes = new List<TimeSpan>
+            {
+                TimeSpan.FromHours(2),
+                TimeSpan.FromHours(4)
+            };
+        }
     }
 }
