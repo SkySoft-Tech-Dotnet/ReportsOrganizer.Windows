@@ -36,7 +36,9 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private BaseViewModel _currentSettingsGroup;
 
-        private Dictionary<string, AsyncCommand> _exportDictionary;
+        private Dictionary<string, AsyncCommand> _exportOptions;
+        private DateTime _selectedDate;
+
 
         public Visibility WindowVisibility
         {
@@ -81,7 +83,13 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             set => SetValue(ref _headerSettingsGroupLocalizeKey, value, nameof(HeaderSettingsGroup));
         }
 
-        public List<string> ExportOptions => _exportDictionary.Keys.ToList();
+        public List<string> ExportOptions => _exportOptions.Keys.ToList();
+
+        public DateTime SelectedDate
+        {
+            get => _selectedDate;
+            set => SetValue(ref _selectedDate, value);
+        }
 
         public ICommand TaskbarIconDoubleClickCommand { get; }
         public ICommand TaskbarIconOpenCommand { get; }
@@ -130,12 +138,14 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             ExportCommand = new RelayCommand(ExportAction, true);
 
-            _exportDictionary = new Dictionary<string, AsyncCommand>
+            _exportOptions = new Dictionary<string, AsyncCommand>
             {
                 {"Export to csv", new AsyncCommand(ExportMonthReportAction) },
                 {"Export to google", new AsyncCommand(ExportMonthReportAction) },
                 {"Export all", new AsyncCommand(ExportAllAction) }
             };
+
+            SelectedDate = DateTime.Now;
 
             LocalizeDictionary.Instance.PropertyChanged += LocalizeChanged;
 
@@ -248,33 +258,33 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         private void ExportAction(object obj)
         {
             if(obj is string option)
-                _exportDictionary[option].Execute(null);
+                _exportOptions[option].Execute(null);
         }
 
         private async Task ExportMonthReportAction(object obj)
         {
             var fileDialog = new SaveFileDialog
             {
-                FileName = "MonthReport",
-                DefaultExt = ".txt",
-                Filter = "Text documents (.txt)|*.txt"
+                FileName = "MonthReports",
+                DefaultExt = ".csv",
+                Filter = "Spreadsheet documents|*.csv"
             };
 
             if (fileDialog.ShowDialog() == true)
-                await _exportService.WriteMonthReport(2017, 11, fileDialog.FileName, CancellationToken.None);
+                await _exportService.WriteMonthReport(SelectedDate.Year, SelectedDate.Month, fileDialog.FileName, CancellationToken.None);
         }
 
         private async Task ExportAllAction(object obj)
         {
             var fileDialog = new SaveFileDialog
             {
-                FileName = "MonthReport",
-                DefaultExt = ".txt",
-                Filter = "Text documents (.txt)|*.txt"
+                FileName = "AllReports",
+                DefaultExt = ".csv",
+                Filter = "Spreadsheet documents|*.csv"
             };
 
             if (fileDialog.ShowDialog() == true)
-                await _exportService.WriteMonthReport(2017, 11, fileDialog.FileName, CancellationToken.None);
+                await _exportService.WriteAll(fileDialog.FileName, CancellationToken.None);
         }
 
         private void LocalizeChanged(object sender, PropertyChangedEventArgs e)

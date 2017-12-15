@@ -14,7 +14,7 @@
     <!--  40%  -->
     <Color x:Key="AccentColor3">#FF077568</Color> <!--OtherDropDownItems-->
     <!--  20%  -->
-    <Color x:Key="AccentColor4">Yellow</Color>
+    <Color x:Key="AccentColor4">#FF077568</Color>
 
     <!--  re-set brushes too  -->
     <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}" options:Freeze="True" />

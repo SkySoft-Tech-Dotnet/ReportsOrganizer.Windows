@@ -122,34 +122,14 @@
                     Command="{Binding Path=WindowOpenSettingsCommand}">
                     <Image Source="{StaticResource MenuImageSource}" />
                 </Button>
-                <DatePicker Grid.Column="2">
-                    <DatePicker.CalendarStyle>
-                        <Style TargetType="Calendar">
-                            <Setter Property="DisplayMode" Value="Year"/>
-                        </Style>
-                    </DatePicker.CalendarStyle>
-                </DatePicker>
-                <ComboBox 
-                    Grid.Column="3"
-                    Height="30"
-                    Width="150"
-                    Margin="0,0,50,0"
-                    SelectedIndex="{Binding Path=SelectedMonth}" >
-                    <ComboBox.Items>
-                        <ComboBoxItem  Content="{lex:Loc General:Month_January}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_February}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_March}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_April}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_May}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_June}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_July}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_August}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_September}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_October}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_November}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_December}" />
-                    </ComboBox.Items>
-                </ComboBox>
+                
+                <DatePicker Grid.Column="3"
+                            Height="25"
+                            Width="150"
+                            Margin="0,0,30,0"
+                            SelectedDateFormat="Long"
+                            Language="Uk-ua"
+                            SelectedDate="{Binding Path=SelectedDate}"/>
 
                 <TextBox Grid.Column="4"
                          Height="30"
@@ -197,6 +177,18 @@
     </Grid>
 
 </controls:MetroWindow>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

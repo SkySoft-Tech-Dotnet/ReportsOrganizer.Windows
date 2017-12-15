@@ -13,8 +13,8 @@
     <Color x:Key="Gray8">#458c84</Color> <!--MouseEnterButtonBackground-->
     <Color x:Key="Gray10">#FF077568</Color> <!--NormalButtonBackground-->
 
-    <Color x:Key="GrayNormal">Yellow</Color>
-    <Color x:Key="GrayHover">Yellow</Color>
+    <Color x:Key="GrayNormal">Red</Color>
+    <Color x:Key="GrayHover">Red</Color>
 
     <Color x:Key="FlyoutColor">White</Color> <!--FlyoutBackground-->
 

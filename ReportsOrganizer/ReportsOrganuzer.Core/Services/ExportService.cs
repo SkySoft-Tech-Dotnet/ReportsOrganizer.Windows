@@ -13,6 +13,8 @@ namespace ReportsOrganizer.Core.Services
     public interface IExportService
     {
         Task WriteMonthReport(int year, int month, string path, CancellationToken cancellationToken);
+
+        Task WriteAll(string path, CancellationToken cancellationToken);
     }
 
     internal class ExportService : IExportService
@@ -26,30 +28,26 @@ namespace ReportsOrganizer.Core.Services
 
         public async Task WriteMonthReport(int year, int month, string path, CancellationToken cancellationToken)
         {
-            var report = await _reportService.GetMonthReportAsync(year, month, CancellationToken.None);
-            using (var writer = new StreamWriter(path))
+            var reports = await _reportService.FindMonthReportsAsync(year, month, CancellationToken.None);
+            var reportsStr = new List<string>();
+
+            foreach (var reportForWeek in reports)
             {
-                foreach (var reportForWeek in report)
-                {
-                    await writer.WriteLineAsync($"Week {reportForWeek.Key}");
-                    reportForWeek.Value.ToList().ForEach(async record
-                        => await writer.WriteLineAsync(record.ToString()));
-                }
+                //if (!reportForWeek.Value.Any()) continue;
+
+                reportsStr.Add($"Week {reportForWeek.Key}");
+                reportForWeek.Value.ToList().ForEach(record
+                    => reportsStr.Add(record.ToString()));
             }
+
+            File.WriteAllLines(path, reportsStr, Encoding.ASCII);
         }
 
-        public async Task WriteAll(int year, int month, string path, CancellationToken cancellationToken)
+        public async Task WriteAll(string path, CancellationToken cancellationToken)
         {
-            var report = await _reportService.GetMonthReportAsync(year, month, CancellationToken.None);
-            using (var writer = new StreamWriter(path))
-            {
-                foreach (var reportForWeek in report)
-                {
-                    await writer.WriteLineAsync($"Week {reportForWeek.Key}");
-                    reportForWeek.Value.ToList().ForEach(async record
-                        => await writer.WriteLineAsync(record.ToString()));
-                }
-            }
+            var reports = await _reportService.FindReportsAsync(cancellationToken);
+
+            File.WriteAllLines(path, reports.Select(e => e.ToString()), Encoding.ASCII);
         }
     }
 }
