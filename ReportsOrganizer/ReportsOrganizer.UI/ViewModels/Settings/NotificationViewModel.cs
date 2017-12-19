@@ -3,8 +3,11 @@ using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Abstractions;
 using ReportsOrganizer.UI.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Threading;
+using System.Windows.Input;
+using ReportsOrganizer.UI.Command;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
@@ -16,7 +19,7 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
         public CultureInfo DurationCultureInfo { get; }
 
-        public List<TimeSpan> CustomTimes { get; }
+        public ObservableCollection<SelectedTime> CustomTimes { get; }
 
         public bool EnableInterval
         {
@@ -84,6 +87,10 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
             }
         }
 
+        public ICommand AddCustomTimeCommand { get; }
+        public ICommand RemoveCustomTimeCommand { get; }
+
+
         public NotificationViewModel(IApplicationOptions<ApplicationSettings> applicationOptions)
         {
             _applicationOptions = applicationOptions;
@@ -97,11 +104,27 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
                 }
             };
 
-            CustomTimes = new List<TimeSpan>
+            AddCustomTimeCommand = new RelayCommand(AddCustomTimeAction, true);
+            RemoveCustomTimeCommand = new RelayCommand(RemoveCustomTimeAction, true);
+
+            CustomTimes = new ObservableCollection<SelectedTime>
             {
-                TimeSpan.FromHours(2),
-                TimeSpan.FromHours(4)
+                new SelectedTime{ Value = TimeSpan.FromMinutes(122)},
+                new SelectedTime{ Value = TimeSpan.FromMinutes(226)},
+                new SelectedTime{ Value = TimeSpan.FromMinutes(527)}
             };
+        }
+
+        private void AddCustomTimeAction(object obj)
+        {
+            CustomTimes.Add(new SelectedTime { Value = TimeSpan.FromMinutes(0) });
+            NotifyPropertyChanged(nameof(CustomTimes));
+        }
+
+        private void RemoveCustomTimeAction(object obj)
+        {
+            CustomTimes.Remove((SelectedTime)obj);
+            NotifyPropertyChanged(nameof(CustomTimes));
         }
     }
 }
