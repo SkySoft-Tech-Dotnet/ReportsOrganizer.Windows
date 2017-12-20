@@ -11,6 +11,7 @@
                       xmlns:settingsViewModel="clr-namespace:ReportsOrganizer.UI.ViewModels.Settings"
                       xmlns:settingsView="clr-namespace:ReportsOrganizer.UI.Views.Settings"
                       xmlns:packIcons="clr-namespace:ReportsOrganizer.UI.Controls"
+                      xmlns:okljire="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                       mc:Ignorable="d"
                       DataContext="{Binding Path=MainWindow, Source={StaticResource ViewModelLocator}}"
                       Icon="../../App.ico"
@@ -122,13 +123,7 @@
                     Command="{Binding Path=WindowOpenSettingsCommand}">
                     <Image Source="{StaticResource MenuImageSource}" />
                 </Button>
-                <DatePicker Grid.Column="2">
-                    <DatePicker.CalendarStyle>
-                        <Style TargetType="Calendar">
-                            <Setter Property="DisplayMode" Value="Year"/>
-                        </Style>
-                    </DatePicker.CalendarStyle>
-                </DatePicker>
+                <DatePicker Grid.Column="2" okljire:DatePickerProperties.IsMonthYear="True" />
                 <ComboBox 
                     Grid.Column="3"
                     Height="30"
