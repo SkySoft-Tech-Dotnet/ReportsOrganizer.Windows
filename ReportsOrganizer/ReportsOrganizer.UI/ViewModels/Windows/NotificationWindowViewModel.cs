@@ -49,7 +49,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                     _applicationManager.NotificationWindow.Left = desktopWorkingArea.Right - _applicationManager.NotificationWindow.Width - 10;
                     _applicationManager.NotificationWindow.Top = desktopWorkingArea.Bottom - _applicationManager.NotificationWindow.Height - 10;
 
-                    LastReport = _reportService.GetLastReportAsync(CancellationToken.None).Result;
+                    LastReport = _reportService.FindLastReportAsync(CancellationToken.None).Result;
                     _projectList = _projectService.ToBindingListAsync(CancellationToken.None).Result;
                     _projectList.ListChanged += ProjectsUpdated;
 

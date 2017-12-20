@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,10 +13,11 @@ namespace ReportsOrganizer.Core.Services
 {
     public interface IReportService : IBaseService<Report>
     {
+        Task<IEnumerable<Report>> FindReportsAsync(CancellationToken cancellationToken);
         Task<IEnumerable<Report>> FindReportsAsync(int year, int month, int week, CancellationToken cancellationToken);
-        Task<Report> GetLastReportAsync(CancellationToken cancellationToken);
+        Task<Report> FindLastReportAsync(CancellationToken cancellationToken);
 
-        Task<Dictionary<int, IEnumerable<Report>>> GetMonthReportAsync(int year, int month, CancellationToken cancellationToken);
+        Task<Dictionary<int, IEnumerable<Report>>> FindMonthReportsAsync(int year, int month, CancellationToken cancellationToken);
         int GetWeeksOfMonth(int year, int month);
     }
     internal class ReportService : BaseService<Report>, IReportService
@@ -24,6 +26,15 @@ namespace ReportsOrganizer.Core.Services
 
         public ReportService(IReportRepository reportRepository) : base(reportRepository)
             => _reportRepository = reportRepository;
+
+        public async Task<IEnumerable<Report>> FindReportsAsync(CancellationToken cancellationToken)
+        {
+            var reports = await _reportRepository.FindReports()
+                .Include(table => table.Project)
+                .ToListAsync(cancellationToken);
+
+            return reports;
+        }
 
         public async Task<IEnumerable<Report>> FindReportsAsync(int year, int month, int week,
             CancellationToken cancellationToken)
@@ -38,19 +49,19 @@ namespace ReportsOrganizer.Core.Services
             var maxDays = DateTime.DaysInMonth(year, month);
             var endDate = new DateTime(year, month, endDay > maxDays ? maxDays : endDay);
 
-            return await _reportRepository.FindReport(beginDate, endDate)
+            return await _reportRepository.FindReports(beginDate, endDate)
                 .Include(table => table.Project)
                 .ToListAsync(cancellationToken);
         }
 
-        public Task<Report> GetLastReportAsync(CancellationToken cancellationToken)
+        public Task<Report> FindLastReportAsync(CancellationToken cancellationToken)
         {
             return _reportRepository.FindReports()
                 .Include(table => table.Project)
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<Dictionary<int, IEnumerable<Report>>> GetMonthReportAsync(int year, int month, CancellationToken cancellationToken)
+        public async Task<Dictionary<int, IEnumerable<Report>>> FindMonthReportsAsync(int year, int month, CancellationToken cancellationToken)
         {
             var numberOfWeeks = GetWeeksOfMonth(year, month);
 

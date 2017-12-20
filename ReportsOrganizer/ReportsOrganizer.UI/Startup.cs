@@ -14,6 +14,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using ReportsOrganizer.Models;
 using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI
@@ -64,6 +65,47 @@ namespace ReportsOrganizer.UI
                 //ThemeManager.DetectAppStyle(Application.Current).Item1);
 
             Task.Run(async () => await projectService.ToListAsync(CancellationToken.None)).Wait();
+            //Task.Run(async () =>
+            //{
+            //    var nothProj = new Project
+            //    {
+            //        FullName = "Doing nothing",
+            //        ShortName = "DN",
+            //        IsActive = true
+            //    };
+            //    var nothAgainProj = new Project
+            //    {
+            //        FullName = "Doing nothing again",
+            //        ShortName = "DNA",
+            //        IsActive = true
+            //    };
+            //    await projectService.AddOrUpdateAsync(nothProj, CancellationToken.None);
+            //    await projectService.AddOrUpdateAsync(nothAgainProj, CancellationToken.None);
+
+            //    for (var i = 2015; i <= 2018; i++)
+            //    {
+            //        for (var j = 1; j <= 12; j++)
+            //        {
+            //            for (var k = 1; k <= DateTime.DaysInMonth(i, j); k++)
+            //            {
+            //                await reportService.AddOrUpdateAsync(new Report
+            //                {
+            //                    Description = "Did nothing!",
+            //                    Project = nothProj,
+            //                    Duration = 4,
+            //                    Created = new DateTime(i, j, k, 9, 0, 0)
+            //                }, CancellationToken.None);
+            //                await reportService.AddOrUpdateAsync(new Report
+            //                {
+            //                    Description = "Did nothing again!",
+            //                    Project = nothAgainProj,
+            //                    Duration = 4,
+            //                    Created = new DateTime(i, j, k, 2, 0, 0)
+            //                }, CancellationToken.None);
+            //            }
+            //        }
+            //    }
+            //}).Wait();
         }
     }
 }

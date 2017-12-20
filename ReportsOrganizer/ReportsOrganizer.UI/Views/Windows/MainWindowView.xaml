@@ -11,7 +11,7 @@
                       xmlns:settingsViewModel="clr-namespace:ReportsOrganizer.UI.ViewModels.Settings"
                       xmlns:settingsView="clr-namespace:ReportsOrganizer.UI.Views.Settings"
                       xmlns:packIcons="clr-namespace:ReportsOrganizer.UI.Controls"
-                      xmlns:okljire="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
+                      xmlns:dependency="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                       mc:Ignorable="d"
                       DataContext="{Binding Path=MainWindow, Source={StaticResource ViewModelLocator}}"
                       Icon="../../App.ico"
@@ -123,29 +123,8 @@
                     Command="{Binding Path=WindowOpenSettingsCommand}">
                     <Image Source="{StaticResource MenuImageSource}" />
                 </Button>
-                <DatePicker Grid.Column="2" okljire:DatePickerProperties.IsMonthYear="True" />
-                <ComboBox 
-                    Grid.Column="3"
-                    Height="30"
-                    Width="150"
-                    Margin="0,0,50,0"
-                    SelectedIndex="{Binding Path=SelectedMonth}" >
-                    <ComboBox.Items>
-                        <ComboBoxItem  Content="{lex:Loc General:Month_January}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_February}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_March}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_April}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_May}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_June}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_July}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_August}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_September}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_October}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_November}" />
-                        <ComboBoxItem  Content="{lex:Loc General:Month_December}" />
-                    </ComboBox.Items>
-                </ComboBox>
-
+                <DatePicker Grid.Column="2" dependency:DatePickerProperties.IsMonthYear="True" />
+               
                 <TextBox Grid.Column="4"
                          Height="30"
                          Width="150"

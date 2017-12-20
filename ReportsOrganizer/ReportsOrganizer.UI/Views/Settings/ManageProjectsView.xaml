@@ -28,28 +28,27 @@
                  controls:TextBoxHelper.ButtonsAlignment="Left"
                  Style="{DynamicResource SearchMetroTextBox}" />
 
-        <ScrollViewer Grid.Row="1" Grid.RowSpan="1" Margin="10,0,0,0" Padding="0,0,10,0" VerticalScrollBarVisibility="Auto">
-            <StackPanel>
-                <ItemsControl 
-                        Background="Transparent"
-                        ItemsSource="{Binding Path=ProjectList, UpdateSourceTrigger=PropertyChanged}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <local:ManageProjectsItem 
-                                        ShortName="{Binding Path=ShortName}"
-                                        FullName="{Binding Path=FullName}"
-                                        CheckBoxVisibility="{Binding DataContext.ShowAll, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                        IsProjectActive="{Binding Path=IsActive, Mode=TwoWay}"
-                                        ActivateProjectCommand="{Binding DataContext.ActivateProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                        EditProjectCommand="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                        DeleteProjectCommand="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                        ProjectCommandParameter="{Binding}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
+        <ScrollViewer Grid.Row="1" 
+                      Margin="10,0,0,0" 
+                      Padding="0,0,10,0" 
+                      VerticalScrollBarVisibility="Auto">
+            <ItemsControl 
+                    Background="Transparent"
+                    ItemsSource="{Binding Path=ProjectList, UpdateSourceTrigger=PropertyChanged}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:ManageProjectsItem 
+                                ShortName="{Binding Path=ShortName}"
+                                FullName="{Binding Path=FullName}"
+                                CheckBoxVisibility="{Binding DataContext.ShowAll, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                IsProjectActive="{Binding Path=IsActive, Mode=TwoWay}"
+                                ActivateProjectCommand="{Binding DataContext.ActivateProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                EditProjectCommand="{Binding DataContext.EditProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                DeleteProjectCommand="{Binding DataContext.DeleteProjectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                ProjectCommandParameter="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
 
         <Button Grid.Row="2"
