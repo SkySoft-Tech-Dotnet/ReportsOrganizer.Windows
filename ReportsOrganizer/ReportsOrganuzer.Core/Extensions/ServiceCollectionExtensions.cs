@@ -4,6 +4,7 @@ using ReportsOrganizer.DAL.Extensions;
 using ReportsOrganizer.DI.Extensions;
 using SimpleInjector;
 using System.Threading;
+using ReportsOrganizer.Core.Services.ScheduleServices;
 
 namespace ReportsOrganizer.Core.Extensions
 {
@@ -21,11 +22,14 @@ namespace ReportsOrganizer.Core.Extensions
         public static void AddCore(this Container container)
         {
             container.AddTransient<IApplicationManage, ApplicationManage>();
-            container.AddSingleton<ISchedulerManage, SchedulerManage>();
+            container.AddSingleton<INotificationManager, NotificationManager>();
 
             container.AddSingleton<IReportService, ReportService>();
             container.AddSingleton<IProjectService, ProjectService>();
             container.AddSingleton<IExportService, ExportService>();
+
+            container.AddSingleton<IntervalScheduleService>();
+            container.AddSingleton<SpecificTimeScheduleService>();
 
             container.AddRepository();
         }

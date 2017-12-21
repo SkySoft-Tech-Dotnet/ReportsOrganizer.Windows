@@ -14,7 +14,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
+using ReportsOrganizer.Core.Managers;
 using ReportsOrganizer.Core.Services;
+using ReportsOrganizer.UI.Helpers;
 using ReportsOrganizer.UI.Managers;
 using WPFLocalizeExtension.Engine;
 
@@ -24,6 +26,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
     {
         private IExportService _exportService;
         private ApplicationManager _applicationManager;
+        private readonly INotificationManager _notificationManager;
 
         private bool _settingsIsOpen;
         private string _headerSettingsGroupLocalizeKey;
@@ -109,16 +112,18 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         public MainWindowViewModel(
             ApplicationManager applicationManager,
+            INotificationManager notificationManager,
             IExportService exportService)
         {
             _applicationManager = applicationManager;
+            _notificationManager = notificationManager;
             _exportService = exportService;
             
 
             _settingsPageVisibility = Visibility.Hidden;
             _headerSettingsGroupLocalizeKey = "Settings:Group_Settings";
 
-            WindowVisibility = Environment.GetCommandLineArgs().Any(arg => arg == "/minimize")
+            WindowVisibility = Environment.GetCommandLineArgs().Any(arg => arg == "/minimized")
                 ? Visibility.Hidden
                 : Visibility.Visible;
 
@@ -149,21 +154,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             LocalizeDictionary.Instance.PropertyChanged += LocalizeChanged;
 
-            new Task(() =>
+            _notificationManager.Notified += delegate
             {
-                var handle = new EventWaitHandle(true, EventResetMode.AutoReset, App.OpenEventHandle);
-                while (true)
-                {
-                    handle.WaitOne();
-
-                    if (WindowState.Minimized == CurrentWindowState)
-                    {
-                        CurrentWindowState = _prevWindowState;
-                    }
-
-                    WindowVisibility = Visibility.Visible;
-                }
-            }).Start();
+                _applicationManager.NotificationWindow.Show();
+            };
         }
 
         ~MainWindowViewModel()
@@ -173,30 +167,24 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void TaskbarIconOpenAction(object sender)
         {
-            if (WindowState.Minimized == CurrentWindowState)
-            {
-                CurrentWindowState = _prevWindowState;
-            }
-
-            WindowVisibility = Visibility.Visible;
-            Application.Current.MainWindow.Focus();
+            Activate();
         }
 
-        private void TaskbarIconWriteReportAction(object sender)
+        private void TaskbarIconWriteReportAction(object obj)
         {
             _applicationManager.NotificationWindow.Show();
             //_applicationManager.NotificationWindow.Visibility = Visibility.Visible;
             //_navigationService.ShowNotificationWindow();
         }
 
-        private void TaskbarIconExitAction(object sender)
+        private void TaskbarIconExitAction(object obj)
         {
             Application.Current.Shutdown();
         }
 
-        private void WindowClosingAction(object sender)
+        private void WindowClosingAction(object obj)
         {
-            ((CancelEventArgs)sender).Cancel = true;
+            ((CancelEventArgs)obj).Cancel = true;
             WindowVisibility = Visibility.Hidden;
         }
 
@@ -285,6 +273,17 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             if (fileDialog.ShowDialog() == true)
                 await _exportService.WriteAll(fileDialog.FileName, CancellationToken.None);
+        }
+
+        public void Activate()
+        {
+            if (CurrentWindowState == WindowState.Minimized)
+            {
+                CurrentWindowState = _prevWindowState;
+            }
+
+            WindowVisibility = Visibility.Visible;
+            Application.Current.MainWindow?.Activate();
         }
 
         private void LocalizeChanged(object sender, PropertyChangedEventArgs e)

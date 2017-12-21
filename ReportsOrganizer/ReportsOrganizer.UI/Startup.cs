@@ -15,6 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using ReportsOrganizer.Models;
+using ReportsOrganizer.UI.Helpers;
 using WPFLocalizeExtension.Engine;
 
 namespace ReportsOrganizer.UI

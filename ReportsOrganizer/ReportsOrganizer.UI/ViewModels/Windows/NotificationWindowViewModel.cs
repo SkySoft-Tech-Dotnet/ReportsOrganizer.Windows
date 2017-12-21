@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using ReportsOrganizer.Core.Managers;
 using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.Models;
 using ReportsOrganizer.UI.Command;
@@ -18,6 +19,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 {
     public class NotificationWindowViewModel : BaseViewModel
     {
+        private readonly INotificationManager _notificationManager;
         private readonly IReportService _reportService;
         private readonly IProjectService _projectService;
         private readonly ApplicationManager _applicationManager;
@@ -88,9 +90,12 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         public IEnumerable<Project> ProjectList
         {
-            get { return _projectList
-                    .Where(property => property.IsActive)
-                    .OrderBy(property => property.ShortName); }
+            get
+            {
+                return _projectList
+                  .Where(property => property.IsActive)
+                  .OrderBy(property => property.ShortName);
+            }
         }
 
         public NotificationWindowViewModel(IReportService reportService, IProjectService projectService, ApplicationManager applicationManager)

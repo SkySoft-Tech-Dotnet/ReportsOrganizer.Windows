@@ -7,29 +7,40 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using ReportsOrganizer.Core.Managers;
+using ReportsOrganizer.UI.Helpers;
+using ReportsOrganizer.UI.Managers;
+using ReportsOrganizer.UI.Services;
+using ReportsOrganizer.UI.ViewModels.Windows;
 
 namespace ReportsOrganizer.UI
 {
     public partial class App
     {
-        private static readonly Mutex SingletonMutex = new Mutex(true, "{CA13A683-04A7-41E5-BFB1-43D22BADADB7}");
-        private bool IsInDesignMode => DesignerProperties.GetIsInDesignMode(new DependencyObject());
-
-        public static string OpenEventHandle => "F4313BD4-32AB-48C6-9790-682F3B48C022";
-        public static string NotificationEventHandle => "87A300C0-FFBC-42FE-A357-AE9DE1EAB5AE";
-
         public App()
         {
-            if (Environment.GetCommandLineArgs().FirstOrDefault(arg => arg == "/notify") != null)
-            {
-                SetEventWaitHandle(NotificationEventHandle);
-                Current.Shutdown();
-            }
-            if (!SingletonMutex.WaitOne(TimeSpan.Zero, true) && !IsInDesignMode)
-            {
-                SetEventWaitHandle(OpenEventHandle);
-                Current.Shutdown();
-            }
+            CrossThreadManager.Instance.ActivateApplication += OnActivateApplication;
+            CrossThreadManager.Instance.ActiveInstanceDetected += OnActiveInstanceDetected;
+            CrossThreadManager.Instance.ShowNotifyForm += OnShowNotifyForm;
+
+            CrossThreadManager.Instance.HandleApplicationStart(Environment.GetCommandLineArgs());
+        }
+
+        private void OnActivateApplication(object sender, EventArgs eventArgs)
+        {
+            var mainViewModel = ServiceCollectionProvider.Container.GetInstance<MainWindowViewModel>();
+            mainViewModel.Activate();
+        }
+
+        private void OnActiveInstanceDetected(object sender, EventArgs eventArgs)
+        {
+            Current.Shutdown();
+        }
+
+        private void OnShowNotifyForm(object sender, EventArgs eventArgs)
+        {
+            var notificationManager = ServiceCollectionProvider.Container.GetInstance<INotificationManager>();
+            notificationManager.Notify();
         }
 
         protected override void OnStartup(StartupEventArgs startupEvent)
@@ -46,14 +57,6 @@ namespace ReportsOrganizer.UI
                 => ServiceCollectionProvider.Container.GetInstance(parameter.ParameterType)).ToArray());
 
             base.OnStartup(startupEvent);
-        }
-
-        private void SetEventWaitHandle(string name)
-        {
-            if (EventWaitHandle.TryOpenExisting(name, out var eventHandle))
-            {
-                eventHandle.Set();
-            }
         }
     }
 }
