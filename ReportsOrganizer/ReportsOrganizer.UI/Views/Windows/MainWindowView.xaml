@@ -11,6 +11,7 @@
                       xmlns:settingsViewModel="clr-namespace:ReportsOrganizer.UI.ViewModels.Settings"
                       xmlns:settingsView="clr-namespace:ReportsOrganizer.UI.Views.Settings"
                       xmlns:packIcons="clr-namespace:ReportsOrganizer.UI.Controls"
+                      xmlns:dependency="clr-namespace:ReportsOrganizer.UI.DependencyProperties"
                       mc:Ignorable="d"
                       DataContext="{Binding Path=MainWindow, Source={StaticResource ViewModelLocator}}"
                       Icon="../../App.ico"
@@ -122,15 +123,8 @@
                     Command="{Binding Path=WindowOpenSettingsCommand}">
                     <Image Source="{StaticResource MenuImageSource}" />
                 </Button>
-                
-                <DatePicker Grid.Column="3"
-                            Height="25"
-                            Width="150"
-                            Margin="0,0,30,0"
-                            SelectedDateFormat="Long"
-                            Language="Uk-ua"
-                            SelectedDate="{Binding Path=SelectedDate}"/>
-
+                <DatePicker Grid.Column="2" dependency:DatePickerProperties.IsMonthYear="True" />
+               
                 <TextBox Grid.Column="4"
                          Height="30"
                          Width="150"
@@ -177,18 +171,6 @@
     </Grid>
 
 </controls:MetroWindow>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

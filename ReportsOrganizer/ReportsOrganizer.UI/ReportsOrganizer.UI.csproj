@@ -125,6 +125,7 @@
     <Compile Include="Controls\PackIconBase.cs" />
     <Compile Include="Controls\PackIconMaterial.cs" />
     <Compile Include="Converters\FlipToScaleValueConverter.cs" />
+    <Compile Include="DependencyProperties\DatePickerProperties.cs" />
     <Compile Include="Enums\PackIconMaterialKind.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Factories\PackIconMaterialDataFactory.cs" />
