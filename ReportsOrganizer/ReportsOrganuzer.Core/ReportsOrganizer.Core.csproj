@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +74,7 @@
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\ScheduleServices\IntervalScheduleService.cs" />
     <Compile Include="Services\ScheduleServices\ScheduleService.cs" />
-    <Compile Include="Services\ScheduleServices\SpecificTimeScheduleService.cs" />
+    <Compile Include="Services\ScheduleServices\DailyScheduleService.cs" />
     <Compile Include="Services\TaskService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,39 +17,57 @@ namespace ReportsOrganizer.Core.Managers
     {
         event EventHandler Notified;
 
+        bool Enabled { get; set; }
+
         void Notify();
+
+        T GetService<T>() where T : IScheduleService;
     }
 
     public class NotificationManager : INotificationManager
     {
-        private ScheduleService _intervalScheduleService;
-        private ScheduleService _specificTimeScheduleService;
-
-        private IEnumerable<TimeRange> _ignoreTimes;
-        private Dictionary<string, TimeSpan> _intervals;
-        private Dictionary<string, TimeSpan> _specificTimes;
-
+        private List<IScheduleService> _scheduleServices;
+        
         public event EventHandler Notified;
+        public bool Enabled { get; set; }
 
-        public NotificationManager(IntervalScheduleService intervalScheduleService, SpecificTimeScheduleService specificTimeScheduleService)
+        public NotificationManager(
+            IntervalScheduleService intervalScheduleService, 
+            DailyScheduleService specificTimeScheduleService)
         {
-            _intervalScheduleService = intervalScheduleService;
-            _specificTimeScheduleService = specificTimeScheduleService;
+            _scheduleServices = new List<IScheduleService>
+            {
+                intervalScheduleService,
+                specificTimeScheduleService
+            };
 
-            _intervals = new Dictionary<string, TimeSpan>();
-            _specificTimes = new Dictionary<string, TimeSpan>();
-            _ignoreTimes = new List<TimeRange>();
+            foreach (var scheduleService in _scheduleServices)
+            {
+                scheduleService.ScheduleNotification += delegate { Notify(); };
+            }
         }
 
-        public void AddInterval()
+        public T GetService<T>() where T : IScheduleService
+        {
+            return (T)_scheduleServices.FirstOrDefault(s => s is T);
+        }
+        
+        public void Notify()
+        {
+
+
+
+            OnNotified();
+        }
+
+        public void Postpone()
         {
             
         }
 
-
-        public void Notify()
+        public void HandleSave()
         {
-            OnNotified();
+            
         }
 
         protected virtual void OnNotified()

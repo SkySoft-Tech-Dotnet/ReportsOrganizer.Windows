@@ -8,11 +8,16 @@ namespace ReportsOrganizer.Core.Services.ScheduleServices
 {
     public interface IScheduleService
     {
-        
+        event EventHandler ScheduleNotification;
     }
 
-    public class ScheduleService : IScheduleService
+    public abstract class ScheduleServiceBase : IScheduleService
     {
+        public event EventHandler ScheduleNotification;
 
+        protected virtual void OnScheduleNotification()
+        {
+            ScheduleNotification?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

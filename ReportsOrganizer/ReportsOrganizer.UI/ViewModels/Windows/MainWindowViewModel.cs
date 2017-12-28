@@ -26,7 +26,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
     {
         private IExportService _exportService;
         private ApplicationManager _applicationManager;
-        private readonly INotificationManager _notificationManager;
 
         private bool _settingsIsOpen;
         private string _headerSettingsGroupLocalizeKey;
@@ -112,11 +111,10 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         public MainWindowViewModel(
             ApplicationManager applicationManager,
-            INotificationManager notificationManager,
-            IExportService exportService)
+            IExportService exportService,
+            INotificationManager notificationManager)
         {
             _applicationManager = applicationManager;
-            _notificationManager = notificationManager;
             _exportService = exportService;
             
 
@@ -154,9 +152,9 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             LocalizeDictionary.Instance.PropertyChanged += LocalizeChanged;
 
-            _notificationManager.Notified += delegate
+            notificationManager.Notified += delegate
             {
-                _applicationManager.NotificationWindow.Show();
+                ActivateNotificationWindow();
             };
         }
 
@@ -167,14 +165,12 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void TaskbarIconOpenAction(object sender)
         {
-            Activate();
+            ActivateMainWindow();
         }
 
         private void TaskbarIconWriteReportAction(object obj)
         {
-            _applicationManager.NotificationWindow.Show();
-            //_applicationManager.NotificationWindow.Visibility = Visibility.Visible;
-            //_navigationService.ShowNotificationWindow();
+            ActivateNotificationWindow();
         }
 
         private void TaskbarIconExitAction(object obj)
@@ -202,9 +198,6 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                 .GetInstance<TViewModel>();
 
             CurrentSettingsGroup = page;
-
-            //var pageWithLoad = page as INavigateble;
-            //pageWithLoad.OnNavigate();
         }
 
         private void OpenGeneralSettingsAction(object obj)
@@ -221,7 +214,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void OpenNotificationSettingsAction(object obj)
         {
-            OpenSettingsPage<Settings.NotificationViewModel>();
+            OpenSettingsPage<NotificationViewModel>();
             HeaderSettingsGroupLocalizeKey = "Settings:Group_Notification";
         }
 
@@ -275,7 +268,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
                 await _exportService.WriteAll(fileDialog.FileName, CancellationToken.None);
         }
 
-        public void Activate()
+        public void ActivateMainWindow()
         {
             if (CurrentWindowState == WindowState.Minimized)
             {
@@ -284,6 +277,12 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
             WindowVisibility = Visibility.Visible;
             Application.Current.MainWindow?.Activate();
+        }
+
+        public void ActivateNotificationWindow()
+        {
+            _applicationManager.NotificationWindow.Show();
+            _applicationManager.NotificationWindow.Focus();
         }
 
         private void LocalizeChanged(object sender, PropertyChangedEventArgs e)

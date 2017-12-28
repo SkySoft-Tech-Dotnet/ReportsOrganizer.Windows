@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using ReportsOrganizer.Core.Services;
 
 namespace ReportsOrganizer.UI.Managers
 {
@@ -40,7 +41,7 @@ namespace ReportsOrganizer.UI.Managers
         {
             WaitForEvents();
 
-            if (startupArguments.Contains("/notify"))
+            if (startupArguments.Contains(TaskService.NotificationKey))
             {
                 InvokeEventWaitHandle(NotificationEventName);
                 OnActiveInstanceDetected();

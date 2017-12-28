@@ -27,9 +27,10 @@ namespace ReportsOrganizer.Core.Extensions
             container.AddSingleton<IReportService, ReportService>();
             container.AddSingleton<IProjectService, ProjectService>();
             container.AddSingleton<IExportService, ExportService>();
+            container.AddSingleton<ITaskService, TaskService>();
 
             container.AddSingleton<IntervalScheduleService>();
-            container.AddSingleton<SpecificTimeScheduleService>();
+            container.AddSingleton<DailyScheduleService>();
 
             container.AddRepository();
         }

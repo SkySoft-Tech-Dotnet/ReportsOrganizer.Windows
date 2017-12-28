@@ -48,6 +48,7 @@
                                  IsClockVisible="False"
                                  controls:TextBoxHelper.Watermark="00:00"
                                  IsEnabled="{Binding ElementName=MainSwitch, Path=IsChecked }"
+                                 SelectedTime="{Binding Path=SelectedInterval}"
                                  Culture="{Binding Path=DurationCultureInfo}">
             </controls:TimePicker>
         </StackPanel>

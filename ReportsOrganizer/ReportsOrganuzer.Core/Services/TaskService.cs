@@ -5,38 +5,74 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Win32.TaskScheduler;
+using Task = Microsoft.Win32.TaskScheduler.Task;
 
 namespace ReportsOrganizer.Core.Services
 {
     public interface ITaskService
     {
-        void AddTask(DateTime start, TimeSpan period);
+        Task GetTask(string name);
+
+        void UpdateTask(string name, TaskDefinition taskDefinition);
     }
 
     public class TaskService : ITaskService
     {
-        public void AddTask(DateTime start, TimeSpan period)
+        public const string NotificationKey = "/notify";
+
+        private TaskFolder _taskFolder;
+
+        public TaskService()
         {
-            using (var ts = new Microsoft.Win32.TaskScheduler.TaskService())
+            using (var taskService = new Microsoft.Win32.TaskScheduler.TaskService())
             {
-                var task = ts.NewTask();
+                _taskFolder = taskService.GetFolder("ReportsOrganizer")
+                              ?? taskService.RootFolder.CreateFolder("ReportsOrganizer");
+            }
+            CheckPathes();
+        }
 
-                var folder = ts.GetFolder("ReportOrganizer")
-                             ?? ts.RootFolder.CreateFolder("ReportOrganizer");
+        public Task GetTask(string name)
+        {
+            using (var taskService = new Microsoft.Win32.TaskScheduler.TaskService())
+            {
+                var task = taskService.FindTask(name);
 
-                task.RegistrationInfo.Description = "My first task scheduler";
+                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportsOrganizer.exe");
 
-                task.Triggers.Add(new TimeTrigger()
+                var action = new ExecAction(path, NotificationKey, null);
+
+                if (task == null)
                 {
-                    StartBoundary = new DateTime(2017, 12, 18, 17, 20, 0), 
-                    //Repetition = new RepetitionPattern()
-                });
+                    var newTask = taskService.NewTask();
+                    newTask.Actions.Add(action);
+                    task = _taskFolder.RegisterTaskDefinition(name, newTask);
+                }
 
-                task.Actions.Add(new ExecAction(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportOrganizer.exe"), null, null));
+                return task;
+            }
+        }
 
-                //task.Settings.DeleteExpiredTaskAfter = new TimeSpan(30,0,0,0);
+        public void UpdateTask(string name, TaskDefinition taskDefinition)
+        {
+            _taskFolder.RegisterTaskDefinition(name, taskDefinition);
+        }
 
-                folder.RegisterTaskDefinition("TaskName", task);
+        private void CheckPathes()
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportsOrganizer.exe");
+
+            var action = new ExecAction(path, NotificationKey, null);
+
+            foreach (var task in _taskFolder.AllTasks)
+            {
+                if (task.Definition.Actions.Count != 0 && ((ExecAction)task.Definition.Actions[0]).Path != path)
+                {
+                    var definition = task.Definition;
+                    definition.Actions.Clear();
+                    definition.Actions.Add(action);
+                    UpdateTask(task.Name, definition);
+                }
             }
         }
     }

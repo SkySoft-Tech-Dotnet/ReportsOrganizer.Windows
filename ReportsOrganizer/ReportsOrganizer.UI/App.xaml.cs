@@ -29,7 +29,7 @@ namespace ReportsOrganizer.UI
         private void OnActivateApplication(object sender, EventArgs eventArgs)
         {
             var mainViewModel = ServiceCollectionProvider.Container.GetInstance<MainWindowViewModel>();
-            mainViewModel.Activate();
+            mainViewModel.ActivateMainWindow();
         }
 
         private void OnActiveInstanceDetected(object sender, EventArgs eventArgs)

@@ -7,83 +7,28 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Input;
+using ReportsOrganizer.Core.Managers;
+using ReportsOrganizer.Core.Services.ScheduleServices;
 using ReportsOrganizer.UI.Command;
 
 namespace ReportsOrganizer.UI.ViewModels.Settings
 {
     public class NotificationViewModel : BaseViewModel
     {
-        private IApplicationOptions<ApplicationSettings> _applicationOptions;
-
-        private ApplicationSettings ApplicationSettings => _applicationOptions.Value;
+        private INotificationManager _notificationManager;
 
         public CultureInfo DurationCultureInfo { get; }
 
         public ObservableCollection<SelectedTime> CustomTimes { get; }
 
-        public bool EnableInterval
-        {
-            get => ApplicationSettings.Notification.EnableInterval;
-            set
-            {
-                ApplicationSettings.Notification.EnableInterval = value;
-                NotifyPropertyChanged(nameof(EnableInterval));
-                _applicationOptions.UpdateAsync(default(CancellationToken));
-            }
-        }
 
-        public bool EnableAtTime
+        public TimeSpan SelectedInterval
         {
-            get => ApplicationSettings.Notification.EnableAtTime;
+            get => _notificationManager.GetService<IntervalScheduleService>().GetPeriod();
             set
             {
-                ApplicationSettings.Notification.EnableAtTime = value;
-                NotifyPropertyChanged(nameof(EnableAtTime));
-                _applicationOptions.UpdateAsync(default(CancellationToken));
-            }
-        }
-
-        public bool EnableIgnoreTime
-        {
-            get => ApplicationSettings.Notification.EnableIgnoreTime;
-            set
-            {
-                ApplicationSettings.Notification.EnableIgnoreTime = value;
-                NotifyPropertyChanged(nameof(EnableIgnoreTime));
-                _applicationOptions.UpdateAsync(default(CancellationToken));
-            }
-        }
-
-        public ApplicationNotification Interval
-        {
-            get => ApplicationSettings.Notification.Interval;
-            set
-            {
-                ApplicationSettings.Notification.Interval = value;
-                NotifyPropertyChanged(nameof(Interval));
-                _applicationOptions.UpdateAsync(default(CancellationToken));
-            }
-        }
-
-        public IEnumerable<ApplicationNotification> AtTimes
-        {
-            get => ApplicationSettings.Notification.AtTimes;
-            set
-            {
-                ApplicationSettings.Notification.AtTimes = value;
-                NotifyPropertyChanged(nameof(AtTimes));
-                _applicationOptions.UpdateAsync(default(CancellationToken));
-            }
-        }
-
-        public IEnumerable<ApplicationNotificationInterval> IgnoreTimes
-        {
-            get => ApplicationSettings.Notification.IgnoreTimes;
-            set
-            {
-                ApplicationSettings.Notification.IgnoreTimes = value;
-                NotifyPropertyChanged(nameof(IgnoreTimes));
-                _applicationOptions.UpdateAsync(default(CancellationToken));
+                _notificationManager.GetService<IntervalScheduleService>().AddInterval(value);
+                NotifyPropertyChanged(nameof(SelectedInterval));
             }
         }
 
@@ -91,9 +36,9 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
         public ICommand RemoveCustomTimeCommand { get; }
 
 
-        public NotificationViewModel(IApplicationOptions<ApplicationSettings> applicationOptions)
+        public NotificationViewModel(INotificationManager notificationManager)
         {
-            _applicationOptions = applicationOptions;
+            _notificationManager = notificationManager;
 
             DurationCultureInfo = new CultureInfo("uk-UA")
             {
@@ -117,6 +62,10 @@ namespace ReportsOrganizer.UI.ViewModels.Settings
 
         private void AddCustomTimeAction(object obj)
         {
+            var time = TimeSpan.FromHours(1);
+            _notificationManager.GetService<DailyScheduleService>().AddTask(time);
+            _notificationManager.GetService<IntervalScheduleService>().AddInterval(time);
+            
             CustomTimes.Add(new SelectedTime { Value = TimeSpan.FromMinutes(0) });
             NotifyPropertyChanged(nameof(CustomTimes));
         }

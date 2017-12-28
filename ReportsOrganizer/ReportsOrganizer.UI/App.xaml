@@ -25,13 +25,13 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Emerald.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
                 <!-- Controls styles -->
-                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI;component/Styles/Controls/PackIconMaterial.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer;component/Styles/Controls/PackIconMaterial.xaml" />
                 <!-- Generic resource dictionaries -->
-                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI;component/Resources/GenericResource.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI;component/Resources/ButtonResource.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI;component/Resources/FlyoutResource.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI;component/Resources/WindowResource.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI;component/Resources/TextBoxResource.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer;component/Resources/GenericResource.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer;component/Resources/ButtonResource.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer;component/Resources/FlyoutResource.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer;component/Resources/WindowResource.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer;component/Resources/TextBoxResource.xaml" />
 
 
 

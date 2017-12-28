@@ -38,19 +38,19 @@ namespace ReportsOrganizer.UI
 
             container.AddCore();
 
-            ThemeManager.AddAccent("Amber", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Amber.xaml"));
-            ThemeManager.AddAccent("Cobalt", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Cobalt.xaml"));
-            ThemeManager.AddAccent("Crimson", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Crimson.xaml"));
-            ThemeManager.AddAccent("Cyan", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Cyan.xaml"));
-            ThemeManager.AddAccent("Emerald", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Emerald.xaml"));
-            ThemeManager.AddAccent("Green", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Green.xaml"));
-            ThemeManager.AddAccent("Indigo", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Indigo.xaml"));
-            ThemeManager.AddAccent("Magenta", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Magenta.xaml"));
-            ThemeManager.AddAccent("Orange", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Orange.xaml"));
-            ThemeManager.AddAccent("Purple", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Purple.xaml"));
-            ThemeManager.AddAccent("Teal", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Teal.xaml"));
-            ThemeManager.AddAccent("Default", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/Default.xaml"));
-            ThemeManager.AddAppTheme("DefaultTheme", new Uri("pack://application:,,,/ReportsOrganizer.UI;component/Themes/DefaultTheme.xaml"));
+            ThemeManager.AddAccent("Amber", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Amber.xaml"));
+            ThemeManager.AddAccent("Cobalt", new Uri("pack://application:,,,/ReportsOrganizer ;component/Themes/Cobalt.xaml"));
+            ThemeManager.AddAccent("Crimson", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Crimson.xaml"));
+            ThemeManager.AddAccent("Cyan", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Cyan.xaml"));
+            ThemeManager.AddAccent("Emerald", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Emerald.xaml"));
+            ThemeManager.AddAccent("Green", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Green.xaml"));
+            ThemeManager.AddAccent("Indigo", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Indigo.xaml"));
+            ThemeManager.AddAccent("Magenta", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Magenta.xaml"));
+            ThemeManager.AddAccent("Orange", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Orange.xaml"));
+            ThemeManager.AddAccent("Purple", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Purple.xaml"));
+            ThemeManager.AddAccent("Teal", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Teal.xaml"));
+            ThemeManager.AddAccent("Default", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/Default.xaml"));
+            ThemeManager.AddAppTheme("DefaultTheme", new Uri("pack://application:,,,/ReportsOrganizer;component/Themes/DefaultTheme.xaml"));
         }
 
         public void Configure(IApplicationOptions<ApplicationSettings> applicationSettings, IProjectService projectService)
