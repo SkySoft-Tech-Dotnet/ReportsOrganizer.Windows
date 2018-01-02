@@ -39,6 +39,151 @@
         <DataTemplate DataType="{x:Type settingsViewModel:PersonalizationViewModel}">
             <settingsView:PersonalizationView />
         </DataTemplate>
+
+        <Style x:Key="MetroExpander2" TargetType="{x:Type Expander}">
+            <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="controls:ControlsHelper.ContentCharacterCasing" Value="Upper" />
+            <Setter Property="controls:ControlsHelper.HeaderFontSize" Value="{DynamicResource ContentFontSize}" />
+            <Setter Property="controls:ExpanderHelper.HeaderDownStyle" Value="{StaticResource ExpanderDownHeaderStyle}" />
+            <Setter Property="controls:ExpanderHelper.HeaderLeftStyle" Value="{StaticResource ExpanderLeftHeaderStyle}" />
+            <Setter Property="controls:ExpanderHelper.HeaderRightStyle" Value="{StaticResource ExpanderRightHeaderStyle}" />
+            <Setter Property="controls:ExpanderHelper.HeaderUpStyle" Value="{StaticResource ExpanderUpHeaderStyle}" />
+            <Setter Property="controls:GroupBoxHelper.HeaderForeground" Value="{x:Null}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlackBrush}" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Expander}">
+                        <Grid>
+                            <Rectangle x:Name="DisabledVisualElement"
+                                   Fill="{DynamicResource ControlsDisabledBrush}"
+                                   IsHitTestVisible="false"
+                                   Opacity="0" />
+                            <DockPanel x:Name="ExpanderRoot">
+                                <Border x:Name="HeaderSite"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    DockPanel.Dock="Top"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="True">
+                                    <ToggleButton x:Name="ToggleSite"
+                                              controls:ControlsHelper.ContentCharacterCasing="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(controls:ControlsHelper.ContentCharacterCasing)}"
+                                              Content="{TemplateBinding Header}"
+                                              ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                              FontSize="{TemplateBinding controls:ControlsHelper.HeaderFontSize}"
+                                              FontStretch="{TemplateBinding controls:ControlsHelper.HeaderFontStretch}"
+                                              FontWeight="{TemplateBinding controls:ControlsHelper.HeaderFontWeight}"
+                                              IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                              Style="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(controls:ExpanderHelper.HeaderDownStyle)}"
+                                              UseLayoutRounding="False">
+                                        <!--<ToggleButton.Foreground>
+                                            <MultiBinding Converter="{x:Static Converters:BackgroundToForegroundConverter.Instance}">
+                                                <Binding Mode="OneWay"
+                                                     Path="Background"
+                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                                <Binding Mode="OneWay"
+                                                     Path="(controls:GroupBoxHelper.HeaderForeground)"
+                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                            </MultiBinding>
+                                        </ToggleButton.Foreground>-->
+                                    </ToggleButton>
+                                </Border>
+                                <!--BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessBindingConverter}, ConverterParameter={x:Static Converters:ThicknessSideType.Top}}"-->
+                                <Border x:Name="ExpandSite"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Background="Transparent"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    
+                                    DockPanel.Dock="Bottom"
+                                    Focusable="false"
+                                    Opacity="1.0"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="True"
+                                    Visibility="Visible"
+                                        MaxHeight="0">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Cursor="{TemplateBinding Cursor}"
+                                                  UseLayoutRounding="False" />
+                                </Border>
+                            </DockPanel>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DisabledVisualElement" Storyboard.TargetProperty="Opacity">
+                                                <SplineDoubleKeyFrame KeyTime="0" Value="0.7" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ExpanderRoot" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.3" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="true">
+                                <!--<Setter TargetName="ExpandSite" Property="Visibility" Value="Visible" />-->
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:.7" From="0" To="100" Storyboard.TargetProperty="MaxHeight" Storyboard.TargetName="ExpandSite" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:.7" From="100" To="0" Storyboard.TargetProperty="MaxHeight" Storyboard.TargetName="ExpandSite" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                
+                                <!--<Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MetroExpanderExpandStoryboard}" />
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MetroExpanderCollapseStoryboard}" />
+                                </Trigger.ExitActions>-->
+                            </Trigger>
+                            <Trigger Property="ExpandDirection" Value="Right">
+                                <!--<Setter TargetName="ExpandSite" Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessBindingConverter}, ConverterParameter={x:Static Converters:ThicknessSideType.Left}}" />-->
+                                <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Right" />
+                                <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Left" />
+                                <Setter TargetName="ToggleSite" Property="Style" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(controls:ExpanderHelper.HeaderRightStyle)}" />
+                            </Trigger>
+                            <Trigger Property="ExpandDirection" Value="Up">
+                                <!--<Setter TargetName="ExpandSite" Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessBindingConverter}, ConverterParameter={x:Static Converters:ThicknessSideType.Bottom}}" />-->
+                                <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Top" />
+                                <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Bottom" />
+                                <Setter TargetName="ToggleSite" Property="Style" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(controls:ExpanderHelper.HeaderUpStyle)}" />
+                            </Trigger>
+                            <Trigger Property="ExpandDirection" Value="Left">
+                                <!--<Setter TargetName="ExpandSite" Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessBindingConverter}, ConverterParameter={x:Static Converters:ThicknessSideType.Right}}" />-->
+                                <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Left" />
+                                <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Right" />
+                                <Setter TargetName="ToggleSite" Property="Style" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(controls:ExpanderHelper.HeaderLeftStyle)}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </controls:MetroWindow.Resources>
 
     <!--<controls:MetroWindow.LeftWindowCommands>
@@ -157,12 +302,29 @@
 
             </Grid>
         </Border>
-        
-        <packIcons:PackIconMaterial Grid.Row="1"
+
+
+        <Grid Grid.Row="0"
+              Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Expander Grid.Row="0"
+                  Content="123"
+                  Style="{StaticResource MetroExpander2}" />
+            <Expander Grid.Row="1"
+                  Content="234"
+                  Style="{StaticResource MetroExpander2}" />
+        </Grid>
+
+
+
+        <!--<packIcons:PackIconMaterial Grid.Row="1"
                                     Kind="ArrowLeft"
                                     Flip="Vertical"
-                                    Rotation="90" />
-
+                                    Rotation="90" />-->
+        
         <StatusBar Grid.Row="2">
             <!--<StatusBarItem Content="{StaticResource ProgramName}" />
             <Separator Style="{DynamicResource MetroStatusBarSeparator}" />
