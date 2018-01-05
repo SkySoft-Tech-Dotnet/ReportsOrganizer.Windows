@@ -74,6 +74,11 @@
       <DependentUpon>Notification.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportTable\ReportTable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportTable.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings\Settings.ru.Designer.cs">
       <DependentUpon>Settings.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -129,6 +134,10 @@
     <EmbeddedResource Include="Notification\Notification.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Notification.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportTable\ReportTable.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportTable.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\Settings.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>

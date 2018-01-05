@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.UI", "ReportsOrganizer.UI\ReportsOrganizer.UI.csproj", "{0E2DCE3D-3785-4817-BF73-80B9A5BFE807}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.DI", "ReportsOrganizer.DI\ReportsOrganizer.DI.csproj", "{32EC9BF8-1A4B-44FD-BA0E-A4D929C90B11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.Localization", "ReportsOrganizer.Localization\ReportsOrganizer.Localization.csproj", "{92DDBBE4-FB02-47C4-B833-2CC36396876B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsOrganizer.UI.Controls", "ReportsOrganizer.UI.Controls\ReportsOrganizer.UI.Controls.csproj", "{774CAF79-6065-4571-85B8-10EB216F989A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{92DDBBE4-FB02-47C4-B833-2CC36396876B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92DDBBE4-FB02-47C4-B833-2CC36396876B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92DDBBE4-FB02-47C4-B833-2CC36396876B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{774CAF79-6065-4571-85B8-10EB216F989A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{774CAF79-6065-4571-85B8-10EB216F989A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{774CAF79-6065-4571-85B8-10EB216F989A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{774CAF79-6065-4571-85B8-10EB216F989A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

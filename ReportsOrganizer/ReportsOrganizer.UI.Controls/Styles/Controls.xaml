@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI.Controls;component/Styles/Controls.Icon.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI.Controls;component/Styles/Controls.Expander.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI.Controls;component/Styles/Controls.Table.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

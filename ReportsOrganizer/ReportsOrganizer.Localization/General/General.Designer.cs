@@ -70,6 +70,69 @@ namespace ReportsOrganizer.Localization.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fri.
+        /// </summary>
+        internal static string Day_Friday_Short {
+            get {
+                return ResourceManager.GetString("Day_Friday_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mon.
+        /// </summary>
+        internal static string Day_Monday_Short {
+            get {
+                return ResourceManager.GetString("Day_Monday_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sat.
+        /// </summary>
+        internal static string Day_Saturday_Short {
+            get {
+                return ResourceManager.GetString("Day_Saturday_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sun.
+        /// </summary>
+        internal static string Day_Sunday_Short {
+            get {
+                return ResourceManager.GetString("Day_Sunday_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thu.
+        /// </summary>
+        internal static string Day_Thursday_Short {
+            get {
+                return ResourceManager.GetString("Day_Thursday_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tue.
+        /// </summary>
+        internal static string Day_Tuesday_Short {
+            get {
+                return ResourceManager.GetString("Day_Tuesday_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wed.
+        /// </summary>
+        internal static string Day_Wednesday_Short {
+            get {
+                return ResourceManager.GetString("Day_Wednesday_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Month.
         /// </summary>
         internal static string Month {

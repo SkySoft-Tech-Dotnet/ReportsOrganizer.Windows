@@ -19,6 +19,7 @@ using ReportsOrganizer.Core.Services;
 using ReportsOrganizer.UI.Helpers;
 using ReportsOrganizer.UI.Managers;
 using WPFLocalizeExtension.Engine;
+using ReportsOrganizer.Models;
 
 namespace ReportsOrganizer.UI.ViewModels.Windows
 {
@@ -40,6 +41,35 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private Dictionary<string, AsyncCommand> _exportOptions;
         private DateTime _selectedDate;
+
+
+
+        private Project TestTableReportProject = new Project
+        {
+            ShortName = "RO",
+            FullName = "ReportsOrganizer"
+        };
+        private Project TestTableReportProject2 = new Project
+        {
+            ShortName = "INV",
+            FullName = "Investigation"
+        };
+        public List<Report> TestTableReport => new List<Report>
+        {
+            new Report
+            {
+                Description = "Test task",
+                Duration = 120,
+                Project = TestTableReportProject
+            },
+            new Report
+            {
+                Description = "Test task #2",
+                Duration = 90,
+                Project = TestTableReportProject2
+            },
+        };
+
 
 
         public Visibility WindowVisibility
@@ -116,7 +146,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
         {
             _applicationManager = applicationManager;
             _exportService = exportService;
-            
+
 
             _settingsPageVisibility = Visibility.Hidden;
             _headerSettingsGroupLocalizeKey = "Settings:Group_Settings";
@@ -238,7 +268,7 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
 
         private void ExportAction(object obj)
         {
-            if(obj is string option)
+            if (obj is string option)
                 _exportOptions[option].Execute(null);
         }
 

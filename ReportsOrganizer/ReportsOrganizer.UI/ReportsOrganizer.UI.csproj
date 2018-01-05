@@ -348,6 +348,10 @@
       <Project>{E1768370-C9EC-4C3F-B6C2-0F1D1C6BC695}</Project>
       <Name>ReportsOrganizer.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReportsOrganizer.UI.Controls\ReportsOrganizer.UI.Controls.csproj">
+      <Project>{774caf79-6065-4571-85b8-10eb216f989a}</Project>
+      <Name>ReportsOrganizer.UI.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportsOrganuzer.Core\ReportsOrganizer.Core.csproj">
       <Project>{416dd915-aa95-49e4-bc32-ae29c9599bd5}</Project>
       <Name>ReportsOrganizer.Core</Name>
