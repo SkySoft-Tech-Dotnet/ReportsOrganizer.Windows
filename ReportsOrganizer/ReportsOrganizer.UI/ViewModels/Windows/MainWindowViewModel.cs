@@ -60,13 +60,15 @@ namespace ReportsOrganizer.UI.ViewModels.Windows
             {
                 Description = "Test task",
                 Duration = 120,
-                Project = TestTableReportProject
+                Project = TestTableReportProject,
+                Created = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 2 > 0 ? DateTime.Now.Day - 2 : DateTime.Now.Day + 2)
             },
             new Report
             {
                 Description = "Test task #2",
                 Duration = 90,
-                Project = TestTableReportProject2
+                Project = TestTableReportProject2,
+                Created = DateTime.Now
             },
         };
 

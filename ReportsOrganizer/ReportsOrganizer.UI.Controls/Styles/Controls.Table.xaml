@@ -6,23 +6,63 @@
                     xmlns:helpers="clr-namespace:ReportsOrganizer.UI.Controls.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI.Controls;component/Themes/Colors.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ReportsOrganizer.UI.Controls;component/Styles/Controls.Expander.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <converters:ReportGroupConverter x:Key="converterReportGroup" />
+    <converters:ThicknessConverter x:Key="converterThickness" />
+    <converters:LocalizationWeekDayConverter x:Key="converterWeekDay" />
 
+    <Style x:Key="HeaderTextBase" x:Shared="False" TargetType="{x:Type TextBlock}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=IsFocused, RelativeSource={RelativeSource AncestorType={x:Type ControlTemplate}}}" Value="True">
+                <Setter Property="FontWeight" Value="Medium" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MetroExpanderOnReportTable" x:Shared="False" TargetType="{x:Type Expander}" BasedOn="{StaticResource MetroExpander}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Date.DayOfWeek}" Value="0">
+                <Setter Property="helpers:ExpanderHelper.LabelBrush" Value="{StaticResource ReportTableLabelBrushSun}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Date.DayOfWeek}" Value="1">
+                <Setter Property="helpers:ExpanderHelper.LabelBrush" Value="{StaticResource ReportTableLabelBrushMon}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Date.DayOfWeek}" Value="2">
+                <Setter Property="helpers:ExpanderHelper.LabelBrush" Value="{StaticResource ReportTableLabelBrushTue}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Date.DayOfWeek}" Value="3">
+                <Setter Property="helpers:ExpanderHelper.LabelBrush" Value="{StaticResource ReportTableLabelBrushWed}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Date.DayOfWeek}" Value="4">
+                <Setter Property="helpers:ExpanderHelper.LabelBrush" Value="{StaticResource ReportTableLabelBrushThu}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Date.DayOfWeek}" Value="5">
+                <Setter Property="helpers:ExpanderHelper.LabelBrush" Value="{StaticResource ReportTableLabelBrushFri}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Date.DayOfWeek}" Value="6">
+                <Setter Property="helpers:ExpanderHelper.LabelBrush" Value="{StaticResource ReportTableLabelBrushSat}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
     <ControlTemplate x:Key="MetroReportTableTemplate" TargetType="{x:Type controls:ReportTable}">
-        <Border BorderThickness="0,1,1,0"
-                BorderBrush="{StaticResource MetroExpanderBorderBrush}"
+        <Border BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource converterThickness}, ConverterParameter={x:Static converters:ThicknessTypeAngle.TopRight}}"
+                BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderBrush}"
                 Height="Auto">
             <ItemsControl HorizontalContentAlignment="Stretch"
                           VerticalAlignment="Top"
-                          Name="test_itemscontrol"
                           ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Source, Mode=OneWay, Converter={StaticResource converterReportGroup}}">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate x:Name="test_template_itemscontrol">
-                        <Expander Style="{StaticResource MetroExpander}"
-                                  helpers:ExpanderHelper.LabelBrush="Magenta" Header="{Binding}">
+                    <DataTemplate>
+                        <Expander Header="{Binding}"
+                                  Style="{StaticResource MetroExpanderOnReportTable}">
                             <Expander.HeaderTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -33,64 +73,66 @@
                                             <ColumnDefinition Width="Auto" MinWidth="72" />
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0"
-                                                   HorizontalAlignment="Left"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="18"
-                                                   Margin="0,0,25,0"
-                                                   Text="12/04 Mon" />
+                                                   Style="{StaticResource HeaderTextBase}"
+                                                   Margin="0,0,25,0">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0:D2}/{1:D2} {2}">
+                                                    <Binding Path="Date.Month" />
+                                                    <Binding Path="Date.Day" />
+                                                    <Binding Path="Date.DayOfWeek" Converter="{StaticResource converterWeekDay}" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
                                         <TextBlock Grid.Column="1"
-                                                   HorizontalAlignment="Left"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="18"
+                                                   Style="{StaticResource HeaderTextBase}"
                                                    Text="{Binding Path=Count, StringFormat={localization:Loc ReportTable:Header_Total}}" />
                                         <TextBlock Grid.Column="2"
+                                                   Style="{StaticResource HeaderTextBase}"
                                                    HorizontalAlignment="Right"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="18"
                                                    Text="{Binding Path=Projects}" />
                                         <TextBlock Grid.Column="3"
+                                                   Style="{StaticResource HeaderTextBase}"
                                                    HorizontalAlignment="Right"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="18"
                                                    Margin="25,0"
                                                    Text="{Binding Path=Time, StringFormat={localization:Loc ReportTable:Header_Time}}" />
                                     </Grid>
                                 </DataTemplate>
                             </Expander.HeaderTemplate>
-                            <TextBlock Text="{Binding Path=Count}" />
-                        </Expander>
-                        
-                        <!--
-                                    <Grid>
-                                        <TextBlock Grid.Column="0"
-                                                   HorizontalAlignment="Left"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="18"
-                                                   Margin="0,0,25,0"
-                                                   Text="12/04 Mon" />
-                                        <TextBlock Grid.Column="1"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               Text="{Binding Count, StringFormat={localization:Loc ReportTable:Header_Total}}" />
-                                        <TextBlock Grid.Column="2"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               Text="{Binding ElementName=level1Lister, Path=Projects}" />
-                                        <TextBlock Grid.Column="3"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               Margin="25,0"
-                               Text="8 hrs" />
-                                    </Grid>
-                                </DataTemplate>
-                            </Expander.HeaderTemplate>
                             <Border BorderThickness="0,1,0,0"
-                  BorderBrush="{StaticResource MetroExpanderBorderBrush}">
-                                <TextBlock>123</TextBlock>
-                            </Border>-->
+                                    BorderBrush="{StaticResource MetroExpanderBorderBrush}"
+                                    Height="48">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" MinWidth="72" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               FontSize="16"
+                                               Margin="55,0,25,0"
+                                               Text="9:00 - 15:00" />
+                                    <TextBlock Grid.Column="1"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               FontSize="16"
+                                               Text="Some investigatrions" />
+                                    <TextBlock Grid.Column="2"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center"
+                                               FontSize="16"
+                                               Text="INV" />
+                                    <TextBlock Grid.Column="3"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center"
+                                               FontSize="16"
+                                               Margin="25,0"
+                                               Text="2hrs" />
+                                </Grid>
+                            </Border>
+                        </Expander>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -99,6 +141,8 @@
 
     <Style x:Key="MetroReportTable" TargetType="{x:Type controls:ReportTable}">
         <Setter Property="Height" Value="Auto" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource MetroExpanderBorderBrush}" />
         <Setter Property="Template" Value="{StaticResource MetroReportTableTemplate}" />
     </Style>
 

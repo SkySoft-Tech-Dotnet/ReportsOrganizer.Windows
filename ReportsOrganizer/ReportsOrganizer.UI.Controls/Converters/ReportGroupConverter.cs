@@ -17,6 +17,8 @@ namespace ReportsOrganizer.UI.Controls.Converters
             {
                 return source.GroupBy(_ => _.Created).Select(_ => new ReportGroupViewModel
                 {
+                    Date = _.Key,
+
                     Count = _.Count(),
                     Projects = string.Join(", ", _.Select(group => group.Project.ShortName).Distinct()),
                     Time = _.Sum(group => group.Duration) / 60
